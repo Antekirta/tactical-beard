@@ -1,0 +1,5 @@
+{
+  "directory" : "web/vendor",
+
+  "timeout": 300000
+}

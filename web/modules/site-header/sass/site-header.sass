@@ -1,0 +1,71 @@
+@import "../../beard/sass/beard"
+
+.site-header
+  height: 100px
+  outline: solid 1px $black
+  .logo
+    float: left
+    height: 100px
+    margin: 0
+    outline: solid 1px $black
+  .right
+    float: right
+    height: 100px
+    margin: 0
+    outline: solid 1px $black
+    .row
+      height: 100%
+      margin: 0
+    .search-container
+      outline: solid 1px $black
+      .mirror
+        position: absolute
+        top: 45px
+        left: 45px
+        width: 30px
+        height: 30px
+        //background-color: $black
+        border: solid 3px $black
+        border-radius: 50%
+        outline: none
+        transition: .3s
+        cursor: pointer
+        @include placeholder($main-font-family, $main-font-style, transparent)
+      .handle
+        position: absolute
+        top: 67px
+        right: 50px
+        width: 4px
+        height: 19px
+        background-color: $black
+        border-radius: 2px
+        transform: rotate(45deg)
+        transition: .3s
+    .search-container.active
+      .mirror
+        left: -55px
+        width: 150px
+        height: 25px
+        padding: 3px 5px
+        background-color: $white
+        border-radius: 1px
+        border-color: $black
+        @include placeholder($main-font-family, $main-font-style, $black)
+      .handle
+        top: 48px
+        right: 3px
+        width: 3px
+        background-color: $black
+        transform: rotate(0deg)
+    .basket-container
+      outline: solid 1px $black
+      .header-basket-svg
+        display: inline-block
+        width: 45px
+        height: 35px
+        margin-top: 46px
+        margin-left: 10px
+        cursor: pointer
+    .lang-user-container
+      outline: solid 1px $black
+

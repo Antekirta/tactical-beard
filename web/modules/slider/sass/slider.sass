@@ -1,0 +1,47 @@
+@import "../../beard/sass/beard"
+
+#main-slider
+  position: relative
+  width: 100%
+  height: 500px
+  margin-top: 50px
+  background-color: $black
+  outline: solid 1px $black
+  overflow: hidden
+  .slide-container
+    position: relative
+    width: 100%
+    height: 100%
+    .slide
+      position: absolute
+      height: 100%
+      padding: 30px
+      background-size: cover
+      list-style-type: none
+      @include fullTrans(.5s)
+      &:first-child
+        background-image: url('../../../../../img/slider/slide1.jpg')
+      &:nth-child(2)
+        background-image: url('../../../../../img/slider/slide2.jpg')
+      header
+        color: $white
+        font-size: 1.7em
+        font-weight: 900
+  .control
+    position: absolute
+    top: calc(50% - 25px)
+    width: 50px
+    height: 50px
+    cursor: pointer
+    @include fullTrans(.3s)
+    &:hover
+      background-color: #fff
+    svg
+      width: 50px
+      path
+        fill: $red
+  .control.back
+    left: 0
+  .control.forward
+    right: 0
+    transform: scale(-1)

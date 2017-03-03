@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="beard">
+<head>
+    <base href="/">
+    
+    <meta charset="UTF-8">
+    <title>$http service</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed&amp;subset=cyrillic" rel="stylesheet">
+
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/vendor-style.css">
+
+    <link rel="stylesheet" href="css/min/app-style.css">
+
+    <script src="js/vendor-logic.min.js"></script>
+
+    <script src="js/app-logic.min.js"></script>
+
+</head>
+<body ng-cloak ng-controller="categoriesListCtrl">
+
+    <!--<section class="site-header-container container">-->
+        <!--&lt;!&ndash;SITE HEADER&ndash;&gt;-->
+        <!--<header class="container site-header"-->
+
+                <!--data-site-header>-->
+        <!--</header>-->
+
+        <!--&lt;!&ndash;MAIN MENU&ndash;&gt;-->
+        <!--<nav class="main-menu container"-->
+
+             <!--data-main-menu-->
+
+             <!--ng-controller="mainMenuCtrl as mainMenu">-->
+        <!--</nav>-->
+    <!--</section>-->
+
+    <!--blank line-->
+    <div class="container streak"></div>
+
+    <div class="container" data-ui-view></div>
+
+
+    <!--&lt;!&ndash;blank line&ndash;&gt;-->
+    <div class="container streak"></div>
+
+    <main class="main-page-container container">
+        <header class="page-header container">Page header</header>
+
+        <ul class="container">
+            <li class="info-item row col-md-5">Info item</li>
+        </ul>
+    </main>
+
+    <!--blank line-->
+    <div class="container streak"></div>
+
+    <footer class="footer-container container"
+
+            data-site-footer
+
+            ng-controller="siteFooterCtrl as siteFooter">
+    </footer>
+
+<script src="https://use.fontawesome.com/69aefab6fb.js"></script>
+</body>
+</html>
