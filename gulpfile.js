@@ -1,42 +1,15 @@
 (function () {
     'use strict';
 
-    /* VARIABLES start*/
-
-    /* GULP PLUGINS start */
-
-    var gulp = require('gulp'),
-
-        modRewrite  = require('connect-modrewrite'),
-
-        requireDir = require('require-dir'),
-
-	      runSequence = require('run-sequence'),
+    const gulp = require('gulp'),
 
         browserSync = require('browser-sync'),
 
-	      browserify = require('browserify'),
+        runSequence = require('run-sequence'),
 
-        clean = require('gulp-clean'),
+        $ = require('gulp-load-plugins')();
 
-        sass = require('gulp-sass'),
-
-        autoprefixer = require('gulp-autoprefixer'),
-
-        csso = require('gulp-csso'),
-
-        concatCss = require('gulp-concat-css'),
-
-        concat = require('gulp-concat'),
-
-        uglify = require('gulp-uglify'),
-
-        $ = require('gulp-load-plugins');
-
-    /* GULP PLUGINS end */
-
-
-    /* CUSTOM VARIABLES start */
+     // paths
 
     const ROOT = 'web';
 
@@ -51,116 +24,91 @@
     ];
 
     const APP_JS_SRC = [
-      MODULES + '/**/*.js',
+        MODULES + '/**/*.js',
 
-      MODULES + '/**/**/*.js'
+        MODULES + '/**/**/*.js'
     ];
 
-    // const VENDOR_JS_SRC = ROOT + '/vendor/**/*.js';
     const VENDOR_JS_SRC = [
-      VENDOR + '/angular/angular.js',
+        VENDOR + '/jquery/dist/jquery.min.js',
 
-      VENDOR + '/angular-ui-router/release/angular-ui-router.min.js',
+        VENDOR + '/angular/angular.js',
 
-      VENDOR + '/lodash/lodash.js'
+        VENDOR + '/angular-ui-router/release/angular-ui-router.min.js',
+
+        VENDOR + '/lodash/lodash.js'
     ];
 
-    const PARTIALS_SRC = MODULES + '/**/partials/*.html';
+    function lazyRequireTask(taskName, path, options) {
+        options = options || {};
+        options.taskName = taskName;
 
-    const DEST = {
-        'CSS': ROOT + '/css'
-    };
+        gulp.task(taskName, function (callback) {
+            var task = require(path).call(this, options);
 
-    /* CUSTOM VARIABLES and */
+            return task(callback);
+        });
+    }
 
-    /* VARIABLES end*/
-
-
-
-
-
-    /* PRIMITIVE TASKS start */
-
-    gulp.task('clean', function () {
-        return gulp.src(DEST.CSS + '/app-style.css')
-          .pipe(clean());
+    lazyRequireTask('clean', './gulp-tasks/clean.js', {
+        src: ROOT + '/css/app-*.css'
     });
 
-    gulp.task('sass', function () {
-        return gulp.src(SASS_SRC)
-          .pipe(sass())
-          .pipe(autoprefixer({ browsers: ['last 2 version'] }))
-          .pipe(concatCss('app-style.css'))
-          .pipe(gulp.dest(DEST.CSS));
+    lazyRequireTask('sass', './gulp-tasks/sass.js', {
+        src: ROOT + '/modules/**/sass/*.sass',
+        concat: 'app-style.css',
+        dest: ROOT + '/css'
     });
 
-    gulp.task('app-logic', function() {
-        return gulp.src(APP_JS_SRC)
-          .pipe(concat('app-logic.min.js'))
-          .pipe(uglify())
-          .pipe(gulp.dest('web/js/'));
+    lazyRequireTask('app-logic', './gulp-tasks/app-logic.js', {
+        src: APP_JS_SRC,
+        concat: 'app-logic.min.js',
+        dest: 'web/js/'
     });
 
-    gulp.task('vendor-logic', function() {
-        console.log('VENDOR_JS_SRC: ', VENDOR_JS_SRC);
-        return gulp.src(VENDOR_JS_SRC)
-          .pipe(concat('vendor-logic.min.js'))
-          .pipe(uglify())
-          .pipe(gulp.dest('web/js/'));
+    lazyRequireTask('app-styles', './gulp-tasks/app-styles.js', {
+        src: SASS_SRC,
+        concat: 'app-styles.min.css',
+        dest: 'web/css/'
     });
 
-    gulp.task('minCss', function () {
-        return gulp.src(DEST.CSS + '/app-style.css')
-          .pipe(csso())
-          .pipe(gulp.dest(DEST.CSS + '/min'))
-          .pipe(browserSync.reload({
-            stream: true
-          }));
+    lazyRequireTask('vendor-logic', './gulp-tasks/vendor-logic.js', {
+        src: VENDOR_JS_SRC,
+        concat: 'vendor-logic.min.js',
+        dest: 'web/js/'
     });
 
-    gulp.task('vendor-css', function() {
-        gulp.src(VENDOR_CSS)
-          .pipe(concatCss('vendor-style.css'))
-          .pipe(csso())
-          .pipe(gulp.dest('web/css/'));
+    lazyRequireTask('vendor-styles', './gulp-tasks/vendor-styles.js', {
+        src: VENDOR_CSS,
+        concat: 'vendor-styles.min.css',
+        dest: 'web/css/'
     });
 
-    gulp.task('browserSync', function() {
-        browserSync({
-          server: {
-            baseDir: 'web',
-
-            middleware: [
-              modRewrite([
-                  '!\\.\\w+$ /index.html [L]'
-              ])
-            ]
-          }
-        })
+    lazyRequireTask('min-css', './gulp-tasks/min-css.js', {
+        src: ROOT + '/css/',
+        dest: ''
     });
 
-    /* PRIMITIVE TASKS end */
-
-    /* COMBINED TASKS start */
 
     gulp.task('dev-build', function(callback) {
-        runSequence('clean', 'app-logic', 'sass', 'minCss',  callback);
+        runSequence('clean', 'app-logic', 'app-styles', callback);
     });
 
-    /* COMBINED TASKS end */
-
-
-
-    gulp.task('watch', ['browserSync', 'dev-build'], function () {
-        gulp.watch(SASS_SRC, ['dev-build']);
-
-        gulp.watch(DEST.CSS, browserSync.reload);
-
-        gulp.watch(PARTIALS_SRC, browserSync.reload);
-
-        gulp.watch(APP_JS_SRC, ['dev-build']);
-
-        gulp.watch('web/index.html', browserSync.reload);
+    gulp.task('build', function(callback) {
+        runSequence('clean', 'app-logic', 'vendor-logic', 'app-styles', 'vendor-styles', callback);
     });
 
+    gulp.task('watch', function () {
+        gulp.watch(SASS_SRC, gulp.series('app-styles'));
+
+        gulp.watch(APP_JS_SRC, gulp.series('app-logic'));
+    });
+
+    gulp.task('serve', function() {
+        browserSync.init({
+            server: 'web'
+        });
+
+        browserSync.watch('web/**/*.*').on('change', browserSync.reload);
+    });
 })();

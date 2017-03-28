@@ -1,12 +1,14 @@
 @import "../../beard/sass/beard"
 
+.slider-section
+  @include bottom-line()
+  @include bottom-triangle()
+
 #main-slider
   position: relative
   width: 100%
-  height: 500px
-  margin-top: 50px
-  background-color: $black
-  outline: solid 1px $black
+  height: 450px
+  margin-top: 0
   overflow: hidden
   .slide-container
     position: relative
@@ -16,32 +18,84 @@
       position: absolute
       height: 100%
       padding: 30px
+      box-sizing: border-box
       background-size: cover
       list-style-type: none
       @include fullTrans(.5s)
       &:first-child
-        background-image: url('../../../../../img/slider/slide1.jpg')
+        background-image: url('../../../../../img/slider/slides/slide1.jpg')
       &:nth-child(2)
         background-image: url('../../../../../img/slider/slide2.jpg')
-      header
-        color: $white
-        font-size: 1.7em
-        font-weight: 900
+      .slide-description
+        position: absolute
+        bottom: -5px
+        right: 180px
+        width: 530px
+        height: 200px
+        header
+          position: relative
+          display: inline-block
+          width: 360px
+          height: 61px
+          margin-left: 100px
+          padding: 10px 20px 10px 50px
+          background-color: $dark-brown
+          color: $white
+          font-family: $font-family-condensed-bold
+          font-size: $font-size-h3
+          text-transform: uppercase
+        .slide-content
+          position: relative
+          height: 1134px
+          padding: 20px
+          background-color: $light-brown
+          .before
+            position: absolute
+            top: -52px
+            right: 43px
+            img
+              width: 56px
+              height: 49px
+          &:before
+            position: absolute
+            display: block
+            content: ''
+            width: 0
+            height: 0
+            top: -63px
+            border-bottom: solid 63px #d19563
+            border-left: solid 36px transparent
+            border-right: solid 36px transparent
+            right: 35px
+          .slide-text
+            line-height: 20px
+            font-family: $font-family-light
+            font-size: $font-size-p
+          .more-button
+            position: absolute
+            right: 28px
+            width: 200px
+            height: 40px
+            box-sizing: border-box
+            background-color: $white
+            text-align: center
+            line-height: 33px
+            font-size: $font-size-h6
+            font-weight: $font-weight-bold
+            color: $light-brown
+            cursor: pointer
+            @include fullTrans(.2s)
+            &:hover
+              color: $brown
+
   .control
     position: absolute
-    top: calc(50% - 25px)
-    width: 50px
-    height: 50px
+    top: 175px
+    width: 30px
+    height: 75px
     cursor: pointer
     @include fullTrans(.3s)
-    &:hover
-      background-color: #fff
-    svg
-      width: 50px
-      path
-        fill: $red
   .control.back
-    left: 0
+    left: 85px
   .control.forward
-    right: 0
-    transform: scale(-1)
+    right: 85px

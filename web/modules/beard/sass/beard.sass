@@ -1,98 +1,5 @@
-/*------------------------------------*\
-  BASIC VARIABLES start
-/*------------------------------------*/
-
-/* REDEFINE BOOTSTRAP */
-
-/* FONTS */
-
-$main-font-family: 'Ubuntu Condensed'
-$main-font-style: sans-serif
-$basic-font-size: 16px
-$font-weight-light: 100
-$font-weight-normal: 500
-$font-weight-bold: 900
-
-/* MEASUREMENTS */
-
-
-
-/* COLORS */
-
-$white: rgb(255, 255, 255)
-$black: rgb(64, 64, 64)
-$red: rgb(173,25,41)
-
-/*------------------------------------*\
-  BASIC VARIABLES finish
-/*------------------------------------*/
-
-
-
-
-
-/*------------------------------------*\
-  MIXINS start
-/*------------------------------------*/
-
-@mixin transition($prop, $delay)
-  -webkit-transition: $prop $delay
-  -moz-transition: $prop $delay
-  -ms-transition: $prop $delay
-  -o-transition: $prop $delay
-  transition: $prop $delay
-
-@mixin fullTrans($delay)
-  -webkit-transition: $delay
-  -moz-transition: $delay
-  -ms-transition: $delay
-  -o-transition: $delay
-  transition: $delay
-
-@mixin bgsize($horiz, $vert)
-  -webkit-background-size: $horiz $vert
-  background-size: $horiz $vert
-
-@mixin grayScale($per)
-  -webkit-filter: grayscale($per)
-  filter: grayscale($per)
-
-@mixin boxShadow($x, $y, $blur, $extension, $color)
-  -webkit-box-shadow: $x $y $blur $extension $color
-  -moz-box-shadow: $x $y $blur $extension $color
-  box-shadow: $x $y $blur $extension $color
-
-@mixin userSelect($value)
-  -webkit-user-select: $value
-  -moz-user-select: $value
-  -ms-user-select: $value
-  user-select: $value
-
-@mixin placeholder($font, $style, $color)
-  &::-webkit-input-placeholder
-    color: $color
-    font-family: $font, $style
-  &::-moz-placeholder
-    color: $color
-    font-family: $font, $style
-  &:-moz-placeholder
-    color: $color
-    font-family: $font, $style
-  &:-ms-input-placeholder
-    color: $color
-    font-family: $font, $style
-
-
-/*------------------------------------*\
-  MIXINS finish
-/*------------------------------------*/
-
-
-
-
-/*------------------------------------*\
-  BASIC STYLES start
-/*------------------------------------*/
+@import "global-variables"
+@import "mixins"
 
 *
   margin: 0
@@ -105,23 +12,97 @@ html, body
   font-size: $basic-font-size
 
 form, section, nav, article, main, aside, address, figure, footer, header, video, audio
-  position: relative
   display: block
 
 /* BOOTSTRAP REDEFINE */
 .container
+  width: $full-site-width
   padding: 0
-  //background-color: #bebebe
-  outline: solid 1px $black
+  background-color: #bebebe
 
-form
-  input
-    @include placeholder($main-font-family, $main-font-style, $black)
 /* GRID STYLES */
+
+$row: 1400px
+$column-count: 18
+$gutter-width: 10px
+
+$column-width: ($row - $column-count * $gutter-width) / $column-count
+
+.grid-row
+  position: relative
+  display: block
+  max-width: $row
+  margin: 0 auto
+  padding: 0
+  &:after
+    display: block
+    content: ''
+    clear: both
+
+.grid-box
+  float: left
+  margin: $gutter-width / 2
+
+@for $i from 1 through $column-count
+  .grid-col-#{$i}
+    @extend .grid-box
+    width: $column-width * $i + ($i - 1) * $gutter-width
+
+@for $i from 1 through $column-count
+  .grid-offset-#{$i}
+    margin-left: (2 * $i + 1) * $gutter-width / 2 + $column-width * $i
+
+.bg
+  background-color: $green
 
 .container.streak
   height: 30px
   background-color: #fff
+
+
+/* COMMON ELEMENTS */
+
+h1
+  font-family: $font-family-condensed-bold
+  font-size: $font-size-h1
+
+h2
+  font-family: $font-family-condensed-bold
+  font-size: $font-size-h2
+
+h3
+  font-family: $font-family-condensed-bold
+  font-size: $font-size-h3
+
+h4
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h4
+
+h5
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h5
+
+h6
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h6
+
+p
+  font-family: $main-font-family
+  font-size: $font-size-p
+
+.site-header-container
+  width: $full-site-width
+  height: $site-header-height
+  background-image: url(#{$path-to-images}bg/header-bg.jpg)
+  background-size: cover
+
+.sidebar
+  height: 300px
+  margin: 0
+  outline: solid 1px $black
+  .sidebar.right-sidebar
+    float: right
+
 
 /* FORM STYLES */
 
@@ -158,18 +139,3 @@ form
 //    input.input-radio
 //      display: inline-block
 //      @include placeholder($main-font-family, $main-font-style, $black)
-
-
-/* COMMON ELEMENTS */
-
-.sidebar
-  height: 300px
-  margin: 0
-  outline: solid 1px $black
-  .sidebar.right-sidebar
-    float: right
-
-/*------------------------------------*\
-  BASIC STYLES finish
-/*------------------------------------*/
-

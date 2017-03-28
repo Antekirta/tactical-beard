@@ -3,22 +3,29 @@
 		ng-repeat="slide in slides"
 
 		class="slide">
-		<header>{{slide.header}}</header>
+
+		<div class="slide-description">
+			<header>{{slide.header}}</header>
+			<div class="slide-content">
+				<div class="before">
+					<img src="img/icons/logo-without-title.png">
+				</div>
+				<div class="slide-text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.</div>
+				<a class="more-button">Узнать больше <span class="inline-right-arrow">&rarr;</span></a>
+			</div>
+		</div>
+
 	</li>
 </ul>
 
 <div class="control back" ng-click="changeSlide('back')">
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 242.333 242.333" style="enable-background:new 0 0 242.333 242.333;" xml:space="preserve">
-		<g>
-			<path d="M242.333,0H0v242.333h242.333V0z M178.089,192.584l-28.284,28.284l-99.702-99.702l99.702-99.702l28.284,28.284   l-71.418,71.418L178.089,192.584z"/>
-		</g>
+	<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 31 76">
+		<path d="M98.0434 549.999H115L101.956 587.336L115 624.999H98.04339999999999L84.9999 587.336Z " fill="#fef4eb" fill-opacity="1" transform="matrix(1,0,0,1,-84,-549)"></path>
 	</svg>
 </div>
 
 <div class="control forward" ng-click="changeSlide('forward')">
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="slider-arrow-back" x="0px" y="0px" viewBox="0 0 242.333 242.333" style="enable-background:new 0 0 242.333 242.333;" xml:space="preserve">
-		<g>
-			<path d="M242.333,0H0v242.333h242.333V0z M178.089,192.584l-28.284,28.284l-99.702-99.702l99.702-99.702l28.284,28.284   l-71.418,71.418L178.089,192.584z" />
-		</g>
+	<svg viewBox="0 0 30 76">
+		<path d="M1301.96 549.999H1285L1298.04 587.336L1285 624.999H1301.96L1315 587.336Z " fill="#fef4eb" fill-opacity="1" transform="matrix(1,0,0,1,-1285,-549)"></path>
 	</svg>
 </div>

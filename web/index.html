@@ -4,69 +4,266 @@
     <base href="/">
     
     <meta charset="UTF-8">
-    <title>$http service</title>
+    <title>Tactical beard</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="css/vendor-styles.min.css">
 
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
+    <link class="path-to-css" rel="stylesheet" href="css/app-styles.min.css">
 
-    <link rel="stylesheet" href="css/vendor-style.css">
+    <!-- just for development - crack for browserSync -->
+    <!--<script>-->
+        <!--var cssLink = document.getElementsByClassName('path-to-css')[0],-->
 
-    <link rel="stylesheet" href="css/min/app-style.css">
+            <!--rightCssPath = 'http://localhost:3000/css/app-style.min.css';-->
+
+        <!--window.onfocus = function() {-->
+            <!--if ( cssLink.href !== rightCssPath ) {-->
+                <!--cssLink.href = rightCssPath;-->
+            <!--}-->
+        <!--};-->
+    <!--</script>-->
 
     <script src="js/vendor-logic.min.js"></script>
 
     <script src="js/app-logic.min.js"></script>
 
 </head>
-<body ng-cloak ng-controller="categoriesListCtrl">
+<body ng-cloak>
 
-    <!--<section class="site-header-container container">-->
-        <!--&lt;!&ndash;SITE HEADER&ndash;&gt;-->
-        <!--<header class="container site-header"-->
+    <!--SITE HEADER-->
+    <section class="site-header-container grid-row">
+        <header class="site-header"
 
-                <!--data-site-header>-->
-        <!--</header>-->
+                data-site-header>
+        </header>
+    </section>
 
-        <!--&lt;!&ndash;MAIN MENU&ndash;&gt;-->
-        <!--<nav class="main-menu container"-->
+    <!--MAIN MENU-->
+    <section class="main-menu-wrapper grid-row">
+        <div class="logo grid-col-4">
+            <img src="img/icons/logo.png" alt="Tactical beard">
+        </div>
+        <nav class="main-menu grid-col-14 grid-offset-0"
 
-             <!--data-main-menu-->
+             data-main-menu
 
-             <!--ng-controller="mainMenuCtrl as mainMenu">-->
-        <!--</nav>-->
-    <!--</section>-->
+             ng-controller="mainMenuCtrl as mainMenu">
+        </nav>
+    </section>
 
-    <!--blank line-->
-    <div class="container streak"></div>
 
-    <div class="container" data-ui-view></div>
+    <div class="grid-row" data-ui-view></div>
 
+
+    <!--&lt;!&ndash;&lt;!&ndash;blank line&ndash;&gt;&ndash;&gt;-->
+    <!--<div class="container streak"></div>-->
+
+    <!--<main class="main-page-container container">-->
+        <!--<header class="page-header container">Page header</header>-->
+
+        <!--<ul class="container">-->
+            <!--<li class="info-item row col-md-5">Info item</li>-->
+        <!--</ul>-->
+    <!--</main>-->
 
     <!--&lt;!&ndash;blank line&ndash;&gt;-->
-    <div class="container streak"></div>
+    <!--<div class="container streak"></div>-->
 
-    <main class="main-page-container container">
-        <header class="page-header container">Page header</header>
+    <!--<footer class="footer-container container"-->
 
-        <ul class="container">
-            <li class="info-item row col-md-5">Info item</li>
-        </ul>
-    </main>
+            <!--data-site-footer-->
 
-    <!--blank line-->
-    <div class="container streak"></div>
+            <!--ng-controller="siteFooterCtrl as siteFooter">-->
+    <!--</footer>-->
 
-    <footer class="footer-container container"
+<!--<script src="https://use.fontawesome.com/69aefab6fb.js"></script>-->
 
-            data-site-footer
+    <br><br><br><br><br>
 
-            ng-controller="siteFooterCtrl as siteFooter">
-    </footer>
+    <div class="grid-row"><h2>Columns</h2></div>
 
-<script src="https://use.fontawesome.com/69aefab6fb.js"></script>
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+        <!--<div class="bg grid-col-1">col-1</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+        <!--<div class="bg grid-col-2">col-2</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-3">col-3</div>-->
+        <!--<div class="bg grid-col-3">col-3</div>-->
+        <!--<div class="bg grid-col-3">col-3</div>-->
+        <!--<div class="bg grid-col-3">col-3</div>-->
+        <!--<div class="bg grid-col-3">col-3</div>-->
+        <!--<div class="bg grid-col-3">col-3</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-4">col-4</div>-->
+        <!--<div class="bg grid-col-4">col-4</div>-->
+        <!--<div class="bg grid-col-4">col-4</div>-->
+        <!--<div class="bg grid-col-4">col-4</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-5">col-5</div>-->
+        <!--<div class="bg grid-col-5">col-5</div>-->
+        <!--<div class="bg grid-col-5">col-5</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-6">col-6</div>-->
+        <!--<div class="bg grid-col-6">col-6</div>-->
+        <!--<div class="bg grid-col-6">col-6</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-7">col-7</div>-->
+        <!--<div class="bg grid-col-7">col-7</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-8">col-8</div>-->
+        <!--<div class="bg grid-col-8">col-8</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-9">col-9</div>-->
+        <!--<div class="bg grid-col-9">col-9</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-10">col-10</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-11">col-11</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-12">col-12</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-13">col-13</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-14">col-14</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-15">col-15</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-16">col-16</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-17">col-17</div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-18">col-18</div>-->
+    <!--</div>-->
+
+    <!--<br><br><br>-->
+
+    <!--<div class="grid-row"><h2>Offsets</h2></div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-1"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-2"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-3"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-4"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-5"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-6"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-7"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-8"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-9"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-10"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-11"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-12"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-13"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-14"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-15"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-16"></div>-->
+    <!--</div>-->
+
+    <!--<div class="grid-row">-->
+        <!--<div class="bg grid-col-1 grid-offset-17"></div>-->
+    <!--</div>-->
 </body>
 </html>

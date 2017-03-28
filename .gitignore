@@ -1,3 +1,5 @@
 .bowercc
 node-modules
 node-modules/
+web/js/
+web/css

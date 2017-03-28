@@ -6,7 +6,7 @@
 	slider.controller('sliderCtrl', ['$scope', function($scope) {
 		$scope.slides = [
 			{
-				header: 'В продаже появился мужик с автоматом'
+				header: 'Далеко-далеко'
 			},
 			{
 				header: 'Мы в лес - вы с нами?'

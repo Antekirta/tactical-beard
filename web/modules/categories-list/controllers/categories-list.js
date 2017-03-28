@@ -31,9 +31,24 @@
 
 			categoriesProvider.getCategories().then(
 				function(response) {
-					$scope.categories = _.toArray(response.data.data.categories);
-					//$scope.categories = $scope.categories.sort($scope.helpers.sortByOrder);
-					console.log($scope.categories);
+					var arr = _.toArray(response.data.data.categories);
+
+                    arr = _.sortBy(arr, [function (obj) {
+						return parseInt(obj[0].sort_order);
+                    }]);
+
+                     _.remove(arr, function (obj) {
+                        return obj[0].meta_title === '';
+                    });
+
+					arr.forEach(function (category) {
+						category[0].image = 'img/categories/auto.svg';
+						// category[0].image = 'img/categories/' + auto + '.svg';
+                    });
+
+					console.log(arr);
+
+                    $scope.categories = arr;
 				},
 
 				function(error) {

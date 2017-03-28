@@ -1,2 +1,25 @@
 @import "../../beard/sass/beard"
 
+.main-page_services
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 50px 115px
+  background-color: $white
+  .main-page_services_box
+    flex-basis: 570px
+    height: 200px
+    box-sizing: border-box
+    @mixin bgsize-cover()
+    text-align: center
+    text-transform: uppercase
+    text-decoration: none
+    line-height: 200px
+    font-family: $font-family-condensed-light
+    font-size: $font-size-giant
+    color: $white
+    &.main-page_services_box--rent
+      background-image: url(#{$path-to-images}services/rent.jpg)
+    &.main-page_services_box--repair
+      background-image: url(#{$path-to-images}services/repair.jpg)
+

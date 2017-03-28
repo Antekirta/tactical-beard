@@ -1,5 +1,58 @@
 @import "../../beard/sass/beard"
 
+.main-menu-wrapper
+  position: relative
+  height: 100px
+  background-color: $light-brown
+  @include bottom-line()
+  .logo
+    position: relative
+    display: inline-block
+    height: 100px
+    text-align: center
+    &:before
+      position: absolute
+      content: ''
+      width: 0
+      height: 0
+      border-bottom: solid 140px $light-brown
+      border-left: solid 90px transparent
+      border-right: solid 90px transparent
+      transform: translate(-14px,-114px)
+    img
+      transform: translateY(-90px)
+
 .main-menu
-  height: 70px
-  outline: solid 1px $black
+  display: inline-block
+  height: 100%
+  ul
+    padding: 25px 0 0 0
+    li
+      display: inline-block
+      margin: 0 15px
+      a
+        display: block
+        position: relative
+        text-transform: uppercase
+        text-decoration: none
+        letter-spacing: -.8px
+        font-family: $font-family-condensed-bold
+        font-size: $font-size-h3
+        font-weight: $font-weight-bold
+        color: $brown
+        &:after
+          position: absolute
+          display: block
+          content: ''
+          left: calc(50% - 40px)
+          bottom: -3px
+          width: 0
+          height: 0
+          border-top: solid 6px transparent
+          border-left: solid 40px transparent
+          border-right: solid 40px transparent
+        &:hover
+          color: $dark-brown
+          text-decoration: none
+          &:after
+            border-top-color: $dark-brown

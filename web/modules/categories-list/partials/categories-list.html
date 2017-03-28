@@ -1,13 +1,10 @@
-<div data-ng-repeat="category in categories track by $index"
+<a href="#" data-ng-repeat="category in categories track by $index"
+
      class="category-item">
-	{{category[0].name}}
-</div>
+	<span class="category-item_image-wrapper">
+		<img data-img-svg src="{{category[0].image}}" width="90%" height="auto" />
+	</span>
+	<header class="category-item_header">{{category[0].meta_title}}</header>
+</a>
 
-
-
-<!--<div class="category-item">category item</div>-->
-<!--<div class="category-item">category item</div>-->
-<!--<div class="category-item">category item</div>-->
-<!--<div class="category-item">category item</div>-->
-<!--<div class="category-item">category item</div>-->
-<!--<div class="category-item">category item</div>-->
+<a href="#" class="categoriest-list_goods-on-comission">Товар на комиссии</a>

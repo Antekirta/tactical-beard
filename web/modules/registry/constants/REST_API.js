@@ -8,6 +8,8 @@
 	registry.constant('REST_API', {
 		'X_OC_RESTADMIN_ID': '4562314431343',
 
+		'BASKET': site + '/api/rest/cart',
+
 		'CATEGORIES': site + '/api/rest_admin/categories'
 	})
 })();

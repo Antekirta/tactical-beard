@@ -1,0 +1,17 @@
+$path: '../../../../../fonts/'
+
+@mixin set-font-face($path, $name)
+  @font-face
+    font-family: $name
+    src: url(#{$path}#{$name}/#{$name}.eot?#iefix) format('embedded-opentype'), url(#{$path}#{$name}/#{$name}.otf) format('opentype'), url(#{$path}#{$name}/#{$name}.woff) format('woff'), url(#{$path}#{$name}/#{$name}.ttf) format('truetype'), url(#{$path}#{$name}/#{$name}.svg##{$name}) format('svg')
+    font-weight: normal
+    font-style: normal
+
+@include set-font-face($path, 'DINPro')
+@include set-font-face($path, 'DINPro-Black')
+@include set-font-face($path, 'DINPro-CondensedBold')
+@include set-font-face($path, 'DINPro-CondensedMedium')
+@include set-font-face($path, 'DINPro-CondensedLight')
+@include set-font-face($path, 'DINPro-Light')
+
+
