@@ -1,6 +1,8 @@
 @import "../../beard/sass/beard"
 
 $item-size: 270px
+$svg-icon-width: 100%
+$svg-icon-height: 160px
 
 .categoriest-list
   display: flex
@@ -20,12 +22,53 @@ $item-size: 270px
     text-align: center
     @include no-link-decor()
     .category-item_image-wrapper
-      display: block
+      display: flex
+      align-items: center
+      justify-content: center
       height: 200px
-      padding: 70px 10px
       svg
-        .cls-1,.cls-2,.cls-3
-          stroke: #734f35
+        stroke: $weapon-brown
+      #category-item_svg_automate
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_pistols
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_other-weapons
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_grenades
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_accums
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_accessories
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_spare-parts
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_outside-spare-parts
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_aims
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_glasses
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_helmets
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_gloves
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_flac-ackets
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_holsters
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_backpacks
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_belts
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_knifes
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_radios
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_clothes
+        @include size($svg-icon-width, $svg-icon-height)
+      #category-item_svg_patches
+        @include size($svg-icon-width, $svg-icon-height)
+        fill: $weapon-brown
     .category-item_header
       height: 70px
       font-family: $font-family-condensed-medium
@@ -35,8 +78,14 @@ $item-size: 270px
       letter-spacing: .5px
       color: $middle-brown
     &:hover
+      .category-item_image-wrapper
+        svg
+          stroke: $between-brown
+        #category-item_svg_patches
+            fill: $between-brown
       .category-item_header
         text-decoration: underline
+
 
 $goods-on-comission-height: 75px
 $goods-on-comission-color: $middle-brown
@@ -46,7 +95,7 @@ $goods-on-comission-color: $middle-brown
   width: $item-size + 100
   height: $goods-on-comission-height
   margin: auto
-  border: solid 1px $goods-on-comission-color
+  outline: solid 1px $goods-on-comission-color
   text-align: center
   line-height: $goods-on-comission-height
   @include no-link-decor()
@@ -55,4 +104,8 @@ $goods-on-comission-color: $middle-brown
   font-size: $font-size-h3
   font-weight: $font-weight-bold
   color: $goods-on-comission-color
+  &:hover
+    @include no-link-decor()
+    outline: solid 3px $goods-on-comission-color
+    color: $goods-on-comission-color
 

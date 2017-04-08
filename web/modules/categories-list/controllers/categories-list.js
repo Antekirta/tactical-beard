@@ -42,8 +42,7 @@
                     });
 
 					arr.forEach(function (category) {
-						category[0].image = 'img/categories/auto.svg';
-						// category[0].image = 'img/categories/' + auto + '.svg';
+						category[0].image = '../img/categories/' + category[0].meta_alias + '.svg';
                     });
 
 					console.log(arr);
