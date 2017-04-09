@@ -1,9 +1,9 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	var basketPage = angular.module('basketPage');
+    var basketPage = angular.module('basketPage');
 
-	basketPage.controller('basketPageCtrl', ['$scope', function($scope) {
+    basketPage.controller('basketPageCtrl', ['$scope', function($scope) {
 
-	}]);
+    }]);
 })();

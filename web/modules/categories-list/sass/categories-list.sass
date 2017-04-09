@@ -16,7 +16,7 @@ $svg-icon-height: 160px
     margin: 0 0 30px 0
     padding: 0 10px
     box-sizing: border-box
-    outline: solid 1px $black
+    outline: solid 1px $middle-brown
     @include bgsize(100%, auto)
     background-repeat: no-repeat
     text-align: center
@@ -26,6 +26,7 @@ $svg-icon-height: 160px
       align-items: center
       justify-content: center
       height: 200px
+      @include fullTrans(.3s)
       svg
         stroke: $weapon-brown
       #category-item_svg_automate
@@ -78,11 +79,9 @@ $svg-icon-height: 160px
       letter-spacing: .5px
       color: $middle-brown
     &:hover
+      outline: solid 2px $middle-brown
       .category-item_image-wrapper
-        svg
-          stroke: $between-brown
-        #category-item_svg_patches
-            fill: $between-brown
+        @include blur(1px)
       .category-item_header
         text-decoration: underline
 

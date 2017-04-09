@@ -14,6 +14,7 @@
     const ROOT = 'web';
 
     const MODULES = ROOT + '/modules';
+
     const TEMPLATES = ROOT + '/templates';
 
     const VENDOR = ROOT + '/vendor';
@@ -27,7 +28,9 @@
     ];
 
     const VENDOR_CSS = [
-        VENDOR + '/bootstrap/dist/css/bootstrap.min.css'
+        VENDOR + '/bootstrap/dist/css/bootstrap.min.css',
+
+        VENDOR + '/font-awesome/css/font-awesome.min.css'
     ];
 
     const APP_JS_SRC = [

@@ -10,7 +10,8 @@
     flex-basis: 570px
     height: 200px
     box-sizing: border-box
-    @mixin bgsize-cover()
+    @include bgsize-cover()
+    outline: solid 0px $middle-brown
     text-align: center
     text-transform: uppercase
     text-decoration: none
@@ -18,8 +19,12 @@
     font-family: $font-family-condensed-light
     font-size: $font-size-giant
     color: $white
+    //@include fullTrans(.2s)
     &.main-page_services_box--rent
       background-image: url(#{$path-to-images}services/rent.jpg)
     &.main-page_services_box--repair
       background-image: url(#{$path-to-images}services/repair.jpg)
+    &:hover
+      outline: solid 1px $middle-brown
+      @include blur(1px)
 
