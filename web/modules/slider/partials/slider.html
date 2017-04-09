@@ -18,14 +18,13 @@
 	</li>
 </ul>
 
-<div class="control back" ng-click="changeSlide('back')">
-	<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 31 76">
-		<path d="M98.0434 549.999H115L101.956 587.336L115 624.999H98.04339999999999L84.9999 587.336Z " fill="#fef4eb" fill-opacity="1" transform="matrix(1,0,0,1,-84,-549)"></path>
-	</svg>
-</div>
+<ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
+			class="slider__carousel-arrow slider__carousel-arrow--back"
+			ng-click="changeSlide('back')" >
+</ng-include>
 
-<div class="control forward" ng-click="changeSlide('forward')">
-	<svg viewBox="0 0 30 76">
-		<path d="M1301.96 549.999H1285L1298.04 587.336L1285 624.999H1301.96L1315 587.336Z " fill="#fef4eb" fill-opacity="1" transform="matrix(1,0,0,1,-1285,-549)"></path>
-	</svg>
-</div>
+<ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
+			class="slider__carousel-arrow slider__carousel-arrow--forward"
+			ng-click="changeSlide('forward')" >
+</ng-include>
+

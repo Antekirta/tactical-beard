@@ -4,6 +4,6 @@
 	var impulseProducts = angular.module('impulseProducts');
 
 	impulseProducts.controller('impulseProductsCtrl', ['$scope', function($scope) {
-
+		$scope.impulse = 'lalala';
 	}]);
 })();

@@ -14,10 +14,17 @@
     const ROOT = 'web';
 
     const MODULES = ROOT + '/modules';
+    const TEMPLATES = ROOT + '/templates';
 
     const VENDOR = ROOT + '/vendor';
 
-    const SASS_SRC = MODULES + '/**/sass/*.sass';
+    const SASS_SRC = [
+        MODULES + '/**/sass/*.sass',
+
+        MODULES + '/**/sass/**/*.sass',
+
+        TEMPLATES + '/**/*.sass'
+    ];
 
     const VENDOR_CSS = [
         VENDOR + '/bootstrap/dist/css/bootstrap.min.css'

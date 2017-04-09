@@ -1,5 +1,47 @@
 @import "../../beard/sass/beard"
 
-.impulse-products-container
-  height: 200px
-  background-color: $brown
+.container.impulse-products
+  position: relative
+  height: 450px
+  padding: 20px 215px
+  background-color: $light-brown
+
+.impulse-products__list-container
+  width: 970px
+  overflow-x: hidden
+
+.impulse-products__list
+  width: 9999px
+
+$impulse-products-arrow-offset: 160px
+
+.impulse-products__carousel-arrow
+  .carousel-arrow
+    top: 210px
+
+.impulse-products__carousel-arrow--back
+  .carousel-arrow
+    left: $impulse-products-arrow-offset
+
+.impulse-products__carousel-arrow--forward
+  .carousel-arrow
+    right: $impulse-products-arrow-offset
+    transform: scale(-1)
+
+.impulse-products--both-prices
+  .product-item__basic-price
+    width: calc(50% - 1px)
+    text-decoration: line-through
+  .product-item__discount-price
+    display: block
+
+.container.impulse-products--novelties
+  background-color: $white
+  .common-section-header__link
+    border-color: $middle-brown
+    color: $middle-brown
+  .impulse-products__carousel-arrow
+    .carousel-arrow__icon
+      fill: $light-brown
+  .product-item__novelty-plate
+    display: block

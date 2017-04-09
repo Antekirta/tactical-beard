@@ -1,0 +1,67 @@
+@import "../../modules/beard/sass/beard"
+
+.product-item
+  display: inline-block
+  width: 170px
+  height: 275px
+  margin-right: 25px
+  overflow: hidden
+
+.product-item__figure
+  position: relative
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: 170px
+  background-color: $white
+
+.product-item__image
+  width: 100%
+
+.product-item__novelty-plate
+  display: none
+  position: absolute
+  top: 0
+  right: 0
+  width: 70px
+  padding: 3px 0
+  background-color: $green
+  color: $white
+  text-align: center
+  font-family: $font-family-condensed-medium
+  font-size: 20px
+
+.product-item__image-header
+  width: 100%
+  height: 65px
+  padding: 10px
+  background-color: $very-light-brown
+  text-align: center
+  overflow: hidden
+  color: $middle-brown
+  font-family: $font-family-condensed-bold
+  font-size: $font-size-h6
+  font-weight: $font-weight-bold
+  letter-spacing: -.5px
+
+.product-item__basic-price, .product-item__discount-price
+  width: 100%
+  height: 42px
+  text-align: center
+  line-height: 42px
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h4 - 2
+  font-weight: $font-weight-bold
+
+.product-item__basic-price
+  float: left
+  background-color: $white
+  color: $middle-brown
+
+.product-item__discount-price
+  display: none
+  float: right
+  width: calc(50% - 1px)
+  background-color: $orange
+  color: $white

@@ -18,7 +18,6 @@ form, section, nav, article, main, aside, address, figure, footer, header, video
 .container
   width: $full-site-width
   padding: 0
-  background-color: #bebebe
 
 /* GRID STYLES */
 
@@ -51,9 +50,6 @@ $column-width: ($row - $column-count * $gutter-width) / $column-count
 @for $i from 1 through $column-count
   .grid-offset-#{$i}
     margin-left: (2 * $i + 1) * $gutter-width / 2 + $column-width * $i
-
-.bg
-  background-color: $green
 
 .container.streak
   height: 30px
@@ -102,6 +98,7 @@ p
   outline: solid 1px $black
   .sidebar.right-sidebar
     float: right
+
 
 
 /* FORM STYLES */

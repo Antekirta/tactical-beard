@@ -88,14 +88,17 @@
             &:hover
               color: $brown
 
-  .control
-    position: absolute
+$slide-arrow-offset: 85px
+
+.slider__carousel-arrow
+  .carousel-arrow
     top: 175px
-    width: 30px
-    height: 75px
-    cursor: pointer
-    @include fullTrans(.3s)
-  .control.back
-    left: 85px
-  .control.forward
-    right: 85px
+
+.slider__carousel-arrow--back
+  .carousel-arrow
+    left: $slide-arrow-offset
+
+.slider__carousel-arrow--forward
+  .carousel-arrow
+    right: $slide-arrow-offset
+    transform: scale(-1)
