@@ -3,13 +3,14 @@
     <li ng-repeat="category in categories"
 
         class="categories-sidebar__list-item">
-        <a href="#" class="categories-sidebar__link">{{category[0].meta_title}}</a>
-        <ul class="categories-sidebar__subcategories-list">
+        <a href="#" class="categories-sidebar__link">{{category[0].meta_title | lowercase}}</a>
+        <ul class="categories-sidebar__categories-list categories-sidebar__categories-list--sublist">
             <li ng-repeat="subcategory in subcategories"
 
                 class="categories-sidebar__list-item">
-                <a href="#" class="categories-sidebar__link"> - {{subcategory[0].name}}</a>
+                 <a href="#" class="categories-sidebar__link"> - {{subcategory[0].name | lowercase}}</a>
             </li>
+            <br>
         </ul>
     </li>
 </ul>

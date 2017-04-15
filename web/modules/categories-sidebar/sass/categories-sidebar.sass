@@ -14,15 +14,18 @@
   letter-spacing: -.5px
   text-transform: uppercase
 
-.categories-sidebar__list
-
 .categories-sidebar__list-item
-  display: block
+  display: inline-block
   list-style-type: none
+  &:first-letter
+    text-transform: uppercase
 
 .categories-sidebar__link
+  display: inline-block
   color: $light-brown
   font-family: $font-family-condensed-light
   font-size: $font-size-h5
   &:hover
     color: $light-brown
+  &:first-letter
+    text-transform: uppercase
