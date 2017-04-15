@@ -1,1 +1,15 @@
-categories-sidebar partial
+<header class="categories-sidebar__heading">Каталог товаров</header>
+<ul class="categories-sidebar__categories-list">
+    <li ng-repeat="category in categories"
+
+        class="categories-sidebar__list-item">
+        <a href="#" class="categories-sidebar__link">{{category[0].meta_title}}</a>
+        <ul class="categories-sidebar__subcategories-list">
+            <li ng-repeat="subcategory in subcategories"
+
+                class="categories-sidebar__list-item">
+                <a href="#" class="categories-sidebar__link"> - {{subcategory[0].name}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -20,62 +20,62 @@
 
 		{
 			name: 'categories',
-			url: '/categories',
+			url: '/categories/',
 			controller: 'categoriesPageCtrl',
 			templateUrl: pathToPartial('categories-page')
 		},
 
 		{
 			name: 'products-list',
-			url: '/categories/:categoryName',
+			url: '/categories/:categoryName/',
 			templateUrl: pathToPartial('products-list-page')
 		},
 
 		{
 			name: 'product',
-			url: '/categories/:categoryName/:productName',
+			url: '/categories/:categoryName/:productName/',
 			templateUrl: pathToPartial('product-page')
 		},
 
 		{
 			name: 'make-order',
-			url: '/make-order',
+			url: '/make-order/',
 			templateUrl: pathToPartial('make-order-page')
 		},
 
 		{
 			name: 'order-done',
-			url: '/order-done',
+			url: '/order-done/',
 			templateUrl: pathToPartial('order-done-page')
 		},
 
 		{
 			name: 'basket',
-			url: '/basket',
+			url: '/basket/',
 			templateUrl: pathToPartial('basket-page')
 		},
 
 		{
 			name: 'info-list-page',
-			url: '/info/:infoType', //news or articles or something else
+			url: '/info/:infoType/', //news or articles or something else
 			templateUrl: pathToPartial('info-list-page')
 		},
 
 		{
 			name: 'info-page',
-			url: '/info/:infoType/:pageName',
+			url: '/info/:infoType/:pageName/',
 			templateUrl: pathToPartial('info-page')
 		},
 
 		{
 			name: 'bookmarks-page',
-			url: '/bookmarks',
+			url: '/bookmarks/',
 			templateUrl: pathToPartial('bookmarks-page')
 		},
 
 		{
 			name: 'personal-account-page',
-			url: '/account',
+			url: '/account/',
 			templateUrl: pathToPartial('personal-account-page')
 		}
 	]);

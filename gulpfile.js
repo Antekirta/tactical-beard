@@ -116,7 +116,18 @@
 
     gulp.task('serve', function() {
         browserSync.init({
-            server: 'web'
+            server: {
+                //Middleware paths are relative to the base directory
+                baseDir: 'web'
+            },
+
+            middleware: function(req,res,next) {
+                if ( req.url.search(/\./) === -1 ) {
+                    req.url = '/';
+                }
+
+                return next();
+            }
         });
 
         browserSync.watch('web/**/*.*').on('change', browserSync.reload);

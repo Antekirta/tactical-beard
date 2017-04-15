@@ -58,6 +58,9 @@ $column-width: ($row - $column-count * $gutter-width) / $column-count
 
 /* COMMON ELEMENTS */
 
+.ui-view-wrapper
+  padding-top: $ui-view-wrapper-padding
+
 h1
   font-family: $font-family-condensed-bold
   font-size: $font-size-h1
@@ -92,14 +95,9 @@ p
   background-image: url(#{$path-to-images}bg/header-bg.jpg)
   background-size: cover
 
-.sidebar
-  height: 300px
-  margin: 0
-  outline: solid 1px $black
-  .sidebar.right-sidebar
-    float: right
-
-
+.site-content-wrapper
+  width: 1200px
+  margin: 0 auto
 
 /* FORM STYLES */
 

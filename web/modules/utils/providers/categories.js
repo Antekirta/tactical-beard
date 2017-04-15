@@ -15,8 +15,6 @@
 				var req = {
 					method: 'GET',
 
-					url: REST_API.CATEGORIES,
-
 					dataType: 'jsonp',
 
 					headers: {
@@ -26,6 +24,8 @@
 
 				return {
 					getCategories: function() {
+						req.url = REST_API.CATEGORIES;
+
 						return $http(req).then(
 							function(response) {
 								return response;
@@ -35,7 +35,21 @@
 								return $q.reject(error);
 							}
 						);
-					}
+					},
+
+					getSubCategories: function () {
+                        req.url = REST_API.CATEGORIES + '/parent/62/';
+
+                        return $http(req).then(
+                            function(response) {
+                                return response;
+                            },
+
+                            function(error) {
+                                return $q.reject(error);
+                            }
+                        );
+                    }
 				};
 			}
 		];

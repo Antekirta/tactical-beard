@@ -28,7 +28,7 @@
     <script src="js/app-logic.min.js"></script>
 
 </head>
-<body ng-cloak>
+<body ng-cloak id="app">
 
     <!--SITE HEADER-->
     <section class="site-header-container grid-row">
@@ -41,7 +41,7 @@
     <!--MAIN MENU-->
     <section class="main-menu-wrapper grid-row">
         <div class="logo grid-col-4">
-            <img data-img-svg src="img/icons/logo.svg" alt="Tactical beard">
+            <a ui-sref="home"><img data-img-svg src="img/icons/logo.svg" alt="Tactical beard"></a>
         </div>
         <nav class="main-menu grid-col-14 grid-offset-0"
 
@@ -52,7 +52,7 @@
     </section>
 
 
-    <div class="grid-row" data-ui-view></div>
+    <div class="grid-row ui-view-wrapper" data-ui-view></div>
 
 
     <!--&lt;!&ndash;&lt;!&ndash;blank line&ndash;&gt;&ndash;&gt;-->

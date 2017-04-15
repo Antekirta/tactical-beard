@@ -9,14 +9,14 @@
 		'categoriesProvider',
 
 		function($scope, categoriesProvider) {
-			categoriesProvider.then(
-				function(response) {
-					console.log('categoriesPageCtrl data', response);
-				},
-
-				function(error) {
-
-				}
-			);
+			// categoriesProvider.then(
+			// 	function(response) {
+			// 		console.log('categoriesPageCtrl data', response);
+			// 	},
+            //
+			// 	function(error) {
+            //
+			// 	}
+			// );
 		}]);
 })();
