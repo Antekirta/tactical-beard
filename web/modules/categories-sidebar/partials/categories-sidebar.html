@@ -4,13 +4,12 @@
 
         class="categories-sidebar__list-item">
         <a href="#" class="categories-sidebar__link">{{category[0].meta_title | lowercase}}</a>
-        <ul class="categories-sidebar__categories-list categories-sidebar__categories-list--sublist">
-            <li ng-repeat="subcategory in subcategories"
+        <ul data-ng-if="category.subcategories" class="categories-sidebar__categories-list categories-sidebar__categories-list--sublist">
+            <li ng-repeat="subcategory in category.subcategories"
 
                 class="categories-sidebar__list-item">
                  <a href="#" class="categories-sidebar__link"> - {{subcategory[0].name | lowercase}}</a>
             </li>
-            <br>
         </ul>
     </li>
 </ul>

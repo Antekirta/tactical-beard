@@ -37,8 +37,8 @@
 						);
 					},
 
-					getSubCategories: function () {
-                        req.url = REST_API.CATEGORIES + '/parent/62/';
+					getSubCategories: function (id) {
+                        req.url = REST_API.CATEGORIES + '/parent/' + id + '/';
 
                         return $http(req).then(
                             function(response) {
