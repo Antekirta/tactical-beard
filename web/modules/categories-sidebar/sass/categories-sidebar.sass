@@ -3,7 +3,7 @@
 .categories-sidebar
   float: left
   width: 300px
-  padding: 20px 60px
+  padding: 20px 30px
   background-color: $middle-brown
 
 
@@ -14,6 +14,9 @@
   letter-spacing: -.5px
   text-transform: uppercase
 
+.categories-sidebar__categories-list--sublist
+  display: none
+
 .categories-sidebar__list-item
   display: block
   list-style-type: none
@@ -22,10 +25,16 @@
 
 .categories-sidebar__link
   display: inline-block
+  padding: 0 10px
   color: $light-brown
   font-family: $font-family-condensed-light
+  font-weight: $font-weight-bold
   font-size: $font-size-h5
+  letter-spacing: .5px
   &:hover
     color: $light-brown
   &:first-letter
     text-transform: uppercase
+  &:focus
+    color: $white
+    text-decoration: none

@@ -3,7 +3,7 @@
 
 	var categoriesSidebar = angular.module('categoriesSidebar');
 
-	categoriesSidebar.directive('categoriesSidebar', function() {
+	categoriesSidebar.directive('categoriesSidebar', ['EVENTS', function(EVENTS) {
 		return {
 			restrict: 'A',
 
@@ -12,8 +12,8 @@
 			templateUrl: 'modules/categories-sidebar/partials/categories-sidebar.html',
 
 			link: function(scope, element, attrs) {
-				console.log('categories-sidebar');
+
 			}
 		};
-	});
+	}]);
 })();
