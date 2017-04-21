@@ -10,6 +10,8 @@
 
 		'BASKET': site + '/api/rest/cart',
 
-		'CATEGORIES': site + '/api/rest_admin/categories'
+		'CATEGORIES': site + '/api/rest_admin/categories',
+
+		'PRODUCTS': site + '/api/rest_admin/products'
 	})
 })();

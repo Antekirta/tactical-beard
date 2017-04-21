@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17c8dfa7-2176-4e54-bec8-8762891d7cdb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/modules/utils/directives/drop-down-list/drop-down-list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/utils/directives/img-svg/img-svg.js" afterPath="$PROJECT_DIR$/web/modules/utils/directives/img-svg/img-svg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/modules/utils/providers/products.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/products-list-page/sass/products-list-page.sass" afterPath="$PROJECT_DIR$/web/modules/products-list-page/sass/products-list-page.sass" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html" afterPath="$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js" afterPath="$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/categories-sidebar/directives/categories-sidebar.js" afterPath="$PROJECT_DIR$/web/modules/categories-sidebar/directives/categories-sidebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass" afterPath="$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/categories-sidebar/partials/categories-sidebar.html" afterPath="$PROJECT_DIR$/web/modules/categories-sidebar/partials/categories-sidebar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass" afterPath="$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/products-list-page/controllers/products-list-page.js" afterPath="$PROJECT_DIR$/web/modules/products-list-page/controllers/products-list-page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html" afterPath="$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/registry/constants/REST_API.js" afterPath="$PROJECT_DIR$/web/modules/registry/constants/REST_API.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/modules/registry/constants/STATES.js" afterPath="$PROJECT_DIR$/web/modules/registry/constants/STATES.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/templates/product-item/product-item.html" afterPath="$PROJECT_DIR$/web/templates/product-item/product-item.html" />
     </list>
     <ignored path="beard.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="categories-sidebar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js">
+      <file leaf-file-name="categories-sidebar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/partials/categories-sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -43,68 +45,58 @@
       <file leaf-file-name="products-list-page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="52" lean-forward="false" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="categories-sidebar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/partials/categories-sidebar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="74" lean-forward="false" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="74" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="drop-down-list.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/modules/utils/directives/drop-down-list/drop-down-list.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <caret line="12" column="92" lean-forward="false" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="STATES.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="product-item.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/templates/product-item/product-item.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="41" lean-forward="false" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products-list-page.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/controllers/products-list-page.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="25" column="48" lean-forward="false" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="categories.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/modules/utils/providers/categories.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/modules/utils/providers/products.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="STATES.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/modules/registry/constants/STATES.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="21" column="31" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="34" column="35" lean-forward="true" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="products-list-page.sass" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/sass/products-list-page.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="impulse-products.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/modules/impulse-products/partials/impulse-products.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="660">
+              <caret line="33" column="60" lean-forward="false" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -173,9 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/img/categories/radios.svg" />
-        <option value="$PROJECT_DIR$/web/img/categories/clothes.svg" />
-        <option value="$PROJECT_DIR$/web/img/categories/patches.svg" />
         <option value="$PROJECT_DIR$/web/img/categories/auto.svg" />
         <option value="$PROJECT_DIR$/web/templates/arrow/arrow.html" />
         <option value="$PROJECT_DIR$/web/templates/arrow/arrow.sass" />
@@ -197,18 +186,15 @@
         <option value="$PROJECT_DIR$/web/modules/beard/sass/mixins.sass" />
         <option value="$PROJECT_DIR$/web/modules/categories-list/sass/categories-list.sass" />
         <option value="$PROJECT_DIR$/web/modules/main-page/sass/main-page.sass" />
-        <option value="$PROJECT_DIR$/web/templates/product-item/product-item.html" />
         <option value="$PROJECT_DIR$/web/templates/product-item/product-item.sass" />
         <option value="$PROJECT_DIR$/web/templates/carousel-arrow/carousel-arrow.sass" />
         <option value="$PROJECT_DIR$/web/modules/impulse-products/sass/impulse-products.sass" />
         <option value="$PROJECT_DIR$/web/modules/impulse-products/directives/impulse-products.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/web/modules/registry/constants/STATES.js" />
         <option value="$PROJECT_DIR$/web/modules/main-menu/partials/main-menu.html" />
         <option value="$PROJECT_DIR$/web/modules/categories-page/controllers/categories-page.js" />
         <option value="$PROJECT_DIR$/web/modules/categories-page/partials/categories-page.html" />
-        <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/modules/slider/sass/slider.sass" />
         <option value="$PROJECT_DIR$/web/modules/beard/sass/global-variables.sass" />
         <option value="$PROJECT_DIR$/web/modules/beard/sass/beard.sass" />
@@ -217,13 +203,19 @@
         <option value="$PROJECT_DIR$/web/modules/utils/providers/categories.js" />
         <option value="$PROJECT_DIR$/web/modules/utils/directives/drow-down-list/drop-down-list.js" />
         <option value="$PROJECT_DIR$/web/modules/categories-sidebar/directives/categories-sidebar.js" />
-        <option value="$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js" />
         <option value="$PROJECT_DIR$/web/modules/utils/directives/img-svg/img-svg.js" />
         <option value="$PROJECT_DIR$/web/modules/utils/directives/drop-down-list/drop-down-list.js" />
-        <option value="$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass" />
-        <option value="$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html" />
         <option value="$PROJECT_DIR$/web/modules/products-list-page/sass/products-list-page.sass" />
+        <option value="$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass" />
+        <option value="$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js" />
         <option value="$PROJECT_DIR$/web/modules/categories-sidebar/partials/categories-sidebar.html" />
+        <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/web/modules/registry/constants/STATES.js" />
+        <option value="$PROJECT_DIR$/web/modules/registry/constants/REST_API.js" />
+        <option value="$PROJECT_DIR$/web/modules/utils/providers/products.js" />
+        <option value="$PROJECT_DIR$/web/modules/products-list-page/controllers/products-list-page.js" />
+        <option value="$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html" />
+        <option value="$PROJECT_DIR$/web/templates/product-item/product-item.html" />
       </list>
     </option>
   </component>
@@ -257,8 +249,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -282,6 +272,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="product-item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,26 +354,12 @@
               <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products-list-page" />
+              <option name="myItemId" value="providers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -362,14 +378,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products-list-page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sass" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -391,11 +399,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="products-list-page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
+              <option name="myItemId" value="categories-list" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,81 +421,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="impulse-products" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
+              <option name="myItemId" value="categories-list" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impulse-products" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="categories-sidebar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="categories-sidebar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -515,6 +449,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -524,15 +460,16 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.HTML" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="STA&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/STATES.js&#10;STATES&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/STATES.js&#10;bea&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/beard.sass&#10;glova&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;bear&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/beard.sass&#10;state&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/STATES.js&#10;main&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/main-page/sass/main-page.sass&#10;gul&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/gulpfile.js&#10;index&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/index.html&#10;gulp&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/gulpfile.js&#10;mixi&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/mixins.sass&#10;beard&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/beard.sass&#10;global&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;mix&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/mixins.sass&#10;glo&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;mixin&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/mixins.sass&#10;ate&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/controllers/categories-list.js&#10;ca&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/sass/categories-list.sass&#10;slider&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/slider/sass/slider.sass&#10;globa&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;inde&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/index.html&#10;te&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/controllers/categories-list.js&#10;slide&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/slider/sass/slider.sass&#10;cate&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/partials/categories-list.html&#10;fonts&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/fonts.sass&#10;arrow-r&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/img/icons/slider/arrow-right.svg&#10;arrow&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/img/icons/slider/arrow-left.svg&#10;site&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/modules/site-header/sass/site-header.sass&#10;site-&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/modules/site-header/sass/site-header.sass&#10;site-header&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/modules/site-header/controllers/site-header.js&#10;brow&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/node_modules/browser-sync/lib/browser-sync.js&#10;asyn&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/node_modules/browser-sync-ui/lib/async-tasks.js" />
+    <property name="SearchEverywhereHistoryKey" value="RE&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/REST_API.js&#10;STA&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/STATES.js&#10;STATES&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/STATES.js&#10;bea&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/beard.sass&#10;glova&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;bear&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/beard.sass&#10;state&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/registry/constants/STATES.js&#10;main&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/main-page/sass/main-page.sass&#10;gul&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/gulpfile.js&#10;index&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/index.html&#10;gulp&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/gulpfile.js&#10;mixi&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/mixins.sass&#10;beard&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/beard.sass&#10;global&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;mix&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/mixins.sass&#10;glo&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;mixin&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/mixins.sass&#10;ate&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/controllers/categories-list.js&#10;ca&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/sass/categories-list.sass&#10;slider&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/slider/sass/slider.sass&#10;globa&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/global-variables.sass&#10;inde&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/index.html&#10;te&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/controllers/categories-list.js&#10;slide&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/slider/sass/slider.sass&#10;cate&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/categories-list/partials/categories-list.html&#10;fonts&#9;FILE&#9;file://C:/Users/kiril/WebstormProjects/beard/web/modules/beard/sass/fonts.sass&#10;arrow-r&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/img/icons/slider/arrow-right.svg&#10;arrow&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/img/icons/slider/arrow-left.svg&#10;site&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/modules/site-header/sass/site-header.sass&#10;site-&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/modules/site-header/sass/site-header.sass&#10;site-header&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/web/modules/site-header/controllers/site-header.js&#10;brow&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/node_modules/browser-sync/lib/browser-sync.js&#10;asyn&#9;FILE&#9;file://C:/Users/kirill.murashkin/WebstormProjects/beard/node_modules/browser-sync-ui/lib/async-tasks.js" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kiril\WebstormProjects\beard\web\img\categories" />
-      <recent name="C:\Users\kiril\WebstormProjects\beard\gulp-tasks" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kiril\WebstormProjects\beard\web\modules\beard\sass\common-elements" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kiril\WebstormProjects\beard\web\modules\utils\providers" />
+      <recent name="C:\Users\kiril\WebstormProjects\beard\web\img\categories" />
+      <recent name="C:\Users\kiril\WebstormProjects\beard\gulp-tasks" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -656,12 +593,13 @@
       <workItem from="1492197060452" duration="1282000" />
       <workItem from="1492266247685" duration="15728000" />
       <workItem from="1492333581654" duration="4145000" />
-      <workItem from="1492537930491" duration="1000" />
+      <workItem from="1492537930491" duration="7328000" />
+      <workItem from="1492799317983" duration="138000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152246000" />
+    <option name="totallyTimeSpent" value="159711000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
@@ -669,12 +607,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15605427" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28224102" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28646934" sideWeight="0.49583334" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -684,22 +622,22 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28224102" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28646934" sideWeight="0.49583334" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15605427" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -724,23 +662,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/vendor/font-awesome/css/font-awesome.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/vendor/font-awesome/css/font-awesome.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="3" column="167" lean-forward="false" selection-start-line="3" selection-start-column="124" selection-end-line="3" selection-end-column="167" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/vendor/font-awesome/css/font-awesome.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -845,13 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/product-item/product-item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="68" lean-forward="false" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -963,27 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/modules/categories-list/controllers/categories-list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/modules/registry/constants/REST_API.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="57" lean-forward="false" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/modules/utils/providers/categories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/modules/utils/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -991,25 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/modules/utils/directives/img-svg/img-svg.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1024,15 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="34" column="35" lean-forward="true" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,19 +912,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="52" lean-forward="false" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/sass/products-list-page.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,22 +923,96 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/sass/categories-sidebar.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/controllers/categories-sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="51" column="14" lean-forward="false" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/modules/categories-sidebar/partials/categories-sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="74" lean-forward="false" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="74" />
+        <state relative-caret-position="200">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/categories-list/controllers/categories-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="53" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/registry/constants/REST_API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/utils/providers/categories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/utils/providers/products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/controllers/products-list-page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" column="48" lean-forward="false" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/modules/products-list-page/partials/products-list-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="92" lean-forward="false" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/modules/registry/constants/STATES.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="21" column="31" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="5" />
+        <state relative-caret-position="660">
+          <caret line="33" column="60" lean-forward="false" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/product-item/product-item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="41" lean-forward="false" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
           <folding />
         </state>
       </provider>

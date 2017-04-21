@@ -5,20 +5,22 @@
         data-drop-down-list
 
         class="categories-sidebar__list-item">
-        <a
+        <a class="categories-sidebar__link"
 
-           data-ui-sref="categories({categoryName: category[0].category_id})"
+           data-ng-click="goToUIState({name: 'products-list', params: {categoryName: category[0].category_id}}, !!category.subcategories)"
 
-           data-drop-down="{{!!category.subcategories}}"
-
-           class="categories-sidebar__link">{{category[0].meta_title | lowercase}}</a>
+           data-drop-down="{{!!category.subcategories}}">
+            {{category[0].meta_title | lowercase}}
+        </a>
         <ul data-ng-if="category.subcategories"
 
             class="categories-sidebar__categories-list categories-sidebar__categories-list--sublist">
             <li ng-repeat="subcategory in category.subcategories"
 
                 class="categories-sidebar__list-item">
-                 <a href="/categories/{{subcategory[0].category_id}}" class="categories-sidebar__link"> - {{subcategory[0].name | lowercase}}</a>
+                 <a class="categories-sidebar__link"
+
+                    data-ng-click="goToUIState({name: 'products-list', params: {categoryName: subcategory[0].category_id}}, !!subcategory.subcategories)"> - {{subcategory[0].name | lowercase}}</a>
             </li>
         </ul>
     </li>

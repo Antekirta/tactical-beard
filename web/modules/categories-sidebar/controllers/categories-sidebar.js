@@ -3,8 +3,14 @@
 
 	var categoriesSidebar = angular.module('categoriesSidebar');
 
-	categoriesSidebar.controller('categoriesSidebarCtrl', ['$scope', '$log', 'categoriesProvider', function($scope, $log, categoriesProvider) {
+	categoriesSidebar.controller('categoriesSidebarCtrl', ['$scope', '$log', '$state', 'categoriesProvider', function($scope, $log, $state, categoriesProvider) {
         $scope.categories = [];
+
+        $scope.goToUIState = function (state, shouldGo) {
+            if ( !shouldGo ) {
+                $state.go(state.name, {categoryName: state.params.categoryName});
+            }
+        };
 
         categoriesProvider.getCategories()
             // get categories

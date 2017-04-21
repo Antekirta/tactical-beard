@@ -1,54 +1,15 @@
-<section class="site-content-wrapper">
+<section class="site-content-wrapper" ng-controller="categoriesSidebarCtrl">
 	<aside class="categories-sidebar"
 
-		   data-categories-sidebar
-
-		   ng-controller="categoriesSidebarCtrl">
+		   data-categories-sidebar>
 	</aside>
 
-	<div class="products-list grid-row" data-ui-view>
+	<div class="products-list grid-row" data-ng-controller="productsListPageCtrl">
 		<ul class="products-list__list">
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
+			<li data-ng-repeat="product in products"
 
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
+				data-ng-include="'templates/product-item/product-item.html'"
 
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
-				class="product-item products-list__product-item product-item--both-prices" >
-			</li>
-
-			<li ng-include="'templates/product-item/product-item.html'"
 				class="product-item products-list__product-item product-item--both-prices" >
 			</li>
 		</ul>

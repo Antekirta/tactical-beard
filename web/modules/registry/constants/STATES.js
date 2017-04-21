@@ -28,6 +28,9 @@
 		{
 			name: 'products-list',
 			url: '/categories/:categoryName/',
+			params: {
+                categoryName: null
+			},
 			templateUrl: pathToPartial('products-list-page')
 		},
 
