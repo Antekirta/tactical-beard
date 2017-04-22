@@ -6,6 +6,22 @@
   height: 275px
   margin-right: 25px
   overflow: hidden
+  &--both-prices
+    .product-item__basic-price
+      width: calc(50% - 1px)
+      text-decoration: line-through
+    .product-item__discount-price
+      display: block
+
+.product-item--no-image
+  .product-item__figure
+   background-image: url(http://localhost:3000/img/icons/logo.svg)
+   background-size: 50% 50%
+   background-position: 50% 50%
+   background-repeat: no-repeat
+   opacity: .5
+  .product-item__image
+    opacity: 0
 
 .product-item__figure
   position: relative

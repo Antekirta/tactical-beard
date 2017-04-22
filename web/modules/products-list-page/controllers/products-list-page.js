@@ -3,10 +3,12 @@
 
 	var productsListPage = angular.module('productsListPage');
 
-	productsListPage.controller('productsListPageCtrl', ['$scope', '$log', 'productsProvider', function($scope, $log, productsProvider) {
+	productsListPage.controller('productsListPageCtrl', ['$scope', '$log', '$state', '$stateParams', '$locale', 'productsProvider', function($scope, $log, $state, $stateParams, $locale, productsProvider) {
         $scope.products = [];
 
-        productsProvider.getProducts().then(
+        $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
+
+        productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
             function(response) {
                 var products = _.toArray(response.data.data);
 
@@ -18,9 +20,13 @@
                 //     return obj[0].meta_title === '';
                 // });
                 //
-                // arr.forEach(function (category) {
-                //     category[0].image = '../img/categories/' + category[0].meta_alias + '.svg';
-                // });
+                products.forEach(function (product) {
+                    console.info('product image: ', product);
+                    // if ( product.image == null ) {
+                    //     product.image = 'http://localhost:3000/img/icons/logo.svg';
+                    // }
+                    // product[0].image = '../img/categories/' + category[0].meta_alias + '.svg';
+                });
 
 
 				console.log('products', products);

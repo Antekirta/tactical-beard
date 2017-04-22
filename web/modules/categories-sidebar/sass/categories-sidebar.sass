@@ -1,10 +1,15 @@
 @import "../../beard/sass/beard"
 
+//$left-categories-sidebar-offset: calc(100vw - 1200px)/2
+
 .categories-sidebar
+  position: absolute
   float: left
+  z-index: 1
   width: 300px
   padding: 20px 30px
   background-color: $middle-brown
+  transform: translate(100px, 200px)
 
 
 .categories-sidebar__heading

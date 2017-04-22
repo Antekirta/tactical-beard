@@ -1,9 +1,9 @@
-<figure class="product-item__figure">
-    <a href="#"><img src="{{product.image}}" alt="" class="product-item__image"></a>
+<figure data-ui-sref="products-list.product({productName: product.id})" class="product-item__figure">
+    <img src="{{product.image}}" alt="" class="product-item__image">
     <div class="product-item__novelty-plate">Новое</div>
 </figure>
 
 <div class="product-item__image-header"><a class="product-item__link" href="#">{{product.product_description[1].name}}</a></div>
 
-<div class="product-item__basic-price">7200 <span class="product-item__currency">руб.</span></div>
+<div class="product-item__basic-price">{{product.price | number: 0}} <span class="product-item__currency">руб.</span></div>
 <div class="product-item__discount-price">6 700  <span class="product-item__currency">руб.</span></div>

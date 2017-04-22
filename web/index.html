@@ -28,7 +28,7 @@
     <script src="js/app-logic.min.js"></script>
 
 </head>
-<body ng-cloak id="app">
+<body ng-cloak id="app" data-ng-controller="stateCtrl">
 
     <!--SITE HEADER-->
     <section class="site-header-container grid-row">
@@ -49,6 +49,13 @@
 
              ng-controller="mainMenuCtrl as mainMenu">
         </nav>
+
+        <aside class="categories-sidebar"
+
+               data-categories-sidebar
+
+               data-ng-if="sidebarCategoriesIsVisible()">
+        </aside>
     </section>
 
     <div class="grid-row ui-view-wrapper" data-ui-view></div>

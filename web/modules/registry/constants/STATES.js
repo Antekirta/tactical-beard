@@ -35,8 +35,8 @@
 		},
 
 		{
-			name: 'product',
-			url: '/categories/:categoryName/:productName/',
+			name: 'products-list.product',
+            url: '{productName}',
 			templateUrl: pathToPartial('product-page')
 		},
 
