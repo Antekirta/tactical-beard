@@ -1,0 +1,79 @@
+<form class="filters__form">
+    <input type="search"
+
+           class="filters__input filters__input--search"
+
+           placeholder="Название товара"
+    />
+
+    <dropdown-select class="dropdown-select filters__dropdown-select"  data-items-list="itemsList" data-placeholder="Производитель">Производитель</dropdown-select>
+
+    <label class="filters__label">Цена от</label>
+    <input type="number"
+
+           name="price-from"
+
+           class="filters-input filters-input--number"
+
+           placeholder="0"
+
+           step="100"
+
+           min="0"
+    />
+
+    <label class="filters__label">Цена до</label>
+    <input type="number"
+
+           class="filters-input filters-input--number"
+
+           placeholder="0"
+
+           step="100"
+
+           min="0"
+    />
+
+    <br>
+    <br>
+
+    <label for="filters-input--order-price-cheaper" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark filters__label--checked">Дешевле</label>
+    <input type="checkbox"
+
+           id="filters-input--order-price-cheaper"
+
+           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--order-price-cheaper"
+    />
+
+    <label for="filters-input--order-price-expensive" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark">Дороже</label>
+    <input type="checkbox"
+
+           id="filters-input--order-price-expensive"
+
+           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--order-price-expensive"
+    />
+
+    <label for="filters-input--discounted-products" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark">По скидке</label>
+    <input type="checkbox"
+
+           id="filters-input--discounted-products"
+
+           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--discounted-products"
+    />
+
+    <label for="filters-input--novelties" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark">Новинки</label>
+    <input type="checkbox"
+
+           id="filters-input--novelties"
+
+           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--novelties"
+    />
+
+    <label for="filters-input--in-stock" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark">В наличии</label>
+    <input type="checkbox"
+
+           id="filters-input--in-stock"
+
+           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--in-stock"
+    />
+</form>

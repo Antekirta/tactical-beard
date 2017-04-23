@@ -20,16 +20,7 @@
                 //     return obj[0].meta_title === '';
                 // });
                 //
-                products.forEach(function (product) {
-                    console.info('product image: ', product);
-                    // if ( product.image == null ) {
-                    //     product.image = 'http://localhost:3000/img/icons/logo.svg';
-                    // }
-                    // product[0].image = '../img/categories/' + category[0].meta_alias + '.svg';
-                });
-
-
-				console.log('products', products);
+                console.log('products:', products);
                 $scope.products = products;
             },
 

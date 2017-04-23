@@ -1,0 +1,31 @@
+//@import "../../beard/sass/beard"
+@import "../../../beard/sass/beard"
+
+.dropdown-select
+  display: inline-block
+
+.dropdown-select__input
+  width: 170px
+  padding: 0 5px
+
+.dropdown-select__list
+  display: block
+  position: absolute
+  left: -1000px
+  width: 170px - 2
+  padding: 4px 0 0 0
+  background-color: $white
+  outline: solid 1px $dark-brown
+  opacity: 0
+  list-style-type: none
+
+.dropdown-select__list-container--show
+  .dropdown-select__list
+    left: 244px
+    opacity: 1
+
+.dropdown-select__list-item
+  cursor: pointer
+  padding: 0 7px
+  &:hover
+    background-color: transparentize($dark-brown, .9)

@@ -46,6 +46,7 @@
                             },
 
                             function(error) {
+                            	console.log('LALALALAL!');
                                 return $q.reject(error);
                             }
                         );

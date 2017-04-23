@@ -14,6 +14,8 @@
 
 		'productsListPage',
 
+		'filters',
+
 		'productPage',
 
 		'makeOrderPage',

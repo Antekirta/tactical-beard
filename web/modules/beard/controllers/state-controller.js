@@ -5,7 +5,7 @@
 
     beard.controller('stateCtrl', ['$scope', '$log', '$state', function($scope, $log, $state) {
         $scope.sidebarCategoriesIsVisible = function () {
-            return ['products-list'].indexOf($state.current.name) > - 1;
+            return ['products-list', 'category'].indexOf($state.current.name) > - 1;
         };
     }]);
 })();

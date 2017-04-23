@@ -1,0 +1,75 @@
+@import "../../beard/sass/beard"
+
+.filters
+  position: absolute
+  width: 800px
+  top: $filters-offset-top
+  left: 500px
+  z-index: 1
+  padding: 30px
+  border: solid 2px $brown
+  font-family: $font-family-condensed-medium
+  font-weight: $font-weight-light
+  font-size: $font-size-p - 2
+  letter-spacing: .3px
+  color: $dark-brown
+
+$input-margin-right: 10px
+
+// labels
+
+.filters__label
+  //margin-left: $input-margin-left
+
+.filters__label--checkbox-without-mark
+  padding: 3px 20px
+  outline: solid 1px $dark-brown
+  @include userSelect(none)
+  cursor: pointer
+
+.filters__label--checked
+  outline-width: 3px
+
+// input
+
+.filters__input, .filters-input--number
+  margin-right: $input-margin-right
+  padding: 0 5px
+  outline: none
+  border: solid 1px $dark-brown
+  &::-webkit-input-placeholder
+    opacity: 1
+  &::-moz-placeholder
+    opacity: 1
+  &:-moz-placeholder
+    opacity: 1
+  &:-ms-input-placeholder
+    opacity: 1
+
+// type="search"
+
+.filters__input--search
+  width: 200px
+
+// type="number"
+
+.filters-input--number
+  width: 60px
+  padding: 0 0 0 5px
+
+// type="checkbox"
+
+input.filters-input__checkbox
+  opacity: 0
+  margin-right: 0
+
+
+// dropdown-select
+
+.filters__dropdown-select
+  margin-right: $input-margin-right
+
+.filters__dropdown-select
+  .dropdown-select__input
+    outline: none
+    border: solid 1px $dark-brown

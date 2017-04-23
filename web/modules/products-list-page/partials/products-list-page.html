@@ -5,9 +5,11 @@
 
 				data-ng-include="'templates/product-item/product-item.html'"
 
-				data-ng-class="{'product-item--no-image': product.image === null}"
+				data-ng-class="{'product-item--no-image': product.image === null,
 
-				class="product-item products-list__product-item product-item--both-prices" >
+								'product-item--both-prices': product.discounts.length !== 0}"
+
+				class="product-item products-list__product-item" >
 			</li>
 		</ul>
 	</div>
