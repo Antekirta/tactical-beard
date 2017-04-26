@@ -3,8 +3,35 @@
 
 	var productsListPage = angular.module('productsListPage');
 
-	productsListPage.controller('productsListPageCtrl', ['$scope', '$log', '$state', '$stateParams', '$locale', 'productsProvider', function($scope, $log, $state, $stateParams, $locale, productsProvider) {
+	productsListPage.controller('productsListPageCtrl', ['$scope', '$log', '$state', '$stateParams', '$locale', 'productsProvider', 'filtersFactory', function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory) {
+        $scope.helpers = {
+            getCurrentOrder: function () {
+                var currentOrdermap = {
+                    'cheaper': 'price',
+
+                    // reverse
+                    'expensive': '-price'
+                };
+
+                var currentOrder = _.find($scope.filters.order, function (orderType) {
+                    return orderType.status;
+                });
+
+                if ( currentOrder ) {
+                    return currentOrdermap[currentOrder.name];
+                } else {
+                    return 'name';
+                }
+            }
+        };
+
         $scope.products = [];
+
+        $scope.filters = filtersFactory.getCurrentFilters();
+
+        $scope.currentOrder = $scope.helpers.getCurrentOrder();
+
+        console.log('$scope.helpers.getCurrentOrder(): ', $scope.helpers.getCurrentOrder());
 
         $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 
@@ -12,15 +39,10 @@
             function(response) {
                 var products = _.toArray(response.data.data);
 
-                // arr = _.sortBy(arr, [function (obj) {
-                //     return parseInt(obj[0].sort_order);
-                // }]);
-                //
-                // _.remove(arr, function (obj) {
-                //     return obj[0].meta_title === '';
-                // });
-                //
-                console.log('products:', products);
+                products.forEach(function (item, index, arr) {
+                    item.price = +item.price;
+                });
+
                 $scope.products = products;
             },
 

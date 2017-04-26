@@ -1,7 +1,7 @@
 <section class="site-content-wrapper" ng-controller="categoriesSidebarCtrl">
 	<div class="products-list grid-row" data-ng-controller="productsListPageCtrl">
 		<ul class="products-list__list">
-			<li data-ng-repeat="product in products"
+			<li data-ng-repeat="product in products | orderBy: helpers.getCurrentOrder()"
 
 				data-ng-include="'templates/product-item/product-item.html'"
 

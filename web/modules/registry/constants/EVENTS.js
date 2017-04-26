@@ -23,7 +23,9 @@
 
 			'FOCUS': 'focus',
 
-			'BLUR': 'blur'
+			'BLUR': 'blur',
+
+			'CHANGE': 'change'
 		}
 	});
 })();

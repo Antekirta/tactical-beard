@@ -7,44 +7,42 @@
   left: 500px
   z-index: 1
   padding: 30px
-  border: solid 2px $brown
+  background-color: $light-brown
   font-family: $font-family-condensed-medium
   font-weight: $font-weight-light
   font-size: $font-size-p - 2
   letter-spacing: .3px
   color: $dark-brown
+  @include bottom-line()
 
 $input-margin-right: 10px
 
+// blocks
+
+.filters__filters-checkbox-block
+  margin-left: $input-margin-right * 6
+
 // labels
 
-.filters__label
-  //margin-left: $input-margin-left
-
 .filters__label--checkbox-without-mark
-  padding: 3px 20px
-  outline: solid 1px $dark-brown
+  padding: 3px 5px
+  background-color: $light-brown
+  //outline: solid 1px $dark-brown
   @include userSelect(none)
   cursor: pointer
 
 .filters__label--checked
-  outline-width: 3px
+  border-bottom: solid 1px $dark-brown
 
 // input
 
-.filters__input, .filters-input--number
+.filters__input, .filters-input__number
   margin-right: $input-margin-right
-  padding: 0 5px
+  padding: 5px 10px
   outline: none
+  background-color: $light-brown
   border: solid 1px $dark-brown
-  &::-webkit-input-placeholder
-    opacity: 1
-  &::-moz-placeholder
-    opacity: 1
-  &:-moz-placeholder
-    opacity: 1
-  &:-ms-input-placeholder
-    opacity: 1
+  @include placeholder($font-family-condensed-medium, $dark-brown)
 
 // type="search"
 
@@ -53,9 +51,19 @@ $input-margin-right: 10px
 
 // type="number"
 
-.filters-input--number
+.filters-input__number
   width: 60px
   padding: 0 0 0 5px
+  @include userSelect(none)
+  &::-webkit-inner-spin-button
+    -webkit-appearance: none
+    display: block
+    width: 10px
+    opacity: 1
+    background-size: 80% 100%
+    background-repeat: no-repeat
+    background-image: url(#{$path-to-images}icons/form-elements/input-number-arrows.png)
+    cursor: pointer
 
 // type="checkbox"
 
@@ -71,5 +79,8 @@ input.filters-input__checkbox
 
 .filters__dropdown-select
   .dropdown-select__input
+    padding: 5px 10px
+    background-color: $light-brown
     outline: none
     border: solid 1px $dark-brown
+    @include placeholder($font-family-condensed-medium, $dark-brown)
