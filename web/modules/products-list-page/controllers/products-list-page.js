@@ -22,6 +22,10 @@
                 } else {
                     return 'name';
                 }
+            },
+
+            getCurrentFilters: function () {
+                return 'byManufacturerFilter';
             }
         };
 
@@ -30,8 +34,6 @@
         $scope.filters = filtersFactory.getCurrentFilters();
 
         $scope.currentOrder = $scope.helpers.getCurrentOrder();
-
-        console.log('$scope.helpers.getCurrentOrder(): ', $scope.helpers.getCurrentOrder());
 
         $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 

@@ -2,18 +2,18 @@
 
        class="dropdown-select__input"
 
-       ng-model="search"
+       ng-model="dropdownSelect.search"
 
-       placeholder="{{ placeholder }}" />
+       placeholder="{{placeholder}}" />
 
 <div class="dropdown-select__list-container">
     <ul class="dropdown-select__list">
         <li class="dropdown-select__list-item"
 
-            ng-repeat="item in itemsList | filter:search"
+            data-ng-repeat="item in itemsList"
 
-            ng-click="chooseItem(item)">
-            {{ item.name }}
+            data-ng-click="dropdownSelect.selectItem(item)" >
+            {{item.name}}
         </li>
     </ul>
 </div>

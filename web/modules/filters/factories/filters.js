@@ -18,6 +18,18 @@
             },
 
             filters: {
+                manufacturers: {
+                    name: 'second manufacturer',
+                    status: false
+                },
+                priceFrom: {
+                    value: 0,
+                    status: false
+                },
+                priceTo: {
+                    value: 0,
+                    status: false
+                },
                 discounted: {
                     name: 'discounted',
                     status: false
@@ -37,9 +49,22 @@
             getCurrentFilters: function () {
                return filters;
             },
-            
-            setFilter: function (filterName, filterValue) {
 
+            setCurrentManufacturer: function (manufacturerName) {
+                filters.filters.manufacturers.status = true;
+                filters.filters.manufacturers.name = manufacturerName;
+
+                return filters;
+            },
+            
+            setCurrentOrder: function (orderName) {
+                for( var order in filters.order ) {
+                    filters.order[order].status = false;
+                }
+
+                filters.order[orderName].status = true;
+
+                return filters;
             }
         };
     });

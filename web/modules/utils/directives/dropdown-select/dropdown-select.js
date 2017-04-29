@@ -32,13 +32,21 @@
                      * 'blur' реагирует быстрее чем ng-click,
                      * поэтому без $timeout chooseItem не успеет поймать item до того, как лист исчезнет
                      */
-                    $timeout(function(){ listContainer.removeClass(classes.show) }, 50);
+                    $timeout(function(){
+                        listContainer.removeClass(classes.show)
+                    }, 150);
                 });
 
-                scope.chooseItem = function(item){
-                    scope.search = item.name;
+                scope.dropdownSelect = {
+                    search: '',
 
-                    listContainer.removeClass(classes.show);
+                    selectItem: function(item){
+                        scope.dropdownSelect.search = item.name;
+
+                        scope.$emit('dropdownSelectItemSelected', scope.dropdownSelect.search);
+
+                        listContainer.removeClass(classes.show);
+                    }
                 };
             }
         };

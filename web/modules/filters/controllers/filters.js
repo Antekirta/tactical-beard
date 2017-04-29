@@ -3,34 +3,41 @@
 
 	var filters = angular.module('filters');
 
-	filters.controller('filtersCtrl', ['$scope', 'manufacturersProvider', 'filtersFactory', function($scope, manufacturersProvider, filtersFactory) {
-        $scope.itemsList = [
-            {'name': 'Iapetos Baltazar'},
-            {'name': 'Mordred Maui'},
-            {'name': 'Verethragna Tane'},
-            {'name': 'Arawn Lir'},
-            {'name': 'Cepheus Zephyrus'},
-            {'name': 'Leander Pallas'},
-            {'name': 'Chryses Vohu Manah'},
-            {'name': 'Nuadha Lycus'}
-        ];
+	filters.controller('filtersCtrl', ['$scope', '$log', 'manufacturersProvider', 'filtersFactory', function($scope, $log, manufacturersProvider, filtersFactory) {
+        $scope.manufacturersList = [];
+
+        manufacturersProvider.getManufacturers()
+            .then(
+                function (response) {
+                    console.log('response', response);
+                    $scope.manufacturersList = response.data.data;
+                },
+
+                function (error) {
+                    $log.error(error);
+                }
+            );
 
         $scope.filters = filtersFactory.getCurrentFilters();
 
         $scope.events = {
+            filters: {
+                chooseManufacturer: function (event, selectedItem) {
+                    $scope.filters = filtersFactory.setCurrentManufacturer(selectedItem);
+                }
+            },
+
             chooseFilter: function (filterName) {
                 $scope.filters.filters[filterName].status = !$scope.filters.filters[filterName].status;
             },
 
             chooseOrder: function (orderName) {
-                $scope.filters.order[orderName].status = !$scope.filters.order[orderName].status;
-
-                if ( orderName === $scope.filters.order.cheaper.name && $scope.filters.order.expensive.status ) {
-                    $scope.filters.order.expensive.status = false;
-                } else if ( orderName === $scope.filters.order.expensive.name && $scope.filters.order.cheaper.status ) {
-                    $scope.filters.order.cheaper.status = false;
-                }
+                $scope.filters = filtersFactory.setCurrentOrder(orderName);
             }
         };
+
+        $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
+
+        $scope.events.filters.chooseManufacturer('third manufacturer');
 	}]);
 })();

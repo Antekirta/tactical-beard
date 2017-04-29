@@ -12,6 +12,8 @@
 
 		'CATEGORIES': site + '/api/rest_admin/categories',
 
-		'PRODUCTS': site + '/api/rest_admin/products'
+		'PRODUCTS': site + '/api/rest_admin/products',
+
+		'MANUFACTURERS': site + '/api/rest_admin/manufacturers'
 	})
 })();

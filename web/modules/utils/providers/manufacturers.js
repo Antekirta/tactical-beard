@@ -24,10 +24,25 @@
 
 				return {
 					getManufacturers: function() {
-						req.url = REST_API.PRODUCTS;
+						req.url = REST_API.MANUFACTURERS;
 
 						return $http(req).then(
 							function(response) {
+								response = {
+									data: {
+										data: [
+                                            {
+                                                name: 'first manufacturer'
+                                            },
+                                            {
+                                                name: 'second manufacturer'
+                                            },
+                                            {
+                                                name: 'third manufacturer'
+                                            }
+                                        ]
+									}
+								};
 								return response;
 							},
 
