@@ -102,13 +102,9 @@
     });
 
 
-    gulp.task('dev-build', function(callback) {
-        runSequence('clean', 'app-logic', 'app-styles', callback);
-    });
+    gulp.task('dev-build', gulp.series('clean', 'app-logic', 'app-styles'));
 
-    gulp.task('build', function(callback) {
-        runSequence('clean', 'app-logic', 'vendor-logic', 'app-styles', 'vendor-styles', callback);
-    });
+    gulp.task('build', gulp.series('clean', 'app-logic', 'vendor-logic', 'app-styles', 'vendor-styles'));
 
     gulp.task('watch', function () {
         gulp.watch(SASS_SRC, gulp.series('app-styles'));
