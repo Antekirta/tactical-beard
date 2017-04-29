@@ -1,6 +1,7 @@
 .bowercc
-node-modules
-node-modules/
+node_modules
+node_modules/
 web/js/
 web/css
+web/vendor
 .idea/
