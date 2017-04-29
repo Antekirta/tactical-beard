@@ -8,7 +8,7 @@
 
         $scope.goToUIState = function (state, shouldGo) {
             if ( !shouldGo ) {
-                $state.go(state.name, {categoryName: state.params.categoryName});
+                $state.go('category', {categoryName: state.params.categoryName});
             }
         };
 

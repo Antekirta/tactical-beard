@@ -1,0 +1,86 @@
+@import "../../beard/sass/beard"
+
+.filters
+  position: absolute
+  width: 800px
+  top: $filters-offset-top
+  left: 500px
+  z-index: 1
+  padding: 30px
+  background-color: $light-brown
+  font-family: $font-family-condensed-medium
+  font-weight: $font-weight-light
+  font-size: $font-size-p - 2
+  letter-spacing: .3px
+  color: $dark-brown
+  @include bottom-line()
+
+$input-margin-right: 10px
+
+// blocks
+
+.filters__filters-checkbox-block
+  margin-left: $input-margin-right * 6
+
+// labels
+
+.filters__label--checkbox-without-mark
+  padding: 3px 5px
+  background-color: $light-brown
+  //outline: solid 1px $dark-brown
+  @include userSelect(none)
+  cursor: pointer
+
+.filters__label--checked
+  border-bottom: solid 1px $dark-brown
+
+// input
+
+.filters__input, .filters-input__number
+  margin-right: $input-margin-right
+  padding: 5px 10px
+  outline: none
+  background-color: $light-brown
+  border: solid 1px $dark-brown
+  @include placeholder($font-family-condensed-medium, $dark-brown)
+
+// type="search"
+
+.filters__input--search
+  width: 200px
+
+// type="number"
+
+.filters-input__number
+  width: 60px
+  padding: 0 0 0 5px
+  @include userSelect(none)
+  &::-webkit-inner-spin-button
+    -webkit-appearance: none
+    display: block
+    width: 10px
+    opacity: 1
+    background-size: 80% 100%
+    background-repeat: no-repeat
+    background-image: url(#{$path-to-images}icons/form-elements/input-number-arrows.png)
+    cursor: pointer
+
+// type="checkbox"
+
+input.filters-input__checkbox
+  opacity: 0
+  margin-right: 0
+
+
+// dropdown-select
+
+.filters__dropdown-select
+  margin-right: $input-margin-right
+
+.filters__dropdown-select
+  .dropdown-select__input
+    padding: 5px 10px
+    background-color: $light-brown
+    outline: none
+    border: solid 1px $dark-brown
+    @include placeholder($font-family-condensed-medium, $dark-brown)

@@ -1,0 +1,19 @@
+<input type="text"
+
+       class="dropdown-select__input"
+
+       ng-model="search"
+
+       placeholder="{{ placeholder }}" />
+
+<div class="dropdown-select__list-container">
+    <ul class="dropdown-select__list">
+        <li class="dropdown-select__list-item"
+
+            ng-repeat="item in itemsList | filter:search"
+
+            ng-click="chooseItem(item)">
+            {{ item.name }}
+        </li>
+    </ul>
+</div>

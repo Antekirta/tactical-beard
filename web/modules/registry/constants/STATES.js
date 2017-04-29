@@ -25,9 +25,15 @@
 			templateUrl: pathToPartial('categories-page')
 		},
 
+        {
+            name: 'products-list',
+            url: '/categories/all/',
+            templateUrl: pathToPartial('products-list-page')
+        },
+
 		{
-			name: 'products-list',
-			url: '/categories/:categoryName/',
+			name: 'category',
+			url: '/products-list/{categoryName}/',
 			params: {
                 categoryName: null
 			},

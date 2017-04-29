@@ -6,4 +6,4 @@
 <div class="product-item__image-header"><a class="product-item__link" href="#">{{product.product_description[1].name}}</a></div>
 
 <div class="product-item__basic-price">{{product.price | number: 0}} <span class="product-item__currency">руб.</span></div>
-<div class="product-item__discount-price">6 700  <span class="product-item__currency">руб.</span></div>
+<div class="product-item__discount-price">{{product.discounts[0].price | number: 0}}  <span class="product-item__currency">руб.</span></div>

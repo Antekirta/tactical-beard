@@ -24,6 +24,8 @@
 
         MODULES + '/**/sass/**/*.sass',
 
+        MODULES + '/**/**/*.sass',
+
         TEMPLATES + '/**/*.sass'
     ];
 
