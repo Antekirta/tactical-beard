@@ -9,7 +9,6 @@
         manufacturersProvider.getManufacturers()
             .then(
                 function (response) {
-                    console.log('response', response);
                     $scope.manufacturersList = response.data.data;
                 },
 
@@ -36,7 +35,9 @@
             }
         };
 
-        $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
+        var dropdownSelectListener = $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
+
+        $scope.$on('$destroy', dropdownSelectListener);
 
         $scope.events.filters.chooseManufacturer('third manufacturer');
 	}]);

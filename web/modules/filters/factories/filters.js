@@ -51,7 +51,7 @@
             },
 
             setCurrentManufacturer: function (manufacturerName) {
-                filters.filters.manufacturers.status = true;
+                filters.filters.manufacturers.status = !!manufacturerName;
                 filters.filters.manufacturers.name = manufacturerName;
 
                 return filters;
