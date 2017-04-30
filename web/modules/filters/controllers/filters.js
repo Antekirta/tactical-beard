@@ -9,7 +9,11 @@
         manufacturersProvider.getManufacturers()
             .then(
                 function (response) {
-                    $scope.manufacturersList = response.data.data;
+                    var manufacturers = response.data.data;
+
+                    manufacturers.unshift({name: 'Все'});
+
+                    $scope.manufacturersList = manufacturers;
                 },
 
                 function (error) {

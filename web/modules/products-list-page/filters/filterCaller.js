@@ -10,10 +10,6 @@
                     var currentFilter = $injector.get(filterName);
 
                     return currentFilter(items);
-
-                    // console.log('currentFilter(items): ', currentFilter(items));
-
-                    // console.log('currentFilter', currentFilter);
                 };
             }
         ]);
