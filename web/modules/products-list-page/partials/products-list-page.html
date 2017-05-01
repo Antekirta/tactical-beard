@@ -1,7 +1,7 @@
 <section class="site-content-wrapper" ng-controller="categoriesSidebarCtrl">
 	<div class="products-list grid-row" data-ng-controller="productsListPageCtrl">
 		<ul class="products-list__list">
-			<li data-ng-repeat="product in products | filter: filters.filters.searchByName.value | filterCaller: helpers.getCurrentFilters() | orderBy: helpers.getCurrentOrder()"
+			<li data-ng-repeat="product in products | filter: filters.filters.searchByName.value | byPrice |filterCaller: helpers.getCurrentFilters() | orderBy: helpers.getCurrentOrder()"
 
 				data-ng-include="'templates/product-item/product-item.html'"
 

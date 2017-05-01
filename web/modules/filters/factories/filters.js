@@ -48,6 +48,10 @@
             }
         };
 
+        var minPrice = 0,
+
+            maxPrice = 0;
+
         return {
             getCurrentFilters: function () {
                return filters;
@@ -65,10 +69,19 @@
 
                 return filters;
             },
-            
+
+            setLimitPrice: function (pricefrom, priceTo) {
+                filters.filters.priceFrom.value = pricefrom;
+                filters.filters.priceTo.value = priceTo;
+
+                return filters;
+            },
+
             setCurrentOrder: function (orderName) {
                 for( var order in filters.order ) {
-                    filters.order[order].status = false;
+                    if ( filters.order.hasOwnProperty(order) ) {
+                        filters.order[order].status = false;
+                    }
                 }
 
                 filters.order[orderName].status = true;

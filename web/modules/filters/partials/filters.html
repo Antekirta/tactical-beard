@@ -17,30 +17,29 @@
 
            name="price-from"
 
+           data-ng-model="filters.filters.priceFrom.value"
+
            class="filters-input filters-input__number filters-input__number--min"
 
-           placeholder="0"
+           value="4000"
 
-           value="0"
+           step="500"
 
-           step="100"
-
-           min="0"
+           min="4000"
     />
 
     <label class="filters__label">Цена до</label>
     <input type="number"
 
+           data-ng-model="filters.filters.priceTo.value"
+
            class="filters-input filters-input__number filters-input__number--max"
 
-           placeholder="0"
+           step="500"
 
-           value="0"
-
-           step="100"
-
-           min="0"
+           min="4000"
     />
+{{maxPrice}}
 
     <br>
     <br>

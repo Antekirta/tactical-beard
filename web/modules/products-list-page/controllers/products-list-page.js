@@ -25,9 +25,6 @@
             },
 
             getCurrentFilters: function () {
-                var currenFilters = _.find($scope.filters.order, function (orderType) {
-                    return orderType.status;
-                });
                 return 'byManufacturerFilter';
             }
         };

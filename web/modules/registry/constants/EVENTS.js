@@ -25,7 +25,9 @@
 
 			'BLUR': 'blur',
 
-			'CHANGE': 'change'
+			'CHANGE': 'change',
+
+			'INPUT': 'input'
 		}
 	});
 })();

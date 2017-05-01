@@ -29,9 +29,15 @@
                         max: angular.element(element[0].querySelectorAll('.' + classes.inputMax)[0])
                     };
 
-                    inputs.min.bind(EVENTS.ELEMENT.CHANGE, function () {
+                    inputs.min.bind(EVENTS.ELEMENT.INPUT, function () {
                         if ( parseInt(inputs.max[0].value) <  parseInt(inputs.min[0].value) ) {
                             inputs.max[0].value = inputs.min[0].value;
+                        }
+                    });
+
+                    inputs.max.bind(EVENTS.ELEMENT.INPUT, function () {
+                        if ( parseInt(inputs.max[0].value) <  parseInt(inputs.min[0].value) ) {
+                            inputs.min[0].value = inputs.max[0].value;
                         }
                     });
                 }
