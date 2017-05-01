@@ -18,8 +18,11 @@
             },
 
             filters: {
+                searchByName: {
+                    value: ''
+                },
                 manufacturers: {
-                    name: 'second manufacturer',
+                    name: false,
                     status: false
                 },
                 priceFrom: {
@@ -48,6 +51,12 @@
         return {
             getCurrentFilters: function () {
                return filters;
+            },
+
+            setSearchByName: function (value) {
+                filters.filters.searchByName.value = value;
+
+                return filters;
             },
 
             setCurrentManufacturer: function (manufacturerName) {

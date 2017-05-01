@@ -1,5 +1,9 @@
-<form class="filters__form">
+<ng-form name="filtersForm" class="filters__form">
     <input type="search"
+
+           name="filtersForm.searchByName"
+
+           data-ng-model="filters.filters.searchByName.value"
 
            class="filters__input filters__input--search"
 
@@ -94,4 +98,4 @@
                class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--in-stock"
         />
     </span>
-</form>
+</ng-form>
