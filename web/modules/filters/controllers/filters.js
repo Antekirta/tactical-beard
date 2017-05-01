@@ -26,7 +26,11 @@
         $scope.events = {
             filters: {
                 chooseManufacturer: function (event, selectedItem) {
-                    $scope.filters = filtersFactory.setCurrentManufacturer(selectedItem);
+                    if ( selectedItem === 'Все' ) {
+                        return $scope.filters = filtersFactory.setCurrentManufacturer(false);
+                    }
+
+                    return $scope.filters = filtersFactory.setCurrentManufacturer(selectedItem);
                 }
             },
 
