@@ -28,6 +28,12 @@
 			'CHANGE': 'change',
 
 			'INPUT': 'input'
+		},
+
+		'LOAD': {
+			'LOAD': 'load',
+
+			'ERROR': 'error'
 		}
 	});
 })();
