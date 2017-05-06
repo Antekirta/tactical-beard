@@ -15,5 +15,5 @@
 		'PRODUCTS': site + '/api/rest_admin/products',
 
 		'MANUFACTURERS': site + '/api/rest_admin/manufacturers'
-	})
+	});
 })();

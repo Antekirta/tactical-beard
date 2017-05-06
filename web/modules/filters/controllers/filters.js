@@ -3,7 +3,17 @@
 
 	var filters = angular.module('filters');
 
-	filters.controller('filtersCtrl', ['$scope', '$log', '$timeout', '$stateParams', 'productsProvider', 'manufacturersProvider', 'filtersFactory', function($scope, $log, $timeout, $stateParams, productsProvider, manufacturersProvider, filtersFactory) {
+	filters.controller('filtersCtrl', [
+	    '$scope',
+        '$log',
+        '$timeout',
+        '$stateParams',
+        'productsProvider',
+        'manufacturersProvider',
+        'filtersFactory',
+        'FILTERS',
+
+        function($scope, $log, $timeout, $stateParams, productsProvider, manufacturersProvider, filtersFactory, FILTERS) {
         $scope.filters = filtersFactory.getCurrentFilters();
 
 	    $scope.searchByName = '';
@@ -17,7 +27,7 @@
                 },
 
                 chooseManufacturer: function (event, selectedItem) {
-                    if ( selectedItem === allManufacturers ) {
+                    if ( selectedItem === FILTERS.ALL_MANUFACTURERS ) {
                         $scope.filters = filtersFactory.setCurrentManufacturer(false);
                     } else {
                         $scope.filters = filtersFactory.setCurrentManufacturer(selectedItem);
@@ -43,18 +53,10 @@
                 }
             },
 
-            chooseFilter: function (filterName) {
-                $scope.filters.filters[filterName].status = !$scope.filters.filters[filterName].status;
-
-                filtersFactory.setCurrentFilters($scope.filters);
-            },
-
             chooseOrder: function (orderName) {
                 $scope.filters = filtersFactory.setCurrentOrder(orderName);
             }
         };
-
-        var allManufacturers = 'Все производители';
 
         $timeout(function () {
             productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
@@ -84,7 +86,7 @@
                 function (response) {
                     var manufacturers = response.data.data;
 
-                    manufacturers.unshift({name: allManufacturers});
+                    manufacturers.unshift({name: FILTERS.ALL_MANUFACTURERS});
 
                     $scope.manufacturersList = manufacturers;
                 },

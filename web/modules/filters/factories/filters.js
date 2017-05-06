@@ -1,10 +1,10 @@
 
 (function () {
     'use strict';
-    
+
     var filters = angular.module('filters');
-    
-    filters.factory('filtersFactory', function () {
+
+    angular.module('filters').factory('filtersFactory', function () {
         var filters = {
             order: {
                 cheaper: {
@@ -48,11 +48,8 @@
             }
         };
 
-        var minPrice = 0,
-
-            maxPrice = 0;
-
         return {
+            // common filters methods
             getCurrentFilters: function () {
                return filters;
             },
@@ -62,6 +59,8 @@
 
                 return filters;
             },
+
+            // specific filters methods
 
             setSearchByName: function (value) {
                 filters.filters.searchByName.value = value;

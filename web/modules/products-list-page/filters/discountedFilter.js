@@ -4,7 +4,6 @@
     angular.module('productsListPage')
         .filter('discountedFilter', ['filtersFactory', function (filtersFactory) {
             return function (items) {
-                console.log('discountedFilter items: ', items);
                 var discountedFilterStatus = filtersFactory.getCurrentFilters().filters.discounted.status;
 
                 if ( discountedFilterStatus ) {
