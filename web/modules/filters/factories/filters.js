@@ -58,7 +58,9 @@
             },
 
             setCurrentFilters: function (passedFilters) {
-                return filters = passedFilters;
+                filters = passedFilters;
+
+                return filters;
             },
 
             setSearchByName: function (value) {
@@ -79,6 +81,24 @@
                 filters.filters.priceTo.value = priceTo;
 
                 return filters;
+            },
+
+            setDiscountFilter: function (status) {
+                filters.filters.discounted.status = status;
+
+                return filters;
+            },
+
+            setNoveltiesFilter: function (status) {
+                filters.filters.novelties.status = status;
+
+                return filters;
+            },
+
+            setInStockFilter: function (status) {
+              filters.filters.inStock.status = status;
+
+              return filters;
             },
 
             setCurrentOrder: function (orderName) {

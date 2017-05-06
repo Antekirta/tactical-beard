@@ -37,7 +37,6 @@
 
            min="0"
     />
-{{maxPrice}}
 
     <br>
     <br>
@@ -65,7 +64,7 @@
     <span class="filters__filters-checkbox-block">
         <label for="filters-input--discounted-products" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
                data-ng-class="{'filters__label--checked': filters.filters.discounted.status}"
-               data-ng-click="events.chooseFilter(filters.filters.discounted.name)">По скидке</label>
+               data-ng-click="events.filters.toggleDiscountFilter()">По скидке</label>
         <input type="checkbox"
 
                id="filters-input--discounted-products"
@@ -75,7 +74,7 @@
 
         <label for="filters-input--novelties" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
                data-ng-class="{'filters__label--checked': filters.filters.novelties.status}"
-               data-ng-click="events.chooseFilter(filters.filters.novelties.name)">Новинки</label>
+               data-ng-click="events.filters.toggleNoveltiesFilter()">Новинки</label>
         <input type="checkbox"
 
                id="filters-input--novelties"
@@ -85,7 +84,7 @@
 
         <label for="filters-input--in-stock" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
                data-ng-class="{'filters__label--checked': filters.filters.inStock.status}"
-               data-ng-click="events.chooseFilter(filters.filters.inStock.name)">В наличии</label>
+               data-ng-click="events.filters.toggleInStockFilter()">В наличии</label>
         <input type="checkbox"
 
                id="filters-input--in-stock"

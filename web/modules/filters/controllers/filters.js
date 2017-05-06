@@ -28,6 +28,18 @@
 
                 limitPrice: function () {
                     $scope.filters = filtersFactory.setLimitPrice($scope.filters.filters.priceFrom.value, $scope.filters.filters.priceTo.value);
+                },
+
+                toggleDiscountFilter: function () {
+                    $scope.filters = filtersFactory.setDiscountFilter(!$scope.filters.filters.discounted.status);
+                },
+
+                toggleNoveltiesFilter: function () {
+                    $scope.filters = filtersFactory.setNoveltiesFilter(!$scope.filters.filters.novelties.status);
+                },
+
+                toggleInStockFilter: function () {
+                    $scope.filters = filtersFactory.setInStockFilter(!$scope.filters.filters.inStock.status);
                 }
             },
 
