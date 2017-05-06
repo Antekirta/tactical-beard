@@ -57,6 +57,10 @@
                return filters;
             },
 
+            setCurrentFilters: function (passedFilters) {
+                return filters = passedFilters;
+            },
+
             setSearchByName: function (value) {
                 filters.filters.searchByName.value = value;
 

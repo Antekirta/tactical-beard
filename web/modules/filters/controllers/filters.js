@@ -33,6 +33,8 @@
 
             chooseFilter: function (filterName) {
                 $scope.filters.filters[filterName].status = !$scope.filters.filters[filterName].status;
+
+                filtersFactory.setCurrentFilters($scope.filters);
             },
 
             chooseOrder: function (orderName) {
@@ -73,9 +75,6 @@
                     manufacturers.unshift({name: allManufacturers});
 
                     $scope.manufacturersList = manufacturers;
-
-                    $scope.filters.filters.priceFrom.value = filtersFactory.getMinPrice();
-                    $scope.filters.filters.priceTo.value = filtersFactory.getMaxPrice();
                 },
 
                 function (error) {
