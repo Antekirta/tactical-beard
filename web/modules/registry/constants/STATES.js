@@ -4,12 +4,27 @@
 	var registry = angular.module('registry');
 
 	var pathToPartial = function(moduleName){
-		return 'modules/' + moduleName + '/partials/' + moduleName + '.html'
+		return 'modules/' + moduleName + '/partials/' + moduleName + '.html';
 	};
 
 	var pathToController = function(moduleName) {
-		return 'modules/' + moduleName + '/controllers/' + moduleName + '.html'
+		return 'modules/' + moduleName + '/controllers/' + moduleName + '.html';
 	};
+
+	registry.constant('STATE_NAMES', {
+		'HOME': 'home',
+		'CATEGORIES': 'categories',
+		'PRODUCTS_LIST': 'products-list',
+		'CATEGORY': 'category',
+		'PRODUCTS_LIST__PRODUCT': 'products-list.product',
+		'MAKE_ORDER': 'make-order',
+		'ORDER_DONE': 'order-done',
+		'BASKET': 'basket',
+		'INFO_LIST_PAGE': 'info-list-page',
+		'INFO_PAGE': 'info-page',
+		'BOOKMARKS_PAGE': 'bookmarks-page',
+		'PERSONAL_ACCOUNT_PAGE': 'personal-account-page'
+	});
 
 	registry.constant('STATES', [
 		{
