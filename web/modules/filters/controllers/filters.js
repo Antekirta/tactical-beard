@@ -5,6 +5,7 @@
 
 	filters.controller('filtersCtrl', [
 	    '$scope',
+        '$rootScope',
         '$log',
         '$timeout',
         '$stateParams',
@@ -13,7 +14,7 @@
         'filtersFactory',
         'FILTERS',
 
-        function($scope, $log, $timeout, $stateParams, productsProvider, manufacturersProvider, filtersFactory, FILTERS) {
+        function($scope, $rootScope, $log, $timeout, $stateParams, productsProvider, manufacturersProvider, filtersFactory, FILTERS) {
         $scope.filters = filtersFactory.getCurrentFilters();
 
 	    $scope.searchByName = '';
@@ -58,28 +59,32 @@
             }
         };
 
-        $timeout(function () {
-            productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
-                function(response) {
-                    var products = _.toArray(response.data.data);
+        $rootScope.$on('$stateChangeSuccess', function () {
+            $timeout(function () {
+                productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
+                    function(response) {
+                        var products = _.toArray(response.data.data);
 
-                    products.forEach(function (item, index, arr) {
-                        item.price = +item.price;
-                    });
+                        products.forEach(function (item, index, arr) {
+                            item.price = +item.price;
+                        });
 
-                    $scope.filters.filters.priceFrom.value = _.minBy(products, function (product) {
-                        return product.price;
-                    }).price;
-                    $scope.filters.filters.priceTo.value = _.maxBy(products, function (product) {
-                        return product.price;
-                    }).price;
-                },
+                        console.log('AAAAAAAAAA!');
 
-                function(error) {
-                    $log.error(error);
-                }
-            );
-        }, 0);
+                        $scope.filters.filters.priceFrom.value = _.minBy(products, function (product) {
+                            return product.price;
+                        }).price;
+                        $scope.filters.filters.priceTo.value = _.maxBy(products, function (product) {
+                            return product.price;
+                        }).price;
+                    },
+
+                    function(error) {
+                        $log.error(error);
+                    }
+                );
+            }, 0);
+        });
 
         manufacturersProvider.getManufacturers()
             .then(
