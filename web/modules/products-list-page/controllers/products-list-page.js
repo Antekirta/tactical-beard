@@ -57,6 +57,8 @@
                         item.price = +item.price;
                     });
 
+                    console.log('products: ', products);
+
                     $scope.products = products;
                 },
 

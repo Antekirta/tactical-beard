@@ -37,8 +37,6 @@
 
                     $scope.categories = categories;
 
-                    console.log('categories', categories);
-
                     return categories;
                 })
                 // get subcategories

@@ -59,9 +59,11 @@
             }
         };
 
+        $scope.filters.filters.priceTo.value = 99999;
+
         $rootScope.$on('$stateChangeSuccess', function () {
             $timeout(function () {
-                productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
+                productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
                     function(response) {
                         var products = _.toArray(response.data.data);
 
@@ -72,6 +74,7 @@
                         $scope.filters.filters.priceFrom.value = _.minBy(products, function (product) {
                             return product.price;
                         }).price;
+
                         $scope.filters.filters.priceTo.value = _.maxBy(products, function (product) {
                             return product.price;
                         }).price;
