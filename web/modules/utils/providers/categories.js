@@ -11,7 +11,9 @@
 
 			'REST_API',
 
-			function($http, $q, REST_API) {
+			'dataStorage',
+
+			function($http, $q, REST_API, dataStorage) {
 				var req = {
 					method: 'GET',
 
@@ -28,7 +30,17 @@
 
 						return $http(req).then(
 							function(response) {
-								return response;
+                                var categories = JSON.parse(dataStorage.getData('categories', true)) || {};
+
+                                if ( !_.isEmpty(categories) ) {
+                                    return categories;
+                                } else {
+                                    categories = response;
+
+                                    dataStorage.setData('categories', JSON.stringify(categories), true);
+								}
+
+                                return categories;
 							},
 
 							function(error) {

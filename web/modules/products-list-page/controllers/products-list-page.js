@@ -41,8 +41,6 @@
 
             $scope.stateMethods = statesFactory;
 
-            console.log('$scope.stateMethods.getCurrentState(): ', $scope.stateMethods.getCurrentState());
-
             $scope.products = [];
 
             $scope.filters = filtersFactory.getCurrentFilters();
@@ -51,7 +49,7 @@
 
             $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 
-            productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
+            productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
                 function(response) {
                     var products = _.toArray(response.data.data);
 

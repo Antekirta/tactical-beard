@@ -48,16 +48,19 @@
 
 		{
 			name: 'category',
-			url: '/products-list/{categoryName}/',
+			url: '/categories/{categoryName}/',
 			params: {
-                categoryName: null
+                categoryId: null,
+
+				categoryName: null
 			},
 			templateUrl: pathToPartial('products-list-page')
 		},
 
 		{
-			name: 'products-list.product',
-            url: '{productName}',
+			name: 'category.product',
+            url: '/{productName}/',
+			controller: 'productPageCtrl',
 			templateUrl: pathToPartial('product-page')
 		},
 

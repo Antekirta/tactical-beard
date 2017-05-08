@@ -7,7 +7,7 @@
         class="categories-sidebar__list-item">
         <a class="categories-sidebar__link"
 
-           data-ng-click="goToUIState({name: 'products-list', params: {categoryName: category[0].category_id}}, !!category.subcategories)"
+           data-ng-click="goToUIState({name: 'products-list', params: {categoryId: category[0].category_id, categoryName: category[0].meta_title}}, !!category.subcategories)"
 
            data-drop-down="{{!!category.subcategories}}">
             {{category[0].meta_title | lowercase}}
@@ -20,7 +20,7 @@
                 class="categories-sidebar__list-item">
                  <a class="categories-sidebar__link"
 
-                    data-ng-click="goToUIState({name: 'products-list', params: {categoryName: subcategory[0].category_id}}, !!subcategory.subcategories)"> - {{subcategory[0].name | lowercase}}</a>
+                    data-ng-click="goToUIState({name: 'products-list', params: {categoryId: subcategory[0].category_id, categoryName: subcategory[0].meta_title}}, !!subcategory.subcategories)"> - {{subcategory[0].name | lowercase}}</a>
             </li>
         </ul>
     </li>

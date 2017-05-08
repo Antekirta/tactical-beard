@@ -7,16 +7,18 @@
 	    '$scope',
         '$log',
         '$state',
+        '$stateParams',
         'categoriesProvider',
         'statesFactory',
+        'translitFactory',
         'STATE_NAMES',
 
-        function($scope, $log, $state, categoriesProvider, statesFactory, STATE_NAMES) {
+        function($scope, $log, $state, $stateParams, categoriesProvider, statesFactory, translitFactory, STATE_NAMES) {
             $scope.categories = [];
 
             $scope.goToUIState = function (state, shouldGo) {
                 if ( !shouldGo ) {
-                    $state.go(STATE_NAMES.CATEGORY, {categoryName: state.params.categoryName});
+                    $state.go(STATE_NAMES.CATEGORY, {categoryId: state.params.categoryId, categoryName: translitFactory.rusTolat(state.params.categoryName)});
                 }
             };
 
@@ -34,6 +36,8 @@
                     });
 
                     $scope.categories = categories;
+
+                    console.log('categories', categories);
 
                     return categories;
                 })
