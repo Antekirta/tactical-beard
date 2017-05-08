@@ -69,8 +69,6 @@
                             item.price = +item.price;
                         });
 
-                        console.log('AAAAAAAAAA!');
-
                         $scope.filters.filters.priceFrom.value = _.minBy(products, function (product) {
                             return product.price;
                         }).price;
@@ -83,7 +81,7 @@
                         $log.error(error);
                     }
                 );
-            }, 0);
+            }, 500);
         });
 
         manufacturersProvider.getManufacturers()

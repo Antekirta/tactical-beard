@@ -10,19 +10,6 @@
 
     <link class="path-to-css" rel="stylesheet" href="css/app-styles.min.css">
 
-    <!-- just for development - crack for browserSync -->
-    <!--<script>-->
-        <!--var cssLink = document.getElementsByClassName('path-to-css')[0],-->
-
-            <!--rightCssPath = 'http://localhost:3000/css/app-style.min.css';-->
-
-        <!--window.onfocus = function() {-->
-            <!--if ( cssLink.href !== rightCssPath ) {-->
-                <!--cssLink.href = rightCssPath;-->
-            <!--}-->
-        <!--};-->
-    <!--</script>-->
-
     <script src="js/vendor-logic.min.js"></script>
 
     <script src="js/app-logic.min.js"></script>
@@ -58,6 +45,8 @@
         </aside>
 
         <section class="filters"
+
+                 data-ng-if="filtersBlockIsVisible()"
 
                  data-filters
         ></section>

@@ -1,4 +1,5 @@
 <figure data-ui-sref="products-list.product({productName: product.id})" class="product-item__figure">
+    <ng-include data-src="'templates/image-preloader/image-preloader.html'"></ng-include>
     <img data-load-image src="{{product.image}}" alt="" class="product-item__image">
     <div class="product-item__novelty-plate">Новое</div>
 </figure>

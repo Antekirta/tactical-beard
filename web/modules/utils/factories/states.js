@@ -9,6 +9,10 @@
         
         function ($state, $stateParams) {
             return {
+                getCurrentState: function () {
+                    return $state.current;
+                },
+
                 changeState: function (state, shouldGo) {
                     if ( !shouldGo ) {
                         $state.go('category', {categoryName: state.params.categoryName});

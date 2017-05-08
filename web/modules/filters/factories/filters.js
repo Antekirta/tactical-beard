@@ -51,7 +51,7 @@
         return {
             // common filters methods
             getCurrentFilters: function () {
-               return filters;
+                return filters;
             },
 
             setCurrentFilters: function (passedFilters) {

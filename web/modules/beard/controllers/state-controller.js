@@ -7,5 +7,9 @@
         $scope.sidebarCategoriesIsVisible = function () {
             return ['products-list', 'category'].indexOf($state.current.name) > - 1;
         };
+
+        $scope.filtersBlockIsVisible = function () {
+            return ['category'].indexOf($state.current.name) > - 1;
+        };
     }]);
 })();

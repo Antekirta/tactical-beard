@@ -3,54 +3,68 @@
 
 	var productsListPage = angular.module('productsListPage');
 
-	productsListPage.controller('productsListPageCtrl', ['$scope', '$log', '$state', '$stateParams', '$locale', 'productsProvider', 'filtersFactory', function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory) {
-        $scope.helpers = {
-            getCurrentOrder: function () {
-                var currentOrdermap = {
-                    'cheaper': 'price',
+	productsListPage.controller('productsListPageCtrl', [
+	    '$scope',
+        '$log',
+        '$state',
+        '$stateParams',
+        '$locale',
+        'productsProvider',
+        'filtersFactory',
+        'statesFactory',
 
-                    // reverse
-                    'expensive': '-price'
-                };
+        function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory) {
+            $scope.helpers = {
+                getCurrentOrder: function () {
+                    var currentOrdermap = {
+                        'cheaper': 'price',
 
-                var currentOrder = _.find($scope.filters.order, function (orderType) {
-                    return orderType.status;
-                });
+                        // reverse
+                        'expensive': '-price'
+                    };
 
-                if ( currentOrder ) {
-                    return currentOrdermap[currentOrder.name];
-                } else {
-                    return 'name';
+                    var currentOrder = _.find($scope.filters.order, function (orderType) {
+                        return orderType.status;
+                    });
+
+                    if ( currentOrder ) {
+                        return currentOrdermap[currentOrder.name];
+                    } else {
+                        return 'name';
+                    }
+                },
+
+                getCurrentFilters: function () {
+                    return 'byManufacturerFilter';
                 }
-            },
+            };
 
-            getCurrentFilters: function () {
-                return 'byManufacturerFilter';
-            }
-        };
+            $scope.stateMethods = statesFactory;
 
-        $scope.products = [];
+            console.log('$scope.stateMethods.getCurrentState(): ', $scope.stateMethods.getCurrentState());
 
-        $scope.filters = filtersFactory.getCurrentFilters();
+            $scope.products = [];
 
-        $scope.currentOrder = $scope.helpers.getCurrentOrder();
+            $scope.filters = filtersFactory.getCurrentFilters();
 
-        $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
+            $scope.currentOrder = $scope.helpers.getCurrentOrder();
 
-        productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
-            function(response) {
-                var products = _.toArray(response.data.data);
+            $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 
-                products.forEach(function (item, index, arr) {
-                    item.price = +item.price;
-                });
+            productsProvider.getProductsByCategoryId($stateParams.categoryName).then(
+                function(response) {
+                    var products = _.toArray(response.data.data);
 
-                $scope.products = products;
-            },
+                    products.forEach(function (item, index, arr) {
+                        item.price = +item.price;
+                    });
 
-            function(error) {
-                $log.error(error);
-            }
-        );
-	}]);
+                    $scope.products = products;
+                },
+
+                function(error) {
+                    $log.error(error);
+                }
+            );
+        }]);
 })();
