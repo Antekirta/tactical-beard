@@ -21,13 +21,27 @@
 		function($scope, $log, $state, $stateParams, productsProvider, translitFactory, STATE_NAMES) {
             $scope.product = {};
 
+            $scope.productCount = 1;
+
             function getFirstCategory(product) {
 				return product.category[_.keys(product.category)[0]][0];
             }
 
-            $scope.goToBreadcrumbState = function (state) {
-                $state.go(state.name, state.params);
-            };
+            $scope.helpers = {
+                goToBreadcrumbState: function (state) {
+                    $state.go(state.name, state.params);
+                },
+				
+				changeProductCount: function (increase) {
+					if ( increase ) {
+                        $scope.productCount++;
+					} else {
+						if ( $scope.productCount > 1 ) {
+                            $scope.productCount--;
+						}
+					}
+                }
+			};
 
             productsProvider.getProductById($stateParams.productId).then(
             	function (response) {

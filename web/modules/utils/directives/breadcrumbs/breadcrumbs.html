@@ -3,7 +3,7 @@
         data-ng-repeat="breadcrumb in breadcrumbs">
         <a href="#"
            class="breadcrumb__link"
-           data-ng-click="goToBreadcrumbState(breadcrumb.state)">
+           data-ng-click="helpers.goToBreadcrumbState(breadcrumb.state)">
             {{breadcrumb.name}}
         </a>
     </li>

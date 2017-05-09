@@ -32,9 +32,12 @@ $product-title--inner-elements__padding: 0 30px
   &--in-stock
     background-color: $green
 
+// gallery
+
 $product-gallery__height: 500px
 
 .product-gallery
+  float: left
   width: 400px
   min-height: $product-gallery__height
   margin-top: 25px
@@ -46,7 +49,6 @@ $product-gallery__height: 500px
   justify-content: center
   width: 100%
   height: $product-gallery__height - 100
-  border-bottom: solid 1px $black
 
 .product-gallery__main-image
   width: 100%
@@ -64,6 +66,140 @@ $product-gallery__height: 500px
 .product-gallery__extra-image
   width: 100px
   height: 100px
+
+// product-info
+
+.product-info
+  float: right
+  width: 370px
+
+// prices
+
+.product-prices
+  width: 370px
+
+.product-prices__price-block
+  float: left
+  width: 170px
+  height: 75px
+  padding: 5px
+  text-align: center
+  font-family: $font-family-condensed-medium
+  text-transform: uppercase
+  &--old-price
+    background-color: $light-brown
+    .product-prices__price-value
+      text-decoration: line-through
+  &--actual-price
+    float: right
+    background-color: $orange
+
+.product-prices__price-header
+  font-size: $font-size-h4
+
+.product-prices__price-value
+  transform: translateY(-24px)
+  font-size: $font-size-h1
+  color: $white
+
+// make order
+
+.product-make-order
+  margin-top: 40px
+
+// product-count
+
+.product-count
+  float: left
+  width: 139px
+  @include userSelect(none)
+
+.product-count__value
+  display: inline-block
+  width: 50px
+  height: 50px
+  margin-left: -4px
+  background-color: $light-brown
+  text-align: center
+  line-height: 50px
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h4
+  color: $white
+
+.product-count__control
+  display: inline-block
+  width: 44px
+  height: 38px
+  background-color: $light-brown
+  text-align: center
+  line-height: 38px
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h4
+  color: $white
+  cursor: pointer
+  transition: .2s
+  &:hover
+    background-color: transparentize($light-brown, 0.1)
+  &--increase
+    margin-left: -4px
+
+// add to basket
+
+$product-add-to-basket__width: 200px
+$product-add-to-basket__height: 50px
+
+.product-add-to-basket
+  float: right
+  width: $product-add-to-basket__width
+  height: $product-add-to-basket__height
+  background-color: $green
+  text-align: center
+  cursor: pointer
+  &:hover
+    background-color: transparentize($green, 0.1)
+
+.product-add-to-basket__image
+  display: inline-block
+  width: 20px
+  height: 17px
+  fill: $white
+  line-height: $product-add-to-basket__height
+
+.product-add-to-basket__label
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h5
+  text-transform: uppercase
+  line-height: $product-add-to-basket__height
+  color: $white
+
+// product description
+
+.product-description
+  width: 100%
+  margin-top: 40px
+  text-align: center
+
+.product-description__header
+  display: inline-block
+  margin: 0 30px
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h5
+  text-transform: uppercase
+  color: $dark-brown
+  cursor: pointer
+  &:hover
+
+  &--selected
+    border-bottom: solid 1px $dark-brown
+
+.product-description__text-area
+  margin-top: 10px
+  text-align: left
+  font-family: $font-family-condensed-light
+  font-weight: $font-weight-bold
+  font-size: $font-size-p
+  letter-spacing: .5px
+
 
 
 
