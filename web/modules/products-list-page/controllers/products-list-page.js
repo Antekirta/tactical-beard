@@ -12,8 +12,10 @@
         'productsProvider',
         'filtersFactory',
         'statesFactory',
+        'translitFactory',
+        'STATE_NAMES',
 
-        function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory) {
+        function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, STATE_NAMES) {
             $scope.helpers = {
                 getCurrentOrder: function () {
                     var currentOrdermap = {
@@ -39,7 +41,16 @@
                 }
             };
 
-            $scope.stateMethods = statesFactory;
+            $scope.goToUIProductState = function (state) {
+                console.log('state: ', state.categoryName[_.keys(state.categoryName)[0]][0].name);
+
+                $state.go(STATE_NAMES.PRODUCT, {
+                    productId: state.productId,
+                    productName: translitFactory.rusTolat(state.productName),
+                    categoryName: state.categoryName[_.keys(state.categoryName)[0]][0].name,
+                    categoryNameForUrl: translitFactory.rusTolat(state.categoryName[_.keys(state.categoryName)[0]][0].name)
+                });
+            };
 
             $scope.products = [];
 

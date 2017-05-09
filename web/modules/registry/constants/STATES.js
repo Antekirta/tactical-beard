@@ -16,7 +16,7 @@
 		'CATEGORIES': 'categories',
 		'PRODUCTS_LIST': 'products-list',
 		'CATEGORY': 'category',
-		'PRODUCTS_LIST__PRODUCT': 'products-list.product',
+		'PRODUCT': 'product',
 		'MAKE_ORDER': 'make-order',
 		'ORDER_DONE': 'order-done',
 		'BASKET': 'basket',
@@ -58,8 +58,17 @@
 		},
 
 		{
-			name: 'category.product',
-            url: '/{productName}/',
+			name: 'product',
+            url: '/categories/{categoryNameForUrl}/{productName}/',
+			params: {
+				productId: null,
+
+				productName: null,
+
+				categoryName: null,
+
+                categoryNameForUrl: null
+			},
 			controller: 'productPageCtrl',
 			templateUrl: pathToPartial('product-page')
 		},

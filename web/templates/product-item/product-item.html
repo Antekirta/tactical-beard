@@ -1,10 +1,15 @@
-<figure data-ui-sref="products-list.product({productName: product.id})" class="product-item__figure">
+<figure data-ui-sref="product({productName: product.id})" class="product-item__figure">
     <ng-include data-src="'templates/image-preloader/image-preloader.html'"></ng-include>
-    <img data-load-image src="{{product.image}}" alt="" class="product-item__image">
+    <img data-load-image src="{{product.image}}" alt="{{product.product_description[1].name}}" class="product-item__image">
     <div class="product-item__novelty-plate">Новое</div>
 </figure>
 
-<div class="product-item__image-header"><a class="product-item__link" data-ui-sref="product.id">{{product.product_description[1].name}}</a></div>
+<div class="product-item__image-header">
+    <a class="product-item__link"
+       data-ng-click="goToUIProductState({productId: product.id, productName: product.product_description[1].name, categoryName: product.category})">
+        {{product.product_description[1].name}} && {{product.category}}
+    </a>
+</div>
 
 <div class="product-item__basic-price">{{product.price | number: 0}} <span class="product-item__currency">руб.</span></div>
 <div class="product-item__discount-price">{{product.discounts[0].price | number: 0}}  <span class="product-item__currency">руб.</span></div>
