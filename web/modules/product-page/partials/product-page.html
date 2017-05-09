@@ -1,1 +1,34 @@
-This is a product page!
+<article class="product-page">
+    <div data-breadcrumbs class="breadcrumbs"></div>
+
+    <header class="product-title">
+        <h1 class="product-title__text">{{product.product_description[1].name}}</h1>
+        <div class="product-title__in-stock"
+             data-ng-class="{'product-title__in-stock--in-stock': true}">{{product.stock_status}}В наличии</div>
+    </header>
+
+    <figure class="product-gallery">
+        <div class="product-gallery__main-image-container">
+            <img src="{{product.image}}" alt="" class="product-gallery__main-image">
+        </div>
+
+        <ul class="product-gallery__extra-images">
+            <li data-ng-repeat="image in product.images"
+                class="product-gallery__list-item">
+                <img class="product-gallery__extra-image" src="{{image}}" alt="">
+            </li><li data-ng-repeat="image in product.images"
+                class="product-gallery__list-item">
+                <img class="product-gallery__extra-image" src="{{image}}" alt="">
+            </li><li data-ng-repeat="image in product.images"
+                class="product-gallery__list-item">
+                <img class="product-gallery__extra-image" src="{{image}}" alt="">
+            </li><li data-ng-repeat="image in product.images"
+                class="product-gallery__list-item">
+                <img class="product-gallery__extra-image" src="{{image}}" alt="">
+            </li><li data-ng-repeat="image in product.images"
+                class="product-gallery__list-item">
+                <img class="product-gallery__extra-image" src="{{image}}" alt="">
+            </li>
+        </ul>
+    </figure>
+</article>

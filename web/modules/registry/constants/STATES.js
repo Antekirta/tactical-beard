@@ -59,7 +59,7 @@
 
 		{
 			name: 'product',
-            url: '/categories/{categoryNameForUrl}/{productName}/',
+            url: '/categories/{categoryNameForUrl}/{productName}/?{productId}',
 			params: {
 				productId: null,
 

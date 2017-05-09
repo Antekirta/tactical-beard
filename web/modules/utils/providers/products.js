@@ -41,6 +41,20 @@
 						);
 					},
 
+                    getProductById: function (id) {
+                        req.url = REST_API.PRODUCTS + '/' + id + '/';
+
+                        return $http(req).then(
+                            function(response) {
+                                return response;
+                            },
+
+                            function(error) {
+                                return $q.reject(error);
+                            }
+                        );
+                    },
+
                     getProductsByCategoryId: function (id) {
                         req.url = REST_API.PRODUCTS + '/category/' + id + '/';
 

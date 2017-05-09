@@ -1,0 +1,70 @@
+@import "../../beard/sass/beard"
+
+$product-title__height: 75px
+$product-title--inner-elements__padding: 0 30px
+
+.product-page
+  position: relative
+  width: 800px
+  min-height: 500px
+  float: right
+  margin-right: 150px
+
+.product-title
+  height: $product-title__height
+  background-color: $light-brown
+  font-family: $font-family-condensed-medium
+  text-transform: uppercase
+
+.product-title__text
+  float: left
+  height: $product-title__height
+  padding: $product-title--inner-elements__padding
+  font-size: $font-size-h3
+
+.product-title__in-stock
+  float: right
+  height: $product-title__height
+  padding: $product-title--inner-elements__padding
+  line-height: $product-title__height
+  font-size: $font-size-h4
+  color: $white
+  &--in-stock
+    background-color: $green
+
+$product-gallery__height: 500px
+
+.product-gallery
+  width: 400px
+  min-height: $product-gallery__height
+  margin-top: 25px
+  padding: 0
+
+.product-gallery__main-image-container
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: $product-gallery__height - 100
+  border-bottom: solid 1px $black
+
+.product-gallery__main-image
+  width: 100%
+
+.product-gallery__extra-images
+  width: 100%
+  list-style-type: none
+
+.product-gallery__list-item
+  width: 99px
+  height: 100px
+  display: inline-block
+  margin: 0
+
+.product-gallery__extra-image
+  width: 100px
+  height: 100px
+
+
+
+
