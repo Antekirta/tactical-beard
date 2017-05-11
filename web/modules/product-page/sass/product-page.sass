@@ -187,18 +187,52 @@ $product-add-to-basket__height: 50px
   text-transform: uppercase
   color: $dark-brown
   cursor: pointer
-  &:hover
+  @include userSelect(none)
 
   &--selected
     border-bottom: solid 1px $dark-brown
 
 .product-description__text-area
-  margin-top: 10px
+  margin-top: 20px
+  p
+    text-align: left
+    line-height: $font-size-h5 + 2
+    font-family: $font-family-condensed-light
+    font-weight: $font-weight-bold
+    font-size: $font-size-p
+    letter-spacing: .7px
+
+.product-description__table
+  width: 100%
+  border-collapse: collapse
   text-align: left
+  line-height: $font-size-h5 + 2
   font-family: $font-family-condensed-light
   font-weight: $font-weight-bold
   font-size: $font-size-p
-  letter-spacing: .5px
+  letter-spacing: .7px
+  thead
+    tr
+      td
+        text-align: center
+        border: solid 1px $dark-brown
+        font-family: $font-family-condensed-bold
+  tbody
+    tr
+      td
+        text-align: center
+        border: solid 1px $dark-brown
+  tr
+    width: 100%
+    td
+      max-width: 100px
+      padding: 3px 10px
+      border-top: none!important
+      &:nth-child(2n)
+        border-right: none
+      &:nth-child(2n + 1)
+        border-left: none
+
 
 
 

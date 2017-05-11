@@ -24,11 +24,11 @@
         <div class="product-prices">
             <div class="product-prices__price-block product-prices__price-block--old-price">
                 <header class="product-prices__price-header">Старая цена</header>
-                <h2 class="product-prices__price-value">{{product.price_formated}}</h2>
+                <h2 class="product-prices__price-value">{{product.oldPrice}} РУБ.</h2>
             </div>
-            <div class="product-prices__price-block product-prices__price-block--actual-price">
+            <div data-ng-if="product.bestPrice" class="product-prices__price-block product-prices__price-block--actual-price">
                 <header class="product-prices__price-header">Новая цена</header>
-                <h2 class="product-prices__price-value">{{product.price_formated}}</h2>
+                <h2 class="product-prices__price-value">{{product.bestPrice}} РУБ.</h2>
             </div>
 
             <div class="clearfix"></div>
@@ -51,10 +51,37 @@
         </div>
 
         <div class="product-description">
-            <div class="product-description__header product-description__header--artistic product-description__header--selected">Описание</div>
-            <div class="product-description__header product-description__header--technical">Характеристики</div>
+            <div class="product-description__header product-description__header--artistic"
+                 data-ng-click="helpers.changeDescription(descTypes.artictic.name)"
+                 data-ng-class="{'product-description__header--selected': descTypes.artictic.status}">Описание</div>
+
+            <div class="product-description__header product-description__header--technical"
+                 data-ng-click="helpers.changeDescription(descTypes.technical.name)"
+                 data-ng-class="{'product-description__header--selected': descTypes.technical.status}">Характеристики</div>
+
             <div class="product-description__text-area">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos iste maiores perferendis ullam voluptatum! Aliquid, aspernatur ea molestiae nobis numquam obcaecati quam quibusdam voluptatem. Distinctio ipsum, molestias. Dolor, natus provident.
+                <div class="product-description__artictic_desc"
+                     data-ng-show="descTypes.artictic.status"
+                     data-ng-bind-html="artDescription">
+                </div>
+
+                <div class="product-description__technical_desc"
+                     data-ng-show="descTypes.technical.status">
+                    <table class="product-description__table">
+                        <thead>
+                            <tr>
+                                <td>Характеристика</td>
+                                <td>Значение</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="attribute in product.techDescription ">
+                                <td>{{attribute[1].name}}</td>
+                                <td>{{attribute[1].text}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
