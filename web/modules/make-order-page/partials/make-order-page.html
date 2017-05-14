@@ -1,1 +1,83 @@
-make order page partial
+<article class="make-order-page">
+    <div data-breadcrumbs class="breadcrumbs"></div>
+
+    <header class="page-title make-order-page__page-title">
+        <h1 class="page-title__header">Оформление заказа</h1>
+    </header>
+
+    <br>
+
+    <div class="sign-in-invite">
+        <div class="sign-in-invite__text">Войдите в личный кабинет для быстрого оформления заказа</div>
+        <div class="sign-in-invite__button">Войти</div>
+    </div>
+    <ng-form class="common-form common-form__make-order-tabs">
+        <div class="make-order-tabs">
+            <div class="make-order-tabs__tab">
+                <div class="make-order-tabs__tab-header">Информация о покупателе</div>
+                <div class="make-order-tabs__tab-body">
+                    <label class="common-form__label">Ваши ФИО: *</label>
+                    <br>
+                    <input data-ng-model="makeOrder.name" class="common-form__input common-form__input--text" type="text" required>
+                    <br><br>
+
+                    <label class="common-form__label">E-mail: *</label>
+                    <br>
+                    <input data-ng-model="makeOrder.email" class="common-form__input common-form__input--email" type="email" required>
+                    <br><br>
+
+                    <label data-ng-model="makeOrder.tel" class="common-form__label">Телефон: *</label>
+                    <br>
+                    <input class="common-form__input common-form__input--tel" type="tel" required>
+                    <br><br>
+
+                    <label class="common-form__label">Адрес:</label>
+                    <br>
+                    <textarea data-ng-model="makeOrder.address" class="common-form__textarea" name="" id=""></textarea>
+                    <br><br>
+
+                    <label class="common-form__label">Комментарий к заказу:</label>
+                    <br>
+                    <textarea  data-ng-model="makeOrder.comment" class="common-form__textarea" name="" id=""></textarea>
+                </div>
+            </div>
+
+            <div class="make-order-tabs__tab">
+                <div class="make-order-tabs__tab-header">Доставка</div>
+                <div class="make-order-tabs__tab-body">
+                    <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
+
+                    <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" value="Лично забрать в магазине"> Лично забрать в магазине
+                    <br>
+                    <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" value="Курьером"> Курьером
+                    <br>
+                    <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" value="Почтой России"> Почтой России
+                </div>
+            </div>
+
+            <div class="make-order-tabs__tab">
+                <div class="make-order-tabs__tab-header">Оплата</div>
+                <div class="make-order-tabs__tab-body">
+                    <p class="make-order-tabs__subheader">Выберите способ оплаты</p>
+
+                    <input data-ng-model="makeOrder.paymentType" class="common-form__radio" type="radio" name="payment-type" value="Наличными"> Наличными
+                    <br>
+                    <input data-ng-model="makeOrder.paymentType" class="common-form__radio" type="radio" name="payment-type" value="Яндекс.Деньги"> Яндекс.Деньги
+                    <br>
+                    <input data-ng-model="makeOrder.paymentType" class="common-form__radio" type="radio" name="payment-type" value="Перевод на карту"> Перевод на карту
+                </div>
+            </div>
+        </div>
+    </ng-form>
+
+    <div class="order-info">
+        <header class="order-info__header">Информация о заказе</header>
+        <div class="order-info__description">
+            <p>Заказчик <span data-ng-if="!makeOrder.name">_______</span>{{makeOrder.name}}<span data-ng-if="makeOrder.address">, проживает по адресу {{makeOrder.address}},
+            </span>.</p>
+            <p>Способ доставки: {{makeOrder.paymentType}}</p>
+            <p>Способ оплаты: {{makeOrder.deliveryType}}</p>
+            <p>Контакты заказчика: email {{makeOrder.email}}, телефон: {{makeOrder.tel}}</p>
+        </div>
+    </div>
+</article>
