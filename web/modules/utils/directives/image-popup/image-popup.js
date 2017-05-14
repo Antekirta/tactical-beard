@@ -11,83 +11,101 @@
                 templateUrl: 'modules/utils/directives/image-popup/image-popup.html',
 
                 link: function (scope, element, attrs) {
-                    // storage for images sources
-                    var sources = [],
+                    // TODO Refactor this directive, transform it to one object
+                    var classes = {
+                        background: 'image-popup__dark-background',
 
-                        images,
+                        popupActive: 'product-images__dark-background--visible',
 
-                        background,
+                        popupImage: 'image-popup__image'
+                    };
 
-                        image;
+                    var container = element.parent(),
 
-                    $(document).ready(function () {
-                        scope.imagePopup = {};
+                        currentPopupImage = $('.' + classes.popupImage),
 
-                        var helpers = {
-                            fillImagesSources: function (sources, images) {
-                                if ( _.isEmpty(sources) ) {
-                                    _.toArray(images).forEach(function (item) {
-                                        sources.push(item.src);
-                                    });
+                        background = $('.' + classes.background),
 
-                                    sources = _.compact(_.uniq(sources));
-                                }
-                            }
-                        };
+                        allImagesArray = [];
 
-                        // basic settings
-                        var container = element.parent();
+                    var sensors = {
+                        popupIsOpen: false
+                    };
 
-                        container.on(EVENTS.ELEMENT.CLICK, function (event) {
-                            var target = event.target;
+                    var slider = {
+                        currentImageNumber: 0
+                    };
 
-                            // we declare images only here, insie of click callback, because we have to wait for the images to load
+                    var helpers = {
+                        collectImages: function () {
                             var images = container.find('img');
 
-                            var background = $('.image-popup__dark-background');
+                            return _.remove(_.toArray(images), function (element) {
+                                return element.classList.value.indexOf(classes.popupImage) === -1;
+                            });
+                        },
+                        
+                        switchSliderImage: function () {
+                            var next = 0;
 
-                            var image = $('.image-popup__image');
+                            slider.currentImageNumber = _.findKey(allImagesArray, function (element) {
+                                return element.src === currentPopupImage.attr('src');
+                            });
 
-                            helpers.fillImagesSources(sources, images);
-
-
-                            console.log('sources: ', sources);
-
-
-
-                            if ( target.nodeName === 'IMG' ) {
-                                scope.imagePopup.image = target.src;
-
-                                scope.$digest();
-
-                                background.addClass('product-images__dark-background--visible');
+                            if ( slider.currentImageNumber < allImagesArray.length - 1 ) {
+                                next = ++slider.currentImageNumber;
                             }
 
-                            background.on(EVENTS.ELEMENT.CLICK, function () {
-                                $(this).removeClass('product-images__dark-background--visible');
-                            });
+                            currentPopupImage.attr('src', allImagesArray[next].src);
+                        }
+                    };
 
-                            image.on(EVENTS.ELEMENT.CLICK, function () {
-                                console.log('scope.imagePopup.image before: ', scope.imagePopup.image);
-                                var currentIndex = _.findIndex(sources, function (item) {
-                                    return item === scope.imagePopup.image;
-                                });
+                    var handlers = {
+                        containerClickHandler: function (event) {
+                            if ( _.isEmpty(allImagesArray) ) {
+                                allImagesArray = helpers.collectImages();
+                            }
 
-                                if ( currentIndex >= sources.length ) {
-                                    currentIndex = 0;
-                                } else {
-                                    currentIndex++;
+                            if ( !sensors.popupIsOpen ) {
+                                var target = event.target;
+
+                                if ( target.nodeName === 'IMG' ) {
+                                    sensors.popupIsOpen = true;
+
+                                    currentPopupImage.attr('src', target.src);
+
+                                    background.addClass(classes.popupActive);
                                 }
+                            }
+                        },
 
-                                console.log('currentIndex: ', currentIndex);
+                        backgroundClickHandler: function () {
+                            background.removeClass(classes.popupActive);
 
-                                scope.imagePopup.image = sources[currentIndex];
+                            sensors.popupIsOpen = false;
+                        },
 
-                                console.log('scope.imagePopup.image after: ', scope.imagePopup.image);
+                        popupImageClickHandler: function (event) {
+                            event.stopPropagation();
 
-                                scope.$digest();
-                            });
-                        });
+                            helpers.switchSliderImage();
+                        }
+                    };
+
+                    container.on(EVENTS.ELEMENT.CLICK, handlers.containerClickHandler);
+
+                    background.on(EVENTS.ELEMENT.CLICK, handlers.backgroundClickHandler);
+
+                    currentPopupImage.on(EVENTS.ELEMENT.CLICK, handlers.popupImageClickHandler);
+
+                    var cancelHandlers = scope.$on('destroy', function () {
+                        container.off(EVENTS.ELEMENT.CLICK, handlers.containerClickHandler);
+
+                        background.off(EVENTS.ELEMENT.CLICK, handlers.backgroundClickHandler);
+
+                        currentPopupImage.off(EVENTS.ELEMENT.CLICK, handlers.popupImageClickHandler);
+
+                        cancelHandlers();
                     });
                 }
             };

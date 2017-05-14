@@ -7,15 +7,19 @@
   left: 0
   width: 100%
   height: 100%
-  background-color: $black
+  background-color: transparentize($dark-brown, .7)
   z-index: 3
+  cursor: alias
 
 .product-images__dark-background--visible
     display: flex
     justify-content: center
     align-items: center
+    top: -50px
 
 .image-popup__image-container
   max-width: 90%
   max-height: 90%
   background-color: $white
+  border: solid 5px $light-brown
+  cursor: pointer
