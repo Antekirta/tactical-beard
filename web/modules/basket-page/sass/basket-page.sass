@@ -1,0 +1,46 @@
+@import "../../beard/sass/beard"
+
+.basket-table
+  margin-top: 50px
+  border-collapse: collapse
+  tr
+    td
+      width: 170px
+      padding: 10px
+      border: solid 1px $dark-brown
+      text-align: center
+      font-family: $font-family-condensed-medium
+      font-size: $font-size-p
+  thead
+    tr
+      td
+        border: none
+  tbody
+    tr
+      td
+        font-size: $font-size-p - 2
+
+.basket-table__image
+  width: 90px
+  height: auto
+
+.basket-table__price-for-one
+  font-size: $font-size-h5
+
+.basket-table__count
+  font-size: $font-size-h5
+
+.basket-table__price-for-all
+  font-size: $font-size-h5
+
+.basket-table__delete-item
+  padding: 10px
+  background-color: $orange
+  cursor: pointer
+  color: $white
+  @include fullTrans(.2s)
+  &:hover
+    color: $dark-brown
+
+.basket-page__next-step
+  margin: 30px 0 0 775px

@@ -1,0 +1,14 @@
+@import "../beard"
+
+.next-step
+  display: inline-block
+  padding: 20px 30px
+  background-color: transparentize($green, .1)
+  border-radius: 1px
+  color: $white
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h4
+  cursor: pointer
+  @include fullTrans(.3s)
+  &:hover
+    background-color: $green
