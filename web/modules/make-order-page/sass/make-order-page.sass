@@ -67,7 +67,26 @@
 .order-info__description
   margin-top: 10px
   p
+    display: inline-block
+    width: 90%
+    text-wrap:
     font-family: $font-family-condensed-medium
+
+.order-info__button
+  display: block
+  width: 200px
+  margin: 30px auto 10px auto
+  padding: 5px 20px
+  background-color: $green
+  outline: solid 2px $dark-brown
+  text-align: center
+  cursor: pointer
+  font-size: $font-size-h4
+  letter-spacing: .5px
+  color: $white
+  &--disabled
+    background-color: transparentize($green, .4)
+    cursor: not-allowed
 
 // forms
 

@@ -1,5 +1,12 @@
 @import "../beard"
 
+.common-form__input
+  @include placeholder($font-family-condensed-light, $font-size-p)
+
+.common-form__textarea
+  height: 100px
+  @include placeholder($font-family-condensed-light, $font-size-p)
+
 .common-form__label
   font-family: $font-family-condensed-light
 
