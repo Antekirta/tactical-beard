@@ -77,6 +77,22 @@
                                 return $q.reject(error);
                             }
                         );
+                    },
+					
+					getLatestProducts: function (limit) {
+                        req.url = REST_API.LATEST_PRODUCTS;
+
+                        return $http(req).then(
+                            function(response) {
+                            	console.log('getLatestProductsWithDetails req: ', req);
+                            	console.log('getLatestProductsWithDetails response: ', response);
+                                return response;
+                            },
+
+                            function(error) {
+                                return $q.reject(error);
+                            }
+                        );
                     }
 				};
 			}

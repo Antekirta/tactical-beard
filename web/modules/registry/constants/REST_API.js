@@ -14,6 +14,8 @@
 
 		'PRODUCTS': site + '/api/rest_admin/products',
 
+		'LATEST_PRODUCTS': site + '/api/rest_admin/latest',
+
 		'MANUFACTURERS': site + '/api/rest_admin/manufacturers'
 	});
 })();

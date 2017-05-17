@@ -42,8 +42,6 @@
             };
 
             $scope.goToUIProductState = function (state) {
-                console.log('state: ', state.categoryName[_.keys(state.categoryName)[0]][0].name);
-
                 $state.go(STATE_NAMES.PRODUCT, {
                     productId: state.productId,
                     productName: translitFactory.rusTolat(state.productName),

@@ -19,8 +19,6 @@
 						back: element.find('.impulse-products__carousel-arrow--back .carousel-arrow')
 					};
 
-					console.log('back: ', controls.back);
-
 					var carousel = {
 						element: element.find('.impulse-products__list'),
 
@@ -43,8 +41,6 @@
 
                             back: function () {
                                 carousel.currentOffset += 195;
-
-                                console.log('carousel.currentOffset: ', carousel.currentOffset);
 
                                 carousel.element.css('transform', 'translateX(' + carousel.currentOffset + 'px)');
                             },

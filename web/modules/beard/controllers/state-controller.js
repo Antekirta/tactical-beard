@@ -3,13 +3,19 @@
 
     var beard = angular.module('beard');
 
-    beard.controller('stateCtrl', ['$scope', '$log', '$state', function($scope, $log, $state) {
-        $scope.sidebarCategoriesIsVisible = function () {
-            return ['products-list', 'category', 'product'].indexOf($state.current.name) > - 1;
-        };
+    beard.controller('stateCtrl', [
+        '$scope',
+        '$log',
+        '$state',
+        'STATE_NAMES',
 
-        $scope.filtersBlockIsVisible = function () {
-            return ['category'].indexOf($state.current.name) > - 1;
-        };
-    }]);
+        function($scope, $log, $state, STATE_NAMES) {
+            $scope.sidebarCategoriesIsVisible = function () {
+                return [STATE_NAMES.PRODUCTS_LIST, STATE_NAMES.CATEGORY, STATE_NAMES.PRODUCT, STATE_NAMES.INFO_PAGE].indexOf($state.current.name) > - 1;
+            };
+
+            $scope.filtersBlockIsVisible = function () {
+                return ['category'].indexOf($state.current.name) > - 1;
+            };
+        }]);
 })();

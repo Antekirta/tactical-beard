@@ -9,29 +9,16 @@
 
 <div class="impulse-products__list-container">
     <ul class="impulse-products__list">
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
+        <li data-ng-repeat="product in products track by product.id"
 
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
+            data-ng-include="'templates/product-item/product-item.html'"
 
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
+            data-ng-class="{'product-item--no-image': product.image === null,
 
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
+								'product-item--both-prices': product.discounts.length !== 0}"
 
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
-
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
-
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
-
-        <li ng-include="'templates/product-item/product-item.html'"
-            class="product-item product-item--both-prices" ></li>
+            class="product-item products-list__product-item" >
+        </li>
     </ul>
 </div>
 
