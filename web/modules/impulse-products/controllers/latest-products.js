@@ -18,7 +18,6 @@
         'DATE',
 
         function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, dateFactory, STATE_NAMES, DATE) {
-
             $scope.goToUIProductState = function (state) {
                 $state.go(STATE_NAMES.PRODUCT, {
                     productId: state.productId,

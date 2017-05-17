@@ -10,6 +10,34 @@
             templateUrl: 'modules/utils/directives/products-carousel/products-carousel.html',
 
             link: function(scope, element, attrs) {
+                scope.productsCarousel = {};
+
+                // settings
+
+                var map = {
+                    promo: {
+                        title: 'Промо-товары',
+
+                        link: 'Смотреть все промо-товары'
+                    },
+
+                    new: {
+                        title: 'Новинки',
+
+                        link: 'Смотреть все новинки'
+                    }
+                };
+
+                if ( !map[attrs.productsCarousel] ) {
+                    throw new Error('There is no such carousel type: ' + attrs.productsCarousel);
+                }
+
+                scope.productsCarousel.title = map[attrs.productsCarousel].title;
+
+                scope.productsCarousel.link = map[attrs.productsCarousel].link;
+
+                // move carousel
+
                 $(document).ready(function () {
                     var controls = {
                         forward: element.find('.impulse-products__carousel-arrow--forward .carousel-arrow'),
