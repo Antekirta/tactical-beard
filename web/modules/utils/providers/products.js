@@ -84,8 +84,6 @@
 
                         return $http(req).then(
                             function(response) {
-                                console.log('getLatestProductsWithDetails req: ', req);
-                                console.log('getLatestProductsWithDetails response: ', response);
                                 return response;
                             },
 
@@ -100,8 +98,6 @@
 
                         return $http(req).then(
                             function(response) {
-                            	console.log('getLatestProductsWithDetails req: ', req);
-                            	console.log('getLatestProductsWithDetails response: ', response);
                                 return response;
                             },
 

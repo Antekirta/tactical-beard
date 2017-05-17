@@ -1,48 +1,53 @@
 @import "../../../beard/sass/beard"
 
-.container.impulse-products
+.container.products-carousel
   position: relative
   height: 450px
   padding: 20px 215px
   background-color: $light-brown
 
-.impulse-products__list-container
-  width: 970px
+.products-carousel__list-container
+  max-width: 970px
   overflow-x: hidden
 
-.impulse-products__list
+.products-carousel__list
   width: 999999px
   @include fullTrans(.5s)
 
-$impulse-products-arrow-offset: 160px
+$products-carousel-arrow-offset: 160px
 
-.impulse-products__carousel-arrow
+.products-carousel__carousel-arrow
   .carousel-arrow
     top: 210px
 
-.impulse-products__carousel-arrow--back
+.products-carousel__carousel-arrow--back
   .carousel-arrow
-    left: $impulse-products-arrow-offset
+    left: $products-carousel-arrow-offset
 
-.impulse-products__carousel-arrow--forward
+.products-carousel__carousel-arrow--forward
   .carousel-arrow
-    right: $impulse-products-arrow-offset
+    right: $products-carousel-arrow-offset
     transform: scale(-1)
 
-.impulse-products--both-prices
+.products-carousel--both-prices
   .product-item__basic-price
     width: calc(50% - 1px)
     text-decoration: line-through
   .product-item__discount-price
     display: block
 
-.container.impulse-products--novelties
+.container.products-carousel--novelties
   background-color: $white
   .common-section-header__link
     border-color: $middle-brown
     color: $middle-brown
-  .impulse-products__carousel-arrow
+  .products-carousel__carousel-arrow
     .carousel-arrow__icon
       fill: $light-brown
   .product-item__novelty-plate
     display: block
+
+.products-carousel--recommendations
+  .products-carousel__list-container
+    max-width: 800px
+

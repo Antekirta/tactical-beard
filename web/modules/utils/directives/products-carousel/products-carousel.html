@@ -1,5 +1,5 @@
 <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-            class="impulse-products__carousel-arrow impulse-products__carousel-arrow--back" >
+            class="products-carousel__carousel-arrow products-carousel__carousel-arrow--back" >
 </ng-include>
 
 <header class="common-section-header">
@@ -7,8 +7,8 @@
     <a href="#" class="common-section-header__link">{{productsCarousel.link}} >></a>
 </header>
 
-<div class="impulse-products__list-container">
-    <ul class="impulse-products__list">
+<div class="products-carousel__list-container">
+    <ul class="products-carousel__list">
         <li data-ng-repeat="product in products track by product.id"
 
             data-ng-include="'templates/product-item/product-item.html'"
@@ -23,5 +23,5 @@
 </div>
 
 <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-            class="impulse-products__carousel-arrow impulse-products__carousel-arrow--forward" >
+            class="products-carousel__carousel-arrow products-carousel__carousel-arrow--forward" >
 </ng-include>

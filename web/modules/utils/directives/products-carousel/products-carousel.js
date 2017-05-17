@@ -3,7 +3,7 @@
 
     var utils = angular.module('utils');
 
-    utils.directive('productsCarousel', ['$interval', function($interval) {
+    utils.directive('productsCarousel', ['$interval', 'EVENTS', function($interval, EVENTS) {
         return {
             restrict: 'A',
 
@@ -40,13 +40,13 @@
 
                 $(document).ready(function () {
                     var controls = {
-                        forward: element.find('.impulse-products__carousel-arrow--forward .carousel-arrow'),
+                        forward: element.find('.products-carousel__carousel-arrow--forward .carousel-arrow'),
 
-                        back: element.find('.impulse-products__carousel-arrow--back .carousel-arrow')
+                        back: element.find('.products-carousel__carousel-arrow--back .carousel-arrow')
                     };
 
                     var carousel = {
-                        element: element.find('.impulse-products__list'),
+                        element: element.find('.products-carousel__list'),
 
                         currentOffset: 0,
 
@@ -85,7 +85,7 @@
                         } else {
                             carousel.moves.forward();
                         }
-                    }, 2000);
+                    }, 3000);
 
                     $interval(function () {
                         if ( carousel.currentOffset > 0 ) {
@@ -102,6 +102,7 @@
                     });
 
                 });
+
             }
         };
     }]);
