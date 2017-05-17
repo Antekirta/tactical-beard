@@ -78,9 +78,25 @@
                             }
                         );
                     },
+
+					getProductsByTag: function (tag) {
+                        req.url = REST_API.SEARCH_PRODUCTS + 'search=' + tag;
+
+                        return $http(req).then(
+                            function(response) {
+                                console.log('getLatestProductsWithDetails req: ', req);
+                                console.log('getLatestProductsWithDetails response: ', response);
+                                return response;
+                            },
+
+                            function(error) {
+                                return $q.reject(error);
+                            }
+                        );
+                    },
 					
-					getLatestProducts: function (limit) {
-                        req.url = REST_API.LATEST_PRODUCTS;
+					getProductFromDate: function (date) {
+                        req.url = REST_API.SEARCH_PRODUCTS + 'filter_date_added_from=' + date;
 
                         return $http(req).then(
                             function(response) {

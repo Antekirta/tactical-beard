@@ -14,7 +14,7 @@
 
 		'PRODUCTS': site + '/api/rest_admin/products',
 
-		'LATEST_PRODUCTS': site + '/api/rest_admin/latest',
+		'SEARCH_PRODUCTS': site + '/index.php?route=rest/product_admin/products&',
 
 		'MANUFACTURERS': site + '/api/rest_admin/manufacturers'
 	});

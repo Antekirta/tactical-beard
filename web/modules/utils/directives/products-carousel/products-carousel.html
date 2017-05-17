@@ -1,0 +1,27 @@
+<ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
+            class="impulse-products__carousel-arrow impulse-products__carousel-arrow--back" >
+</ng-include>
+
+<header class="common-section-header">
+    <h2 class="common-section-header__h2">Промо-товары</h2>
+    <a href="#" class="common-section-header__link">Смотреть все промотовары >></a>
+</header>
+
+<div class="impulse-products__list-container">
+    <ul class="impulse-products__list">
+        <li data-ng-repeat="product in products track by product.id"
+
+            data-ng-include="'templates/product-item/product-item.html'"
+
+            data-ng-class="{'product-item--no-image': product.image === null,
+
+								'product-item--both-prices': product.discounts.length !== 0}"
+
+            class="product-item products-list__product-item" >
+        </li>
+    </ul>
+</div>
+
+<ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
+            class="impulse-products__carousel-arrow impulse-products__carousel-arrow--forward" >
+</ng-include>
