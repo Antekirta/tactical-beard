@@ -16,11 +16,13 @@
 
 		'productsProvider',
 
+		'basketFactory',
+
 		'translitFactory',
 
 		'STATE_NAMES',
 
-		function($scope, $log, $state, $stateParams, $sce, productsProvider, translitFactory, STATE_NAMES) {
+		function($scope, $log, $state, $stateParams, $sce, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
             $scope.product = {};
 
             $scope.productCount = 1;
@@ -70,6 +72,22 @@
                     $scope.descTypes[descType].status = true;
                 }
 			};
+
+            $scope.basket = {
+                putProduct: function () {
+                    console.log($scope.product);
+
+                    var product = {
+                        id: $scope.product.id,
+
+                        quantity: $scope.productCount
+                    };
+
+                    basketFactory.client.putProduct(product);
+
+                    $state.go(STATE_NAMES.BASKET);
+                }
+            };
 
             var productHandlers = {
             	createArtDescription: function (description) {
