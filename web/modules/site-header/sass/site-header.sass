@@ -15,7 +15,7 @@
     width: 230px
     text-align: center
     .site-header__lang-container
-      padding: 20px 0 10px 0;
+      padding: 20px 0 10px 0
       .langs-list
         width: 120px
         margin: 10px auto 0 auto
@@ -56,6 +56,12 @@
             color: $white
           .basket-info
             color: $light-brown
+            &:hover
+              text-decoration: underline
+          .basket-label__link
+            &:focus
+              text-decoration: none
+
       .user-enter
         font-family: $font-family-condensed-medium
         font-size: $basic-font-size + 2

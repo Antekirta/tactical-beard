@@ -2,7 +2,7 @@
     'use strict';
     
     angular.module('basketPage')
-        .factory('basketFactory', ['LOCALSTORAGE', function (LOCALSTORAGE) {
+        .factory('basketFactory', ['$rootScope', 'LOCALSTORAGE', 'EVENTS', function ($rootScope, LOCALSTORAGE, EVENTS) {
             var basket;
 
             if ( localStorage.getItem(LOCALSTORAGE.BASKET) ) {
@@ -10,8 +10,6 @@
             } else {
                 basket = [];
             }
-
-            console.log('basket after init: ', basket);
 
             return {
                 client: {
@@ -27,6 +25,10 @@
                         return basket[index];
                     },
 
+                    getBasketLength: function () {
+                        return _.toArray(JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET))).length;
+                    },
+
                     putProduct: function (product) {
                         var index = _.findIndex(basket, function (element) {
                             return element.id === product.id;
@@ -39,8 +41,6 @@
                         }
 
                         this.updateBasketStorage();
-
-                        console.log('localStorage.getItem(LOCALSTORAGE.BASKET): ', localStorage.getItem(LOCALSTORAGE.BASKET));
                     },
 
                     updateQuantity: function (id, quantity) {
@@ -71,6 +71,8 @@
 
                     updateBasketStorage: function () {
                         localStorage.setItem(LOCALSTORAGE.BASKET, JSON.stringify(basket));
+
+                        $rootScope.$broadcast(EVENTS.BASKET_EVENTS, {});
                     }
                 },
 

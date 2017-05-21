@@ -34,6 +34,10 @@
 			'LOAD': 'load',
 
 			'ERROR': 'error'
+		},
+
+		'BASKET_EVENTS': {
+			'BASKET_UPDATED': 'basketUpdated'
 		}
 	});
 })();

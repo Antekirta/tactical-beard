@@ -44,11 +44,11 @@
                     $scope.basketProducts.splice(index, 1);
 
                     basketFactory.client.deleteProductById(id);
+
+                    $scope.helpers.updateTotal();
                 },
 
                 updateTotal: function () {
-                    console.log('LALALA updateTotal!');
-
                     if ( !_.isEmpty($scope.basketProducts) ) {
                         $scope.total = $scope.basketProducts.reduce(function (total, currentItem) {
                             return total + currentItem.price * currentItem.quantity;

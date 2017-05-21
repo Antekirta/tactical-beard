@@ -10,9 +10,13 @@
 
 		'STATES',
 
+		'EVENTS',
+
 		'languages',
 
-		function($scope, mainMenu, STATES, languages) {
+		'basketFactory',
+
+		function($scope, mainMenu, STATES, EVENTS, languages, basketFactory) {
 			$scope.languages = languages.getLanguages();
 
 			$scope.langHelpers = {
@@ -21,8 +25,16 @@
 				}
 			};
 
-			$scope.basket = {
-
+			var helpers = {
+				basket: {
+					setBasketLength: function () {
+                        $scope.basketLength = basketFactory.client.getBasketLength();
+                    }
+				}
 			};
+
+            $scope.basketLength = basketFactory.client.getBasketLength();
+
+			$scope.$on(EVENTS.BASKET_EVENTS, helpers.basket.setBasketLength);
 	}]);
 })();
