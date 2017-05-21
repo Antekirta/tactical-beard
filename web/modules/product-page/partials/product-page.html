@@ -10,13 +10,13 @@
     <figure class="product-gallery">
         <image-popup></image-popup>
         <div class="product-gallery__main-image-container">
-            <img src="{{product.image}}" alt="" class="product-gallery__main-image">
+            <img src="{{product.image}}" data-load-image alt="" class="product-gallery__main-image">
         </div>
 
         <ul class="product-gallery__extra-images">
             <li data-ng-repeat="image in product.images"
                 class="product-gallery__list-item">
-                <img class="product-gallery__extra-image" src="{{image}}" alt="">
+                <img data-load-image class="product-gallery__extra-image" src="{{image}}" alt="">
             </li>
         </ul>
     </figure>

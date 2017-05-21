@@ -2,8 +2,16 @@
     'use strict';
     
     angular.module('basketPage')
-        .factory('basketFactory', [function () {
-            var basket = [];
+        .factory('basketFactory', ['LOCALSTORAGE', function (LOCALSTORAGE) {
+            var basket;
+
+            if ( localStorage.getItem(LOCALSTORAGE.BASKET) ) {
+                basket = JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET)) || [];
+            } else {
+                basket = [];
+            }
+
+            console.log('basket after init: ', basket);
 
             return {
                 client: {
@@ -29,6 +37,10 @@
                         } else {
                             basket.push(product);
                         }
+
+                        this.updateBasketStorage();
+
+                        console.log('localStorage.getItem(LOCALSTORAGE.BASKET): ', localStorage.getItem(LOCALSTORAGE.BASKET));
                     },
 
                     updateQuantity: function (id, quantity) {
@@ -37,10 +49,14 @@
                         });
 
                         basket[index].quantity += quantity;
+
+                        this.updateBasketStorage();
                     },
 
                     deleteAllProducts: function () {
                         basket = [];
+
+                        this.updateBasketStorage();
                     },
 
                     deleteProductById: function (id) {
@@ -49,6 +65,12 @@
                         });
 
                         basket.splice(index, 1);
+
+                        this.updateBasketStorage();
+                    },
+
+                    updateBasketStorage: function () {
+                        localStorage.setItem(LOCALSTORAGE.BASKET, JSON.stringify(basket));
                     }
                 },
 

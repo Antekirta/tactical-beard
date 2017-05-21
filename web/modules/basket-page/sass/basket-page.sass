@@ -20,6 +20,9 @@
       td
         font-size: $font-size-p - 2
 
+.basket-table__td--no-border
+  border: none!important
+
 .basket-table__image
   width: 90px
   height: auto
@@ -29,6 +32,12 @@
 
 .basket-table__count
   font-size: $font-size-h5
+  .filters-input__number
+    background-color: $white
+    border: none
+    outline: none
+    font-size: $font-size-h4
+    @include userSelect(none)
 
 .basket-table__price-for-all
   font-size: $font-size-h5

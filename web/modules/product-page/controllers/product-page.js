@@ -23,6 +23,8 @@
 		'STATE_NAMES',
 
 		function($scope, $log, $state, $stateParams, $sce, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
+	        // basketFactory.client.deleteAllProducts();
+
             $scope.product = {};
 
             $scope.productCount = 1;
@@ -75,17 +77,17 @@
 
             $scope.basket = {
                 putProduct: function () {
-                    console.log($scope.product);
-
                     var product = {
                         id: $scope.product.id,
 
-                        quantity: $scope.productCount
+                        quantity: $scope.productCount,
+
+                        price: $scope.product.bestPrice || $scope.product.oldPrice
                     };
 
                     basketFactory.client.putProduct(product);
 
-                    $state.go(STATE_NAMES.BASKET);
+                    // $state.go(STATE_NAMES.BASKET);
                 }
             };
 
