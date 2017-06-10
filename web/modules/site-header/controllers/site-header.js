@@ -6,17 +6,23 @@
 	siteHeader.controller('siteHeaderCtrl', [
 		'$scope',
 
+		'$state',
+
 		'mainMenu',
 
 		'STATES',
 
+		'STATE_NAMES',
+
 		'EVENTS',
+
+		'KEYBOARD',
 
 		'languages',
 
 		'basketFactory',
 
-		function($scope, mainMenu, STATES, EVENTS, languages, basketFactory) {
+		function($scope, $state, mainMenu, STATES, STATE_NAMES, EVENTS, KEYBOARD, languages, basketFactory) {
 			$scope.languages = languages.getLanguages();
 
 			$scope.langHelpers = {
@@ -32,6 +38,14 @@
                     }
 				}
 			};
+
+            $scope.goToUIProductState = function (state) {
+            	if ( event.keyCode === KEYBOARD.ENTER ) {
+                    $state.go(STATE_NAMES.SEARCH, {
+                        search: state.search
+                    });
+				}
+            };
 
             $scope.basketLength = basketFactory.client.getBasketLength();
 

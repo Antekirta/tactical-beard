@@ -11,11 +11,11 @@
 
         function($scope, $log, $state, STATE_NAMES) {
             $scope.sidebarCategoriesIsVisible = function () {
-                return [STATE_NAMES.PRODUCTS_LIST, STATE_NAMES.CATEGORY, STATE_NAMES.PRODUCT, STATE_NAMES.INFO_PAGE].indexOf($state.current.name) > - 1;
+                return [STATE_NAMES.SEARCH, STATE_NAMES.CATEGORY, STATE_NAMES.PRODUCT, STATE_NAMES.INFO_PAGE].indexOf($state.current.name) > - 1;
             };
 
             $scope.filtersBlockIsVisible = function () {
-                return ['category'].indexOf($state.current.name) > - 1;
+                return [STATE_NAMES.SEARCH, STATE_NAMES.CATEGORY].indexOf($state.current.name) > - 1;
             };
         }]);
 })();

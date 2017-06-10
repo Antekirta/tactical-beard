@@ -79,6 +79,25 @@
                         );
                     },
 
+                    getProductsBySearch: function (search) {
+                        // req.url = REST_API.SEARCH_PRODUCTS + 'product_name=' + search;
+                        req.url = REST_API.SEARCH_PRODUCTS_BY_NAME + search;
+                        // req.url = 'http://tacticalbeard39.com/api/rest_admin/products/search/Helikon';
+
+                        console.log('req.url!!!', req.url);
+                        // req.url = 'http://tacticalbeard39.com/api/rest_admin/products/search/Helikon';
+
+                        return $http(req).then(
+                            function(response) {
+                                return response;
+                            },
+
+                            function(error) {
+                                return $q.reject(error);
+                            }
+                        );
+                    },
+
 					getProductsByTag: function (tag) {
                         req.url = REST_API.SEARCH_PRODUCTS + 'search=' + tag;
 

@@ -16,6 +16,8 @@
 
 		'SEARCH_PRODUCTS': site + '/index.php?route=rest/product_admin/products&',
 
+		'SEARCH_PRODUCTS_BY_NAME': site + '/api/rest_admin/products/search/',
+
 		'MANUFACTURERS': site + '/api/rest_admin/manufacturers'
 	});
 })();

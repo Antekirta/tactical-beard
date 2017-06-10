@@ -14,7 +14,7 @@
 	registry.constant('STATE_NAMES', {
 		'HOME': 'home',
 		'CATEGORIES': 'categories',
-		'PRODUCTS_LIST': 'products-list',
+		'SEARCH': 'search',
 		'CATEGORY': 'category',
 		'PRODUCT': 'product',
 		'MAKE_ORDER': 'make-order',
@@ -41,8 +41,11 @@
 		},
 
         {
-            name: 'products-list',
-            url: '/categories/all/',
+            name: 'search',
+            url: '/categories/search/',
+            params: {
+                search: null
+            },
             templateUrl: pathToPartial('products-list-page')
         },
 

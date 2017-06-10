@@ -16,6 +16,8 @@
         'STATE_NAMES',
 
         function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, STATE_NAMES) {
+	        console.log('productsListPageCtrl $state: ', $state);
+
             $scope.helpers = {
                 getCurrentOrder: function () {
                     var currentOrdermap = {
@@ -58,22 +60,44 @@
 
             $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 
-            productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
-                function(response) {
-                    var products = _.toArray(response.data.data);
+            if ( $state.current.name === STATE_NAMES.SEARCH ) {
+                console.log('state.current.name === STATE_NAMES.SEARCH!!!');
 
-                    products.forEach(function (item, index, arr) {
-                        item.price = +item.price;
-                    });
+                productsProvider.getProductsBySearch($stateParams.search).then(
+                    function(response) {
+                        var products = _.toArray(response.data.data);
 
-                    console.log('products: ', products);
+                        products.forEach(function (item, index, arr) {
+                            item.price = +item.price;
+                        });
 
-                    $scope.products = products;
-                },
+                        $log.log('products: ', products);
 
-                function(error) {
-                    $log.error(error);
-                }
-            );
+                        $scope.products = products;
+                    },
+
+                    function(error) {
+                        $log.error(error);
+                    }
+                );
+            } else {
+                productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
+                    function(response) {
+                        var products = _.toArray(response.data.data);
+
+                        products.forEach(function (item, index, arr) {
+                            item.price = +item.price;
+                        });
+
+                        $log.log('products: ', products);
+
+                        $scope.products = products;
+                    },
+
+                    function(error) {
+                        $log.error(error);
+                    }
+                );
+            }
         }]);
 })();
