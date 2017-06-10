@@ -111,7 +111,7 @@
                             }
                         );
                     },
-					
+
 					getProductFromDate: function (date) {
                         req.url = REST_API.SEARCH_PRODUCTS + 'filter_date_added_from=' + date;
 

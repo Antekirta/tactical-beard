@@ -1,10 +1,10 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	var productsListPage = angular.module('productsListPage');
+    var productsListPage = angular.module('productsListPage');
 
-	productsListPage.controller('productsListPageCtrl', [
-	    '$scope',
+    productsListPage.controller('productsListPageCtrl', [
+        '$scope',
         '$log',
         '$state',
         '$stateParams',
@@ -13,11 +13,10 @@
         'filtersFactory',
         'statesFactory',
         'translitFactory',
+        'categoriesDictionary',
         'STATE_NAMES',
 
-        function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, STATE_NAMES) {
-	        console.log('productsListPageCtrl $state: ', $state);
-
+        function ($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, categoriesDictionary, STATE_NAMES) {
             $scope.helpers = {
                 getCurrentOrder: function () {
                     var currentOrdermap = {
@@ -31,7 +30,7 @@
                         return orderType.status;
                     });
 
-                    if ( currentOrder ) {
+                    if (currentOrder) {
                         return currentOrdermap[currentOrder.name];
                     } else {
                         return 'name';
@@ -60,44 +59,71 @@
 
             $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 
-            if ( $state.current.name === STATE_NAMES.SEARCH ) {
-                console.log('state.current.name === STATE_NAMES.SEARCH!!!');
+            categoriesDictionary
+                .then(
+                    function (dictionary) {
+                        return dictionary[$stateParams.categoryName];
+                    }
+                )
+                .then(
+                    function (categoryId) {
+                        productsProvider.getProductsByCategoryId(categoryId).then(
+                            function (response) {
+                                var products = _.toArray(response.data.data);
 
-                productsProvider.getProductsBySearch($stateParams.search).then(
-                    function(response) {
-                        var products = _.toArray(response.data.data);
+                                products.forEach(function (item, index, arr) {
+                                    item.price = +item.price;
+                                });
 
-                        products.forEach(function (item, index, arr) {
-                            item.price = +item.price;
-                        });
+                                $scope.products = products;
+                            },
 
-                        $log.log('products: ', products);
-
-                        $scope.products = products;
-                    },
-
-                    function(error) {
-                        $log.error(error);
+                            function (error) {
+                                $log.error(error);
+                            }
+                        );
                     }
                 );
-            } else {
-                productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
-                    function(response) {
-                        var products = _.toArray(response.data.data);
 
-                        products.forEach(function (item, index, arr) {
-                            item.price = +item.price;
-                        });
-
-                        $log.log('products: ', products);
-
-                        $scope.products = products;
-                    },
-
-                    function(error) {
-                        $log.error(error);
-                    }
-                );
-            }
+            // if ($state.current.name === STATE_NAMES.SEARCH) {
+            //     console.log('state.current.name === STATE_NAMES.SEARCH!!!');
+            //
+            //     productsProvider.getProductsBySearch($stateParams.search).then(
+            //         function (response) {
+            //             var products = _.toArray(response.data.data);
+            //
+            //             products.forEach(function (item, index, arr) {
+            //                 item.price = +item.price;
+            //             });
+            //
+            //             $log.log('products: ', products);
+            //
+            //             $scope.products = products;
+            //         },
+            //
+            //         function (error) {
+            //             $log.error(error);
+            //         }
+            //     );
+            // } else {
+            //     productsProvider.getProductsByCategoryId($scope.helpers.getCategoryId()).then(
+            //         function (response) {
+            //             console.log('$stateParams): ', $stateParams);
+            //             var products = _.toArray(response.data.data);
+            //
+            //             products.forEach(function (item, index, arr) {
+            //                 item.price = +item.price;
+            //             });
+            //
+            //             $log.log('products: ', products);
+            //
+            //             $scope.products = products;
+            //         },
+            //
+            //         function (error) {
+            //             $log.error(error);
+            //         }
+            //     );
+            // }
         }]);
 })();
