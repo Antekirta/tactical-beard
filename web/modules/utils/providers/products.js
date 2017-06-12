@@ -15,7 +15,9 @@
 
 			'REST_API',
 
-			function($http, $q, $cacheFactory, dataStorage, REST_API) {
+			'DATA_STORAGE',
+
+			function($http, $q, $cacheFactory, dataStorage, REST_API, DATA_STORAGE) {
 				var req = {
 					method: 'GET',
 
@@ -60,7 +62,7 @@
 
                         return $http(req).then(
                             function(response) {
-								var products = JSON.parse(dataStorage.getData('products', true)) || {};
+								var products = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.PRODUCTS, true)) || {};
 
 								if ( products[id] ) {
 									return products[id];

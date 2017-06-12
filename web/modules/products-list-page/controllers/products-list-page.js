@@ -4,9 +4,11 @@
     var productsListPage = angular.module('productsListPage');
 
     productsListPage.controller('productsListPageCtrl', [
+        '$rootScope',
         '$scope',
         '$log',
         '$state',
+        '$interval',
         '$stateParams',
         '$locale',
         'productsProvider',
@@ -16,7 +18,11 @@
         'categoriesDictionary',
         'STATE_NAMES',
 
-        function ($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, categoriesDictionary, STATE_NAMES) {
+        function ($rootScope, $scope, $log, $state, $interval, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, categoriesDictionary, STATE_NAMES) {
+            $rootScope.rootScope = {
+                products: {}
+            };
+
             $scope.helpers = {
                 getCurrentOrder: function () {
                     var currentOrdermap = {
@@ -62,20 +68,54 @@
             categoriesDictionary
                 .then(
                     function (dictionary) {
-                        return dictionary[$stateParams.categoryName];
+                        $stateParams.categoryId = dictionary[$stateParams.categoryName];
                     }
                 )
                 .then(
-                    function (categoryId) {
-                        productsProvider.getProductsByCategoryId(categoryId).then(
+                    function () {
+                        productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
                             function (response) {
                                 var products = _.toArray(response.data.data);
 
+                                var images = [];
+
                                 products.forEach(function (item, index, arr) {
                                     item.price = +item.price;
+
+                                    images.push({id: item.id, image: item.image});
+
+                                    item.image = '';
                                 });
 
+                                $rootScope.rootScope.products.minPrice = _.minBy(products, function (product) {
+                                    return product.price;
+                                }).price;
+
+                                $rootScope.rootScope.products.maxPrice = _.maxBy(products, function (product) {
+                                    return product.price;
+                                }).price;
+
+                                var counter = 0;
+
+                                var productToSetImage = {};
+
+                                console.log('$scope.products: ', $scope.products);
+
                                 $scope.products = products;
+
+                                var stopInterval = $interval(function () {
+                                    productToSetImage = _.find($scope.products, function (product) {
+                                        return product.id === images[counter].id;
+                                    });
+
+                                    productToSetImage.image = images[counter].image;
+
+                                    counter++;
+
+                                    if (counter >= products.length) {
+                                        $interval.cancel(stopInterval);
+                                    }
+                                }, 100);
                             },
 
                             function (error) {

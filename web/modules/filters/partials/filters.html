@@ -17,7 +17,7 @@
 
            name="price-from"
 
-           data-ng-model="filters.filters.priceFrom.value"
+           data-ng-model="rootScope.products.minPrice"
 
            class="filters-input filters-input__number filters-input__number--min"
 
@@ -29,7 +29,7 @@
     <label class="filters__label">Цена до</label>
     <input type="number"
 
-           data-ng-model="filters.filters.priceTo.value"
+           data-ng-model="rootScope.products.maxPrice"
 
            class="filters-input filters-input__number filters-input__number--max"
 
