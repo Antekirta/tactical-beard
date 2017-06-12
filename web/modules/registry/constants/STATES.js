@@ -42,7 +42,7 @@
 
         {
             name: 'search',
-            url: '/categories/search/',
+            url: '/categories/search/?{search}',
             params: {
                 search: null
             },

@@ -20,6 +20,8 @@
         'STATE_NAMES',
 
         function ($rootScope, $scope, $log, $state, $interval, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, categoriesDictionary, APP_PARAMS, STATE_NAMES) {
+            // storage for min and max prices on the $rootScope level. It's necessary for price filters
+
             $rootScope.rootScope = {
                 products: {}
             };
@@ -49,6 +51,108 @@
                 }
             };
 
+            var promises = {
+                getProductsByCategoryId: function (id) {
+                    productsProvider.getProductsByCategoryId(id).then(
+                        function (response) {
+                            var products = _.toArray(response.data.data);
+
+                            var images = [];
+
+                            products.forEach(function (item, index, arr) {
+                                item.price = +item.price;
+
+                                images.push({id: item.id, image: item.image});
+
+                                item.image = '';
+                            });
+
+                            $rootScope.rootScope.products.minPrice = _.minBy(products, function (product) {
+                                return product.price;
+                            }).price;
+
+                            $rootScope.rootScope.products.maxPrice = _.maxBy(products, function (product) {
+                                return product.price;
+                            }).price;
+
+                            var counter = 0;
+
+                            var productToSetImage = {};
+
+                            $scope.products = products;
+
+                            var stopInterval = $interval(function () {
+                                productToSetImage = _.find($scope.products, function (product) {
+                                    return product.id === images[counter].id;
+                                });
+
+                                productToSetImage.image = images[counter].image;
+
+                                counter++;
+
+                                if (counter >= products.length) {
+                                    $interval.cancel(stopInterval);
+                                }
+                            }, APP_PARAMS.INTERVAL_BETWEEN_REQUESTS);
+                        },
+
+                        function (error) {
+                            $log.error(error);
+                        }
+                    );
+                },
+
+                getProductsBySearch: function (search) {
+                    productsProvider.getProductsBySearch(search).then(
+                        function (response) {
+                            var products = _.toArray(response.data.data);
+
+                            var images = [];
+
+                            products.forEach(function (item, index, arr) {
+                                item.price = +item.price;
+
+                                images.push({id: item.id, image: item.image});
+
+                                item.image = '';
+                            });
+
+                            $rootScope.rootScope.products.minPrice = _.minBy(products, function (product) {
+                                return product.price;
+                            }).price;
+
+                            $rootScope.rootScope.products.maxPrice = _.maxBy(products, function (product) {
+                                return product.price;
+                            }).price;
+
+                            var counter = 0;
+
+                            var productToSetImage = {};
+
+                            $scope.products = products;
+
+                            var stopInterval = $interval(function () {
+                                productToSetImage = _.find($scope.products, function (product) {
+                                    return product.id === images[counter].id;
+                                });
+
+                                productToSetImage.image = images[counter].image;
+
+                                counter++;
+
+                                if (counter >= products.length) {
+                                    $interval.cancel(stopInterval);
+                                }
+                            }, APP_PARAMS.INTERVAL_BETWEEN_REQUESTS);
+                        },
+
+                        function (error) {
+                            $log.error(error);
+                        }
+                    );
+                }
+            };
+
             $scope.goToUIProductState = function (state) {
                 $state.go(STATE_NAMES.PRODUCT, {
                     productId: state.productId,
@@ -74,95 +178,12 @@
                 )
                 .then(
                     function () {
-                        productsProvider.getProductsByCategoryId($stateParams.categoryId).then(
-                            function (response) {
-                                var products = _.toArray(response.data.data);
-
-                                var images = [];
-
-                                products.forEach(function (item, index, arr) {
-                                    item.price = +item.price;
-
-                                    images.push({id: item.id, image: item.image});
-
-                                    item.image = '';
-                                });
-
-                                $rootScope.rootScope.products.minPrice = _.minBy(products, function (product) {
-                                    return product.price;
-                                }).price;
-
-                                $rootScope.rootScope.products.maxPrice = _.maxBy(products, function (product) {
-                                    return product.price;
-                                }).price;
-
-                                var counter = 0;
-
-                                var productToSetImage = {};
-
-                                $scope.products = products;
-
-                                var stopInterval = $interval(function () {
-                                    productToSetImage = _.find($scope.products, function (product) {
-                                        return product.id === images[counter].id;
-                                    });
-
-                                    productToSetImage.image = images[counter].image;
-
-                                    counter++;
-
-                                    if (counter >= products.length) {
-                                        $interval.cancel(stopInterval);
-                                    }
-                                }, APP_PARAMS.INTERVAL_BETWEEN_REQUESTS);
-                            },
-
-                            function (error) {
-                                $log.error(error);
-                            }
-                        );
+                        if ( $state.current.name === STATE_NAMES.SEARCH ) {
+                            promises.getProductsBySearch($stateParams.search);
+                        } else {
+                            promises.getProductsByCategoryId($stateParams.categoryId);
+                        }
                     }
                 );
-
-            // if ($state.current.name === STATE_NAMES.SEARCH) {
-            //     console.log('state.current.name === STATE_NAMES.SEARCH!!!');
-            //
-            //     productsProvider.getProductsBySearch($stateParams.search).then(
-            //         function (response) {
-            //             var products = _.toArray(response.data.data);
-            //
-            //             products.forEach(function (item, index, arr) {
-            //                 item.price = +item.price;
-            //             });
-            //
-            //             $log.log('products: ', products);
-            //
-            //             $scope.products = products;
-            //         },
-            //
-            //         function (error) {
-            //             $log.error(error);
-            //         }
-            //     );
-            // } else {
-            //     productsProvider.getProductsByCategoryId($scope.helpers.getCategoryId()).then(
-            //         function (response) {
-            //             console.log('$stateParams): ', $stateParams);
-            //             var products = _.toArray(response.data.data);
-            //
-            //             products.forEach(function (item, index, arr) {
-            //                 item.price = +item.price;
-            //             });
-            //
-            //             $log.log('products: ', products);
-            //
-            //             $scope.products = products;
-            //         },
-            //
-            //         function (error) {
-            //             $log.error(error);
-            //         }
-            //     );
-            // }
         }]);
 })();
