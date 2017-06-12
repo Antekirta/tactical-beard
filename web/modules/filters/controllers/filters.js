@@ -39,7 +39,7 @@
                     },
 
                     limitPrice: function () {
-                        $scope.filters = filtersFactory.setLimitPrice($scope.filters.filters.priceFrom.value, $scope.filters.filters.priceTo.value);
+                        $scope.filters = filtersFactory.setLimitPrice($rootScope.rootScope.products.minPrice, $rootScope.rootScope.products.maxPrice);
                     },
 
                     toggleDiscountFilter: function () {
