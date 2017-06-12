@@ -7,7 +7,11 @@
         'STORAGES': {
             'PRODUCTS': 'products',
 
-            'CATEGORY_ID': 'categoryId'
+            'CATEGORY_ID': 'categoryId',
+
+            'CATEGORIES': 'categories',
+
+            'SUBCATEGORIES': 'subCategories'
         }
     });
 })();

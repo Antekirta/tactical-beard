@@ -10,7 +10,7 @@
             'translitFactory',
 
             function ($log, categoriesProvider, translitFactory) {
-                return categoriesProvider.getCategories()
+                return categoriesProvider.getCategoriesForLevel()
                     .then(
                         function (response) {
                             var dictionary = {};
@@ -23,6 +23,14 @@
                                 var transliterated = translitFactory.rusTolat(category[0].name);
 
                                 dictionary[transliterated] = category[0].category_id;
+
+                                if ( category[0].categories ) {
+                                    _.toArray(category[0].categories.categories).forEach(function (subCategory) {
+                                        transliterated = translitFactory.rusTolat(subCategory[0].name);
+
+                                        dictionary[transliterated] = subCategory[0].category_id;
+                                    });
+                                }
                             });
 
                             return dictionary;

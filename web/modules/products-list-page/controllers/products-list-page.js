@@ -16,9 +16,10 @@
         'statesFactory',
         'translitFactory',
         'categoriesDictionary',
+        'APP_PARAMS',
         'STATE_NAMES',
 
-        function ($rootScope, $scope, $log, $state, $interval, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, categoriesDictionary, STATE_NAMES) {
+        function ($rootScope, $scope, $log, $state, $interval, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, categoriesDictionary, APP_PARAMS, STATE_NAMES) {
             $rootScope.rootScope = {
                 products: {}
             };
@@ -99,8 +100,6 @@
 
                                 var productToSetImage = {};
 
-                                console.log('$scope.products: ', $scope.products);
-
                                 $scope.products = products;
 
                                 var stopInterval = $interval(function () {
@@ -115,7 +114,7 @@
                                     if (counter >= products.length) {
                                         $interval.cancel(stopInterval);
                                     }
-                                }, 100);
+                                }, APP_PARAMS.INTERVAL_BETWEEN_REQUESTS);
                             },
 
                             function (error) {

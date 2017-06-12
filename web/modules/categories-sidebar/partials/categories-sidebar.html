@@ -9,7 +9,7 @@
 
            data-ng-click="goToUIState({name: 'products-list', params: {categoryId: category[0].category_id, categoryName: category[0].name}}, !!category.subcategories)"
 
-           data-drop-down="{{!!category.subcategories}}">
+           data-drop-down="{{true}}">
             {{category[0].meta_title | lowercase}}
         </a>
         <ul data-ng-if="category.subcategories"

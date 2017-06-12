@@ -1,10 +1,10 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	var categoriesSidebar = angular.module('categoriesSidebar');
+    var categoriesSidebar = angular.module('categoriesSidebar');
 
-	categoriesSidebar.controller('categoriesSidebarCtrl', [
-	    '$scope',
+    categoriesSidebar.controller('categoriesSidebarCtrl', [
+        '$scope',
         '$log',
         '$state',
         '$stateParams',
@@ -13,17 +13,20 @@
         'translitFactory',
         'STATE_NAMES',
 
-        function($scope, $log, $state, $stateParams, categoriesProvider, statesFactory, translitFactory, STATE_NAMES) {
+        function ($scope, $log, $state, $stateParams, categoriesProvider, statesFactory, translitFactory, STATE_NAMES) {
             $scope.categories = [];
 
             $scope.goToUIState = function (state, shouldGo) {
-                if ( !shouldGo ) {
-                    $state.go(STATE_NAMES.CATEGORY, {categoryId: state.params.categoryId, categoryName: translitFactory.rusTolat(state.params.categoryName)});
+                if (!shouldGo) {
+                    $state.go(STATE_NAMES.CATEGORY, {
+                        categoryId: state.params.categoryId,
+                        categoryName: translitFactory.rusTolat(state.params.categoryName)
+                    });
                 }
             };
 
             categoriesProvider.getCategories()
-                // get categories
+            // get categories
                 .then(function (response) {
                     var categories = _.toArray(response.data.data.categories);
 
@@ -44,14 +47,14 @@
                     categories.forEach(function (category) {
                         categoriesProvider.getSubCategories(category[0].category_id)
                             .then(function (response) {
-                                if ( response.data.success ) {
+                                if (response.data.success) {
                                     var subcategories = _.toArray(response.data);
 
                                     category.subcategories = _.toArray(subcategories[1].categories);
                                 }
                             })
                             .catch(function (error) {
-                                // $log.error(error);
+                                $log.error(error);
                             });
                     });
 
