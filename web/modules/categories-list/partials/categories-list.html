@@ -1,10 +1,12 @@
-<a data-ui-sref="category({categoryId: 59})" data-ng-repeat="category in categories track by $index"
+<a data-ng-repeat="category in categories track by $index"
 
-     class="category-item">
+   data-ng-click="goToUICategoryState({name: 'products-list', params: {categoryId: category[0].category_id, categoryName: category[0].name}})"
+
+   class="category-item">
 	<span class="category-item_image-wrapper">
-		<img data-img-svg src="{{category[0].image}}" />
+		<img data-img-svg src="{{category[0].image}}"/>
 	</span>
-	<header class="category-item_header">{{category[0].meta_title}}</header>
+    <header class="category-item_header">{{category[0].meta_title}}</header>
 </a>
 
 <a href="#" class="categoriest-list_goods-on-comission">Товар на комиссии</a>

@@ -8,10 +8,20 @@
 
 		'$log',
 
+		'$state',
+
 		'categoriesProvider',
 
-		function($scope, $log, categoriesProvider) {
+		'translitFactory',
+
+		'STATE_NAMES',
+
+		function($scope, $log, $state, categoriesProvider, translitFactory, STATE_NAMES) {
 			$scope.categories = [];
+
+            $scope.goToUICategoryState = function (state) {
+				$state.go(STATE_NAMES.CATEGORY, {categoryId: state.params.categoryId, categoryName: translitFactory.rusTolat(state.params.categoryName)});
+            };
 
 			$scope.helpers = {
 				sortByOrder: function(a, b) {
