@@ -11,33 +11,47 @@ $product-title--inner-elements__padding: 0 30px
   margin-right: 150px
 
 .product-title
-  height: $product-title__height
+  position: relative
+  display: block
+  min-height: $product-title__height
+  padding: 0
   background-color: $light-brown
   font-family: $font-family-condensed-medium
   text-transform: uppercase
 
 .product-title__text
-  float: left
-  height: $product-title__height
+  display: inline-block
+  max-width: 600px
+  height: 100%
   padding: $product-title--inner-elements__padding
+  line-height: 100%
   font-size: $font-size-h3
 
 .product-title__in-stock
-  float: right
-  height: $product-title__height
+  position: absolute
+  display: flex
+  align-items: center
+  top: 0
+  right: 0
+  height: 100%
   padding: $product-title--inner-elements__padding
-  line-height: $product-title__height
   font-size: $font-size-h4
   color: $white
   &--in-stock
     background-color: $green
+
+.product-page__main-info-container
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  width: 100%
+  margin-top: 25px
 
 // gallery
 
 $product-gallery__height: 500px
 
 .product-gallery
-  float: left
   width: 400px
   min-height: $product-gallery__height
   margin-top: 25px
@@ -72,7 +86,6 @@ $product-gallery__height: 500px
 // product-info
 
 .product-info
-  float: right
   width: 370px
 
 // prices
@@ -90,11 +103,13 @@ $product-gallery__height: 500px
   text-transform: uppercase
   &--old-price
     background-color: $light-brown
-    .product-prices__price-value
-      text-decoration: line-through
   &--actual-price
     float: right
     background-color: $orange
+  &--crossed-out
+    text-decoration: line-through
+  &--solely-price
+    float: right
 
 .product-prices__price-header
   font-size: $font-size-h4

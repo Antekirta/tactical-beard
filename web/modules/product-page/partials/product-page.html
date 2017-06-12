@@ -4,90 +4,111 @@
     <header class="product-title">
         <h1 class="product-title__text">{{product.product_description[1].name}}</h1>
         <div class="product-title__in-stock"
-             data-ng-class="{'product-title__in-stock--in-stock': true}">{{product.stock_status || 'Нет на складе'}}</div>
+             data-ng-class="{'product-title__in-stock--in-stock': true}">{{product.stock_status || 'Нет на складе'}}
+        </div>
+
+        <div class="clearfix"></div>
     </header>
 
-    <figure class="product-gallery">
-        <image-popup></image-popup>
-        <div class="product-gallery__main-image-container">
-            <img src="{{product.image}}" data-load-image alt="" class="product-gallery__main-image">
-        </div>
-
-        <ul class="product-gallery__extra-images">
-            <li data-ng-repeat="image in product.images"
-                class="product-gallery__list-item">
-                <img data-load-image class="product-gallery__extra-image" src="{{image}}" alt="">
-            </li>
-        </ul>
-    </figure>
-
-    <div class="product-info">
-        <div class="product-prices">
-            <div class="product-prices__price-block product-prices__price-block--old-price">
-                <header class="product-prices__price-header">Старая цена</header>
-                <h2 class="product-prices__price-value">{{product.oldPrice}} РУБ.</h2>
-            </div>
-            <div data-ng-if="product.bestPrice" class="product-prices__price-block product-prices__price-block--actual-price">
-                <header class="product-prices__price-header">Новая цена</header>
-                <h2 class="product-prices__price-value">{{product.bestPrice}} РУБ.</h2>
+    <div class="product-page__main-info-container">
+        <figure class="product-gallery">
+            <image-popup></image-popup>
+            <div class="product-gallery__main-image-container">
+                <img src="{{product.image}}" data-load-image alt="" class="product-gallery__main-image">
             </div>
 
-            <div class="clearfix"></div>
-        </div>
+            <ul class="product-gallery__extra-images">
+                <li data-ng-repeat="image in product.images"
+                    class="product-gallery__list-item">
+                    <img data-load-image class="product-gallery__extra-image" src="{{image}}" alt="">
+                </li>
+            </ul>
+        </figure>
 
-        <div class="product-make-order">
-            <div class="product-count">
-                <div class="product-count__control product-count__control--decrease" data-ng-click="helpers.changeProductCount(false)">&#9660;</div>
-                <div class="product-count__value">{{productCount}}</div>
-                <div class="product-count__control product-count__control--increase" data-ng-click="helpers.changeProductCount(true)">&#9650;</div>
-            </div>
-            <div class="product-add-to-basket">
-                <div class="product-add-to-basket__image">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 50 42"><path d="M1121 108.998H1078.99C1077.33 108.998 1075.99 110.333 1075.99 111.997C1075.99 113.661 1077.33 114.996 1078.99 114.996H1079.34L1082.04 130.507C1082.3 131.937 1083.54 132.991 1084.99 132.991H1115C1116.46 132.991 1117.7 131.937 1117.96 130.507L1120.65 114.99600000000001H1121C1122.67 114.99600000000001 1124.01 113.66100000000002 1124.01 111.99700000000001C1124.01 110.33300000000001 1122.67 108.99800000000002 1121 108.99800000000002ZM1087.36 127.743C1087.31 127.743 1087.29 127.743 1087.24 127.743C1086.47 127.743 1085.81 127.133 1085.74 126.36L1084.99 116.613C1084.92 115.793 1085.56 115.066 1086.38 114.996C1087.2 114.926 1087.92 115.559 1087.99 116.378L1088.74 126.126C1088.81 126.946 1088.18 127.67200000000001 1087.36 127.74300000000001ZM1097 126.243C1097 127.06299999999999 1096.32 127.743 1095.5 127.743C1094.68 127.743 1094 127.06299999999999 1094 126.243V116.496C1094 115.676 1094.68 114.996 1095.5 114.996C1096.32 114.996 1097 115.676 1097 116.496ZM1106 126.243C1106 127.06299999999999 1105.32 127.743 1104.5 127.743C1103.68 127.743 1103 127.06299999999999 1103 126.243V116.496C1103 115.676 1103.68 114.996 1104.5 114.996C1105.32 114.996 1106 115.676 1106 116.496ZM1114.25 126.36C1114.18 127.133 1113.53 127.743 1112.75 127.743C1112.71 127.743 1112.68 127.743 1112.63 127.743C1111.8100000000002 127.672 1111.18 126.946 1111.25 126.12599999999999L1112 116.37799999999999C1112.07 115.55899999999998 1112.8 114.92599999999999 1113.62 114.99599999999998C1114.4399999999998 115.06599999999997 1115.07 115.79299999999998 1115 116.61299999999999ZM1084.97 107.498H1081.88L1084.24 97.16510000000001C1084.85 94.42370000000001 1087.27 92.50260000000002 1090.08 92.50260000000002H1094C1094 91.68250000000002 1094.68 91.00310000000002 1095.5 91.00310000000002H1104.5C1105.32 91.00310000000002 1106 91.68250000000002 1106 92.50260000000002H1109.92C1112.73 92.50260000000002 1115.14 94.42370000000001 1115.75 97.16510000000001L1118.12 107.498H1115.03L1112.85 97.8446C1112.52 96.4623 1111.32 95.5018 1109.9199999999998 95.5018H1105.9999999999998C1105.9999999999998 96.3217 1105.3199999999997 97.0012 1104.4999999999998 97.0012H1095.4999999999998C1094.6799999999998 97.0012 1093.9999999999998 96.32169999999999 1093.9999999999998 95.5018H1090.0799999999997C1088.6699999999996 95.5018 1087.4799999999998 96.4623 1087.1499999999996 97.8446Z " transform="matrix(1,0,0,1,-1075,-91)"></path></svg>
+        <div class="product-info">
+            <div class="product-prices">
+                <div class="product-prices__price-block product-prices__price-block--old-price"
+                     data-ng-class="{'product-prices__price-block--solely-price': !product.bestPrice}">
+                    <header class="product-prices__price-header"><span data-ng-if="product.bestPrice">Старая</span> цена</header>
+                    <h2 class="product-prices__price-value"
+                        data-ng-class="{'product-prices__price-block--crossed-out': product.bestPrice}">
+                        {{product.oldPrice}} РУБ.</h2>
                 </div>
-                <span class="product-add-to-basket__label" data-ng-click="basket.putProduct()">Добавить в корзину</span>
-            </div>
-
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="product-description">
-            <div class="product-description__header product-description__header--artistic"
-                 data-ng-click="helpers.changeDescription(descTypes.artictic.name)"
-                 data-ng-class="{'product-description__header--selected': descTypes.artictic.status}">Описание</div>
-
-            <div class="product-description__header product-description__header--technical"
-                 data-ng-click="helpers.changeDescription(descTypes.technical.name)"
-                 data-ng-class="{'product-description__header--selected': descTypes.technical.status}">Характеристики</div>
-
-            <div class="product-description__text-area">
-                <div class="product-description__artictic_desc"
-                     data-ng-show="descTypes.artictic.status"
-                     data-ng-bind-html="artDescription">
+                <div data-ng-if="product.bestPrice"
+                     class="product-prices__price-block product-prices__price-block--actual-price">
+                    <header class="product-prices__price-header">Новая цена</header>
+                    <h2 class="product-prices__price-value">{{product.bestPrice}} РУБ.</h2>
                 </div>
 
-                <div class="product-description__technical_desc"
-                     data-ng-show="descTypes.technical.status">
-                    <table class="product-description__table">
-                        <thead>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="product-make-order">
+                <div class="product-count">
+                    <div class="product-count__control product-count__control--decrease"
+                         data-ng-click="helpers.changeProductCount(false)">&#9660;
+                    </div>
+                    <div class="product-count__value">{{productCount}}</div>
+                    <div class="product-count__control product-count__control--increase"
+                         data-ng-click="helpers.changeProductCount(true)">&#9650;
+                    </div>
+                </div>
+                <div class="product-add-to-basket">
+                    <div class="product-add-to-basket__image">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 50 42">
+                            <path d="M1121 108.998H1078.99C1077.33 108.998 1075.99 110.333 1075.99 111.997C1075.99 113.661 1077.33 114.996 1078.99 114.996H1079.34L1082.04 130.507C1082.3 131.937 1083.54 132.991 1084.99 132.991H1115C1116.46 132.991 1117.7 131.937 1117.96 130.507L1120.65 114.99600000000001H1121C1122.67 114.99600000000001 1124.01 113.66100000000002 1124.01 111.99700000000001C1124.01 110.33300000000001 1122.67 108.99800000000002 1121 108.99800000000002ZM1087.36 127.743C1087.31 127.743 1087.29 127.743 1087.24 127.743C1086.47 127.743 1085.81 127.133 1085.74 126.36L1084.99 116.613C1084.92 115.793 1085.56 115.066 1086.38 114.996C1087.2 114.926 1087.92 115.559 1087.99 116.378L1088.74 126.126C1088.81 126.946 1088.18 127.67200000000001 1087.36 127.74300000000001ZM1097 126.243C1097 127.06299999999999 1096.32 127.743 1095.5 127.743C1094.68 127.743 1094 127.06299999999999 1094 126.243V116.496C1094 115.676 1094.68 114.996 1095.5 114.996C1096.32 114.996 1097 115.676 1097 116.496ZM1106 126.243C1106 127.06299999999999 1105.32 127.743 1104.5 127.743C1103.68 127.743 1103 127.06299999999999 1103 126.243V116.496C1103 115.676 1103.68 114.996 1104.5 114.996C1105.32 114.996 1106 115.676 1106 116.496ZM1114.25 126.36C1114.18 127.133 1113.53 127.743 1112.75 127.743C1112.71 127.743 1112.68 127.743 1112.63 127.743C1111.8100000000002 127.672 1111.18 126.946 1111.25 126.12599999999999L1112 116.37799999999999C1112.07 115.55899999999998 1112.8 114.92599999999999 1113.62 114.99599999999998C1114.4399999999998 115.06599999999997 1115.07 115.79299999999998 1115 116.61299999999999ZM1084.97 107.498H1081.88L1084.24 97.16510000000001C1084.85 94.42370000000001 1087.27 92.50260000000002 1090.08 92.50260000000002H1094C1094 91.68250000000002 1094.68 91.00310000000002 1095.5 91.00310000000002H1104.5C1105.32 91.00310000000002 1106 91.68250000000002 1106 92.50260000000002H1109.92C1112.73 92.50260000000002 1115.14 94.42370000000001 1115.75 97.16510000000001L1118.12 107.498H1115.03L1112.85 97.8446C1112.52 96.4623 1111.32 95.5018 1109.9199999999998 95.5018H1105.9999999999998C1105.9999999999998 96.3217 1105.3199999999997 97.0012 1104.4999999999998 97.0012H1095.4999999999998C1094.6799999999998 97.0012 1093.9999999999998 96.32169999999999 1093.9999999999998 95.5018H1090.0799999999997C1088.6699999999996 95.5018 1087.4799999999998 96.4623 1087.1499999999996 97.8446Z "
+                                  transform="matrix(1,0,0,1,-1075,-91)"></path>
+                        </svg>
+                    </div>
+                    <span class="product-add-to-basket__label"
+                          data-ng-click="basket.putProduct()">Добавить в корзину</span>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="product-description">
+                <div class="product-description__header product-description__header--artistic"
+                     data-ng-click="helpers.changeDescription(descTypes.artictic.name)"
+                     data-ng-class="{'product-description__header--selected': descTypes.artictic.status}">Описание
+                </div>
+
+                <div class="product-description__header product-description__header--technical"
+                     data-ng-click="helpers.changeDescription(descTypes.technical.name)"
+                     data-ng-class="{'product-description__header--selected': descTypes.technical.status}">
+                    Характеристики
+                </div>
+
+                <div class="product-description__text-area">
+                    <div class="product-description__artictic_desc"
+                         data-ng-show="descTypes.artictic.status"
+                         data-ng-bind-html="artDescription">
+                    </div>
+
+                    <div class="product-description__technical_desc"
+                         data-ng-show="descTypes.technical.status">
+                        <table class="product-description__table">
+                            <thead>
                             <tr>
                                 <td>Характеристика</td>
                                 <td>Значение</td>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr data-ng-repeat="attribute in product.techDescription ">
                                 <td>{{attribute[1].name}}</td>
                                 <td>{{attribute[1].text}}</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="clearfix"></div>
+    <!--<div class="clearfix"></div>-->
 
     <!--blank line-->
     <div class="container streak"></div>
