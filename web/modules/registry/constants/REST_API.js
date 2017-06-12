@@ -18,6 +18,10 @@
 
 		'SEARCH_PRODUCTS_BY_NAME': site + '/index.php?route=rest/product_admin/products&search=',
 
-		'MANUFACTURERS': site + '/api/rest_admin/manufacturers'
+		'MANUFACTURERS': site + '/api/rest_admin/manufacturers',
+
+		'SESSION': site + '/api/rest/session',
+
+		'GUEST': site + '/api/rest/guest'
 	});
 })();
