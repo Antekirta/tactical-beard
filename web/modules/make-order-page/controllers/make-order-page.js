@@ -11,7 +11,6 @@
         'checkoutProvider',
 
         function ($scope, session, checkoutProvider) {
-
             /**
              * STEPS TO CHECKOUT
              * 0) GET api/rest/session DONE
@@ -30,7 +29,7 @@
              * 13) PUT    api/rest/confirm    Update order status, empty cart, and clear session data.
              */
 
-            var params = {
+            const params = {
                 session: ''
             };
 

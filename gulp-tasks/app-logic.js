@@ -6,6 +6,9 @@ module.exports = function (options) {
     return function () {
         return gulp.src(options.src)
             .pipe($.concat(options.concat))
+            .pipe($.babel({
+                presets: ['es2015']
+            }))
             .pipe($.uglify())
             .pipe(gulp.dest(options.dest));
     };

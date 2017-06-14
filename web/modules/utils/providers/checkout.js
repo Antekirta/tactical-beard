@@ -17,7 +17,9 @@
                         dataType: 'jsonp',
 
                         headers: {
-                            'X-Oc-Restadmin-Id': REST_API.X_OC_RESTADMIN_ID
+                            'X-Oc-Restadmin-Id': REST_API.X_OC_RESTADMIN_ID,
+
+                            'Content-Type': 'application/x-www-form-urlencoded'
                         }
                     };
 

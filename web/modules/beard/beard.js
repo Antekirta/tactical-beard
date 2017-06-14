@@ -60,13 +60,15 @@
 
 		'$locationProvider',
 
+		'$httpProvider',
+
 		'mainMenuProvider',
 
 		'REST_API',
 
 		'STATES',
 
-		function($stateProvider, $locationProvider, mainMenuProvider, REST_API, STATES) {
+		function($stateProvider, $locationProvider, $httpProvider, mainMenuProvider, REST_API, STATES) {
 			//delete '#' sign in URL
 			$locationProvider.html5Mode(true);
 
@@ -74,6 +76,13 @@
 			STATES.forEach(function(state) {
 				$stateProvider.state(state);
 			});
+
+			// because of https://stackoverflow.com/questions/33660712/angularjs-post-fails-response-for-preflight-has-invalid-http-status-code-404
+
+            $httpProvider.defaults.headers.common = {};
+            $httpProvider.defaults.headers.post = {};
+            $httpProvider.defaults.headers.put = {};
+            $httpProvider.defaults.headers.patch = {};
 
 			//configure mainMenu provider
 			//mainMenuProvider.mainMenuItemsDestination = REST_API.MAIN_MENU.ITEMS;
