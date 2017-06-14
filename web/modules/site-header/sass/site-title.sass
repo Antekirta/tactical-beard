@@ -1,0 +1,40 @@
+@import "../../beard/sass/beard"
+
+.site-title
+  align-self: center
+  margin-top: 100px
+  transform: translateX(100px)
+  @media all and (max-width: 1400px)
+    margin-top: 0
+    align-self: center
+    flex-basis: 100%
+    order: 1
+    text-align: center
+    transform: translateX(0)
+  @media all and (max-width: 1100px)
+    transform: translate(20px, 30px)
+    align-self: flex-start
+    flex-basis: 100%
+    order: 0
+    text-align: left
+  @media all and (max-width: 500px)
+    align-self: center
+    transform: translate(0, 30px)
+
+.site-title__text
+  font-family: $font-family-condensed-bold
+  color: $light-brown
+  text-shadow: $dark-brown 1px 1px 1px
+  font-size: $font-size-big
+  font-weight: $font-weight-bold
+  text-transform: uppercase
+  @media all and (max-width: 700px)
+    font-size: $font-size-h3
+  @media all and (max-width: 550px)
+    font-size: $font-size-h4
+  @media all and (max-width: 450px)
+    font-size: $font-size-h5
+  @media all and (max-width: 380px)
+    font-size: $font-size-h6
+  @media all and (max-width: 350px)
+    font-size: $font-size-p - 2

@@ -1,0 +1,27 @@
+@import "../../beard/sass/beard"
+
+.site-header__lang-container
+  display: none
+  padding: 20px 0 10px 0
+  .langs-list
+    width: 120px
+    margin: 10px auto 0 auto
+    .lang-item
+      position: relative
+      display: inline-block
+      width: 29px
+      height: 17px
+      margin: 0 2px
+      transform: scale(.7, .7)
+      transition: .6s
+      cursor: pointer
+      filter: grayscale(100%)
+      &.ru
+        background-image: url(#{$path-to-images}icons/flags/ru.png)
+      &.en
+        background-image: url(#{$path-to-images}icons/flags/en.png)
+      &.pl
+        background-image: url(#{$path-to-images}icons/flags/pl.png)
+      &.active
+        transform: scale(1, 1)
+        filter: grayscale(0)

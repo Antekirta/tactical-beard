@@ -1,0 +1,18 @@
+<div data-lang-toggler
+
+     class="site-header__lang-container">
+    <ul class="langs-list">
+        <li data-ng-repeat="lang in languages | orderBy: 'order'"
+
+            class="lang-item"
+
+            data-ng-class="[lang.short, {
+			      'active': lang.active
+			    }]"
+
+            data-ng-click="langHelpers.toggleLanguage(lang)"
+
+            title="{{lang.fullName}}"
+        ></li>
+    </ul>
+</div>
