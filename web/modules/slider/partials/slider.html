@@ -1,17 +1,20 @@
-<ul class="slide-container">
+<ul class="main-slider__slides-container">
 	<li
 		ng-repeat="slide in slides"
 
-		class="slide">
+		class="main-slider__slide">
 
-		<div class="slide-description">
-			<header>{{slide.header}}</header>
-			<div class="slide-content">
-				<div class="before">
-					<img src="img/icons/logo-without-title.png">
+		<div class="main-slider__slide-description">
+			<header class="main-slider__slide-header">{{slide.header}}</header>
+
+			<div class="main-slider__slide-content">
+				<div class="main-slider__slide-content-before">
+					<img class="main-slider__logo" src="img/icons/logo-without-title.png">
 				</div>
-				<div class="slide-text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.</div>
-				<a class="more-button">Узнать больше <span class="inline-right-arrow">&rarr;</span></a>
+
+				<div class="main-slider__slide-text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.</div>
+
+				<a class="main-slider__read-more">Узнать больше <span class="inline-right-arrow">&rarr;</span></a>
 			</div>
 		</div>
 
@@ -19,12 +22,12 @@
 </ul>
 
 <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-			class="slider__carousel-arrow slider__carousel-arrow--back"
+			class="slider__carousel-arrow main-slider__slider__carousel-arrow slider__carousel-arrow--back"
 			ng-click="changeSlide('back')" >
 </ng-include>
 
 <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-			class="slider__carousel-arrow slider__carousel-arrow--forward"
+			class="slider__carousel-arrow main-slider__slider__carousel-arrow slider__carousel-arrow--forward"
 			ng-click="changeSlide('forward')" >
 </ng-include>
 

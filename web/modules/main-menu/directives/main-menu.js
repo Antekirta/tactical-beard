@@ -1,19 +1,41 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	var mainMenu = angular.module('mainMenu');
+    var mainMenu = angular.module('mainMenu');
 
-	mainMenu.directive('mainMenu', function() {
-		return {
-			restrict: 'A',
+    mainMenu.directive('mainMenu', [
+        'EVENTS',
 
-			controller: 'mainMenuCtrl',
+        function (EVENTS) {
+            return {
+                restrict: 'A',
 
-			templateUrl: 'modules/main-menu/partials/main-menu.html',
+                controller: 'mainMenuCtrl',
 
-			link: function(scope, element, attrs) {
+                templateUrl: 'modules/main-menu/partials/main-menu.html',
 
-			}
-		};
-	});
+                link: function (scope, element, attrs) {
+                    const classes = {
+                        toggler: 'main-menu__toggler',
+
+                        link: 'main-menu__link',
+
+                        opened: 'main-menu--opened'
+                    };
+
+                    const toggler = element.find('.' + classes.toggler);
+
+                    const link = element.find('.' + classes.link);
+
+                    const handlers = {
+                        togglemenu: function () {
+                            $(element).toggleClass(classes.opened);
+                        }
+                    };
+
+                    toggler.on(EVENTS.ELEMENT.CLICK, handlers.togglemenu);
+                    link.on(EVENTS.ELEMENT.CLICK, handlers.togglemenu);
+                }
+            };
+        }]);
 })();

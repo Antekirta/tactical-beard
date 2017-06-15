@@ -5,91 +5,137 @@
   @include bottom-line()
   @include bottom-triangle()
 
-#main-slider
+.main-slider
   position: relative
   width: 100%
   height: 450px
   margin-top: 0
   overflow: hidden
-  .slide-container
-    position: relative
+
+.main-slider__slides-container
+  position: relative
+  width: 100%
+  height: 100%
+
+.main-slider__slide
+  position: absolute
+  height: 100%
+  padding: 30px
+  box-sizing: border-box
+  background-size: cover
+  list-style-type: none
+  @include fullTrans(.5s)
+  &:first-child
+    background-image: url('../../../../../img/slider/slides/slide1.jpg')
+  &:nth-child(2)
+    background-image: url('../../../../../img/slider/slide2.jpg')
+
+.main-slider__slide-description
+  position: absolute
+  bottom: -5px
+  right: 180px
+  width: 530px
+  height: 200px
+  @media all and (max-width: 800px)
     width: 100%
-    height: 100%
-    .slide
-      position: absolute
-      height: 100%
-      padding: 30px
-      box-sizing: border-box
-      background-size: cover
-      list-style-type: none
-      @include fullTrans(.5s)
-      &:first-child
-        background-image: url('../../../../../img/slider/slides/slide1.jpg')
-      &:nth-child(2)
-        background-image: url('../../../../../img/slider/slide2.jpg')
-      .slide-description
-        position: absolute
-        bottom: -5px
-        right: 180px
-        width: 530px
-        height: 200px
-        header
-          position: relative
-          display: inline-block
-          width: 360px
-          height: 61px
-          margin-left: 100px
-          padding: 10px 20px 10px 50px
-          background-color: $dark-brown
-          color: $white
-          font-family: $font-family-condensed-bold
-          font-size: $font-size-h3
-          text-transform: uppercase
-        .slide-content
-          position: relative
-          height: 1134px
-          padding: 20px
-          background-color: $light-brown
-          .before
-            position: absolute
-            top: -52px
-            right: 43px
-            img
-              width: 56px
-              height: 49px
-          &:before
-            position: absolute
-            display: block
-            content: ''
-            width: 0
-            height: 0
-            top: -63px
-            border-bottom: solid 63px #d19563
-            border-left: solid 36px transparent
-            border-right: solid 36px transparent
-            right: 35px
-          .slide-text
-            line-height: 20px
-            font-family: $font-family-light
-            font-size: $font-size-p
-          .more-button
-            position: absolute
-            right: 28px
-            width: 200px
-            height: 40px
-            box-sizing: border-box
-            background-color: $white
-            text-align: center
-            line-height: 33px
-            font-size: $font-size-h6
-            font-weight: $font-weight-bold
-            color: $light-brown
-            cursor: pointer
-            @include fullTrans(.2s)
-            &:hover
-              color: $brown
+    left: 0
+    height: 300px
+
+.main-slider__slide-header
+  position: relative
+  display: inline-block
+  width: 360px
+  height: 61px
+  margin-left: 100px
+  padding: 10px 20px 10px 50px
+  background-color: $dark-brown
+  color: $white
+  font-family: $font-family-condensed-bold
+  font-size: $font-size-h3
+  text-transform: uppercase
+  @media all and (max-width: 800px)
+    margin-left: 0
+    font-size: $font-size-h4
+  @media all and (max-width: 500px)
+    margin-left: 0
+    font-size: $font-size-h5
+
+.main-slider__slide-content
+  position: relative
+  height: 1134px
+  padding: 20px
+  background-color: $light-brown
+  &:before
+    position: absolute
+    display: block
+    content: ''
+    width: 0
+    height: 0
+    top: -63px
+    border-bottom: solid 63px #d19563
+    border-left: solid 36px transparent
+    border-right: solid 36px transparent
+    right: 35px
+    @media all and (max-width: 800px)
+      display: none
+
+.main-slider__slide-content-before
+  position: absolute
+  top: -52px
+  right: 43px
+  @media all and (max-width: 800px)
+    display: none
+
+.main-slider__logo
+  width: 56px
+  height: 49px
+  @media all and (max-width: 800px)
+    display: none
+
+.main-slider__slide-text
+  line-height: 20px
+  font-family: $font-family-light
+  font-size: $font-size-p
+  @media all and (max-width: 800px)
+    line-height: $font-size-p
+    font-size: $font-size-p - 2
+
+.main-slider__read-more
+  position: absolute
+  right: 28px
+  width: 200px
+  height: 40px
+  box-sizing: border-box
+  background-color: $white
+  text-align: center
+  line-height: 33px
+  font-size: $font-size-h6
+  font-weight: $font-weight-bold
+  color: $light-brown
+  cursor: pointer
+  @include fullTrans(.2s)
+  &:hover
+    color: $brown
+  @media all and (max-width: 800px)
+    line-height: $font-size-p
+    position: relative
+    right: 0
+    left: 50px
+    top: 20px
+    padding: 10px
 
 $slide-arrow-offset: 85px
+
+.main-slider__slider__carousel-arrow.slider__carousel-arrow
+  .carousel-arrow
+    @media all and (max-width: 1000px)
+      width: 100px
+      height: 100vh
+      top: 0
+      background-color: transparent
+    .carousel-arrow__icon
+      @media all and (max-width: 1000px)
+        display: none
 
 .slider__carousel-arrow
   .carousel-arrow
@@ -98,8 +144,12 @@ $slide-arrow-offset: 85px
 .slider__carousel-arrow--back
   .carousel-arrow
     left: $slide-arrow-offset
+    @media all and (max-width: 1000px)
+      left: 0
 
 .slider__carousel-arrow--forward
   .carousel-arrow
     right: $slide-arrow-offset
     transform: scale(-1)
+    @media all and (max-width: 1000px)
+      right: 0

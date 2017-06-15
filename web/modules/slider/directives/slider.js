@@ -75,7 +75,7 @@
 
 						}
 
-						$('.slide-container').animate({left: offsets.current + 'px'});
+						$('.main-slider__slides-container').animate({left: offsets.current + 'px'});
 					};
 
 					scope.setSlidesParams();

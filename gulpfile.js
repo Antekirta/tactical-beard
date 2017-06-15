@@ -32,7 +32,9 @@
     const VENDOR_CSS = [
         VENDOR + '/bootstrap/dist/css/bootstrap.min.css',
 
-        VENDOR + '/font-awesome/css/font-awesome.min.css'
+        VENDOR + '/font-awesome/css/font-awesome.min.css',
+
+        VENDOR + '/animate.css/animate.min.css'
     ];
 
     const APP_JS_SRC = [
@@ -48,7 +50,9 @@
 
         VENDOR + '/angular-ui-router/release/angular-ui-router.min.js',
 
-        VENDOR + '/lodash/lodash.js'
+        VENDOR + '/lodash/lodash.js',
+
+        VENDOR + '/wow/dist/wow.min.js'
     ];
 
     function lazyRequireTask(taskName, path, options) {

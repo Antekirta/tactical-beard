@@ -15,36 +15,108 @@
       transform: translateY(-90px)
 
 .main-menu
-  display: inline-block
+  position: relative
   height: 100%
-  ul
-    padding: 25px 0 0 0
-    li
-      display: inline-block
-      margin: 0 15px
-      a
-        display: block
-        position: relative
-        text-transform: uppercase
-        text-decoration: none
-        letter-spacing: -.8px
-        font-family: $font-family-condensed-bold
-        font-size: $font-size-h3
-        font-weight: $font-weight-bold
-        color: $brown
-        &:after
-          position: absolute
-          display: block
-          content: ''
-          left: calc(50% - 40px)
-          bottom: -3px
-          width: 0
-          height: 0
-          border-top: solid 6px transparent
-          border-left: solid 40px transparent
-          border-right: solid 40px transparent
-        &:hover
-          color: $dark-brown
-          text-decoration: none
-          &:after
-            border-top-color: $dark-brown
+  &--opened
+    .main-menu__toggler
+      position: fixed
+      top: 30px
+      right: 30px
+      z-index: 2
+    .main-menu__toggler-stick
+      &--top
+        transform: translateY(24px) rotate(-45deg)
+      &--middle
+        display: none
+      &--bottom
+        transform: translateY(24px) rotate(45deg)
+    .main-menu__list
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      position: fixed
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      z-index: 1
+      background-color: $light-brown
+    .main-menu__list-item
+      display: block
+      margin: 10px 0
+      text-align: center
+    .main-menu__link
+      color: $white
+
+.main-menu__toggler
+  display: none
+  position: absolute
+  width: 50px
+  height: 50px
+  top: 20px
+  right: 20px
+  background-color: $dark-brown
+  @media all and (max-width: 1000px)
+    display: block
+  @media all and (max-width: 500px)
+    position: relative
+    margin: auto
+    right: 0
+    display: block
+
+.main-menu__toggler-stick
+  position: absolute
+  width: 30px
+  height: 3px
+  left: 10px
+  background-color: $light-brown
+  border-radius: 1px
+  transition: .3s
+  &--top
+    transform: translateY(18px)
+  &--middle
+    transform: translateY(24px)
+  &--bottom
+    transform: translateY(30px)
+
+.main-menu__list
+  padding: 25px 0 0 0
+  @media all and (max-width: 1000px)
+    display: none
+
+
+.main-menu__list-item
+  display: inline-block
+  margin: 0 15px
+
+.main-menu__link
+  display: block
+  position: relative
+  text-transform: uppercase
+  text-decoration: none
+  letter-spacing: -.8px
+  font-family: $font-family-condensed-bold
+  font-size: $font-size-h3
+  font-weight: $font-weight-bold
+  color: $brown
+  @media all and (max-width: 1500px)
+    font-size: $font-size-h4
+  @media all and (max-width: 1100px)
+    font-size: $font-size-h5
+  &:after
+    position: absolute
+    display: block
+    content: ''
+    left: calc(50% - 40px)
+    bottom: -3px
+    width: 0
+    height: 0
+    border-top: solid 6px transparent
+    border-left: solid 40px transparent
+    border-right: solid 40px transparent
+  &:hover
+    color: $dark-brown
+    text-decoration: none
+    &:after
+      border-top-color: $dark-brown
