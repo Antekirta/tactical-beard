@@ -32,7 +32,7 @@
     const VENDOR_CSS = [
         VENDOR + '/bootstrap/dist/css/bootstrap.min.css',
 
-        VENDOR + '/font-awesome/css/font-awesome.min.css',
+        // VENDOR + '/font-awesome/css/font-awesome.min.css',
 
         VENDOR + '/animate.css/animate.min.css'
     ];

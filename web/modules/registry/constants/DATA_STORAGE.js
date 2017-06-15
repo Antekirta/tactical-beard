@@ -11,7 +11,7 @@
 
             'CATEGORIES': 'categories',
 
-            'SUBCATEGORIES': 'subCategories'
+            'SUBCATEGORIES': 'subCategories' 
         }
     });
 })();

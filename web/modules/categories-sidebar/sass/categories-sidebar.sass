@@ -4,13 +4,18 @@
 
 .categories-sidebar
   position: absolute
-  float: left
+  top: 0
+  //float: left
   z-index: 1
   width: 300px
   padding: 20px 30px
   background-color: $middle-brown
   transform: translate(100px, 119px)
-
+  @media all and (max-width: 1400px)
+    transform: translate(0, 119px)
+  @media all and (max-width: 500px)
+    width: 100vw
+    text-align: center
 
 .categories-sidebar__heading
   color: $white

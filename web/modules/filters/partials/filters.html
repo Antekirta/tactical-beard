@@ -5,91 +5,105 @@
 
            data-ng-model="filters.filters.searchByName.value"
 
-           class="filters__input filters__input--search"
+           class="filters__input filters__input--search filters__input--search-by-name"
 
            placeholder="Название товара"
     />
 
-    <dropdown-select class="dropdown-select filters__dropdown-select"  data-items-list="manufacturersList" data-placeholder="Производитель">Производитель</dropdown-select>
+    <dropdown-select class="dropdown-select filters__dropdown-select filters__dropdown-select--manufacturer"  data-items-list="manufacturersList" data-placeholder="Производитель">Производитель</dropdown-select>
 
-    <label class="filters__label">Цена от</label>
-    <input type="number"
+    <span class="filters__group-wrapper">
+        <label class="filters__label">Цена от</label>
+        <input type="number"
 
-           name="price-from"
+               name="price-from"
 
-           data-ng-model="rootScope.products.minPrice"
+               data-ng-model="rootScope.products.minPrice"
 
-           class="filters-input filters-input__number filters-input__number--min"
+               class="filters-input filters-input__number filters-input__number--min"
 
-           min="0"
+               min="0"
 
-           step="500"
-    />
+               step="500"
+        />
+    </span>
 
-    <label class="filters__label">Цена до</label>
-    <input type="number"
+    <span class="filters__group-wrapper">
+        <label class="filters__label">Цена до</label>
+        <input type="number"
 
-           data-ng-model="rootScope.products.maxPrice"
+               data-ng-model="rootScope.products.maxPrice"
 
-           class="filters-input filters-input__number filters-input__number--max"
+               class="filters-input filters-input__number filters-input__number--max"
 
-           step="500"
+               step="500"
 
-           min="0"
-    />
+               min="0"
+        />
+    </span>
 
     <br>
     <br>
 
-    <label for="filters-input--order-price-cheaper" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
-           data-ng-class="{'filters__label--checked': filters.order.cheaper.status}"
-           data-ng-click="events.chooseOrder(filters.order.cheaper.name)" >Дешевле</label>
-    <input type="checkbox"
+    <span class="filters__group-wrapper">
+        <label for="filters-input--order-price-cheaper" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
+               data-ng-class="{'filters__label--checked': filters.order.cheaper.status}"
+               data-ng-click="events.chooseOrder(filters.order.cheaper.name)" >Дешевле</label>
+        <input type="checkbox"
 
-           id="filters-input--order-price-cheaper"
+               id="filters-input--order-price-cheaper"
 
-           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--order-price-cheaper"
-    />
+               class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--order-price-cheaper"
+        />
+    </span>
 
-    <label for="filters-input--order-price-expensive" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
-           data-ng-class="{'filters__label--checked': filters.order.expensive.status}"
-           data-ng-click="events.chooseOrder(filters.order.expensive.name)">Дороже</label>
-    <input type="checkbox"
+    <span class="filters__group-wrapper">
+        <label for="filters-input--order-price-expensive" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
+               data-ng-class="{'filters__label--checked': filters.order.expensive.status}"
+               data-ng-click="events.chooseOrder(filters.order.expensive.name)">Дороже</label>
+        <input type="checkbox"
 
-           id="filters-input--order-price-expensive"
+               id="filters-input--order-price-expensive"
 
-           class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--order-price-expensive"
-    />
+               class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--order-price-expensive"
+        />
+    </span>
 
     <span class="filters__filters-checkbox-block">
-        <label for="filters-input--discounted-products" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
-               data-ng-class="{'filters__label--checked': filters.filters.discounted.status}"
-               data-ng-click="events.filters.toggleDiscountFilter()">По скидке</label>
-        <input type="checkbox"
+        <span class="filters__group-wrapper">
+            <label for="filters-input--discounted-products" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
+                   data-ng-class="{'filters__label--checked': filters.filters.discounted.status}"
+                   data-ng-click="events.filters.toggleDiscountFilter()">По скидке</label>
+            <input type="checkbox"
 
-               id="filters-input--discounted-products"
+                   id="filters-input--discounted-products"
 
-               class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--discounted-products"
-        />
+                   class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--discounted-products"
+            />
+        </span>
 
-        <label for="filters-input--novelties" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
-               data-ng-class="{'filters__label--checked': filters.filters.novelties.status}"
-               data-ng-click="events.filters.toggleNoveltiesFilter()">Новинки</label>
-        <input type="checkbox"
+        <span class="filters__group-wrapper">
+            <label for="filters-input--novelties" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
+                   data-ng-class="{'filters__label--checked': filters.filters.novelties.status}"
+                   data-ng-click="events.filters.toggleNoveltiesFilter()">Новинки</label>
+            <input type="checkbox"
 
-               id="filters-input--novelties"
+                   id="filters-input--novelties"
 
-               class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--novelties"
-        />
+                   class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--novelties"
+            />
+        </span>
 
-        <label for="filters-input--in-stock" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
-               data-ng-class="{'filters__label--checked': filters.filters.inStock.status}"
-               data-ng-click="events.filters.toggleInStockFilter()">В наличии</label>
-        <input type="checkbox"
+        <span class="filters__group-wrapper">
+            <label for="filters-input--in-stock" class="filters__label filters__label--checkbox filters__label--checkbox-without-mark"
+                   data-ng-class="{'filters__label--checked': filters.filters.inStock.status}"
+                   data-ng-click="events.filters.toggleInStockFilter()">В наличии</label>
+            <input type="checkbox"
 
-               id="filters-input--in-stock"
+                   id="filters-input--in-stock"
 
-               class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--in-stock"
-        />
+                   class="filters-input filters-input__checkbox filters-input__checkbox--without-mark filters-input--in-stock"
+            />
+        </span>
     </span>
 </ng-form>

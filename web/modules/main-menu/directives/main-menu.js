@@ -30,11 +30,15 @@
                     const handlers = {
                         togglemenu: function () {
                             $(element).toggleClass(classes.opened);
+                        },
+
+                        removeMenu: function () {
+                            $(element).removeClass(classes.opened);
                         }
                     };
 
                     toggler.on(EVENTS.ELEMENT.CLICK, handlers.togglemenu);
-                    link.on(EVENTS.ELEMENT.CLICK, handlers.togglemenu);
+                    link.on(EVENTS.ELEMENT.CLICK, handlers.removeMenu);
                 }
             };
         }]);

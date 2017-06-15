@@ -1,8 +1,12 @@
 @import "../../beard/sass/beard"
 
 .grid-row.site-footer
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: space-between
   position: relative
-  height: 275px
+  min-height: 275px
   padding: 30px 0
   background-color: $middle-brown
   color: $light-brown
@@ -15,6 +19,18 @@
     top: 0
     background-color: $middle-brown
     z-index: -1
+  @media all and (max-width: 650px)
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+.site-footer__column
+  padding: 0 50px
+  flex-basis: 320px
+  @media all and (max-width: 650px)
+    flex-basis: auto
+    padding: 10px 50px
+    text-align: center
 
 .site-footer__column-header
   margin-bottom: 10px
@@ -49,13 +65,22 @@
 
 .logo.site-footer__logo
   text-align: right
+  @media all and (max-width: 1000px)
+    flex-basis: 100%
+    text-align: center
+  @media all and (max-width: 500px)
+    display: none
   &:before
     border-bottom-color: $middle-brown
     transform: translate(-14px,-114px)
+    @media all and (max-width: 1000px)
+      transform: translate(0, 0)
   .logo__icon
     width: 153px
     height: 161px
     transform: translate(0px, -100px)
+    @media all and (max-width: 1000px)
+      transform: translate(0, 0)
   .logo__class-1
     fill: $white
   .logo__class-2

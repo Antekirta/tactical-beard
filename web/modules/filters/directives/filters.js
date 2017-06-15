@@ -12,16 +12,14 @@
             templateUrl: 'modules/filters/partials/filters.html',
 
             link: function(scope, element, attrs) {
-                controlPriceRange();
-
                 function controlPriceRange() {
-                    var classes = {
+                    const classes = {
                         inputMin: 'filters-input__number--min',
 
                         inputMax: 'filters-input__number--max'
                     };
 
-                    var inputs = {
+                    const inputs = {
                         min: angular.element(element[0].querySelectorAll('.' + classes.inputMin)[0]),
 
                         max: angular.element(element[0].querySelectorAll('.' + classes.inputMax)[0])
@@ -39,6 +37,8 @@
                         }
                     });
                 }
+
+
             }
         };
     }]);

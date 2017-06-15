@@ -7,6 +7,10 @@
 		return 'modules/' + moduleName + '/partials/' + moduleName + '.html';
 	};
 
+    var pathToInnerPage = function pathToPartial(page) {
+        return 'modules/inner-pages/partials/' + page + '.html';
+    };
+
 	var pathToController = function(moduleName) {
 		return 'modules/' + moduleName + '/controllers/' + moduleName + '.html';
 	};
@@ -105,6 +109,30 @@
 			url: '/info/:infoType/:pageName/',
 			templateUrl: pathToPartial('info-page')
 		},
+
+        {
+            name: 'about',
+            url: '/about/',
+            templateUrl: pathToInnerPage('about')
+        },
+
+		{
+            name: 'delivery-and-payment',
+            url: '/delivery-and-payment/',
+            templateUrl: pathToInnerPage('delivery-and-payment')
+        },
+
+		{
+            name: 'wholesale',
+            url: '/wholesale/',
+            templateUrl: pathToInnerPage('wholesale')
+        },
+
+        {
+            name: 'contacts',
+            url: '/contacts/',
+            templateUrl: pathToInnerPage('contacts')
+        },
 
 		{
 			name: 'bookmarks-page',

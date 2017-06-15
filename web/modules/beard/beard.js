@@ -77,12 +77,14 @@
 				$stateProvider.state(state);
 			});
 
+			console.log('STATES: ', STATES);
+
 			// because of https://stackoverflow.com/questions/33660712/angularjs-post-fails-response-for-preflight-has-invalid-http-status-code-404
 
-            $httpProvider.defaults.headers.common = {};
-            $httpProvider.defaults.headers.post = {};
-            $httpProvider.defaults.headers.put = {};
-            $httpProvider.defaults.headers.patch = {};
+            // $httpProvider.defaults.headers.common = {};
+            // $httpProvider.defaults.headers.post = {};
+            // $httpProvider.defaults.headers.put = {};
+            // $httpProvider.defaults.headers.patch = {};
 
 			//configure mainMenu provider
 			//mainMenuProvider.mainMenuItemsDestination = REST_API.MAIN_MENU.ITEMS;

@@ -5,13 +5,16 @@ $page-title--inner-elements__padding: 0 30px
 
 .page-title
   display: inline-block
-  height: $page-title__height
+  min-height: $page-title__height
   background-color: $light-brown
   font-family: $font-family-condensed-medium
   text-transform: uppercase
 
 .page-title__header
+  display: flex
+  align-items: center
+  justify-content: flex-start
   float: left
-  height: $page-title__height
+  min-height: $page-title__height
   padding: $page-title--inner-elements__padding
   font-size: $font-size-h3

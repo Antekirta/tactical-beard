@@ -1,10 +1,16 @@
 @import "../../../beard/sass/beard"
 
-.container.products-carousel
+.products-carousel
   position: relative
   height: 450px
   padding: 20px 215px
   background-color: $light-brown
+  @media all and (max-width: 1000px)
+    padding: 20px 100px
+  @media all and (max-width: 700px)
+    height: 550px
+  @media all and (max-width: 500px)
+    padding: 20px 75px
 
 .products-carousel__list-container
   max-width: 970px
@@ -14,20 +20,27 @@
   width: 999999px
   @include fullTrans(.5s)
 
+
 $products-carousel-arrow-offset: 160px
 
 .products-carousel__carousel-arrow
   .carousel-arrow
     top: 210px
+    @media all and (max-width: 700px)
+      top: 310px
 
 .products-carousel__carousel-arrow--back
   .carousel-arrow
     left: $products-carousel-arrow-offset
+    @media all and (max-width: 1000px)
+      left: 20px
 
 .products-carousel__carousel-arrow--forward
   .carousel-arrow
     right: $products-carousel-arrow-offset
     transform: scale(-1)
+    @media all and (max-width: 1000px)
+      right: 20px
 
 .products-carousel--both-prices
   .product-item__basic-price
@@ -36,7 +49,7 @@ $products-carousel-arrow-offset: 160px
   .product-item__discount-price
     display: block
 
-.container.products-carousel--novelties
+.products-carousel--novelties
   background-color: $white
   .common-section-header__link
     border-color: $middle-brown

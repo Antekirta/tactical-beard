@@ -9,81 +9,86 @@ $svg-icon-height: 160px
   justify-content: space-between
   flex-wrap: wrap
   padding: 50px 115px
-  .category-item
-    max-width: $item-size
-    flex-basis: $item-size
-    height: $item-size
-    margin: 0 0 30px 0
-    padding: 0 10px
-    box-sizing: border-box
-    outline: solid 1px $middle-brown
-    @include bgsize(100%, auto)
-    background-repeat: no-repeat
-    text-align: center
-    @include no-link-decor()
-    .category-item_image-wrapper
-      display: flex
-      align-items: center
-      justify-content: center
-      height: 200px
-      @include fullTrans(.3s)
-      svg
-        stroke: $weapon-brown
-      #category-item_svg_automate
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_pistols
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_other-weapons
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_grenades
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_accums
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_accessories
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_spare-parts
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_outside-spare-parts
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_aims
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_glasses
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_helmets
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_gloves
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_flac-ackets
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_holsters
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_backpacks
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_belts
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_knifes
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_radios
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_clothes
-        @include size($svg-icon-width, $svg-icon-height)
-      #category-item_svg_patches
-        @include size($svg-icon-width, $svg-icon-height)
-        fill: $weapon-brown
+  @media all and (max-width: 770px)
+    justify-content: center
+    padding: 10px 20px 50px 20px
+
+.categoriest-list__link
+  max-width: $item-size
+  flex-basis: $item-size
+  height: $item-size
+  margin: 0 0 30px 0
+  padding: 0 10px
+  box-sizing: border-box
+  outline: solid 1px $middle-brown
+  @include bgsize(100%, auto)
+  background-repeat: no-repeat
+  text-align: center
+  @include no-link-decor()
+  cursor: pointer
+  &:hover
+    outline: solid 2px $middle-brown
     .category-item_header
-      height: 70px
-      font-family: $font-family-condensed-medium
-      font-size: $font-size-h4
-      font-weight: $font-weight-bold
-      text-transform: uppercase
-      letter-spacing: .5px
-      color: $middle-brown
-    &:hover
-      outline: solid 2px $middle-brown
-      .category-item_image-wrapper
-        @include blur(1px)
-      .category-item_header
-        text-decoration: underline
+      text-decoration: underline
+
+.categoriest-list__image-wrapper
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 200px
+  @include fullTrans(.3s)
+  svg
+    stroke: $weapon-brown
+  #category-item_svg_automate
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_pistols
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_other-weapons
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_grenades
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_accums
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_accessories
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_spare-parts
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_outside-spare-parts
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_aims
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_glasses
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_helmets
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_gloves
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_flac-ackets
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_holsters
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_backpacks
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_belts
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_knifes
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_radios
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_clothes
+    @include size($svg-icon-width, $svg-icon-height)
+  #category-item_svg_patches
+    @include size($svg-icon-width, $svg-icon-height)
+    fill: $weapon-brown
+
+.category-item_header
+  height: 70px
+  font-family: $font-family-condensed-medium
+  font-size: $font-size-h4
+  font-weight: $font-weight-bold
+  text-transform: uppercase
+  letter-spacing: .5px
+  color: $middle-brown
 
 
 $goods-on-comission-height: 75px

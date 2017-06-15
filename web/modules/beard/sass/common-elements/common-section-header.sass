@@ -2,6 +2,13 @@
 
 .common-section-header
   height: 100px
+  @media all and (max-width: 700px)
+    height: 180px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
 
 .common-section-header__h2
   display: inline-block
@@ -25,3 +32,5 @@
     color: $middle-brown
     opacity: .8
     text-decoration: none
+  @media all and (max-width: 700px)
+    margin: 0 0 20px 0

@@ -2,7 +2,7 @@
 
 .filters
   position: absolute
-  width: 765px
+  width: 800px
   top: $filters-offset-top
   left: 500px
   z-index: 1
@@ -14,6 +14,16 @@
   letter-spacing: .3px
   color: $dark-brown
   @include bottom-line()
+  @media all and (max-width: 1400px)
+    top: 120px
+    left: 300px
+    width: 100%
+  @media all and (max-width: 1000px)
+    top: 120px
+    left: 300px
+    width: 100%
+  @media all and (max-width: 500px)
+    left: 0
 
 $input-margin-right: 10px
 
@@ -21,6 +31,11 @@ $input-margin-right: 10px
 
 .filters__filters-checkbox-block
   margin-left: $input-margin-right * 6
+
+.filters__group-wrapper
+  @media all and (max-width: 1000px)
+    display: block
+    //margin-bottom: 10px
 
 // labels
 
@@ -48,6 +63,12 @@ $input-margin-right: 10px
 
 .filters__input--search
   width: 200px
+
+
+.filters__input--search-by-name
+  @media all and (max-width: 1000px)
+    display: block
+    margin-bottom: 10px
 
 // type="number"
 
@@ -84,3 +105,8 @@ input.filters-input__checkbox
     outline: none
     border: solid 1px $dark-brown
     @include placeholder($font-family-condensed-medium, $dark-brown)
+
+.filters__dropdown-select--manufacturer
+  @media all and (max-width: 1000px)
+    display: block
+    margin-bottom: 10px
