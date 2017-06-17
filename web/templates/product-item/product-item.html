@@ -1,13 +1,13 @@
-<figure class="product-item__figure"
+<a href="#" class="product-item__figure"
         data-ng-click="goToUIProductState({productId: product.id, productName: product.product_description[1].name, categoryName: product.category})">
     <ng-include data-src="'templates/image-preloader/image-preloader.html'"></ng-include>
     <img data-load-image src="{{product.image}}" alt="{{product.product_description[1].name}}"
          class="product-item__image">
     <div class="product-item__novelty-plate">Новое</div>
-</figure>
+</a>
 
 <div class="product-item__image-header">
-    <a class="product-item__link"
+    <a href="#" class="product-item__link"
        data-ng-click="goToUIProductState({productId: product.id, productName: product.product_description[1].name, categoryName: product.category})">
         {{product.product_description[1].name}}
     </a>

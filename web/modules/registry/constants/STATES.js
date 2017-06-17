@@ -134,6 +134,24 @@
             templateUrl: pathToInnerPage('contacts')
         },
 
+        {
+            name: 'repair',
+            url: '/repair/',
+            templateUrl: pathToInnerPage('repair')
+        },
+
+        {
+            name: 'rent',
+            url: '/rent/',
+            templateUrl: pathToInnerPage('rent')
+        },
+
+        {
+            name: 'arrange-game',
+            url: '/arrange-game/',
+            templateUrl: pathToInnerPage('arrange-game')
+        },
+
 		{
 			name: 'bookmarks-page',
 			url: '/bookmarks/',
