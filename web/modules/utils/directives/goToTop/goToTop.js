@@ -6,13 +6,17 @@
             '$rootScope',
 
             function ($rootScope) {
-                const handlers = {
-                    goToTop: function () {
-                        $('body, html').animate({scrollTop: 0}, 500);
-                    }
-                };
+                return {
+                    link: function () {
+                        const handlers = {
+                            goToTop: function () {
+                                $('body, html').animate({scrollTop: 200}, 500);
+                            }
+                        };
 
-                $rootScope.$on('$stateChangeSuccess', handlers.goToTop);
+                        $rootScope.$on('$stateChangeSuccess', handlers.goToTop);
+                    }
+                }
             }
         ]);
 })();

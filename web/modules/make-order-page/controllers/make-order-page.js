@@ -34,16 +34,88 @@
             };
 
             session.then(
-                    function (response) {
-                       params.session = response;
+                function (response) {
+                    return params.session = response.data.data.session;
+                }
+            )
+                .then(
+                    function () {
+                        return checkoutProvider.createGuest(params.session)
+                            .then(
+                                function (response) {
+
+                                }
+                            );
                     }
                 )
                 .then(
                     function () {
-                        checkoutProvider.createGuest()
+                        return checkoutProvider.setGuestShipping(params.session)
                             .then(
                                 function (response) {
-                                    console.log('session response: ', response);
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.getShippingMethods(params.session)
+                            .then(
+                                function (response) {
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.setShippingMethods(params.session)
+                            .then(
+                                function (response) {
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.getPaymentMethods(params.session)
+                            .then(
+                                function (response) {
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.setPaymentMethod(params.session)
+                            .then(
+                                function (response) {
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.confirm(params.session)
+                            .then(
+                                function (response) {
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.pay(params.session)
+                            .then(
+                                function (response) {
+                                }
+                            );
+                    }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.finish(params.session)
+                            .then(
+                                function (response) {
                                 }
                             );
                     }

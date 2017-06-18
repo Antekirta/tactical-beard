@@ -10,29 +10,24 @@
             'REST_API',
 
             function ($http, $q, REST_API) {
-                var deferred = $q.defer();
+                var req = {
+                    method: 'GET',
 
-                deferred.resolve('8ktnrub884mnu416vn9373tmd6');
+                    url: REST_API.SESSION,
 
-                return deferred.promise;
+                    dataType: 'json',
 
-                // var req = {
-                //     method: 'GET',
-                //
-                //     url: REST_API.SESSION,
-                //
-                //     dataType: 'jsonp',
-                //
-                //     headers: {
-                //         'X-Oc-Restadmin-Id': REST_API.X_OC_RESTADMIN_ID
-                //     }
-                // };
-                //
-                // return $http(req)
-                //     .then(
-                //         function (response) {
-                //             console.log('response: ', response);
-                //         }
-                //     );
+                    headers: {
+                        'X-Oc-Merchant-Id': REST_API.X_OC_MERCHANT_ID,
+                    }
+                };
+
+                return $http(req)
+                    .then(
+                        function (response) {
+                            return response;
+                            console.log('session response: ', response);
+                        }
+                    );
             }]);
 })();

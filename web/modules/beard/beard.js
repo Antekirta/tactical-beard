@@ -52,7 +52,9 @@
 
 		'sidebarAdditional',
 
-		'enterPopup'
+		'enterPopup',
+
+		'privateOffice'
 	]);
 
 	beard.config([
@@ -76,8 +78,6 @@
 			STATES.forEach(function(state) {
 				$stateProvider.state(state);
 			});
-
-			console.log('STATES: ', STATES);
 
 			// because of https://stackoverflow.com/questions/33660712/angularjs-post-fails-response-for-preflight-has-invalid-http-status-code-404
 

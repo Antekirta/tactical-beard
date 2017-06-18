@@ -82,7 +82,7 @@
                     },
 
                     getProductsBySearch: function (search) {
-                        req.url = REST_API.SEARCH_PRODUCTS_BY_NAME + search;
+                        req.url = REST_API.RE + search;
 
                         return $http(req).then(
                             function(response) {

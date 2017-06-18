@@ -8,6 +8,8 @@
 	registry.constant('REST_API', {
 		'X_OC_RESTADMIN_ID': '4562314431343',
 
+		'X_OC_MERCHANT_ID': '874567456465746',
+
 		'BASKET': site + '/api/rest/cart',
 
 		'CATEGORIES': site + '/api/rest_admin/categories',
@@ -20,8 +22,22 @@
 
 		'MANUFACTURERS': site + '/api/rest_admin/manufacturers',
 
-		'SESSION': site + '/api/rest/session',
+		'SESSION': site + '/index.php?route=feed/rest_api/session',
 
-		'GUEST': site + '/api/rest/guest'
+		'GUEST': site + '/index.php?route=rest/guest/guest',
+
+		'GUEST_SHIPPING': site + '/index.php?route=rest/guest_shipping/guestshipping',
+
+		'GET_SHIPPING_METHODS': site + '/index.php?route=rest/shipping_method/shippingmethods',
+
+		'SET_SHIPPING_METHOD': site + '/index.php?route=rest/shipping_method/shippingmethods',
+
+		'GET_PAYMENT_METHODS': site + '/index.php?route=rest/payment_method/payments',
+
+		'SET_PAYMENT_METHOD': site + '/index.php?route=rest/payment_method/payments',
+
+		'CONFIRM_ORDER': site + '/index.php?route=rest/confirm/confirm',
+
+		'PAY_ORDER': site + '/index.php?route=rest/confirm/confirm&page=pay'
 	});
 })();
