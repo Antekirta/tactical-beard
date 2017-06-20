@@ -12,8 +12,6 @@
 
                 function ($http, $q, REST_API) {
                     const req = {
-                        url: REST_API.GUEST,
-
                         dataType: 'json',
 
                         headers: {
@@ -24,14 +22,25 @@
                     return {
                         createGuest: function (session) {
                             req.method = 'POST';
-                            req.url = REST_API.GUEST;
+                            // req.url = REST_API.GUEST;
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-
+                                "firstname": "Demo1",
+                                "lastname": "User",
+                                "email": "nash1@vipmail.hur",
+                                "telephone": "1-541-754-3010",
+                                "fax": "1-541-754-3010",
+                                "company": "string",
+                                "city": "Berlin",
+                                "address_1": "Demo",
+                                "address_2": "Demo",
+                                "country_id": "81",
+                                "postcode": "3333",
+                                "zone_id": "1256"
                             };
 
-                            return $http(req, JSON.stringify(data))
+                            return $http.post(REST_API.GUEST, JSON.stringify(data), req)
                                 .then(
                                     function (response) {
                                         console.log('createGuest response: ', response);
@@ -45,7 +54,14 @@
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-
+                                "firstname": "Demo",
+                                "lastname": "User",
+                                "city": "Berlin",
+                                "address_1": "Demo",
+                                "address_2": "Demo",
+                                "country_id": "81",
+                                "postcode": "3333",
+                                "zone_id": "1256"
                             };
 
                             return $http(req, JSON.stringify(data))
