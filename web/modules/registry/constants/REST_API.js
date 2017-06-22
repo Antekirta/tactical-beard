@@ -24,6 +24,8 @@
 
 		'SESSION': site + '/index.php?route=feed/rest_api/session',
 
+		'CART': site + '/index.php?route=rest/cart/cart',
+
 		'GUEST': site + '/index.php?route=rest/guest/guest',
 
 		'GUEST_SHIPPING': site + '/index.php?route=rest/guest_shipping/guestshipping',

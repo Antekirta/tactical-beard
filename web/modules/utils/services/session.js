@@ -26,7 +26,6 @@
                     .then(
                         function (response) {
                             return response;
-                            console.log('session response: ', response);
                         }
                     );
             }]);

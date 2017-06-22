@@ -10,7 +10,9 @@
 
         'checkoutProvider',
 
-        function ($scope, session, checkoutProvider) {
+        'basketProvider',
+
+        function ($scope, session, checkoutProvider, basketProvider) {
             /**
              * STEPS TO CHECKOUT
              * 0) GET api/rest/session DONE
@@ -38,6 +40,16 @@
                     return params.session = response.data.data.session;
                 }
             )
+                .then(
+                    function () {
+                        return basketProvider.getProducts(params.session)
+                            .then(
+                                function (response) {
+
+                                }
+                            );
+                    }
+                )
                 .then(
                     function () {
                         return checkoutProvider.createGuest(params.session)

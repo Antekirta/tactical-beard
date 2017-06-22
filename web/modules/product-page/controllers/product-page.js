@@ -14,6 +14,8 @@
 
 		'$sce',
 
+		'session',
+
 		'productsProvider',
 
 		'basketFactory',
@@ -22,7 +24,7 @@
 
 		'STATE_NAMES',
 
-		function($scope, $log, $state, $stateParams, $sce, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
+		function($scope, $log, $state, $stateParams, $sce, session, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
 	        // basketFactory.client.deleteAllProducts();
 
             $scope.product = {};
@@ -85,9 +87,12 @@
                         price: $scope.product.bestPrice || $scope.product.oldPrice
                     };
 
-                    basketFactory.client.putProduct(product);
-
-                    // $state.go(STATE_NAMES.BASKET);
+                    session
+                        .then(
+                            function (response) {
+                                basketFactory.client.putProduct(product, response.data.data.session);
+                            }
+                        );
                 }
             };
 

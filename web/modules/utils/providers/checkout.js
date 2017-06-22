@@ -49,8 +49,6 @@
                         },
 
                         setGuestShipping: function (session) {
-                            req.method = 'POST';
-                            req.url = REST_API.GUEST_SHIPPING;
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
@@ -64,7 +62,7 @@
                                 "zone_id": "1256"
                             };
 
-                            return $http(req, JSON.stringify(data))
+                            return $http.post(REST_API.GUEST_SHIPPING, data, req)
                                 .then(
                                     function (response) {
                                         console.log('setGuestShipping response: ', response);
