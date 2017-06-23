@@ -1,6 +1,10 @@
 (function () {
     'use strict';
 
+    /**
+     * SERVER SIDE BASKET PROVIDER
+     */
+
     angular.module('utils')
         .provider('basketProvider', function () {
             this.$get = [
@@ -10,7 +14,9 @@
 
                 'REST_API',
 
-                function ($http, $q, REST_API) {
+                'LOCALSTORAGE',
+
+                function ($http, $q, REST_API, LOCALSTORAGE) {
                     const req = {
                         dataType: 'json',
 
@@ -23,6 +29,8 @@
                         getProducts: function (session) {
                             req.headers['X-Oc-Session'] = session;
 
+                            console.log('getProducts session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', session);
+
                             return $http.get(REST_API.CART, req)
                                 .then(
                                     function (response) {
@@ -32,9 +40,13 @@
                         },
 
                         putProduct: function (product, session) {
-                            req.headers['X-Oc-Session'] = session;
+                            if ( !localStorage.getItem(LOCALSTORAGE.SESSION) ) {
+                                localStorage.setItem(LOCALSTORAGE.SESSION, session);
+                            }
 
-                            console.log('session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', session);
+                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCALSTORAGE.SESSION);
+
+                            console.log('putProduct session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', localStorage.getItem(LOCALSTORAGE.SESSION));
 
                             let item = {
                                 'product_id': product.id,
@@ -48,8 +60,25 @@
                                         console.log('basketProvider putProduct response: ', response);
                                     }
                                 );
+                        },
 
-                            console.log('basketProvider addItem product: ', product);
+                        deleteItem: function (id) {
+                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCALSTORAGE.SESSION);
+
+                            let item = {
+                                'product_id': id
+                            };
+
+                            return $http.delete(REST_API.CART, item, req)
+                                .then(
+                                    function (response) {
+                                        console.log('basketProvider deleteItem response: ', response);
+                                    }
+                                );
+                        },
+                        
+                        emptyCart: function () {
+                            
                         }
                     };
                 }

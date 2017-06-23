@@ -12,7 +12,7 @@
             'basketProvider',
 
             function ($rootScope, LOCALSTORAGE, EVENTS, basketProvider) {
-                var basket;
+                let basket;
 
                 if (localStorage.getItem(LOCALSTORAGE.BASKET)) {
                     basket = JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET)) || [];
@@ -27,7 +27,7 @@
                         },
 
                         getProductById: function (id) {
-                            var index = _.findIndex(basket, function (product) {
+                            let index = _.findIndex(basket, function (product) {
                                 return product.id === id;
                             });
 
@@ -39,7 +39,7 @@
                         },
 
                         putProduct: function (product, session) {
-                            var index = _.findIndex(basket, function (element) {
+                            let index = _.findIndex(basket, function (element) {
                                 return element.id === product.id;
                             });
 
@@ -55,7 +55,7 @@
                         },
 
                         updateQuantity: function (id, quantity) {
-                            var index = _.findIndex(basket, function (product) {
+                            let index = _.findIndex(basket, function (product) {
                                 return product.id === id;
                             });
 
@@ -71,13 +71,15 @@
                         },
 
                         deleteProductById: function (id) {
-                            var index = _.findIndex(basket, function (product) {
+                            let index = _.findIndex(basket, function (product) {
                                 return product.id === id;
                             });
 
                             basket.splice(index, 1);
 
                             this.updateBasketStorage();
+
+                            basketProvider.deleteItem(id);
                         },
 
                         updateBasketStorage: function () {
@@ -93,7 +95,7 @@
                         },
 
                         getProductById: function (id) {
-                            var index = _.findIndex(basket, function (product) {
+                            let index = _.findIndex(basket, function (product) {
                                 return product.id === id;
                             });
 

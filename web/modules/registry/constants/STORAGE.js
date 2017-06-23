@@ -3,6 +3,8 @@
 
     angular.module('registry')
         .constant('LOCALSTORAGE', {
-            BASKET: 'basket'
+            BASKET: 'basket',
+
+            SESSION: 'session'
         });
 })();
