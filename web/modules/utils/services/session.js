@@ -7,10 +7,12 @@
 
             '$q',
 
+            '$log',
+
             'REST_API',
 
-            function ($http, $q, REST_API) {
-                var req = {
+            function ($http, $q, $log, REST_API) {
+                const req = {
                     method: 'GET',
 
                     url: REST_API.SESSION,
@@ -26,6 +28,10 @@
                     .then(
                         function (response) {
                             return response;
+                        },
+
+                        function (error) {
+                            $log.error('Session service error: ', error);
                         }
                     );
             }]);

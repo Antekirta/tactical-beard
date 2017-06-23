@@ -58,6 +58,7 @@
                                 .then(
                                     function (response) {
                                         console.log('basketProvider putProduct response: ', response);
+                                        return response;
                                     }
                                 );
                         },

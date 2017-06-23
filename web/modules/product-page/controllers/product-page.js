@@ -25,8 +25,6 @@
 		'STATE_NAMES',
 
 		function($scope, $log, $state, $stateParams, $sce, session, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
-	        // basketFactory.client.deleteAllProducts();
-
             $scope.product = {};
 
             $scope.productCount = 1;
@@ -90,7 +88,7 @@
                     session
                         .then(
                             function (response) {
-                                basketFactory.client.putProduct(product, response.data.data.session);
+                                basketFactory.put.product(product, response.data.data.session);
                             }
                         );
                 }

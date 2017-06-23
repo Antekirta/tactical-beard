@@ -34,7 +34,7 @@
 			var helpers = {
 				basket: {
 					setBasketLength: function () {
-                        $scope.basketLength = basketFactory.client.getBasketLength();
+                        $scope.basketLength = basketFactory.get.basketLength();
                     }
 				}
 			};
@@ -47,7 +47,7 @@
 				}
             };
 
-            $scope.basketLength = basketFactory.client.getBasketLength();
+            $scope.basketLength = basketFactory.get.basketLength();
 
 			$scope.$on(EVENTS.BASKET_EVENTS, helpers.basket.setBasketLength);
 	}]);

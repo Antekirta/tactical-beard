@@ -5,105 +5,106 @@
         .factory('basketFactory', [
             '$rootScope',
 
+            '$log',
+
             'LOCALSTORAGE',
 
             'EVENTS',
 
             'basketProvider',
 
-            function ($rootScope, LOCALSTORAGE, EVENTS, basketProvider) {
-                let basket;
+            function ($rootScope, $log, LOCALSTORAGE, EVENTS, basketProvider) {
+                let basket = unitBasket();
 
-                if (localStorage.getItem(LOCALSTORAGE.BASKET)) {
-                    basket = JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET)) || [];
-                } else {
-                    basket = [];
+                function unitBasket() {
+                    if (localStorage.getItem(LOCALSTORAGE.BASKET)) {
+                        return JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET)) || [];
+                    }
+
+                    return [];
+                }
+
+                function updateBasketStorage() {
+                    localStorage.setItem(LOCALSTORAGE.BASKET, JSON.stringify(basket));
+
+                    $rootScope.$broadcast(EVENTS.BASKET_EVENTS, {});
+                }
+
+                function updateQuantity(id, quantity) {
+                    let index = _.findIndex(basket, function (product) {
+                        return product.id === id;
+                    });
+
+                    basket[index].quantity += quantity;
+
+                    updateBasketStorage();
                 }
 
                 return {
-                    client: {
-                        getAllProducts: function () {
+                    get: {
+                        allProducts: function () {
                             return basket;
                         },
 
-                        getProductById: function (id) {
+                        basketLength: function () {
+                            return _.toArray(JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET))).length;
+                        },
+
+                        productById: function (id) {
                             let index = _.findIndex(basket, function (product) {
                                 return product.id === id;
                             });
 
                             return basket[index];
                         },
+                    },
 
-                        getBasketLength: function () {
-                            return _.toArray(JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET))).length;
-                        },
+                    put: {
+                        product: function (product, session) {
+                            basketProvider.putProduct(product, session)
+                                .then(
+                                    function () {
+                                        putProductOnClient(product);
+                                    },
 
-                        putProduct: function (product, session) {
-                            let index = _.findIndex(basket, function (element) {
-                                return element.id === product.id;
-                            });
+                                    function (error) {
+                                        $log.error('Basket factory put product error: ', error);
+                                    }
+                                );
 
-                            if (index !== -1) {
-                                this.updateQuantity(product.id, product.quantity);
-                            } else {
-                                basket.push(product);
+                            function putProductOnClient(product) {
+                                let productAlreadyInBasket = Boolean(_.find(basket, function (element) {
+                                    return element.id === product.id;
+                                }));
+
+                                if (productAlreadyInBasket) {
+                                    updateQuantity(product.id, product.quantity);
+                                } else {
+                                    basket.push(product);
+                                }
+
+                                updateBasketStorage();
                             }
+                        }
+                    },
 
-                            basketProvider.putProduct(product, session);
-
-                            this.updateBasketStorage();
-                        },
-
-                        updateQuantity: function (id, quantity) {
-                            let index = _.findIndex(basket, function (product) {
-                                return product.id === id;
-                            });
-
-                            basket[index].quantity += quantity;
-
-                            this.updateBasketStorage();
-                        },
-
-                        deleteAllProducts: function () {
+                    delete: {
+                        allProducts: function () {
                             basket = [];
 
-                            this.updateBasketStorage();
+                            updateBasketStorage();
                         },
 
-                        deleteProductById: function (id) {
+                        productById: function (id) {
                             let index = _.findIndex(basket, function (product) {
                                 return product.id === id;
                             });
 
                             basket.splice(index, 1);
 
-                            this.updateBasketStorage();
+                            updateBasketStorage();
 
                             basketProvider.deleteItem(id);
-                        },
-
-                        updateBasketStorage: function () {
-                            localStorage.setItem(LOCALSTORAGE.BASKET, JSON.stringify(basket));
-
-                            $rootScope.$broadcast(EVENTS.BASKET_EVENTS, {});
-                        }
-                    },
-
-                    server: {
-                        getAllProducts: function () {
-                            return basket;
-                        },
-
-                        getProductById: function (id) {
-                            let index = _.findIndex(basket, function (product) {
-                                return product.id === id;
-                            });
-
-                            return basket[index];
-                        },
-
-                        putProduct: function (product) {
-                            basket.push(product);
                         }
                     }
                 };

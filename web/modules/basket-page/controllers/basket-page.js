@@ -43,7 +43,7 @@
 
                     $scope.basketProducts.splice(index, 1);
 
-                    basketFactory.client.deleteProductById(id);
+                    basketFactory.delete.productById(id);
 
                     $scope.helpers.updateTotal();
                 },
