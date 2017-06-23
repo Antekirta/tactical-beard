@@ -14,9 +14,9 @@
 
                 'REST_API',
 
-                'LOCALSTORAGE',
+                'LOCAL_STORAGE',
 
-                function ($http, $q, REST_API, LOCALSTORAGE) {
+                function ($http, $q, REST_API, LOCAL_STORAGE) {
                     const req = {
                         dataType: 'json',
 
@@ -40,13 +40,13 @@
                         },
 
                         putProduct: function (product, session) {
-                            if ( !localStorage.getItem(LOCALSTORAGE.SESSION) ) {
-                                localStorage.setItem(LOCALSTORAGE.SESSION, session);
-                            }
+                            // if ( !localStorage.getItem(LOCAL_STORAGE.SESSION) ) {
+                            //     localStorage.setItem(LOCAL_STORAGE.SESSION, session);
+                            // }
 
-                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCALSTORAGE.SESSION);
+                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCAL_STORAGE.SESSION);
 
-                            console.log('putProduct session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', localStorage.getItem(LOCALSTORAGE.SESSION));
+                            console.log('putProduct session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', localStorage.getItem(LOCAL_STORAGE.SESSION));
 
                             let item = {
                                 'product_id': product.id,
@@ -64,7 +64,7 @@
                         },
 
                         deleteItem: function (id) {
-                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCALSTORAGE.SESSION);
+                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCAL_STORAGE.SESSION);
 
                             let item = {
                                 'product_id': id

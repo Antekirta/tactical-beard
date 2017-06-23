@@ -11,12 +11,10 @@
 
             'REST_API',
 
-            function ($http, $q, $log, REST_API) {
+            'LOCAL_STORAGE',
+
+            function ($http, $q, $log, REST_API, LOCAL_STORAGE) {
                 const req = {
-                    method: 'GET',
-
-                    url: REST_API.SESSION,
-
                     dataType: 'json',
 
                     headers: {
@@ -24,15 +22,33 @@
                     }
                 };
 
-                return $http(req)
-                    .then(
-                        function (response) {
-                            return response;
-                        },
+                return {
+                    getCurrentSession: function () {
+                        let session = localStorage.getItem(LOCAL_STORAGE.SESSION);
 
-                        function (error) {
-                            $log.error('Session service error: ', error);
+                        if ( session ) {
+                            let deferred = $q.defer();
+
+                            deferred.resolve(session);
+
+                            return deferred.promise;
                         }
-                    );
+
+                        return $http.get(REST_API.SESSION, req)
+                            .then(
+                                function (response) {
+                                    session = response.data.data.session;
+
+                                    localStorage.setItem(LOCAL_STORAGE.SESSION, response.data.data.session);
+
+                                    return session;
+                                }
+                            );
+                    },
+
+                    finishCurrentSession: function () {
+                        localStorage.removeItem(LOCAL_STORAGE.SESSION);
+                    }
+                };
             }]);
 })();

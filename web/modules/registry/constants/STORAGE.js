@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('registry')
-        .constant('LOCALSTORAGE', {
+        .constant('LOCAL_STORAGE', {
             BASKET: 'basket',
 
             SESSION: 'session'

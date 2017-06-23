@@ -35,7 +35,7 @@
                 session: ''
             };
 
-            session.then(
+            session.getCurrentSession().then(
                 function (response) {
                     return params.session = response.data.data.session;
                 }

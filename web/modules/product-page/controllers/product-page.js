@@ -85,10 +85,11 @@
                         price: $scope.product.bestPrice || $scope.product.oldPrice
                     };
 
-                    session
+                    session.getCurrentSession()
                         .then(
-                            function (response) {
-                                basketFactory.put.product(product, response.data.data.session);
+                            function (session) {
+                                console.log('product page session.getCurrentSession() response', session);
+                                basketFactory.put.product(product, session);
                             }
                         );
                 }

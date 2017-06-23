@@ -6,12 +6,12 @@
     basketPage.controller('basketPageCtrl', [
         '$scope',
         '$log',
-        'LOCALSTORAGE',
+        'LOCAL_STORAGE',
         'productsProvider',
         'basketFactory',
 
-        function($scope, $log, LOCALSTORAGE, productsProvider, basketFactory) {
-            var basket = JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET)) || [];
+        function($scope, $log, LOCAL_STORAGE, productsProvider, basketFactory) {
+            var basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
             $scope.basketProducts = [];
 

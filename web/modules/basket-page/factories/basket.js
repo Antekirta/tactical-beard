@@ -7,25 +7,25 @@
 
             '$log',
 
-            'LOCALSTORAGE',
+            'LOCAL_STORAGE',
 
             'EVENTS',
 
             'basketProvider',
 
-            function ($rootScope, $log, LOCALSTORAGE, EVENTS, basketProvider) {
+            function ($rootScope, $log, LOCAL_STORAGE, EVENTS, basketProvider) {
                 let basket = unitBasket();
 
                 function unitBasket() {
-                    if (localStorage.getItem(LOCALSTORAGE.BASKET)) {
-                        return JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET)) || [];
+                    if (localStorage.getItem(LOCAL_STORAGE.BASKET)) {
+                        return JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
                     }
 
                     return [];
                 }
 
                 function updateBasketStorage() {
-                    localStorage.setItem(LOCALSTORAGE.BASKET, JSON.stringify(basket));
+                    localStorage.setItem(LOCAL_STORAGE.BASKET, JSON.stringify(basket));
 
                     $rootScope.$broadcast(EVENTS.BASKET_EVENTS, {});
                 }
@@ -47,7 +47,7 @@
                         },
 
                         basketLength: function () {
-                            return _.toArray(JSON.parse(localStorage.getItem(LOCALSTORAGE.BASKET))).length;
+                            return _.toArray(JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET))).length;
                         },
 
                         productById: function (id) {
