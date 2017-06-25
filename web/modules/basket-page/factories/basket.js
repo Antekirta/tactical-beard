@@ -52,7 +52,7 @@
                                                 function (response) {
                                                     $log.info('Basket factory get allProducts response: ', response);
 
-                                                    return response.success;
+                                                    return response;
                                                 }
                                             );
                                     }
@@ -119,8 +119,8 @@
                                 );
                         },
 
-                        productById: function (id) {
-                            basketProvider.deleteItem(id)
+                        productById: function (id, serverBasketKeys) {
+                            basketProvider.deleteItem(serverBasketKeys[id])
                                 .then(
                                     function () {
                                         deleteProductOnClient(id);

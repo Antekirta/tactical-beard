@@ -85,7 +85,7 @@
                                 );
                         },
 
-                        deleteItem: function (id) {
+                        deleteItem: function (key) {
                             return session.getCurrentSession()
                                 .then(
                                     function (session) {
@@ -96,9 +96,8 @@
                                     function (session) {
                                         req.headers['X-Oc-Session'] = session;
 
-                                        // random key for a while
                                         req.data = {
-                                            key: 30
+                                            key: key
                                         };
 
                                         return $http.delete(REST_API.CART, req)

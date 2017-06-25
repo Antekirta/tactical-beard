@@ -11,13 +11,16 @@
         function ($scope, $log, LOCAL_STORAGE, productsProvider, basketFactory) {
             let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
+            // contains pairs id: key, where id is product_id and key is key of product in cart
+            let serverBasketKeys = {};
+
             basketFactory.get.allProducts()
                 .then(
-                    function (products) {
-                        $log.log('basket page allProducts: ', products);
+                    function (response) {
+                        $log.log('basket page allProducts: ', response);
 
-                        if ( products.success ) {
-                            fillLocalBasketFromServerCart(products.data.products);
+                        if ( response.success ) {
+                            fillProductsKeysObject(response.data.products);
                         }
                     },
 
@@ -26,10 +29,7 @@
                     }
                 );
 
-            function fillLocalBasketFromServerCart(cart) {
-                console.log('fillLocalBasketFromServerCart cart: ', cart);
-            }
-
+            // Be careful when rename it - there is watcher on this value!
             $scope.basketProducts = [];
 
             $scope.total = 0;
@@ -73,7 +73,7 @@
 
                     $scope.basketProducts.splice(index, 1);
 
-                    basketFactory.delete.productById(id);
+                    basketFactory.delete.productById(id, serverBasketKeys);
 
                     $scope.helpers.updateTotal();
                 },
@@ -107,8 +107,10 @@
 
             $scope.$watch('basketProducts', $scope.helpers.updateTotal);
 
-            // setTimeout(function () {
-            //     $scope.helpers.updateTotal();
-            // }, 5000);
+            function fillProductsKeysObject(cart) {
+                cart.forEach(function (product) {
+                    serverBasketKeys[String(product.product_id)] = product.key;
+                });
+            }
         }]);
 })();
