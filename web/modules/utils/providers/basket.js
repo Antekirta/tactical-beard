@@ -48,8 +48,6 @@
                                         return $http.get(REST_API.CART, req)
                                             .then(
                                                 function (response) {
-                                                    $log.log('basketProvider getProducts response: ', response);
-
                                                     return response.data;
                                                 }
                                             );
@@ -117,7 +115,26 @@
                         },
                         
                         emptyCart: function () {
-                            
+                            return session.getCurrentSession()
+                                .then(
+                                    function (session) {
+                                        return session;
+                                    }
+                                )
+                                .then(
+                                    function (session) {
+                                        req.headers['X-Oc-Session'] = session;
+
+                                        return $http.delete(REST_API.EMPTY_CART, req)
+                                            .then(
+                                                function (response) {
+                                                    $log.log('BasketProvider emptyCart has worked successfully!: ', response);
+
+                                                    return response.data;
+                                                }
+                                            );
+                                    }
+                                );
                         }
                     };
                 }

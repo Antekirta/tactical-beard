@@ -45,10 +45,11 @@
                                 )
                                 .then(
                                     function (session) {
-                                        basketProvider.getProducts(session)
+                                        return basketProvider.getProducts(session)
                                             .then(
                                                 function (response) {
-                                                    $log.log('basket factory response: ', response);
+                                                    $log.info('Basket factory get allProducts response: ', response);
+
                                                     return response;
                                                 }
                                             );
@@ -57,7 +58,7 @@
                         },
 
                         basketLength: function () {
-                            return _.toArray(JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET))).length;
+                            return;
                         },
 
                         productById: function (id) {
@@ -100,9 +101,20 @@
 
                     delete: {
                         allProducts: function () {
-                            basket = [];
+                            return basketProvider.emptyCart()
+                                .then(
+                                    function (response) {
+                                        console.log('basket factory delete allProducts response: ', response);
 
-                            updateBasketStorage();
+                                        if ( response.success ) {
+                                            basket = [];
+
+                                            updateBasketStorage();
+                                        }
+
+                                        return response;
+                                    }
+                                );
                         },
 
                         productById: function (id) {

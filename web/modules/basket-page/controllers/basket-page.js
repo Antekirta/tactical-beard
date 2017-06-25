@@ -11,20 +11,24 @@
         function ($scope, $log, LOCAL_STORAGE, productsProvider, basketFactory) {
             let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
-
-
-            $log.log('AAAAAAAAAAAAAAAAAA ');
-
             basketFactory.get.allProducts()
                 .then(
                     function (products) {
                         $log.log('basket page allProducts: ', products);
+
+                        if ( products.success ) {
+                            fillLocalBasketFromServerCart(products.data.products);
+                        }
                     },
 
                     function (error) {
                         $log.log('basket page allProducts error: ', error);
                     }
                 );
+
+            function fillLocalBasketFromServerCart(cart) {
+                console.log('fillLocalBasketFromServerCart cart: ', cart);
+            }
 
             $scope.basketProducts = [];
 
@@ -49,6 +53,15 @@
             };
 
             $scope.helpers = {
+                emptyCart: function () {
+                    basketFactory.delete.allProducts()
+                        .then(
+                            function (response) {
+                                console.log('basket page emptyCart response', response);
+                            }
+                        );
+                },
+
                 deleteItem: function deleteItem(id) {
                     let index = _.findIndex($scope.basketProducts, function (product) {
                         return product.id === id;
