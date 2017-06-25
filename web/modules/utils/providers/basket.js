@@ -96,24 +96,25 @@
                                     function (session) {
                                         req.headers['X-Oc-Session'] = session;
 
-                                        let item = {};
+                                        // random key for a while
+                                        req.data = {
+                                            key: 30
+                                        };
 
-                                        item[PRODUCT_DICTIONARY.PRODUCT_ID] = id;
-
-                                        return $http.delete(REST_API.CART, item, req)
+                                        return $http.delete(REST_API.CART, req)
                                             .then(
                                                 function (response) {
-                                                    $log.log('Product has been successfully deleted from basket: ', response);
+                                                    $log.log('Basket provider deleteItem response: ', response);
                                                 },
 
                                                 function (error) {
-                                                    $log.error('Product has NOT been deleted from basket because of: ', error);
+                                                    $log.error('Basket provider deleteItem error: ', error);
                                                 }
                                             );
                                     }
                                 );
                         },
-                        
+
                         emptyCart: function () {
                             return session.getCurrentSession()
                                 .then(
