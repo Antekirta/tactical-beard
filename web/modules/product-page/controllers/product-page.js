@@ -88,7 +88,6 @@
                     session.getCurrentSession()
                         .then(
                             function (session) {
-                                console.log('product page session.getCurrentSession() response', session);
                                 basketFactory.put.product(product, session);
                             }
                         );

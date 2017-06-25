@@ -1,33 +1,46 @@
-(function() {
+(function () {
     'use strict';
 
-    var basketPage = angular.module('basketPage');
-
-    basketPage.controller('basketPageCtrl', [
+    angular.module('basketPage').controller('basketPageCtrl', [
         '$scope',
         '$log',
         'LOCAL_STORAGE',
         'productsProvider',
         'basketFactory',
 
-        function($scope, $log, LOCAL_STORAGE, productsProvider, basketFactory) {
-            var basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
+        function ($scope, $log, LOCAL_STORAGE, productsProvider, basketFactory) {
+            let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
+
+
+
+            $log.log('AAAAAAAAAAAAAAAAAA ');
+
+            basketFactory.get.allProducts()
+                .then(
+                    function (products) {
+                        $log.log('basket page allProducts: ', products);
+                    },
+
+                    function (error) {
+                        $log.log('basket page allProducts error: ', error);
+                    }
+                );
 
             $scope.basketProducts = [];
 
             $scope.total = 0;
 
-            var productHandlers = {
-                getPrice: function (id) {
-                    var price = basket[_.findIndex(basket, function (item) {
+            const productHandlers = {
+                getPrice: function getPrice(id) {
+                    let price = basket[_.findIndex(basket, function (item) {
                         return item.id === id;
                     })].price;
 
                     return Math.floor(+price);
                 },
 
-                getQuantity: function (id) {
-                    var quantity = basket[_.findIndex(basket, function (item) {
+                getQuantity: function getQuantity(id) {
+                    let quantity = basket[_.findIndex(basket, function (item) {
                         return item.id === id;
                     })].quantity;
 
@@ -36,8 +49,8 @@
             };
 
             $scope.helpers = {
-                deleteItem: function (id) {
-                    var index = _.findIndex($scope.basketProducts, function (product) {
+                deleteItem: function deleteItem(id) {
+                    let index = _.findIndex($scope.basketProducts, function (product) {
                         return product.id === id;
                     });
 
@@ -48,8 +61,8 @@
                     $scope.helpers.updateTotal();
                 },
 
-                updateTotal: function () {
-                    if ( !_.isEmpty($scope.basketProducts) ) {
+                updateTotal: function updateTotal() {
+                    if (!_.isEmpty($scope.basketProducts)) {
                         $scope.total = $scope.basketProducts.reduce(function (total, currentItem) {
                             return total + currentItem.price * currentItem.quantity;
                         }, 0);
@@ -58,24 +71,19 @@
             };
 
             basket.forEach(function (basketItem) {
-                productsProvider.getProductById(basketItem.id)
-                    .then(
-                        function (response) {
-                            var item = response.data.data;
+                productsProvider.getProductById(basketItem.id).then(function (response) {
+                    let item = response.data.data;
 
-                            item.price = productHandlers.getPrice(item.id);
+                    item.price = productHandlers.getPrice(item.id);
 
-                            item.quantity = productHandlers.getQuantity(item.id);
+                    item.quantity = productHandlers.getQuantity(item.id);
+ 
+                    $scope.basketProducts.push(item);
 
-                            $scope.basketProducts.push(item);
-
-                            $scope.helpers.updateTotal();
-                        },
-
-                        function (error) {
-                            $log.error(error);
-                        }
-                    );
+                    $scope.helpers.updateTotal();
+                }, function (error) {
+                    $log.error(error);
+                });
             });
 
             // $scope.$watch('basketProducts', $scope.helpers.updateTotal);

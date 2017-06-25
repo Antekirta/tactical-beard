@@ -12,68 +12,106 @@
 
                 '$q',
 
+                '$log',
+
+                'session',
+
                 'REST_API',
 
                 'LOCAL_STORAGE',
 
-                function ($http, $q, REST_API, LOCAL_STORAGE) {
+                'PRODUCT_DICTIONARY',
+
+                function ($http, $q, $log, session, REST_API, LOCAL_STORAGE, PRODUCT_DICTIONARY) {
                     const req = {
                         dataType: 'json',
 
                         headers: {
-                            'X-Oc-Merchant-Id': REST_API.X_OC_MERCHANT_ID
+                            'X-Oc-Merchant-Id': REST_API.X_OC_MERCHANT_ID,
+
+                            'X-Oc-Restadmin-Id': REST_API.X_OC_RESTADMIN_ID
                         }
                     };
 
                     return {
-                        getProducts: function (session) {
-                            req.headers['X-Oc-Session'] = session;
-
-                            console.log('getProducts session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', session);
-
-                            return $http.get(REST_API.CART, req)
+                        getProducts: function () {
+                            return session.getCurrentSession()
                                 .then(
-                                    function (response) {
-                                        console.log('basketProvider getProducts response: ', response);
+                                    function (session) {
+                                        return session;
+                                    }
+                                )
+                                .then(
+                                    function (session) {
+                                        req.headers['X-Oc-Session'] = session;
+
+                                        return $http.get(REST_API.CART, req)
+                                            .then(
+                                                function (response) {
+                                                    $log.log('basketProvider getProducts response: ', response);
+
+                                                    return response.data;
+                                                }
+                                            );
                                     }
                                 );
                         },
 
-                        putProduct: function (product, session) {
-                            // if ( !localStorage.getItem(LOCAL_STORAGE.SESSION) ) {
-                            //     localStorage.setItem(LOCAL_STORAGE.SESSION, session);
-                            // }
-
-                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCAL_STORAGE.SESSION);
-
-                            console.log('putProduct session!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', localStorage.getItem(LOCAL_STORAGE.SESSION));
-
-                            let item = {
-                                'product_id': product.id,
-
-                                'quantity': product.quantity
-                            };
-
-                            return $http.post(REST_API.CART, item, req)
+                        putProduct: function (product) {
+                            return session.getCurrentSession()
                                 .then(
-                                    function (response) {
-                                        console.log('basketProvider putProduct response: ', response);
-                                        return response;
+                                    function (session) {
+                                        return session;
+                                    }
+                                )
+                                .then(
+                                    function (session) {
+                                        req.headers['X-Oc-Session'] = session;
+
+                                        let item = {};
+
+                                        item[PRODUCT_DICTIONARY.PRODUCT_ID] = product.id;
+                                        item[PRODUCT_DICTIONARY.QUANTITY] = product.quantity;
+
+                                        return $http.post(REST_API.CART, item, req)
+                                            .then(
+                                                function (response) {
+                                                    $log.log('Product has been successfully added to basket: ', response);
+                                                },
+
+                                                function (error) {
+                                                    $log.error('Product has NOT been added to basket because of: ', error);
+                                                }
+                                            );
                                     }
                                 );
                         },
 
                         deleteItem: function (id) {
-                            req.headers['X-Oc-Session'] = localStorage.getItem(LOCAL_STORAGE.SESSION);
-
-                            let item = {
-                                'product_id': id
-                            };
-
-                            return $http.delete(REST_API.CART, item, req)
+                            return session.getCurrentSession()
                                 .then(
-                                    function (response) {
-                                        console.log('basketProvider deleteItem response: ', response);
+                                    function (session) {
+                                        return session;
+                                    }
+                                )
+                                .then(
+                                    function (session) {
+                                        req.headers['X-Oc-Session'] = session;
+
+                                        let item = {};
+
+                                        item[PRODUCT_DICTIONARY.PRODUCT_ID] = id;
+
+                                        return $http.delete(REST_API.CART, item, req)
+                                            .then(
+                                                function (response) {
+                                                    $log.log('Product has been successfully deleted from basket: ', response);
+                                                },
+
+                                                function (error) {
+                                                    $log.error('Product has NOT been deleted from basket because of: ', error);
+                                                }
+                                            );
                                     }
                                 );
                         },

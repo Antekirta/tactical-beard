@@ -13,16 +13,10 @@
 
             'basketProvider',
 
-            function ($rootScope, $log, LOCAL_STORAGE, EVENTS, basketProvider) {
-                let basket = unitBasket();
+            'session',
 
-                function unitBasket() {
-                    if (localStorage.getItem(LOCAL_STORAGE.BASKET)) {
-                        return JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
-                    }
-
-                    return [];
-                }
+            function ($rootScope, $log, LOCAL_STORAGE, EVENTS, basketProvider, session) {
+                let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
                 function updateBasketStorage() {
                     localStorage.setItem(LOCAL_STORAGE.BASKET, JSON.stringify(basket));
@@ -43,7 +37,23 @@
                 return {
                     get: {
                         allProducts: function () {
-                            return basket;
+                            return session.getCurrentSession()
+                                .then(
+                                    function (session) {
+                                        return session;
+                                    }
+                                )
+                                .then(
+                                    function (session) {
+                                        basketProvider.getProducts(session)
+                                            .then(
+                                                function (response) {
+                                                    $log.log('basket factory response: ', response);
+                                                    return response;
+                                                }
+                                            );
+                                    }
+                                );
                         },
 
                         basketLength: function () {
@@ -77,7 +87,7 @@
                                     return element.id === product.id;
                                 }));
 
-                                if (productAlreadyInBasket) {
+                                if ( productAlreadyInBasket ) {
                                     updateQuantity(product.id, product.quantity);
                                 } else {
                                     basket.push(product);
@@ -96,15 +106,26 @@
                         },
 
                         productById: function (id) {
-                            let index = _.findIndex(basket, function (product) {
-                                return product.id === id;
-                            });
+                            basketProvider.deleteItem(id)
+                                .then(
+                                    function () {
+                                        deleteProductOnClient(id);
+                                    },
 
-                            basket.splice(index, 1);
+                                    function (error) {
+                                        $log.error('Product has NOT been deleted from basket because of: ', error);
+                                    }
+                                );
 
-                            updateBasketStorage();
+                            function deleteProductOnClient(id) {
+                                let indexOfProductInBasket = _.findIndex(basket, function (product) {
+                                    return product.id === id;
+                                });
 
-                            basketProvider.deleteItem(id);
+                                basket.splice(indexOfProductInBasket, 1);
+
+                                updateBasketStorage();
+                            }
                         }
                     }
                 };

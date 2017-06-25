@@ -74,11 +74,8 @@
 
                         req.url = REST_API.CATEGORIES + '/level/' + level + '/';
 
-                        console.log('req.url: ', req.url);
-
                         return $http(req).then(
                             function(response) {
-                                console.log('getCategoriesForLevel response: ', response);
                                 return response;
                             },
 

@@ -34,8 +34,6 @@
 				function(response) {
 					var products = _.toArray(response.data.data);
 
-                    console.log('products: ', response.data.data);
-
                     products = products.filter(function (element) {
 						return !_.isEmpty(element.discounts);
                     });
