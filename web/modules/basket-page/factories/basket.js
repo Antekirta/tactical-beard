@@ -18,6 +18,8 @@
             function ($rootScope, $log, LOCAL_STORAGE, EVENTS, basketProvider, session) {
                 let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
+                // helpers
+
                 function updateBasketStorage() {
                     localStorage.setItem(LOCAL_STORAGE.BASKET, JSON.stringify(basket));
 
@@ -50,7 +52,7 @@
                                                 function (response) {
                                                     $log.info('Basket factory get allProducts response: ', response);
 
-                                                    return response;
+                                                    return response.success;
                                                 }
                                             );
                                     }

@@ -3,9 +3,11 @@
         <h1 class="page-title__header">Корзина</h1>
     </header>
 
-    <p data-ng-click="helpers.emptyCart()" style="cursor: pointer;">Очистить корзину</p>
+    <p data-ng-click="helpers.emptyCart()"  data-ng-if="total" style="cursor: pointer;">Очистить корзину</p>
 
-    <table class="basket-table">
+    <p data-ng-if="!total">Корзина пуста!</p>
+
+    <table class="basket-table" data-ng-if="total">
         <thead>
             <tr>
                 <td>Изображение</td>
@@ -49,5 +51,5 @@
         </tbody>
     </table>
 
-    <div class="next-step basket-page__next-step" data-ui-sref="make-order">Перейти к оформлению</div>
+    <div class="next-step basket-page__next-step" data-ui-sref="make-order" disabled="{{!total}}">Перейти к оформлению</div>
 </article>

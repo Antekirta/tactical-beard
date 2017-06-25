@@ -56,8 +56,12 @@
                 emptyCart: function () {
                     basketFactory.delete.allProducts()
                         .then(
-                            function (response) {
-                                console.log('basket page emptyCart response', response);
+                            function (daleted) {
+                                console.log('basket page emptyCart daleted', daleted);
+
+                                $scope.basketProducts = [];
+
+                                $scope.helpers.updateTotal();
                             }
                         );
                 },
@@ -79,6 +83,8 @@
                         $scope.total = $scope.basketProducts.reduce(function (total, currentItem) {
                             return total + currentItem.price * currentItem.quantity;
                         }, 0);
+                    } else {
+                        $scope.total = 0;
                     }
                 }
             };
@@ -99,7 +105,7 @@
                 });
             });
 
-            // $scope.$watch('basketProducts', $scope.helpers.updateTotal);
+            $scope.$watch('basketProducts', $scope.helpers.updateTotal);
 
             // setTimeout(function () {
             //     $scope.helpers.updateTotal();
