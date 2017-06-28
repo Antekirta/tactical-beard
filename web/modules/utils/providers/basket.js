@@ -86,7 +86,9 @@
                         },
 
                         putBunchOfProducts: function (productsArray) {
-                            return this.emptyCart()
+                            const self = this;
+
+                            return self.emptyCart()
                                 .then(
                                     function () {
 
@@ -121,6 +123,16 @@
                                                     $log.log('BasketProvider putBunchOfProducts response: ', response);
 
                                                     return response;
+                                                }
+                                            );
+                                    }
+                                )
+                                .then(
+                                    function () {
+                                        self.getProducts()
+                                            .then(
+                                                function (response) {
+                                                    console.log('getProducts after emptyCart and bulk cart', response);
                                                 }
                                             );
                                     }

@@ -65,11 +65,17 @@
                 <div class="make-order-tabs__tab-body">
                     <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
 
-                    <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Лично забрать в магазине"> Лично забрать в магазине
-                    <br>
-                    <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Курьером"> Курьером
-                    <br>
-                    <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Почтой России"> Почтой России
+                    <span data-ng-repeat="type in deliveryTypes">
+                        <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="{{type.value}}"> {{type.name}}
+                        <br>
+                    </span>
+
+                    <!--<input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Лично забрать в магазине"> Лично забрать в магазине-->
+                    <!--<br>-->
+                    <!--<input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Курьером"> Курьером-->
+                    <!--<br>-->
+                    <!--<input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Почтой России"> Почтой России-->
+                    <!--<br>-->
                 </div>
             </div>
 
@@ -99,7 +105,7 @@
 
             </p>
             <p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>
-            <p data-ng-if="makeOrder.deliveryType">Способ доставки: {{makeOrder.deliveryType}}</p>
+            <p data-ng-if="makeOrder.deliveryType">Способ доставки: {{helpers.getDeliveryTypeName(makeOrder.deliveryType)}}</p>
             <p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>
         </div>
 

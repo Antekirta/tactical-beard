@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    var makeOrderPage = angular.module('makeOrderPage');
-
-    makeOrderPage.controller('makeOrderPageCtrl', [
+    angular.module('makeOrderPage').controller('makeOrderPageCtrl', [
         '$scope',
+
+        '$log',
 
         'session',
 
@@ -12,7 +12,15 @@
 
         'basketProvider',
 
-        function ($scope, session, checkoutProvider, basketProvider) {
+        function ($scope, $log, session, checkoutProvider, basketProvider) {
+            $scope.deliveryTypes = [
+                'Лично забрать в магазине',
+                'Курьером',
+                'Почтой России'
+            ];
+
+            $scope.deliveryTypes = [];
+
             /**
              * STEPS TO CHECKOUT
              * 0) GET api/rest/session DONE
@@ -36,8 +44,8 @@
             };
 
             session.getCurrentSession().then(
-                function (response) {
-                    return params.session = response.data.data.session;
+                function (session) {
+                    return params.session = session;
                 }
             )
                 .then(
@@ -45,7 +53,7 @@
                         return basketProvider.getProducts(params.session)
                             .then(
                                 function (response) {
-
+                                    $log.log('makeOrderPage basketProvider.getProducts response: ', response);
                                 }
                             );
                     }
@@ -55,7 +63,7 @@
                         return checkoutProvider.createGuest(params.session)
                             .then(
                                 function (response) {
-
+                                    // $log.log('makeOrderPage checkoutProvider.createGuest response: ', response);
                                 }
                             );
                     }
@@ -65,6 +73,7 @@
                         return checkoutProvider.setGuestShipping(params.session)
                             .then(
                                 function (response) {
+                                    // $log.log('makeOrderPage checkoutProvider.setGuestShipping response: ', response);
                                 }
                             );
                     }
@@ -74,63 +83,103 @@
                         return checkoutProvider.getShippingMethods(params.session)
                             .then(
                                 function (response) {
-                                }
-                            );
-                    }
-                )
-                .then(
-                    function () {
-                        return checkoutProvider.setShippingMethods(params.session)
-                            .then(
-                                function (response) {
-                                }
-                            );
-                    }
-                )
-                .then(
-                    function () {
-                        return checkoutProvider.getPaymentMethods(params.session)
-                            .then(
-                                function (response) {
-                                }
-                            );
-                    }
-                )
-                .then(
-                    function () {
-                        return checkoutProvider.setPaymentMethod(params.session)
-                            .then(
-                                function (response) {
-                                }
-                            );
-                    }
-                )
-                .then(
-                    function () {
-                        return checkoutProvider.confirm(params.session)
-                            .then(
-                                function (response) {
-                                }
-                            );
-                    }
-                )
-                .then(
-                    function () {
-                        return checkoutProvider.pay(params.session)
-                            .then(
-                                function (response) {
-                                }
-                            );
-                    }
-                )
-                .then(
-                    function () {
-                        return checkoutProvider.finish(params.session)
-                            .then(
-                                function (response) {
+                                    const MAP = {
+                                        citylink: 'Доставка по Калининграду и области',
+
+                                        pickup: 'Забрать в магазине',
+
+                                        post: 'Почтой'
+                                    };
+
+                                    $log.log('makeOrderPage checkoutProvider.getShippingMethods response: ', response.data.data);
+
+                                    const shippingMethods = response.data.data.shipping_methods;
+
+                                    for ( let method in shippingMethods ) {
+                                        if ( shippingMethods.hasOwnProperty(method) ) {
+
+                                            $scope.deliveryTypes.push({
+                                                name: MAP[method] || shippingMethods[method].title,
+
+                                                value: method
+                                            });
+                                        }
+                                    }
+
+                                    $scope.deliveryTypes.push({
+                                        name: MAP['post'],
+
+                                        value: 'post'
+                                    });
+
+                                    $scope.helpers = {
+                                        getDeliveryTypeName: function (value) {
+                                            return MAP[value];
+                                        }
+                                    };
                                 }
                             );
                     }
                 );
+                // .then(
+                //     function () {
+                //         return checkoutProvider.setShippingMethods(params.session)
+                //             .then(
+                //                 function (response) {
+                //                     // $log.log('makeOrderPage checkoutProvider.setShippingMethods response: ', response);
+                //                 }
+                //             );
+                //     }
+                // )
+                // .then(
+                //     function () {
+                //         return checkoutProvider.getPaymentMethods(params.session)
+                //             .then(
+                //                 function (response) {
+                //                     // $log.log('makeOrderPage checkoutProvider.getPaymentMethods response: ', response);
+                //                 }
+                //             );
+                //     }
+                // )
+                // .then(
+                //     function () {
+                //         return checkoutProvider.setPaymentMethod(params.session)
+                //             .then(
+                //                 function (response) {
+                //                     // $log.log('makeOrderPage checkoutProvider.setPaymentMethod response: ', response);
+                //                 }
+                //             );
+                //     }
+                // )
+                // .then(
+                //     function () {
+                //         return checkoutProvider.confirm(params.session)
+                //             .then(
+                //                 function (response) {
+                //                     // $log.log('makeOrderPage checkoutProvider.confirm response: ', response);
+                //                 }
+                //             );
+                //     }
+                // )
+                // .then(
+                //     function () {
+                //         return checkoutProvider.pay(params.session)
+                //             .then(
+                //                 function (response) {
+                //                     // $log.log('makeOrderPage checkoutProvider.pay response: ', response);
+                //                 }
+                //             );
+                //     }
+                // )
+                // .then(
+                //     function () {
+                //         return checkoutProvider.finish(params.session)
+                //             .then(
+                //                 function (response) {
+                //                     // $log.log('makeOrderPage checkoutProvider.finish response: ', response);
+                //                 }
+                //             );
+                //     }
+                // );
         }]);
 })();

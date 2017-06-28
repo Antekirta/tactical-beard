@@ -79,6 +79,8 @@
                                 .then(
                                     function (response) {
                                         console.log('getShippingMethods response: ', response);
+
+                                        return response;
                                     }
                                 );
                         },
