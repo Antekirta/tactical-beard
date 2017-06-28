@@ -95,25 +95,9 @@
                  */
 
                 makeOrder: function () {
-                    console.log('MAKE ORDER!');
+                    console.log('$scope.basketProducts: ', $scope.basketProducts);
                 }
             };
-
-            // basket.forEach(function (basketItem) {
-            //     productsProvider.getProductById(basketItem.id).then(function (response) {
-            //         let item = response.data.data;
-            //
-            //         item.price = productHandlers.getPrice(item.id);
-            //
-            //         item.quantity = productHandlers.getQuantity(item.id);
-            //
-            //         $scope.basketProducts.push(item);
-            //
-            //         $scope.helpers.updateTotal();
-            //     }, function (error) {
-            //         $log.error(error);
-            //     });
-            // });
 
             $scope.$watch('basketProducts', $scope.helpers.updateTotal);
 
