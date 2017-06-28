@@ -108,8 +108,6 @@
                                         let items = [];
 
                                         productsArray.forEach(function (product) {
-                                            console.log('putBunchOfProducts productsArray product', product);
-
                                             items.push({
                                                 product_id: product.id,
 
