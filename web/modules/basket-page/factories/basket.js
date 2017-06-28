@@ -99,6 +99,10 @@
 
                                 updateBasketStorage();
                             }
+                        },
+
+                        bunchOfProducts: function (productsArray) {
+                            basketProvider.putBunchOfProducts(productsArray);
                         }
                     },
 

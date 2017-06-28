@@ -95,6 +95,7 @@
                  */
 
                 makeOrder: function () {
+                    basketFactory.put.bunchOfProducts($scope.basketProducts);
                     console.log('$scope.basketProducts: ', $scope.basketProducts);
                 }
             };

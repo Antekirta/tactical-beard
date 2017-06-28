@@ -26,6 +26,8 @@
 
 		'CART': site + '/index.php?route=rest/cart/cart',
 
+		'BULK_CART': site + '/index.php?route=rest/cart/bulkcart',
+
 		'EMPTY_CART': site + '/index.php?route=rest/cart/emptycart',
 
 		'GUEST': site + '/index.php?route=rest/guest/guest',

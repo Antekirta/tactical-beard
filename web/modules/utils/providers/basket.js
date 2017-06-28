@@ -85,6 +85,49 @@
                                 );
                         },
 
+                        putBunchOfProducts: function (productsArray) {
+                            return this.emptyCart()
+                                .then(
+                                    function () {
+
+                                    }
+                                )
+                                .then(
+                                    function () {
+                                        return session.getCurrentSession()
+                                            .then(
+                                                function (session) {
+                                                    return session;
+                                                }
+                                            );
+                                    }
+                                ).then(
+                                    function (session) {
+                                        req.headers['X-Oc-Session'] = session;
+
+                                        let items = [];
+
+                                        productsArray.forEach(function (product) {
+                                            console.log('putBunchOfProducts productsArray product', product);
+
+                                            items.push({
+                                                product_id: product.id,
+
+                                                quantity: product.quantity
+                                            });
+                                        });
+
+                                        return $http.post(REST_API.BULK_CART, items, req)
+                                            .then(
+                                                function (response) {
+                                                    $log.log('BasketProvider putBunchOfProducts response: ', response);
+                                                }
+                                            );
+                                    }
+                                );
+
+                        },
+
                         deleteItem: function (key) {
                             return session.getCurrentSession()
                                 .then(
