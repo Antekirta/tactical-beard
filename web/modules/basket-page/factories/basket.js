@@ -60,7 +60,8 @@
                         },
 
                         basketLength: function () {
-                            return;
+                            console.log('basketLength basket: ', basket);
+                            return basket.length;
                         },
 
                         productById: function (id) {

@@ -34,6 +34,8 @@
 			var helpers = {
 				basket: {
 					setBasketLength: function () {
+						console.log('setBasketLength header!');
+
                         $scope.basketLength = basketFactory.get.basketLength();
                     }
 				}

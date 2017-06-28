@@ -50,6 +50,6 @@
     </table>
 
     <div class="next-step basket-page__next-step"
-         data-ng-click="helpers.makeOrder()"
-         disabled="{{!total}}">Перейти к оформлению</div>
+         data-ng-if="basketProducts.length"
+         data-ng-click="helpers.makeOrder()">Перейти к оформлению</div>
 </article>
