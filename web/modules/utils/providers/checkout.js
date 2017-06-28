@@ -98,6 +98,8 @@
                                 .then(
                                     function (response) {
                                         console.log('setShippingMethods response: ', response);
+
+                                        return response;
                                     }
                                 );
                         },
@@ -111,6 +113,8 @@
                                 .then(
                                     function (response) {
                                         console.log('getPaymentMethods response: ', response);
+
+                                        return response;
                                     }
                                 );
                         },

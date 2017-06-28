@@ -120,27 +120,17 @@
                                 }
                             );
                     }
+                )
+                .then(
+                    function () {
+                        return checkoutProvider.getPaymentMethods(params.session)
+                            .then(
+                                function (response) {
+                                    $log.log('makeOrderPage checkoutProvider.getPaymentMethods response: ', response);
+                                }
+                            );
+                    }
                 );
-                // .then(
-                //     function () {
-                //         return checkoutProvider.setShippingMethods(params.session)
-                //             .then(
-                //                 function (response) {
-                //                     // $log.log('makeOrderPage checkoutProvider.setShippingMethods response: ', response);
-                //                 }
-                //             );
-                //     }
-                // )
-                // .then(
-                //     function () {
-                //         return checkoutProvider.getPaymentMethods(params.session)
-                //             .then(
-                //                 function (response) {
-                //                     // $log.log('makeOrderPage checkoutProvider.getPaymentMethods response: ', response);
-                //                 }
-                //             );
-                //     }
-                // )
                 // .then(
                 //     function () {
                 //         return checkoutProvider.setPaymentMethod(params.session)
