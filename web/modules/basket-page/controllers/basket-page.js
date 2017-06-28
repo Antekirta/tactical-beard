@@ -4,11 +4,13 @@
     angular.module('basketPage').controller('basketPageCtrl', [
         '$scope',
         '$log',
+        '$state',
+        'STATE_NAMES',
         'LOCAL_STORAGE',
         'productsProvider',
         'basketFactory',
 
-        function ($scope, $log, LOCAL_STORAGE, productsProvider, basketFactory) {
+        function ($scope, $log, $state, STATE_NAMES, LOCAL_STORAGE, productsProvider, basketFactory) {
             let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
             // contains pairs id: key, where id is product_id and key is key of product in cart
@@ -95,8 +97,12 @@
                  */
 
                 makeOrder: function () {
-                    basketFactory.put.bunchOfProducts($scope.basketProducts);
-                    console.log('$scope.basketProducts: ', $scope.basketProducts);
+                    basketFactory.put.bunchOfProducts($scope.basketProducts)
+                        .then(
+                            function (response) {
+                                $state.go(STATE_NAMES.MAKE_ORDER);
+                            }
+                        );
                 }
             };
 

@@ -119,6 +119,8 @@
                                             .then(
                                                 function (response) {
                                                     $log.log('BasketProvider putBunchOfProducts response: ', response);
+
+                                                    return response;
                                                 }
                                             );
                                     }

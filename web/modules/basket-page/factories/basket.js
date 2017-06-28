@@ -102,7 +102,12 @@
                         },
 
                         bunchOfProducts: function (productsArray) {
-                            basketProvider.putBunchOfProducts(productsArray);
+                            return basketProvider.putBunchOfProducts(productsArray)
+                                .then(
+                                    function (response) {
+                                        return response;
+                                    }
+                                );
                         }
                     },
 
