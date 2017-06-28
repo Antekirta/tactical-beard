@@ -7,7 +7,7 @@
 
     <p data-ng-if="!total">Корзина пуста!</p>
 
-    <table class="basket-table" data-ng-if="total">
+    <table class="basket-table" data-ng-if="basketProducts.length">
         <thead>
             <tr>
                 <td>Изображение</td>
@@ -21,11 +21,9 @@
         <tbody>
             <tr data-ng-repeat="item in basketProducts">
                 <td><img src="{{item.image}}" alt="" class="basket-table__image"></td>
-                <td><span class="basket-table__product-title" data-ng-bind="item.product_description[1].name"></span></td>
+                <td><span class="basket-table__product-title" data-ng-bind="item.name"></span></td>
                 <td><span class="basket-table__price-for-one">{{item.price}} РУБ</span></td>
                 <td><span class="basket-table__count"><input type="number"
-
-                                                             name="price-from"
 
                                                              data-ng-model="item.quantity"
 
@@ -51,5 +49,7 @@
         </tbody>
     </table>
 
-    <div class="next-step basket-page__next-step" data-ui-sref="make-order" disabled="{{!total}}">Перейти к оформлению</div>
+    <div class="next-step basket-page__next-step"
+         data-ng-click="helpers.makeOrder()"
+         disabled="{{!total}}">Перейти к оформлению</div>
 </article>

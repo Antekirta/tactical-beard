@@ -21,6 +21,8 @@
 
                         if ( response.success ) {
                             fillProductsKeysObject(response.data.products);
+
+                            fillBasketProducts(response.data.products);
                         }
                     },
 
@@ -86,30 +88,58 @@
                     } else {
                         $scope.total = 0;
                     }
+                },
+
+                /**
+                 * Finally collect all basket data and go to make-order page
+                 */
+
+                makeOrder: function () {
+                    console.log('MAKE ORDER!');
                 }
             };
 
-            basket.forEach(function (basketItem) {
-                productsProvider.getProductById(basketItem.id).then(function (response) {
-                    let item = response.data.data;
-
-                    item.price = productHandlers.getPrice(item.id);
-
-                    item.quantity = productHandlers.getQuantity(item.id);
- 
-                    $scope.basketProducts.push(item);
-
-                    $scope.helpers.updateTotal();
-                }, function (error) {
-                    $log.error(error);
-                });
-            });
+            // basket.forEach(function (basketItem) {
+            //     productsProvider.getProductById(basketItem.id).then(function (response) {
+            //         let item = response.data.data;
+            //
+            //         item.price = productHandlers.getPrice(item.id);
+            //
+            //         item.quantity = productHandlers.getQuantity(item.id);
+            //
+            //         $scope.basketProducts.push(item);
+            //
+            //         $scope.helpers.updateTotal();
+            //     }, function (error) {
+            //         $log.error(error);
+            //     });
+            // });
 
             $scope.$watch('basketProducts', $scope.helpers.updateTotal);
 
             function fillProductsKeysObject(cart) {
                 cart.forEach(function (product) {
                     serverBasketKeys[String(product.product_id)] = product.key;
+                });
+            }
+
+            function fillBasketProducts(cart) {
+                cart.forEach(function (product) {
+                    let item = {
+                        id: product.product_id,
+
+                        name: product.name,
+
+                        price: parseInt(product.price),
+
+                        quantity: +product.quantity,
+
+                        image: product.thumb
+                    };
+
+                    $scope.basketProducts.push(item);
+
+                    $scope.helpers.updateTotal();
                 });
             }
         }]);

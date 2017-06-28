@@ -74,7 +74,7 @@
 
                     put: {
                         product: function (product, session) {
-                            basketProvider.putProduct(product, session)
+                            return basketProvider.putProduct(product, session)
                                 .then(
                                     function () {
                                         putProductOnClient(product);

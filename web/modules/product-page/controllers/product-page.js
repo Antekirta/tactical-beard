@@ -1,9 +1,7 @@
 (function() {
 	'use strict';
 
-	var productPage = angular.module('productPage');
-
-	productPage.controller('productPageCtrl', [
+    angular.module('productPage').controller('productPageCtrl', [
 		'$scope',
 
 		'$log',
@@ -63,7 +61,7 @@
                 },
 
 				changeDescription: function (descType) {
-                	var type;
+                	let type;
 
 					for ( type in $scope.descTypes ) {
 						if ( $scope.descTypes.hasOwnProperty(type) ) {
@@ -77,7 +75,7 @@
 
             $scope.basket = {
                 putProduct: function () {
-                    var product = {
+                    const product = {
                         id: $scope.product.id,
 
                         quantity: $scope.productCount,
@@ -88,19 +86,24 @@
                     session.getCurrentSession()
                         .then(
                             function (session) {
-                                basketFactory.put.product(product, session);
+                                return basketFactory.put.product(product, session)
+                                    .then(
+                                        function (response) {
+                                            // functionality of success message is here
+                                        }
+                                    );
                             }
                         );
                 }
             };
 
-            var productHandlers = {
+            const productHandlers = {
             	createArtDescription: function (description) {
                     $scope.artDescription = $sce.trustAsHtml(description);
                 },
 
 				createTechDescription: function (techDetails) {
-                    var uselessProductAttrNames = ['code', 'article', 'unit'];
+                    const uselessProductAttrNames = ['code', 'article', 'unit'];
 
                     $scope.product.techDescription = _.toArray(techDetails).filter(function (element, index, arr) {
                         return uselessProductAttrNames.indexOf(element[1].name) === -1;
