@@ -1,19 +1,21 @@
-<input type="text"
+<span class="dropdown-select__container">
+    <input type="text"
 
-       class="dropdown-select__input"
+           class="dropdown-select__input"
 
-       ng-model="dropdownSelect.search"
+           ng-model="dropdownSelect.search"
 
-       placeholder="{{placeholder}}" />
+           placeholder="{{placeholder}}" />
 
-<div class="dropdown-select__list-container">
-    <ul class="dropdown-select__list">
-        <li class="dropdown-select__list-item"
+    <div class="dropdown-select__list-container">
+        <ul class="dropdown-select__list">
+            <li class="dropdown-select__list-item"
 
-            data-ng-repeat="item in itemsList"
+                data-ng-repeat="item in itemsList | filter:dropdownSelect.search track by $index"
 
-            data-ng-click="dropdownSelect.selectItem(item)" >
-            {{item.name}}
-        </li>
-    </ul>
-</div>
+                data-ng-click="dropdownSelect.selectItem(item)" >
+                {{item.name}}
+            </li>
+        </ul>
+    </div>
+</span>

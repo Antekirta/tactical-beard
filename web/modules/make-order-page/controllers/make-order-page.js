@@ -13,13 +13,51 @@
         'basketProvider',
 
         function ($scope, $log, session, checkoutProvider, basketProvider) {
-            $scope.deliveryTypes = [
-                'Лично забрать в магазине',
-                'Курьером',
-                'Почтой России'
-            ];
-
             $scope.deliveryTypes = [];
+            $scope.paymentMethods = [];
+
+            $scope.areas = [
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area1 и области","value":"citylink"},
+                {"name":"Area1 и области","value":"citylink"},
+                {"name":"Area1 и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area3 и области","value":"citylink"},
+                {"name":"Area3 и области","value":"citylink"},
+                {"name":"Area3 и области","value":"citylink"},
+                {"name":"Area3 и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area6 и области","value":"citylink"},
+                {"name":"Area6 и области","value":"citylink"},
+                {"name":"Area6 и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"},
+                {"name":"Area и области","value":"citylink"}
+            ];
 
             /**
              * STEPS TO CHECKOUT
@@ -95,7 +133,7 @@
 
                                     const shippingMethods = response.data.data.shipping_methods;
 
-                                    for ( let method in shippingMethods ) {
+                                    for (let method in shippingMethods) {
                                         if ( shippingMethods.hasOwnProperty(method) ) {
 
                                             $scope.deliveryTypes.push({
@@ -131,45 +169,88 @@
                             );
                     }
                 );
-                // .then(
-                //     function () {
-                //         return checkoutProvider.setPaymentMethod(params.session)
-                //             .then(
-                //                 function (response) {
-                //                     // $log.log('makeOrderPage checkoutProvider.setPaymentMethod response: ', response);
-                //                 }
-                //             );
-                //     }
-                // )
-                // .then(
-                //     function () {
-                //         return checkoutProvider.confirm(params.session)
-                //             .then(
-                //                 function (response) {
-                //                     // $log.log('makeOrderPage checkoutProvider.confirm response: ', response);
-                //                 }
-                //             );
-                //     }
-                // )
-                // .then(
-                //     function () {
-                //         return checkoutProvider.pay(params.session)
-                //             .then(
-                //                 function (response) {
-                //                     // $log.log('makeOrderPage checkoutProvider.pay response: ', response);
-                //                 }
-                //             );
-                //     }
-                // )
-                // .then(
-                //     function () {
-                //         return checkoutProvider.finish(params.session)
-                //             .then(
-                //                 function (response) {
-                //                     // $log.log('makeOrderPage checkoutProvider.finish response: ', response);
-                //                 }
-                //             );
-                //     }
-                // );
+            // .then(
+            //     function () {
+            //         return checkoutProvider.setPaymentMethod(params.session)
+            //             .then(
+            //                 function (response) {
+            //                     // $log.log('makeOrderPage checkoutProvider.setPaymentMethod response: ', response);
+            //                 }
+            //             );
+            //     }
+            // )
+            // .then(
+            //     function () {
+            //         return checkoutProvider.confirm(params.session)
+            //             .then(
+            //                 function (response) {
+            //                     // $log.log('makeOrderPage checkoutProvider.confirm response: ', response);
+            //                 }
+            //             );
+            //     }
+            // )
+            // .then(
+            //     function () {
+            //         return checkoutProvider.pay(params.session)
+            //             .then(
+            //                 function (response) {
+            //                     // $log.log('makeOrderPage checkoutProvider.pay response: ', response);
+            //                 }
+            //             );
+            //     }
+            // )
+            // .then(
+            //     function () {
+            //         return checkoutProvider.finish(params.session)
+            //             .then(
+            //                 function (response) {
+            //                     // $log.log('makeOrderPage checkoutProvider.finish response: ', response);
+            //                 }
+            //             );
+            //     }
+            // );
+
+            $scope.setGuestShipping = function (address) {
+                fitAddressForRequestPattern();
+
+                function fitAddressForRequestPattern(address) {
+                    console.log('fitAddressForRequestPattern address: ', address);
+                }
+                // checkoutProvider.setGuestShipping(params.session, address)
+                //     .then(
+                //         function (response) {
+                //             console.log('$scope.makeOrder.deliveryType: ', $scope.makeOrder.deliveryType);
+                //             $log.log('makeOrderPage checkoutProvider.setShippingMethods response: ', response);
+                //         }
+                //     );
+            };
+
+            $scope.finishOrder = function (disabled) {
+                // if ( disabled ) {
+                //     return;
+                // }
+
+                // checkoutProvider.setGuestShipping(params.session, $scope.makeOrder.deliveryType)
+                //     .then(
+                //         function (response) {
+                //             console.log('$scope.makeOrder.deliveryType: ', $scope.makeOrder.deliveryType);
+                //             $log.log('makeOrderPage checkoutProvider.setShippingMethods response: ', response);
+                //         }
+                //     );
+
+                /**
+                 * We use here:
+                 * $scope.deliveryType
+                 * $scope.paymentMethods
+                 * $scope.customer.name
+                 * $scope.customer.email
+                 * $scope.customer.phone
+                 * $scope.customer.address
+                 * $scope.orderComments
+                 */
+
+
+                console.log('$scope.finishOrder: ', $scope.finishOrder);
+            };
         }]);
 })();

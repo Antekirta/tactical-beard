@@ -45,7 +45,16 @@
 
                     <label class="common-form__label">Адрес:</label>
                     <br>
+
+                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"  data-items-list="areas" data-placeholder="Регион РФ">Выберите из списка</dropdown-select>
+                    <br>
+                    <br>
+
+                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"  data-items-list="areas" data-placeholder="Город">Выберите из списка</dropdown-select>
+                    <br>
+                    <br>
                     <textarea data-ng-model="makeOrder.address"
+                              data-ng-blur="setGuestShipping(makeOrder.address)"
                               class="common-form__textarea"
                               name=""
                               placeholder="Страна, город, улица, дом, квартира"></textarea>
@@ -69,13 +78,6 @@
                         <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="{{type.value}}"> {{type.name}}
                         <br>
                     </span>
-
-                    <!--<input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Лично забрать в магазине"> Лично забрать в магазине-->
-                    <!--<br>-->
-                    <!--<input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Курьером"> Курьером-->
-                    <!--<br>-->
-                    <!--<input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="Почтой России"> Почтой России-->
-                    <!--<br>-->
                 </div>
             </div>
 
@@ -108,9 +110,10 @@
             <p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>
         </div>
 
-        <div class="order-info__button"
+        <button class="order-info__button"
+                data-ng-click="finishOrder(makeOrder.$invalid)"
              data-ng-class="{'order-info__button--disabled': makeOrder.$invalid}">
             Перейти к оплате
-        </div>
+        </button>
     </div>
 </article>

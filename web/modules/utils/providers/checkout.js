@@ -85,18 +85,20 @@
                                 );
                         },
 
-                        setShippingMethods: function (session) {
+                        setShippingMethods: function (session, method) {
                             req.method = 'POST';
                             req.url = REST_API.SET_SHIPPING_METHOD;
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-
+                                comment: method,
+                                shipping_method: method
                             };
 
-                            return $http(req, JSON.stringify(data))
+                            return $http.post(REST_API.SET_SHIPPING_METHOD, data, req)
                                 .then(
                                     function (response) {
+                                        console.log('setShippingMethods req: ', req);
                                         console.log('setShippingMethods response: ', response);
 
                                         return response;
