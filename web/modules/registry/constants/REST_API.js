@@ -10,6 +10,8 @@
 
 		'X_OC_MERCHANT_ID': '874567456465746',
 
+		'GEO_NAMES_USER': 'kirill.murashkin',
+
 		'BASKET': site + '/api/rest/cart',
 
 		'CATEGORIES': site + '/api/rest_admin/categories',
@@ -44,6 +46,10 @@
 
 		'CONFIRM_ORDER': site + '/index.php?route=rest/confirm/confirm',
 
-		'PAY_ORDER': site + '/index.php?route=rest/confirm/confirm&page=pay'
+		'PAY_ORDER': site + '/index.php?route=rest/confirm/confirm&page=pay',
+
+		'GEO_NAMES': {
+			'SEARCH': 'http://api.geonames.org/searchJSON?'
+		}
 	});
 })();

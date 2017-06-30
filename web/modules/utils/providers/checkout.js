@@ -91,8 +91,8 @@
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-                                comment: method,
-                                shipping_method: method
+                                comment: 'citylink comment',
+                                shipping_method: 'citylink.citylink'
                             };
 
                             return $http.post(REST_API.SET_SHIPPING_METHOD, data, req)
@@ -127,13 +127,16 @@
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-
+                                'payment_method': 'cheque',
+                                'agree': 1
                             };
 
-                            return $http(req, JSON.stringify(data))
+                            return $http.post(REST_API.SET_PAYMENT_METHOD, data, req)
                                 .then(
                                     function (response) {
                                         console.log('setPaymentMethod response: ', response);
+
+                                        return response;
                                     }
                                 );
                         },

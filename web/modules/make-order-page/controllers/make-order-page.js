@@ -12,52 +12,16 @@
 
         'basketProvider',
 
-        function ($scope, $log, session, checkoutProvider, basketProvider) {
+        'regionsProvider',
+
+        function ($scope, $log, session, checkoutProvider, basketProvider, regionsProvider) {
             $scope.deliveryTypes = [];
             $scope.paymentMethods = [];
 
-            $scope.areas = [
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area1 и области","value":"citylink"},
-                {"name":"Area1 и области","value":"citylink"},
-                {"name":"Area1 и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area3 и области","value":"citylink"},
-                {"name":"Area3 и области","value":"citylink"},
-                {"name":"Area3 и области","value":"citylink"},
-                {"name":"Area3 и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area6 и области","value":"citylink"},
-                {"name":"Area6 и области","value":"citylink"},
-                {"name":"Area6 и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"},
-                {"name":"Area и области","value":"citylink"}
-            ];
+            $scope.regions = regionsProvider.getRegions();
+            $scope.cities = regionsProvider.getCitiesInRegion();
+
+            console.log('$scope.regions: ', $scope.regions);
 
             /**
              * STEPS TO CHECKOUT
@@ -250,7 +214,37 @@
                  */
 
 
+                checkoutProvider.confirm(params.session)
+                    .then(function (response) {
+                        console.log('finishOrder response: ', response);
+                    });
+
                 console.log('$scope.finishOrder: ', $scope.finishOrder);
             };
+
+            $scope.setPaymentMethod = function () {
+                console.log('  $scope.setPaymentMethod makeOrder.paymentType: ',  $scope.makeOrder.paymentType);
+
+                checkoutProvider.setPaymentMethod(params.session)
+                    .then(
+                        function (response) {
+                            console.log('$scope.setPaymentMethod response: ', response);
+                        }
+                    );
+            };
+
+            $scope.setShippingMethod = function () {
+                console.log('  $scope.setShippingMethod makeOrder.paymentType: ',  $scope.makeOrder.deliveryType);
+
+                checkoutProvider.setShippingMethods(params.session)
+                    .then(
+                        function (response) {
+                            console.log('$scope.setShippingMethod response: ', response);
+                        }
+                    );
+            };
+
+            $scope.$watch('makeOrder.paymentType', $scope.setPaymentMethod);
+            $scope.$watch('makeOrder.deliveryType', $scope.setPaymentMethod);
         }]);
 })();
