@@ -46,23 +46,30 @@
                            placeholder="+7 999 999-99-99">
                     <br><br>
 
-                    <label class="common-form__label">Адрес:</label>
+                    <label class="common-form__label">Регион доставки:</label>
                     <br>
 
                     <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"
                                      data-model="customerForm.customer.address.region"
+                                     required
                                      data-items-list="regions"
                                      data-placeholder="Регион РФ">Выберите из списка
                     </dropdown-select>
                     <br>
                     <br>
 
-                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"
-                                     data-model="customerForm.customer.address.city"
-                                     data-items-list="cities"
-                                     data-placeholder="Населенный пункт">Выберите из списка
-                    </dropdown-select>
+                    <label class="common-form__label">Населенный пункт:</label>
                     <br>
+
+                    <input data-ng-model="customerForm.customer.address.city"
+                           data-ng-minlength="5"
+                           class="common-form__input"
+                           name=""
+                           placeholder="Населенный пункт">
+                    <br>
+                    <br>
+
+                    <label class="common-form__label">Адрес:</label>
                     <br>
                     <input data-ng-model="customerForm.customer.address.street"
                            data-ng-minlength="5"
@@ -82,7 +89,7 @@
         </div>
     </ng-form>
 
-    <ng-form name="shippingForm" class="common-form common-form__make-order-tabs">
+    <ng-form name="shippingForm" class="common-form common-form__make-order-tabs" data-ng-show="customerForm.$valid">
         <div class="make-order-tabs">
             <div class="make-order-tabs__tab">
                 <div class="make-order-tabs__tab-header">Доставка</div>
@@ -99,7 +106,7 @@
         </div>
     </ng-form>
 
-    <ng-form name="paymentForm" class="common-form common-form__make-order-tabs">
+    <ng-form name="paymentForm" class="common-form common-form__make-order-tabs" data-ng-show="customerForm.$valid">
         <div class="make-order-tabs">
             <div class="make-order-tabs__tab">
                 <div class="make-order-tabs__tab-header">Оплата</div>

@@ -22,60 +22,35 @@
                     return {
                         createGuest: function (session, guest) {
                             req.method = 'POST';
-                            // req.url = REST_API.GUEST;
                             req.headers['X-Oc-Session'] = session;
-
-                            // const data = {
-                            //     "firstname": "Demo1",
-                            //     "lastname": "User",
-                            //     "email": "nash1@vipmail.hur",
-                            //     "telephone": "1-541-754-3010",
-                            //     "fax": "1-541-754-3010",
-                            //     "company": "string",
-                            //     "city": "Berlin",
-                            //     "address_1": "Demo",
-                            //     "address_2": "Demo",
-                            //     "country_id": "81",
-                            //     "postcode": "3333",
-                            //     "zone_id": "1256"
-                            // };
 
                             return $http.post(REST_API.GUEST, guest, req)
                                 .then(
                                     function (response) {
                                         console.log('createGuest response: ', response);
+
+                                        return response;
                                     }
                                 );
                         },
 
-                        setGuestShipping: function (session) {
+                        setGuestShipping: function (session, guest) {
                             req.headers['X-Oc-Session'] = session;
 
-                            const data = {
-                                "firstname": "Demo",
-                                "lastname": "User",
-                                "city": "Berlin",
-                                "address_1": "Demo",
-                                "address_2": "Demo",
-                                "country_id": "81",
-                                "postcode": "3333",
-                                "zone_id": "1256"
-                            };
-
-                            return $http.post(REST_API.GUEST_SHIPPING, data, req)
+                            return $http.post(REST_API.GUEST_SHIPPING, guest, req)
                                 .then(
                                     function (response) {
                                         console.log('setGuestShipping response: ', response);
+
+                                        return response;
                                     }
                                 );
                         },
 
                         getShippingMethods: function (session) {
-                            req.method = 'GET';
-                            req.url = REST_API.GET_SHIPPING_METHODS;
                             req.headers['X-Oc-Session'] = session;
 
-                            return $http(req)
+                            return $http.get(REST_API.GET_SHIPPING_METHODS, req)
                                 .then(
                                     function (response) {
                                         console.log('getShippingMethods response: ', response);
