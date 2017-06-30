@@ -12,6 +12,8 @@
 
 		'GEO_NAMES_USER': 'kirill.murashkin',
 
+		'COUNTRIES': site + '/index.php?route=rest/helpers/countries',
+
 		'BASKET': site + '/api/rest/cart',
 
 		'CATEGORIES': site + '/api/rest_admin/categories',

@@ -11,84 +11,106 @@
         <div class="sign-in-invite__text">Войдите в личный кабинет для быстрого оформления заказа</div>
         <div class="sign-in-invite__button">Войти</div>
     </div>
-    <ng-form name="makeOrder" class="common-form common-form__make-order-tabs">
+    <ng-form name="customerForm" class="common-form common-form__make-order-tabs">
         <div class="make-order-tabs">
             <div class="make-order-tabs__tab">
                 <div class="make-order-tabs__tab-header">Информация о покупателе</div>
                 <div class="make-order-tabs__tab-body">
                     <label class="common-form__label">Ваши ФИО: *</label>
                     <br>
-                    <input data-ng-model="makeOrder.name"
+                    <input data-ng-model="customerForm.customer.name"
+                           data-ng-minlength="5"
                            class="common-form__input common-form__input--text"
                            type="text"
                            required
-                           placeholder="Фамилия Имя Отчество" >
+                           placeholder="Фамилия Имя Отчество">
                     <br><br>
 
                     <label class="common-form__label">E-mail: *</label>
                     <br>
-                    <input data-ng-model="makeOrder.email"
+                    <input data-ng-model="customerForm.customer.email"
+                           data-email-validation
                            class="common-form__input common-form__input--email"
                            type="text"
                            required
-                           placeholder="E-mail" >
+                           placeholder="E-mail">
                     <br><br>
 
-                    <label data-ng-model="makeOrder.tel" class="common-form__label">Телефон: *</label>
+                    <label data-ng-model="customerForm.customer.tel" class="common-form__label">Телефон: *</label>
                     <br>
-                    <input data-ng-model="makeOrder.tel"
+                    <input data-ng-model="customerForm.customer.tel"
+                           data-phone-number-validation
                            class="common-form__input common-form__input--tel"
                            type="tel"
                            required
-                           placeholder="+7 999 999-99-99" >
+                           placeholder="+7 999 999-99-99">
                     <br><br>
 
                     <label class="common-form__label">Адрес:</label>
                     <br>
 
-                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"  data-items-list="regions" data-placeholder="Регион РФ">Выберите из списка</dropdown-select>
+                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"
+                                     data-model="customerForm.customer.address.region"
+                                     data-items-list="regions"
+                                     data-placeholder="Регион РФ">Выберите из списка
+                    </dropdown-select>
                     <br>
                     <br>
 
-                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"  data-items-list="cities" data-placeholder="Населенный пункт">Выберите из списка</dropdown-select>
+                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"
+                                     data-model="customerForm.customer.address.city"
+                                     data-items-list="cities"
+                                     data-placeholder="Населенный пункт">Выберите из списка
+                    </dropdown-select>
                     <br>
                     <br>
-                    <textarea data-ng-model="makeOrder.address"
-                              data-ng-blur="setGuestShipping(makeOrder.address)"
-                              class="common-form__textarea"
-                              name=""
-                              placeholder="Страна, город, улица, дом, квартира"></textarea>
+                    <input data-ng-model="customerForm.customer.address.street"
+                           data-ng-minlength="5"
+                           class="common-form__input"
+                           name=""
+                           placeholder="Улица, дом, квартира">
                     <br><br>
 
                     <label class="common-form__label">Комментарий к заказу:</label>
                     <br>
-                    <textarea data-ng-model="makeOrder.comment"
+                    <textarea data-ng-model="customerForm.comment"
                               class="common-form__textarea"
                               name=""
                               placeholder="Что еще нам следует учесть?"></textarea>
                 </div>
             </div>
+        </div>
+    </ng-form>
 
+    <ng-form name="shippingForm" class="common-form common-form__make-order-tabs">
+        <div class="make-order-tabs">
             <div class="make-order-tabs__tab">
                 <div class="make-order-tabs__tab-header">Доставка</div>
                 <div class="make-order-tabs__tab-body">
                     <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
 
                     <span data-ng-repeat="type in deliveryTypes">
-                        <input data-ng-model="makeOrder.deliveryType" class="common-form__radio" type="radio" name="delivery-type" required value="{{type.value}}"> {{type.name}}
+                        <input data-ng-model="customerForm.deliveryType" class="common-form__radio" type="radio"
+                               name="delivery-type" required value="{{type.value}}"> {{type.name}}
                         <br>
                     </span>
                 </div>
             </div>
+        </div>
+    </ng-form>
 
+    <ng-form name="paymentForm" class="common-form common-form__make-order-tabs">
+        <div class="make-order-tabs">
             <div class="make-order-tabs__tab">
                 <div class="make-order-tabs__tab-header">Оплата</div>
                 <div class="make-order-tabs__tab-body">
                     <p class="make-order-tabs__subheader">Выберите способ оплаты</p>
 
-                    <input data-ng-model="makeOrder.paymentType" class="common-form__radio" type="radio" name="payment-type" required value="Наличными"> Наличными
+                    <input data-ng-model="customerForm.paymentType" class="common-form__radio" type="radio"
+                           name="payment-type" required value="Наличными"> Наличными
                     <br>
-                    <input data-ng-model="makeOrder.paymentType" class="common-form__radio" type="radio" name="payment-type" required value="Яндекс.Касса"> Яндекс.Касса
+                    <input data-ng-model="customerForm.paymentType" class="common-form__radio" type="radio"
+                           name="payment-type" required value="Яндекс.Касса"> Яндекс.Касса
                     <br>
                 </div>
             </div>
@@ -106,13 +128,14 @@
 
             </p>
             <p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>
-            <p data-ng-if="makeOrder.deliveryType">Способ доставки: {{helpers.getDeliveryTypeName(makeOrder.deliveryType)}}</p>
+            <p data-ng-if="makeOrder.deliveryType">Способ доставки:
+                {{helpers.getDeliveryTypeName(makeOrder.deliveryType)}}</p>
             <p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>
         </div>
 
         <button class="order-info__button"
                 data-ng-click="finishOrder(makeOrder.$invalid)"
-             data-ng-class="{'order-info__button--disabled': makeOrder.$invalid}">
+                data-ng-class="{'order-info__button--disabled': makeOrder.$invalid}">
             Перейти к оплате
         </button>
     </div>

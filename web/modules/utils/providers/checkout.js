@@ -20,27 +20,27 @@
                     };
 
                     return {
-                        createGuest: function (session) {
+                        createGuest: function (session, guest) {
                             req.method = 'POST';
                             // req.url = REST_API.GUEST;
                             req.headers['X-Oc-Session'] = session;
 
-                            const data = {
-                                "firstname": "Demo1",
-                                "lastname": "User",
-                                "email": "nash1@vipmail.hur",
-                                "telephone": "1-541-754-3010",
-                                "fax": "1-541-754-3010",
-                                "company": "string",
-                                "city": "Berlin",
-                                "address_1": "Demo",
-                                "address_2": "Demo",
-                                "country_id": "81",
-                                "postcode": "3333",
-                                "zone_id": "1256"
-                            };
+                            // const data = {
+                            //     "firstname": "Demo1",
+                            //     "lastname": "User",
+                            //     "email": "nash1@vipmail.hur",
+                            //     "telephone": "1-541-754-3010",
+                            //     "fax": "1-541-754-3010",
+                            //     "company": "string",
+                            //     "city": "Berlin",
+                            //     "address_1": "Demo",
+                            //     "address_2": "Demo",
+                            //     "country_id": "81",
+                            //     "postcode": "3333",
+                            //     "zone_id": "1256"
+                            // };
 
-                            return $http.post(REST_API.GUEST, JSON.stringify(data), req)
+                            return $http.post(REST_API.GUEST, guest, req)
                                 .then(
                                     function (response) {
                                         console.log('createGuest response: ', response);

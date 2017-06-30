@@ -2,6 +2,9 @@
 
 .common-form__input
   @include placeholder($font-family-condensed-light, $font-size-p)
+  &.ng-invalid.ng-dirty
+    border-color: red
+    outline-color: red
 
 .common-form__textarea
   height: 100px

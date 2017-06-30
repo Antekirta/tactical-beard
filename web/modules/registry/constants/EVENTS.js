@@ -38,6 +38,10 @@
 
 		'BASKET_EVENTS': {
 			'BASKET_UPDATED': 'basketUpdated'
+		},
+
+		'SCOPE': {
+			'DESTROY': 'destroy'
 		}
 	});
 })();

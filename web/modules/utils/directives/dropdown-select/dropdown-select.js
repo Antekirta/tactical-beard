@@ -9,19 +9,21 @@
 
             scope: {
                 itemsList: '=',
-                placeholder: '@'
+                placeholder: '@',
+                model: '='
             },
 
             templateUrl: 'modules/utils/directives/dropdown-select/dropdown-select.html',
 
             link: function(scope, element, attrs){
-                var classes = {
+                console.log('scope.model: ', scope.model);
+                const classes = {
                     container: 'dropdown-select__list-container',
 
                     show: 'dropdown-select__list-container--show'
                 };
 
-                var listContainer = angular.element( element[0].querySelectorAll('.' + classes.container)[0] );
+                const listContainer = angular.element( element[0].querySelectorAll('.' + classes.container)[0] );
 
                 element.find('input').bind(EVENTS.ELEMENT.FOCUS, function(){
                     listContainer.addClass(classes.show);
@@ -38,10 +40,12 @@
                 });
 
                 scope.dropdownSelect = {
-                    search: '',
+                    search: scope.model,
 
                     selectItem: function(item){
                         scope.dropdownSelect.search = item.name;
+
+                        scope.model = scope.dropdownSelect.search;
 
                         scope.$emit('dropdownSelectItemSelected', scope.dropdownSelect.search);
 
