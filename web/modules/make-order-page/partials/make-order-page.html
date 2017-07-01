@@ -98,7 +98,7 @@
 
                     <span data-ng-repeat="method in shippingMethods">
                         <input data-ng-model="customerForm.shippingMethod"
-                               data-ng-change="shippingMethod(method)"
+                               data-ng-change="setShippingMethod(method)"
                                class="common-form__radio" type="radio"
                                name="shippingmethod"
                                required
@@ -117,12 +117,15 @@
                 <div class="make-order-tabs__tab-body">
                     <p class="make-order-tabs__subheader">Выберите способ оплаты</p>
 
-                    <input data-ng-model="customerForm.paymentType" class="common-form__radio" type="radio"
-                           name="payment-type" required value="Наличными"> Наличными
-                    <br>
-                    <input data-ng-model="customerForm.paymentType" class="common-form__radio" type="radio"
-                           name="payment-type" required value="Яндекс.Касса"> Яндекс.Касса
-                    <br>
+                    <span data-ng-repeat="method in paymentMethods">
+                        <input data-ng-model="customerForm.paymentMethod"
+                               data-ng-change="setPaymentMethod(method)"
+                               class="common-form__radio" type="radio"
+                               name="paymentMethod"
+                               required
+                               value="{{method.value}}"> {{method.name}}
+                        <br>
+                    </span>
                 </div>
             </div>
         </div>

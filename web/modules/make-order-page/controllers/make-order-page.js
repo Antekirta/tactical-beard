@@ -24,8 +24,10 @@
             };
 
             $scope.shippingMethods = [];
-            
-            $scope.shippingMethod = shippingMethod;
+            $scope.paymentMethods = [];
+
+            $scope.setShippingMethod = setShippingMethod;
+            $scope.setPaymentMethod = setPaymentMethod;
 
             fillRegionsList();
 
@@ -56,10 +58,6 @@
             function fillShippingTypesList(shippingMethods) {
                 for (let method in shippingMethods) {
                     if ( shippingMethods.hasOwnProperty(method) ) {
-                        if ( shippingMethods[method].quote[method] ) {
-                            console.log('shippingMethods[method].quote[method].code: ', shippingMethods[method].quote[method].code);
-                        }
-
                         $scope.shippingMethods.push({
                             name: shippingMethods[method].title,
 
@@ -67,6 +65,22 @@
                         });
                     }
                 }
+            }
+            
+            function fillPaymentMethodsList(paymentMethods) {
+                console.log('fillPaymentMethodsList paymentMethods: ', paymentMethods);
+
+                for (let method in paymentMethods) {
+                    if ( paymentMethods.hasOwnProperty(method) ) {
+                        $scope.paymentMethods.push({
+                            name: paymentMethods[method].title,
+
+                            value: paymentMethods[method].code
+                        });
+                    }
+                }
+
+                console.log('fillPaymentMethodsList $scope.paymentMethods: ', $scope.paymentMethods);
             }
 
             function createAddressWatcher() {
@@ -135,12 +149,37 @@
                 }
             }
             
-            function shippingMethod(method) {
+            function setShippingMethod(method) {
                 checkoutProvider.setShippingMethods(params.currentSession, method.value, method.name)
                     .then(
                         function (response) {
                             if ( response.data.success ) {
                                 $log.log('Shipping method has been successfully set!');
+                            }
+                        }
+                    )
+                    .then(
+                        function () {
+                            checkoutProvider.getPaymentMethods(params.currentSession)
+                                .then(
+                                    function (paymentMethods) {
+                                        console.log('paymentMethods in make-order-page: ', paymentMethods);
+                                        
+                                        fillPaymentMethodsList(paymentMethods.data['payment_methods']);
+                                    }
+                                );
+                        }
+                    );
+            }
+            
+            function setPaymentMethod(method) {
+                console.log('setPaymentMethod method: ', method);
+
+                checkoutProvider.setPaymentMethod(params.currentSession, method.value, method.name, true)
+                    .then(
+                        function (response) {
+                            if ( response.data.success ) {
+                                $log.log('Payment method has been successfully set!');
                             }
                         }
                     );

@@ -82,28 +82,25 @@
                         },
 
                         getPaymentMethods: function (session) {
-                            req.method = 'GET';
-                            req.url = REST_API.GET_PAYMENT_METHODS;
                             req.headers['X-Oc-Session'] = session;
 
-                            return $http(req)
+                            return $http.get(REST_API.GET_PAYMENT_METHODS, req)
                                 .then(
                                     function (response) {
                                         console.log('getPaymentMethods response: ', response);
 
-                                        return response;
+                                        return response.data;
                                     }
                                 );
                         },
 
-                        setPaymentMethod: function (session) {
-                            req.method = 'POST';
-                            req.url = REST_API.SET_PAYMENT_METHOD;
+                        setPaymentMethod: function (session, method, comment, agree) {
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-                                'payment_method': 'cheque',
-                                'agree': 1
+                                'payment_method': method,
+                                'comment': comment,
+                                'agree': agree
                             };
 
                             return $http.post(REST_API.SET_PAYMENT_METHOD, data, req)
