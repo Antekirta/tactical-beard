@@ -97,7 +97,7 @@
                     <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
 
                     <span data-ng-repeat="method in shippingMethods">
-                        <input data-ng-model="customerForm.shippingMethod"
+                        <input data-ng-model="shippingForm.shippingMethod"
                                data-ng-change="setShippingMethod(method)"
                                class="common-form__radio" type="radio"
                                name="shippingmethod"
@@ -131,19 +131,27 @@
         </div>
     </ng-form>
 
+    <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
+
     <div class="order-info">
         <header class="order-info__header">Информация о заказе</header>
         <div class="order-info__description">
-            <p data-ng-if="makeOrder.name">Заказчик: {{makeOrder.name}}<span data-ng-if="makeOrder.address">, проживает по адресу {{makeOrder.address}}.
-            </span></p>
-            <p data-ng-if="makeOrder.email || makeOrder.tel">Контакты заказчика: <br>
-                <span data-ng-if="makeOrder.email">E-mail: {{makeOrder.email}}</span> <br>
-                <span data-ng-if="makeOrder.tel">Телефон: {{makeOrder.tel}}</span>
+            <p data-ng-if="customerForm.customer.name">
+                Заказчик: {{customerForm.customer.name}}
+                <span data-ng-if="customerForm.customer.address"><br>
+                    Проживает по адресу: {{customerForm.customer.address.region}}
+                    <span data-ng-if="customerForm.customer.address.city">, г. </span>{{customerForm.customer.address.city}}
+                    <span data-ng-if="customerForm.customer.address.street">, </span>{{customerForm.customer.address.street}}
+                </span>
+            </p>
+            <p data-ng-if="customerForm.customer.email || customerForm.customer.tel">Контакты заказчика: <br>
+                <span data-ng-if="customerForm.customer.email">E-mail: {{customerForm.customer.email}}</span> <br>
+                <span data-ng-if="customerForm.customer.tel">Телефон: {{customerForm.customer.tel}}</span>
 
             </p>
             <p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>
-            <p data-ng-if="makeOrder.deliveryType">Способ доставки:
-                {{helpers.getDeliveryTypeName(makeOrder.deliveryType)}}</p>
+            <p data-ng-if="shippingForm.shippingMethod">Способ доставки:
+                {{shippingForm.shippingMethod}}</p>
             <p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>
         </div>
 

@@ -25,6 +25,7 @@
 
             $scope.shippingMethods = [];
             $scope.paymentMethods = [];
+            $scope.orderConfirmed = false;
 
             $scope.setShippingMethod = setShippingMethod;
             $scope.setPaymentMethod = setPaymentMethod;
@@ -79,8 +80,6 @@
                         });
                     }
                 }
-
-                console.log('fillPaymentMethodsList $scope.paymentMethods: ', $scope.paymentMethods);
             }
 
             function createAddressWatcher() {
@@ -163,8 +162,6 @@
                             checkoutProvider.getPaymentMethods(params.currentSession)
                                 .then(
                                     function (paymentMethods) {
-                                        console.log('paymentMethods in make-order-page: ', paymentMethods);
-                                        
                                         fillPaymentMethodsList(paymentMethods.data['payment_methods']);
                                     }
                                 );
@@ -173,14 +170,24 @@
             }
             
             function setPaymentMethod(method) {
-                console.log('setPaymentMethod method: ', method);
-
                 checkoutProvider.setPaymentMethod(params.currentSession, method.value, method.name, true)
                     .then(
                         function (response) {
                             if ( response.data.success ) {
                                 $log.log('Payment method has been successfully set!');
                             }
+                        }
+                    )
+                    .then(
+                        function () {
+                            checkoutProvider.confirm(params.currentSession)
+                                .then(
+                                    function (response) {
+                                        $scope.orderConfirmed = response.success;
+
+                                        $scope.totalOrderInfo = response.data.payment;
+                                    }
+                                );
                         }
                     );
             }

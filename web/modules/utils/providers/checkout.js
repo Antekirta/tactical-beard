@@ -114,18 +114,14 @@
                         },
 
                         confirm: function (session) {
-                            req.method = 'POST';
-                            req.url = REST_API.CONFIRM_ORDER;
                             req.headers['X-Oc-Session'] = session;
 
-                            const data = {
-
-                            };
-
-                            return $http(req, JSON.stringify(data))
+                            return $http.post(REST_API.CONFIRM_ORDER, {}, req)
                                 .then(
                                     function (response) {
                                         console.log('confirm response: ', response);
+
+                                        return response.data;
                                     }
                                 );
                         },
