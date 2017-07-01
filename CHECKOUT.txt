@@ -1,0 +1,24 @@
+Процесс оформления заказа
+
+Перед началом оформления следует убедиться. что коризна не пуста!
+
+1) Получить номер сессии и сохранить ее в отдельную, общедоступную в пределах контроллера переменную DONE (params.currentSession)
+
+2) После того, как пользователь заполнит следующие поля: ФИО, E-mail, Телефон, Адрес (Страна (?), Регион, Населенный пункт, Улица), отправить запрос на создание гостевого юзера
+(POST /guest Create guest user) (подробности запроса см. в Postman) (DONE)
+
+3) Сразу по завершении этого запроса отправить следующий запрос ( POST /guestshipping Set shipping address to order) (DONE)
+
+5) По завершении предыдущего запроса выполнить запрос (GET api/rest/shippingmethods get all available shipping methods) (DONE)
+
+6) После того, как пользователь выбрал способ доставки, отправить запрос (POST api/rest/shippingmethods	set the shipping method)  (DONE)
+
+7) После завершения предыдущего запроса отправить запрос (GET	api/rest/paymentmethods	get all available payment methods) (DONE)
+
+8) После того, как пользователь выбрал способ оплаты, отправить запрос (POST api/rest/paymentmethods	set the payment method) (DONE)
+
+9) После завершения предыдущего запроса отправить запрос (POST api/rest/confirm get an overview of the order)
+
+10) После нажатия кнопки "Перейти к оплате" выполнить запрос (GET api/rest/pay You only need to call this service, if you want to start payment process in webview)
+
+11) После успешного завершения оплаты выполнить запрос (PUT	api/rest/confirm)
