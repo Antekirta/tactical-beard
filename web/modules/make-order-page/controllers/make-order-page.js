@@ -23,6 +23,10 @@
                 currentSession: ''
             };
 
+            $scope.shippingMethods = [];
+            
+            $scope.shippingMethod = shippingMethod;
+
             fillRegionsList();
 
             setCurrentSession();
@@ -47,6 +51,22 @@
                             $scope.regions = countries;
                         }
                     );
+            }
+
+            function fillShippingTypesList(shippingMethods) {
+                for (let method in shippingMethods) {
+                    if ( shippingMethods.hasOwnProperty(method) ) {
+                        if ( shippingMethods[method].quote[method] ) {
+                            console.log('shippingMethods[method].quote[method].code: ', shippingMethods[method].quote[method].code);
+                        }
+
+                        $scope.shippingMethods.push({
+                            name: shippingMethods[method].title,
+
+                            value: shippingMethods[method].quote[method] && shippingMethods[method].quote[method].code
+                        });
+                    }
+                }
             }
 
             function createAddressWatcher() {
@@ -100,10 +120,30 @@
                         )
                         .then(
                             function () {
-                                return checkoutProvider.getShippingMethods(params.currentSession);
+                                return checkoutProvider.getShippingMethods(params.currentSession)
+                                    .then(
+                                        function (response) {
+                                            if ( response.success ) {
+                                                if ( _.isEmpty($scope.shippingMethods) ) {
+                                                    fillShippingTypesList(response.data['shipping_methods']);
+                                                }
+                                            }
+                                        }
+                                    );
                             }
                         );
                 }
+            }
+            
+            function shippingMethod(method) {
+                checkoutProvider.setShippingMethods(params.currentSession, method.value, method.name)
+                    .then(
+                        function (response) {
+                            if ( response.data.success ) {
+                                $log.log('Shipping method has been successfully set!');
+                            }
+                        }
+                    );
             }
         }]);
 })();

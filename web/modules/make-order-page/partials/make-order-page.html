@@ -96,9 +96,13 @@
                 <div class="make-order-tabs__tab-body">
                     <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
 
-                    <span data-ng-repeat="type in deliveryTypes">
-                        <input data-ng-model="customerForm.deliveryType" class="common-form__radio" type="radio"
-                               name="delivery-type" required value="{{type.value}}"> {{type.name}}
+                    <span data-ng-repeat="method in shippingMethods">
+                        <input data-ng-model="customerForm.shippingMethod"
+                               data-ng-change="shippingMethod(method)"
+                               class="common-form__radio" type="radio"
+                               name="shippingmethod"
+                               required
+                               value="{{method.value}}"> {{method.name}}
                         <br>
                     </span>
                 </div>

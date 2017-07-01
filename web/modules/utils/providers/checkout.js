@@ -55,20 +55,20 @@
                                     function (response) {
                                         console.log('getShippingMethods response: ', response);
 
-                                        return response;
+                                        return response.data;
                                     }
                                 );
                         },
 
-                        setShippingMethods: function (session, method) {
-                            req.method = 'POST';
-                            req.url = REST_API.SET_SHIPPING_METHOD;
+                        setShippingMethods: function (session, method, comment) {
                             req.headers['X-Oc-Session'] = session;
 
                             const data = {
-                                comment: 'citylink comment',
-                                shipping_method: 'citylink.citylink'
+                                comment: comment,
+                                shipping_method: method
                             };
+
+                            console.log('DATA: ', data);
 
                             return $http.post(REST_API.SET_SHIPPING_METHOD, data, req)
                                 .then(
