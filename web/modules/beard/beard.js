@@ -1,92 +1,96 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	var beard = angular.module('beard', [
-		'ui.router',
+    var beard = angular.module('beard', [
+        'ui.router',
 
-		'utils',
+        'utils',
 
-		'registry',
+        'registry',
 
-		'mainPage',
+        'mainPage',
 
-		'categoriesPage',
+        'categoriesPage',
 
-		'productsListPage',
+        'productsListPage',
 
-		'filters',
+        'filters',
 
-		'productPage',
+        'productPage',
 
-		'makeOrderPage',
+        'makeOrderPage',
 
-		'orderDonePage',
+        'orderDonePage',
 
-		'basketPage',
+        'basketPage',
 
-		'infoListPage',
+        'infoListPage',
 
-		'infoPage',
+        'infoPage',
 
-		'bookmarksPage',
+        'bookmarksPage',
 
-		'personalAccountPage',
+        'personalAccountPage',
 
-		'siteHeader',
+        'siteHeader',
 
-		'mainMenu',
+        'mainMenu',
 
-		'slider',
+        'slider',
 
-		'categoriesList',
+        'categoriesList',
 
-		'impulseProducts',
+        'impulseProducts',
 
-		'pageContent',
+        'pageContent',
 
-		'categoriesSidebar',
+        'categoriesSidebar',
 
-		'siteFooter',
+        'siteFooter',
 
-		'sidebarMenu',
+        'sidebarMenu',
 
-		'sidebarAdditional',
+        'sidebarAdditional',
 
-		'enterPopup',
+        'enterPopup',
 
-		'privateOffice'
-	]);
+        'privateOffice'
+    ]);
 
-	beard.config([
-		'$stateProvider',
+    beard.config([
+        '$stateProvider',
 
-		'$locationProvider',
+        '$locationProvider',
 
-		'$httpProvider',
+        '$httpProvider',
 
-		'mainMenuProvider',
+        'mainMenuProvider',
 
-		'REST_API',
+        'REST_API',
 
-		'STATES',
+        'STATES',
 
-		function($stateProvider, $locationProvider, $httpProvider, mainMenuProvider, REST_API, STATES) {
-			//delete '#' sign in URL
-			$locationProvider.html5Mode(true);
+        function ($stateProvider, $locationProvider, $httpProvider, mainMenuProvider, REST_API, STATES) {
+            //delete '#' sign in URL
+            $locationProvider.html5Mode(true);
 
-			//create app states
-			STATES.forEach(function(state) {
-				$stateProvider.state(state);
-			});
+            //create app states
+            STATES.forEach(function (state) {
+                $stateProvider.state(state);
+            });
 
-			// because of https://stackoverflow.com/questions/33660712/angularjs-post-fails-response-for-preflight-has-invalid-http-status-code-404
+            // setInterval(basketProvider.synchronizeBaskets, 2000);
 
-            // $httpProvider.defaults.headers.common = {};
-            // $httpProvider.defaults.headers.post = {};
-            // $httpProvider.defaults.headers.put = {};
-            // $httpProvider.defaults.headers.patch = {};
+            //configure mainMenu provider
+            //mainMenuProvider.mainMenuItemsDestination = REST_API.MAIN_MENU.ITEMS;
+        }]);
 
-			//configure mainMenu provider
-			//mainMenuProvider.mainMenuItemsDestination = REST_API.MAIN_MENU.ITEMS;
-		}]);
+    beard.run([
+        'basketProvider',
+
+        function (basketProvider) {
+            console.log('RUN!');
+
+            setInterval(basketProvider.synchronizeBaskets, 10000);
+        }]);
 })();

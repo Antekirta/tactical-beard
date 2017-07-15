@@ -33,164 +33,187 @@
                         }
                     };
 
-                    return {
-                        getProducts: function () {
-                            return session.getCurrentSession()
-                                .then(
-                                    function (session) {
-                                        return session;
-                                    }
-                                )
-                                .then(
-                                    function (session) {
-                                        req.headers['X-Oc-Session'] = session;
+                    function getProducts() {
+                        return session.getCurrentSession()
+                            .then(
+                                function (session) {
+                                    return session;
+                                }
+                            )
+                            .then(
+                                function (session) {
+                                    req.headers['X-Oc-Session'] = session;
 
-                                        return $http.get(REST_API.CART, req)
-                                            .then(
-                                                function (response) {
-                                                    return response.data;
-                                                }
-                                            );
-                                    }
-                                );
-                        },
+                                    return $http.get(REST_API.CART, req)
+                                        .then(
+                                            function (response) {
+                                                return response.data;
+                                            }
+                                        );
+                                }
+                            );
+                    }
 
-                        putProduct: function (product) {
-                            return session.getCurrentSession()
-                                .then(
-                                    function (session) {
-                                        return session;
-                                    }
-                                )
-                                .then(
-                                    function (session) {
-                                        req.headers['X-Oc-Session'] = session;
+                    function putProduct(product) {
+                        return session.getCurrentSession()
+                            .then(
+                                function (session) {
+                                    return session;
+                                }
+                            )
+                            .then(
+                                function (session) {
+                                    req.headers['X-Oc-Session'] = session;
 
-                                        let item = {};
+                                    let item = {};
 
-                                        item[PRODUCT_DICTIONARY.PRODUCT_ID] = product.id;
-                                        item[PRODUCT_DICTIONARY.QUANTITY] = product.quantity;
+                                    item[PRODUCT_DICTIONARY.PRODUCT_ID] = product.id;
+                                    item[PRODUCT_DICTIONARY.QUANTITY] = product.quantity;
 
-                                        return $http.post(REST_API.CART, item, req)
-                                            .then(
-                                                function (response) {
-                                                    $log.log('Product has been successfully added to basket: ', response);
-                                                },
+                                    return $http.post(REST_API.CART, item, req)
+                                        .then(
+                                            function (response) {
+                                                $log.log('Product has been successfully added to basket: ', response);
+                                            },
 
-                                                function (error) {
-                                                    $log.error('Product has NOT been added to basket because of: ', error);
-                                                }
-                                            );
-                                    }
-                                );
-                        },
+                                            function (error) {
+                                                $log.error('Product has NOT been added to basket because of: ', error);
+                                            }
+                                        );
+                                }
+                            );
+                    }
 
-                        putBunchOfProducts: function (productsArray) {
-                            const self = this;
+                    function putBunchOfProducts(productsArray) {
+                        const self = this;
 
-                            return self.emptyCart()
-                                .then(
-                                    function () {
+                        return self.emptyCart()
+                            .then(
+                                function () {
 
-                                    }
-                                )
-                                .then(
-                                    function () {
-                                        return session.getCurrentSession()
-                                            .then(
-                                                function (session) {
-                                                    return session;
-                                                }
-                                            );
-                                    }
-                                ).then(
-                                    function (session) {
-                                        req.headers['X-Oc-Session'] = session;
+                                }
+                            )
+                            .then(
+                                function () {
+                                    return session.getCurrentSession()
+                                        .then(
+                                            function (session) {
+                                                return session;
+                                            }
+                                        );
+                                }
+                            ).then(
+                                function (session) {
+                                    req.headers['X-Oc-Session'] = session;
 
-                                        let items = [];
+                                    let items = [];
 
-                                        productsArray.forEach(function (product) {
-                                            items.push({
-                                                product_id: product.id,
+                                    productsArray.forEach(function (product) {
+                                        items.push({
+                                            product_id: product.id,
 
-                                                quantity: product.quantity
-                                            });
+                                            quantity: product.quantity
                                         });
+                                    });
 
-                                        return $http.post(REST_API.BULK_CART, items, req)
-                                            .then(
-                                                function (response) {
-                                                    $log.log('BasketProvider putBunchOfProducts response: ', response);
+                                    return $http.post(REST_API.BULK_CART, items, req)
+                                        .then(
+                                            function (response) {
+                                                $log.log('BasketProvider putBunchOfProducts response: ', response);
 
-                                                    return response;
-                                                }
-                                            );
-                                    }
-                                )
-                                .then(
-                                    function () {
-                                        self.getProducts()
-                                            .then(
-                                                function (response) {
-                                                    console.log('getProducts after emptyCart and bulk cart', response);
-                                                }
-                                            );
-                                    }
-                                );
+                                                return response;
+                                            }
+                                        );
+                                }
+                            )
+                            .then(
+                                function () {
+                                    self.getProducts()
+                                        .then(
+                                            function (response) {
+                                                console.log('getProducts after emptyCart and bulk cart', response);
+                                            }
+                                        );
+                                }
+                            );
 
-                        },
+                    }
 
-                        deleteItem: function (key) {
-                            return session.getCurrentSession()
-                                .then(
-                                    function (session) {
-                                        return session;
-                                    }
-                                )
-                                .then(
-                                    function (session) {
-                                        req.headers['X-Oc-Session'] = session;
+                    function deleteItem(key) {
+                        return session.getCurrentSession()
+                            .then(
+                                function (session) {
+                                    return session;
+                                }
+                            )
+                            .then(
+                                function (session) {
+                                    req.headers['X-Oc-Session'] = session;
 
-                                        req.data = {
-                                            key: key
-                                        };
+                                    req.data = {
+                                        key: key
+                                    };
 
-                                        return $http.delete(REST_API.CART, req)
-                                            .then(
-                                                function (response) {
-                                                    $log.log('Basket provider deleteItem response: ', response);
-                                                },
+                                    return $http.delete(REST_API.CART, req)
+                                        .then(
+                                            function (response) {
+                                                $log.log('Basket provider deleteItem response: ', response);
+                                            },
 
-                                                function (error) {
-                                                    $log.error('Basket provider deleteItem error: ', error);
-                                                }
-                                            );
-                                    }
-                                );
-                        },
+                                            function (error) {
+                                                $log.error('Basket provider deleteItem error: ', error);
+                                            }
+                                        );
+                                }
+                            );
+                    }
 
-                        emptyCart: function () {
-                            return session.getCurrentSession()
-                                .then(
-                                    function (session) {
-                                        return session;
-                                    }
-                                )
-                                .then(
-                                    function (session) {
-                                        req.headers['X-Oc-Session'] = session;
+                    function emptyCart() {
+                        return session.getCurrentSession()
+                            .then(
+                                function (session) {
+                                    return session;
+                                }
+                            )
+                            .then(
+                                function (session) {
+                                    req.headers['X-Oc-Session'] = session;
 
-                                        return $http.delete(REST_API.EMPTY_CART, req)
-                                            .then(
-                                                function (response) {
-                                                    $log.log('BasketProvider emptyCart has worked successfully!: ', response);
+                                    return $http.delete(REST_API.EMPTY_CART, req)
+                                        .then(
+                                            function (response) {
+                                                $log.log('BasketProvider emptyCart has worked successfully!: ', response);
 
-                                                    return response.data;
-                                                }
-                                            );
-                                    }
-                                );
-                        }
+                                                return response.data;
+                                            }
+                                        );
+                                }
+                            );
+                    }
+
+                    function synchronizeBaskets() {
+                        return getProducts()
+                            .then(
+                                function (response) {
+                                    console.log('synchronizeBaskets response: ', response);
+
+                                    console.log('synchronizeBaskets basket: ', JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)));
+                                }
+                            );
+                    }
+
+                    return {
+                        getProducts: getProducts,
+
+                        putProduct: putProduct,
+
+                        putBunchOfProducts: putBunchOfProducts,
+
+                        deleteItem: deleteItem,
+
+                        emptyCart: emptyCart,
+
+                        synchronizeBaskets: synchronizeBaskets
                     };
                 }
             ];
