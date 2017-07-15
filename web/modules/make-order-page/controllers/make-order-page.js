@@ -71,6 +71,8 @@
             function fillPaymentMethodsList(paymentMethods) {
                 console.log('fillPaymentMethodsList paymentMethods: ', paymentMethods);
 
+                $scope.paymentMethods = [];
+
                 for (let method in paymentMethods) {
                     if ( paymentMethods.hasOwnProperty(method) ) {
                         $scope.paymentMethods.push({
