@@ -3,7 +3,7 @@
 
 	var registry = angular.module('registry');
 
-	var site = 'http://tacticalbeard39.com';
+	var site = 'http://tacbeard.com/backend';
 
 	registry.constant('REST_API', {
 		'X_OC_RESTADMIN_ID': '4562314431343',

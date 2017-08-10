@@ -9,7 +9,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const backendApi = {
-    prod: 'http://tacticalbeard39.com/'
+    prod: 'http://tacbeard.com/'
 };
 
 const apiForwardingUrl = backendApi.prod;
