@@ -99,6 +99,7 @@
 
             const productHandlers = {
             	createArtDescription: function (description) {
+            	    console.log('createArtDescription: ', description);
                     $scope.artDescription = $sce.trustAsHtml(description);
                 },
 
@@ -148,7 +149,7 @@
                         },
 
                         {
-                            name: $scope.product.product_description[1].name,
+                            name: $scope.product.product_description[0].name,
                             state: {
                                 name: STATE_NAMES.PRODUCT,
                                 params: {}
@@ -162,7 +163,9 @@
             	function (response) {
 					$scope.product = response.data.data;
 
-                    productHandlers.createArtDescription($scope.product.product_description[1].description);
+					console.log('$scope.product: ', $scope.product);
+
+                    productHandlers.createArtDescription($scope.product.product_description[0].description);
 
                     productHandlers.createTechDescription($scope.product.product_attributes.attributes);
 
