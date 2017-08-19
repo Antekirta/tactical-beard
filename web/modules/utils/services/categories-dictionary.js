@@ -15,23 +15,25 @@
                         function (response) {
                             var dictionary = {};
 
-                            var categories = _.toArray(response.data.data.categories);
+                            var categories = _.toArray(response.data.data);
 
                             // Create object, where keys are transliterated category names and values are id of these categories
 
                             categories.forEach(function (category) {
-                                var transliterated = translitFactory.rusTolat(category[0].name);
+                                var transliterated = translitFactory.rusTolat(category.name);
 
-                                dictionary[transliterated] = category[0].category_id;
+                                dictionary[transliterated] = category.category_id;
 
-                                if ( category[0].categories ) {
-                                    _.toArray(category[0].categories.categories).forEach(function (subCategory) {
-                                        transliterated = translitFactory.rusTolat(subCategory[0].name);
+                                if ( category.categories ) {
+                                    _.toArray(category.categories.categories).forEach(function (subCategory) {
+                                        transliterated = translitFactory.rusTolat(subCategory.name);
 
-                                        dictionary[transliterated] = subCategory[0].category_id;
+                                        dictionary[transliterated] = subCategory.category_id;
                                     });
                                 }
                             });
+
+                            console.log('categories-dictionary response: ', response);
 
                             return dictionary;
                         }

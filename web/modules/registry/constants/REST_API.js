@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	var registry = angular.module('registry');
+	const registry = angular.module('registry');
 
-	var site = 'http://tacbeard.com/backend';
+    const site = 'http://tacbeard.com/backend';
 
 	registry.constant('REST_API', {
 		'X_OC_RESTADMIN_ID': '4562314431343',

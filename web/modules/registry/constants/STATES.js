@@ -1,17 +1,17 @@
 (function() {
 	'use strict';
 
-	var registry = angular.module('registry');
+	const registry = angular.module('registry');
 
-	var pathToPartial = function(moduleName){
+	let pathToPartial = function(moduleName){
 		return 'modules/' + moduleName + '/partials/' + moduleName + '.html';
 	};
 
-    var pathToInnerPage = function pathToPartial(page) {
+    let pathToInnerPage = function pathToPartial(page) {
         return 'modules/inner-pages/partials/' + page + '.html';
     };
 
-	var pathToController = function(moduleName) {
+    let pathToController = function(moduleName) {
 		return 'modules/' + moduleName + '/controllers/' + moduleName + '.html';
 	};
 

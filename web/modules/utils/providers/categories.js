@@ -28,23 +28,25 @@
 
 				return {
 					getCategories: function() {
-						var categories = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.CATEGORIES, true)) || {};
+						let categories = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.CATEGORIES, true)) || {};
 
                         // if categories are already stored in data storage, then return it from there
 
-                        if ( !_.isEmpty(categories) ) {
-                            var deferred = $q.defer();
-
-                            deferred.resolve(categories);
-
-                            return deferred.promise;
-                        }
+                        // if ( !_.isEmpty(categories) ) {
+                        //     let deferred = $q.defer();
+                        //
+                        //     deferred.resolve(categories);
+                        //
+                        //     return deferred.promise;
+                        // }
 
                         req.url = REST_API.CATEGORIES;
 
 						return $http(req).then(
 							function(response) {
                                 categories = response;
+
+                                console.log('categories.js response: ', response);
 
                                 dataStorage.setData(DATA_STORAGE.STORAGES.CATEGORIES, JSON.stringify(categories), true);
 

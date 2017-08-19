@@ -28,14 +28,14 @@
 
             $scope.helpers = {
                 getCurrentOrder: function () {
-                    var currentOrdermap = {
+                    const currentOrdermap = {
                         'cheaper': 'price',
 
                         // reverse
                         'expensive': '-price'
                     };
 
-                    var currentOrder = _.find($scope.filters.order, function (orderType) {
+                    let currentOrder = _.find($scope.filters.order, function (orderType) {
                         return orderType.status;
                     });
 
@@ -51,13 +51,13 @@
                 }
             };
 
-            var promises = {
+            const promises = {
                 getProductsByCategoryId: function (id) {
                     productsProvider.getProductsByCategoryId(id).then(
                         function (response) {
-                            var products = _.toArray(response.data.data);
+                            let products = _.toArray(response.data.data);
 
-                            var images = [];
+                            let images = [];
 
                             products.forEach(function (item, index, arr) {
                                 item.price = +item.price;
@@ -75,13 +75,15 @@
                                 return product.price;
                             }).price;
 
-                            var counter = 0;
+                            let counter = 0;
 
-                            var productToSetImage = {};
+                            let productToSetImage = {};
+
+                            console.log('products list page products: ', products);
 
                             $scope.products = products;
 
-                            var stopInterval = $interval(function () {
+                            const stopInterval = $interval(function () {
                                 productToSetImage = _.find($scope.products, function (product) {
                                     return product.id === images[counter].id;
                                 });
