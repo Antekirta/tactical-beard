@@ -7,7 +7,7 @@
         class="categories-sidebar__list-item">
         <a class="categories-sidebar__link"
 
-           data-ng-click="goToUIState({name: 'products-list', params: {categoryId: category.category_id, categoryName: category.name}}, category.subcategories)"
+           data-ng-click="goToUIState({name: 'products-list', params: {categoryId: category.category_id, categoryName: category.name}})"
 
            data-drop-down="{{!!category.subcategories}}">
             {{category.meta_title | lowercase}}

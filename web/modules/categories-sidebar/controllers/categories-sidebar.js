@@ -16,14 +16,11 @@
         function ($scope, $log, $state, $stateParams, categoriesProvider, statesFactory, translitFactory, STATE_NAMES) {
             $scope.categories = [];
 
-            $scope.goToUIState = function (state, shouldGo) {
-                console.log('categories-sidebar shouldGo: ', shouldGo);
-                if (shouldGo) {
-                    $state.go(STATE_NAMES.CATEGORY, {
-                        categoryId: state.params.categoryId,
-                        categoryName: translitFactory.rusTolat(state.params.categoryName)
-                    });
-                }
+            $scope.goToUIState = function (state) {
+                $state.go(STATE_NAMES.CATEGORY, {
+                    categoryId: state.params.categoryId,
+                    categoryName: translitFactory.rusTolat(state.params.categoryName)
+                });
             };
 
             categoriesProvider.getCategories()
@@ -41,8 +38,6 @@
 
                     $scope.categories = categories;
 
-                    console.log('categories-sidebar.js categories: ', categories);
-
                     return categories;
                 })
                 // get subcategories
@@ -50,10 +45,12 @@
                     categories.forEach(function (category) {
                         categoriesProvider.getSubCategories(category.category_id)
                             .then(function (response) {
-                                if (response.data.success) {
+                                if ( response.data.success ) {
                                     var subcategories = _.toArray(response.data);
 
-                                    category.subcategories = _.toArray(subcategories.categories);
+                                    console.log('categories-sidebar.js subcategories: ', subcategories[2]);
+
+                                    category.subcategories = _.toArray(subcategories[2]);
                                 }
                             })
                             .catch(function (error) {
