@@ -79,8 +79,6 @@
 
                             let productToSetImage = {};
 
-                            console.log('products list page products: ', products);
-
                             $scope.products = products;
 
                             const stopInterval = $interval(function () {

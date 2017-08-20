@@ -4,4 +4,6 @@ node_modules/
 web/js/
 web/css
 web/vendor
+web/web.tar
+web/web.zip
 .idea/

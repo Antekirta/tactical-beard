@@ -31,8 +31,6 @@
                 .then(function (response) {
                     var categories = _.toArray(response.data.data);
 
-                    console.log('categories-sidebar categories: ', response.data.data);
-
                     categories = _.sortBy(categories, [function (obj) {
                         return parseInt(obj.sort_order);
                     }]);
@@ -42,6 +40,8 @@
                     });
 
                     $scope.categories = categories;
+
+                    console.log('categories-sidebar.js categories: ', categories);
 
                     return categories;
                 })

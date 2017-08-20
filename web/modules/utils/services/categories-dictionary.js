@@ -33,8 +33,6 @@
                                 }
                             });
 
-                            console.log('categories-dictionary response: ', response);
-
                             return dictionary;
                         }
                     );

@@ -46,8 +46,6 @@
 							function(response) {
                                 categories = response;
 
-                                console.log('categories.js response: ', response);
-
                                 dataStorage.setData(DATA_STORAGE.STORAGES.CATEGORIES, JSON.stringify(categories), true);
 
                                 return categories;
