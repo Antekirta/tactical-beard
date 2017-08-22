@@ -1,68 +1,66 @@
 (function () {
     'use strict';
 
-    var categoriesSidebar = angular.module('categoriesSidebar');
+    angular.module('categoriesSidebar')
+        .controller('categoriesSidebarCtrl', [
+            '$scope',
+            '$log',
+            '$state',
+            '$stateParams',
+            'categoriesProvider',
+            'statesFactory',
+            'translitFactory',
+            'STATE_NAMES',
 
-    categoriesSidebar.controller('categoriesSidebarCtrl', [
-        '$scope',
-        '$log',
-        '$state',
-        '$stateParams',
-        'categoriesProvider',
-        'statesFactory',
-        'translitFactory',
-        'STATE_NAMES',
+            function ($scope, $log, $state, $stateParams, categoriesProvider, statesFactory, translitFactory, STATE_NAMES) {
+                $scope.categories = [];
 
-        function ($scope, $log, $state, $stateParams, categoriesProvider, statesFactory, translitFactory, STATE_NAMES) {
-            $scope.categories = [];
+                $scope.goToUIState = function (state) {
+                    console.log('categories-sidebar state.params.categoryId: ', state.params.categoryId);
+                    $state.go(STATE_NAMES.CATEGORY, {
+                        categoryId: state.params.categoryId,
+                        categoryName: translitFactory.rusTolat(state.params.categoryName)
+                    });
+                };
 
-            $scope.goToUIState = function (state) {
-                $state.go(STATE_NAMES.CATEGORY, {
-                    categoryId: state.params.categoryId,
-                    categoryName: translitFactory.rusTolat(state.params.categoryName)
-                });
-            };
+                categoriesProvider.getCategories()
+                // get categories
+                    .then(function (response) {
+                        let categories = _.toArray(response.data.data);
 
-            categoriesProvider.getCategories()
-            // get categories
-                .then(function (response) {
-                    var categories = _.toArray(response.data.data);
+                        categories = _.sortBy(categories, [function (obj) {
+                            return parseInt(obj.sort_order);
+                        }]);
 
-                    categories = _.sortBy(categories, [function (obj) {
-                        return parseInt(obj.sort_order);
-                    }]);
+                        _.remove(categories, function (obj) {
+                            return obj.meta_title === '';
+                        });
 
-                    _.remove(categories, function (obj) {
-                        return obj.meta_title === '';
+                        $scope.categories = categories;
+
+                        return categories;
+                    })
+                    // get subcategories
+                    .then(function (categories) {
+                        categories.forEach(function (category) {
+                            categoriesProvider.getSubCategories(category.category_id)
+                                .then(function (response) {
+                                    if ( response.data.success ) {
+                                        let subcategories = _.toArray(response.data);
+
+                                        category.subcategories = _.toArray(subcategories[2]);
+                                    }
+                                })
+                                .catch(function (error) {
+                                    $log.error(error);
+                                });
+                        });
+
+                        return categories;
+                    })
+                    .catch(function (error) {
+                        $log.error(error);
                     });
 
-                    $scope.categories = categories;
-
-                    return categories;
-                })
-                // get subcategories
-                .then(function (categories) {
-                    categories.forEach(function (category) {
-                        categoriesProvider.getSubCategories(category.category_id)
-                            .then(function (response) {
-                                if ( response.data.success ) {
-                                    var subcategories = _.toArray(response.data);
-
-                                    console.log('categories-sidebar.js subcategories: ', subcategories[2]);
-
-                                    category.subcategories = _.toArray(subcategories[2]);
-                                }
-                            })
-                            .catch(function (error) {
-                                $log.error(error);
-                            });
-                    });
-
-                    return categories;
-                })
-                .catch(function (error) {
-                    $log.error(error);
-                });
-
-        }]);
+            }]);
 })();

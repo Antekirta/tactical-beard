@@ -59,7 +59,7 @@
 
                             let images = [];
 
-                            products.forEach(function (item, index, arr) {
+                            products.forEach(function (item) {
                                 item.price = +item.price;
 
                                 images.push({id: item.id, image: item.image});

@@ -195,9 +195,9 @@
                         return getProducts()
                             .then(
                                 function (response) {
-                                    console.log('synchronizeBaskets response: ', response);
-
-                                    console.log('synchronizeBaskets basket: ', JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)));
+                                    // console.log('synchronizeBaskets response: ', response);
+                                    //
+                                    // console.log('synchronizeBaskets basket: ', JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)));
                                 }
                             );
                     }

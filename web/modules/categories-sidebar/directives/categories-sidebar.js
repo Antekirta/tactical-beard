@@ -12,7 +12,7 @@
 			templateUrl: 'modules/categories-sidebar/partials/categories-sidebar.html',
 
 			link: function(scope, element, attrs) {
-
+				
 			}
 		};
 	}]);

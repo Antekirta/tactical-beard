@@ -13,19 +13,19 @@
                 return categoriesProvider.getCategoriesForLevel()
                     .then(
                         function (response) {
-                            var dictionary = {};
+                            let dictionary = {};
 
-                            var categories = _.toArray(response.data.data);
+                            let categories = _.toArray(response.data.data);
 
                             // Create object, where keys are transliterated category names and values are id of these categories
 
                             categories.forEach(function (category) {
-                                var transliterated = translitFactory.rusTolat(category.name);
+                                let transliterated = translitFactory.rusTolat(category.name);
 
                                 dictionary[transliterated] = category.category_id;
 
                                 if ( category.categories ) {
-                                    _.toArray(category.categories.categories).forEach(function (subCategory) {
+                                    _.toArray(category.categories).forEach(function (subCategory) {
                                         transliterated = translitFactory.rusTolat(subCategory.name);
 
                                         dictionary[transliterated] = subCategory.category_id;
