@@ -1,9 +1,7 @@
 (function () {
     'use strict';
 
-    var productsListPage = angular.module('productsListPage');
-
-    productsListPage.controller('productsListPageCtrl', [
+    angular.module('productsListPage').controller('productsListPageCtrl', [
         '$rootScope',
         '$scope',
         '$log',
@@ -57,12 +55,15 @@
                         function (response) {
                             let products = _.toArray(response.data.data);
 
+                            console.log('products-list page id: ', id);
+                            console.log('products-list page products: ', products);
+
                             let images = [];
 
                             products.forEach(function (item) {
                                 item.price = +item.price;
 
-                                images.push({id: item.id, image: item.image});
+                                images.push({id: item.id, image: item.original_image});
 
                                 item.image = '';
                             });
@@ -105,14 +106,14 @@
                 getProductsBySearch: function (search) {
                     productsProvider.getProductsBySearch(search).then(
                         function (response) {
-                            var products = _.toArray(response.data.data);
+                            let products = _.toArray(response.data.data);
 
-                            var images = [];
+                            let images = [];
 
                             products.forEach(function (item, index, arr) {
                                 item.price = +item.price;
 
-                                images.push({id: item.id, image: item.image});
+                                images.push({id: item.id, image: item.original_image});
 
                                 item.image = '';
                             });
@@ -125,13 +126,13 @@
                                 return product.price;
                             }).price;
 
-                            var counter = 0;
+                            let counter = 0;
 
-                            var productToSetImage = {};
+                            let productToSetImage = {};
 
                             $scope.products = products;
 
-                            var stopInterval = $interval(function () {
+                            const stopInterval = $interval(function () {
                                 productToSetImage = _.find($scope.products, function (product) {
                                     return product.id === images[counter].id;
                                 });

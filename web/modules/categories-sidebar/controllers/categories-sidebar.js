@@ -16,7 +16,6 @@
                 $scope.categories = [];
 
                 $scope.goToUIState = function (state) {
-                    console.log('categories-sidebar state.params.categoryId: ', state.params.categoryId);
                     $state.go(STATE_NAMES.CATEGORY, {
                         categoryId: state.params.categoryId,
                         categoryName: translitFactory.rusTolat(state.params.categoryName)
