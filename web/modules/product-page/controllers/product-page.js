@@ -52,7 +52,11 @@
 				
 				changeProductCount: function (increase) {
 					if ( increase ) {
-                        $scope.productCount++;
+					    if ( $scope.productCount < $scope.product.quantity ) {
+                            $scope.productCount++;
+                        } else {
+					        alert('В наличии всего ' + $scope.product.quantity + ' единиц товара!');
+                        }
 					} else {
 						if ( $scope.productCount > 1 ) {
                             $scope.productCount--;
