@@ -4,8 +4,8 @@
     <header class="product-title">
         <h1 class="product-title__text">{{product.product_description[0].name}}</h1>
         <div class="product-title__in-stock"
-             data-ng-class="{'product-title__in-stock--in-stock': product.quantity}">
-            <span data-ng-if="product.quantity">В наличии</span>
+             data-ng-class="{'product-title__in-stock--in-stock': product.quantity > 0}">
+            <span data-ng-if="!!product.quantity">В наличии</span>
             <span data-ng-if="!product.quantity">{{product.stock_status}}</span>
         </div>
 
@@ -47,7 +47,7 @@
             </div>
 
             <div class="product-make-order">
-                <div class="product-count">
+                <div data-ng-if="!!product.quantity" class="product-count">
                     <div class="product-count__control product-count__control--decrease"
                          data-ng-click="helpers.changeProductCount(false)">&#9660;
                     </div>
@@ -65,7 +65,7 @@
                         </svg>
                     </div>
                     <span class="product-add-to-basket__label"
-                          data-ng-click="basket.putProduct()">Добавить в корзину</span>
+                          data-ng-click="basket.putProduct(!!product.quantity)">Добавить в корзину</span>
                 </div>
 
                 <div class="clearfix"></div>

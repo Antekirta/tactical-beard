@@ -78,26 +78,30 @@
             };
 
             $scope.basket = {
-                putProduct: function () {
-                    const product = {
-                        id: $scope.product.id,
+                putProduct: function (isProduct) {
+                    if ( isProduct ) {
+                        const product = {
+                            id: $scope.product.id,
 
-                        quantity: $scope.productCount,
+                            quantity: $scope.productCount,
 
-                        price: $scope.product.bestPrice || $scope.product.oldPrice
-                    };
+                            price: $scope.product.bestPrice || $scope.product.oldPrice
+                        };
 
-                    session.getCurrentSession()
-                        .then(
-                            function (session) {
-                                return basketFactory.put.product(product, session)
-                                    .then(
-                                        function (response) {
-                                            // functionality of success message is here
-                                        }
-                                    );
-                            }
-                        );
+                        session.getCurrentSession()
+                            .then(
+                                function (session) {
+                                    return basketFactory.put.product(product, session)
+                                        .then(
+                                            function (response) {
+                                                // functionality of success message is here
+                                            }
+                                        );
+                                }
+                            );
+                    } else {
+                        alert('Товара нет в наличии. Свяжитесь с нами для получения подробной информации.');
+                    }
                 }
             };
 
