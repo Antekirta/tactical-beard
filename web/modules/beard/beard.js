@@ -89,8 +89,6 @@
         'basketProvider',
 
         function (basketProvider) {
-            console.log('RUN!');
-
             setInterval(basketProvider.synchronizeBaskets, 10000);
         }]);
 })();

@@ -19,6 +19,7 @@
 		'HOME': 'home',
 		'CATEGORIES': 'categories',
 		'SEARCH': 'search',
+		'PROMO': 'promo',
 		'CATEGORY': 'category',
 		'PRODUCT': 'product',
 		'MAKE_ORDER': 'make-order',
@@ -47,6 +48,15 @@
         {
             name: 'search',
             url: '/categories/search/?{search}',
+            params: {
+                search: null
+            },
+            templateUrl: pathToPartial('products-list-page')
+        },
+
+        {
+            name: 'promo',
+            url: '/categories/promo/',
             params: {
                 search: null
             },

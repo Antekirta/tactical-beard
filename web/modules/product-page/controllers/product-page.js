@@ -1,81 +1,81 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
     angular.module('productPage').controller('productPageCtrl', [
-		'$scope',
+        '$scope',
 
-		'$log',
+        '$log',
 
-		'$state',
+        '$state',
 
-		'$stateParams',
+        '$stateParams',
 
-		'$sce',
+        '$sce',
 
-		'session',
+        'session',
 
-		'productsProvider',
+        'productsProvider',
 
-		'basketFactory',
+        'basketFactory',
 
-		'translitFactory',
+        'translitFactory',
 
-		'STATE_NAMES',
+        'STATE_NAMES',
 
-		function($scope, $log, $state, $stateParams, $sce, session, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
+        function ($scope, $log, $state, $stateParams, $sce, session, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
             $scope.product = {};
 
             $scope.productCount = 1;
 
             $scope.descTypes = {
-            	artictic: {
-            		name: 'artictic',
+                artictic: {
+                    name: 'artictic',
 
-					status: true
-				},
+                    status: true
+                },
 
-				technical: {
-            		name: 'technical',
+                technical: {
+                    name: 'technical',
 
-					status: false
-				}
-			};
+                    status: false
+                }
+            };
 
             function getFirstCategory(product) {
-				return product.category[_.keys(product.category)[0]][0];
+                return product.category[_.keys(product.category)[0]][0];
             }
 
             $scope.helpers = {
                 goToBreadcrumbState: function (state) {
                     $state.go(state.name, state.params);
                 },
-				
-				changeProductCount: function (increase) {
-					if ( increase ) {
-					    if ( $scope.productCount < $scope.product.quantity ) {
+
+                changeProductCount: function (increase) {
+                    if ( increase ) {
+                        if ( $scope.productCount < $scope.product.quantity ) {
                             $scope.productCount++;
                         } else {
-					        alert('В наличии всего ' + $scope.product.quantity + ' единиц товара!');
+                            alert('В наличии всего ' + $scope.product.quantity + ' единиц товара!');
                         }
-					} else {
-						if ( $scope.productCount > 1 ) {
+                    } else {
+                        if ( $scope.productCount > 1 ) {
                             $scope.productCount--;
-						}
-					}
+                        }
+                    }
                 },
 
-				changeDescription: function (descType) {
-                	let type;
+                changeDescription: function (descType) {
+                    let type;
 
-					for ( type in $scope.descTypes ) {
-						if ( $scope.descTypes.hasOwnProperty(type) ) {
+                    for (type in $scope.descTypes) {
+                        if ( $scope.descTypes.hasOwnProperty(type) ) {
                             $scope.descTypes[type].status = false;
-						}
-					}
+                        }
+                    }
 
                     $scope.descTypes[descType].status = true;
                 }
-			};
+            };
 
             $scope.basket = {
                 putProduct: function () {
@@ -102,12 +102,11 @@
             };
 
             const productHandlers = {
-            	createArtDescription: function (description) {
-            	    console.log('createArtDescription: ', description);
+                createArtDescription: function (description) {
                     $scope.artDescription = $sce.trustAsHtml(description);
                 },
 
-				createTechDescription: function (techDetails) {
+                createTechDescription: function (techDetails) {
                     const uselessProductAttrNames = ['code', 'article', 'unit'];
 
                     $scope.product.techDescription = _.toArray(techDetails).filter(function (element, index, arr) {
@@ -115,17 +114,17 @@
                     });
                 },
 
-				createPrices: function (discounts, originalPrice) {
-            		if ( !_.isEmpty(discounts) ) {
+                createPrices: function (discounts, originalPrice) {
+                    if ( !_.isEmpty(discounts) ) {
                         $scope.product.bestPrice = Math.floor(_.minBy(discounts, function (discount) {
                             return +discount.price;
                         }).price);
-					}
+                    }
 
-					$scope.product.oldPrice = Math.floor(originalPrice);
+                    $scope.product.oldPrice = Math.floor(originalPrice);
                 },
 
-				createBreadcrumbs: function () {
+                createBreadcrumbs: function () {
                     $scope.breadcrumbs = [
                         {
                             name: 'Главная',
@@ -148,7 +147,10 @@
                             state: {
                                 name: STATE_NAMES.CATEGORY,
 
-                                params: {categoryId: getFirstCategory($scope.product).category_id, categoryName: translitFactory.rusTolat(getFirstCategory($scope.product).name)}
+                                params: {
+                                    categoryId: getFirstCategory($scope.product).category_id,
+                                    categoryName: translitFactory.rusTolat(getFirstCategory($scope.product).name)
+                                }
                             }
                         },
 
@@ -161,13 +163,11 @@
                         }
                     ];
                 }
-			};
+            };
 
             productsProvider.getProductById($stateParams.productId).then(
-            	function (response) {
-					$scope.product = response.data.data;
-
-					console.log('$scope.product: ', $scope.product);
+                function (response) {
+                    $scope.product = response.data.data;
 
                     productHandlers.createArtDescription($scope.product.product_description[0].description);
 
@@ -178,9 +178,9 @@
                     productHandlers.createBreadcrumbs();
                 },
 
-				function (error) {
+                function (error) {
                     $log.error(error);
                 }
-			);
-		}]);
+            );
+        }]);
 })();

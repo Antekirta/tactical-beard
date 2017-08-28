@@ -105,12 +105,9 @@
                         function (response) {
                             let products = _.toArray(response.data.data);
 
-                            console.log('products-list page search: ', search);
-                            console.log('products-list page search response: ', response);
-
                             let images = [];
 
-                            products.forEach(function (item, index, arr) {
+                            products.forEach(function (item) {
                                 item.price = +item.price;
 
                                 images.push({id: item.id, image: item.original_image});
@@ -131,6 +128,60 @@
                             let productToSetImage = {};
 
                             $scope.products = products;
+
+                            const stopInterval = $interval(function () {
+                                productToSetImage = _.find($scope.products, function (product) {
+                                    return product.id === images[counter].id;
+                                });
+
+                                productToSetImage.image = images[counter].image;
+
+                                counter++;
+
+                                if (counter >= products.length) {
+                                    $interval.cancel(stopInterval);
+                                }
+                            }, APP_PARAMS.INTERVAL_BETWEEN_REQUESTS);
+                        },
+
+                        function (error) {
+                            $log.error(error);
+                        }
+                    );
+                },
+
+                getPromoProducts: function () {
+                    productsProvider.getProductsByTag('promo').then(
+                        function (response) {
+                            console.log('prodicts-list page response: ', response);
+
+                            let products = _.toArray(response.data.data);
+
+                            let images = [];
+
+                            products.forEach(function (item) {
+                                item.price = +item.price;
+
+                                images.push({id: item.id, image: item.original_image});
+
+                                item.image = '';
+                            });
+
+                            $rootScope.rootScope.products.minPrice = _.minBy(products, function (product) {
+                                return product.price;
+                            }).price;
+
+                            $rootScope.rootScope.products.maxPrice = _.maxBy(products, function (product) {
+                                return product.price;
+                            }).price;
+
+                            let counter = 0;
+
+                            let productToSetImage = {};
+
+                            $scope.products = products;
+
+                            console.log('$scope.products: ', $scope.products);
 
                             const stopInterval = $interval(function () {
                                 productToSetImage = _.find($scope.products, function (product) {
@@ -179,9 +230,11 @@
                 )
                 .then(
                     function () {
+                        console.log('state.current.name: ', $state.current.name);
                         if ( $state.current.name === STATE_NAMES.SEARCH ) {
-                            console.log('products-list-page $stateParams.search: ', $stateParams.search);
                             promises.getProductsBySearch($stateParams.search);
+                        } else if ( $state.current.name === STATE_NAMES.PROMO ) {
+                            promises.getPromoProducts();
                         } else {
                             promises.getProductsByCategoryId($stateParams.categoryId);
                         }

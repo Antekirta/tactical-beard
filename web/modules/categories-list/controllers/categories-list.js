@@ -17,14 +17,17 @@
         function ($scope, $log, $state, categoriesProvider, translitFactory, STATE_NAMES) {
             $scope.categories = [];
 
-            $scope.goToUICategoryState = function (state) {
-                console.log('categories-list state: ', state.params.categoryId);
+            $scope.goToUICategoryState = function (state, promo) {
+                // console.log('categories-list state: ', state.params.categoryId);
+                if ( promo ) {
+                    $state.go(STATE_NAMES.PROMO);
+                } else {
+                    $state.go(STATE_NAMES.CATEGORY, {
+                        categoryId: state.params.categoryId,
 
-                $state.go(STATE_NAMES.CATEGORY, {
-                    categoryId: state.params.categoryId,
-
-                    categoryName: translitFactory.rusTolat(state.params.categoryName)
-                });
+                        categoryName: translitFactory.rusTolat(state.params.categoryName)
+                    });
+                }
             };
 
             $scope.helpers = {
@@ -46,7 +49,7 @@
             categoriesProvider.getCategories().then(
                 function (response) {
                     let arr = _.toArray(response.data.data);
-					
+
                     arr = _.sortBy(arr, [function (obj) {
                         return parseInt(obj.sort_order);
                     }]);
