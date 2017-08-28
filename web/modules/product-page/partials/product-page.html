@@ -4,7 +4,10 @@
     <header class="product-title">
         <h1 class="product-title__text">{{product.product_description[0].name}}</h1>
         <div class="product-title__in-stock"
-             data-ng-class="{'product-title__in-stock--in-stock': true}">{{product.stock_status || 'Нет на складе'}}
+             data-ng-class="{'product-title__in-stock--in-stock': product.quantity}">
+            <span data-ng-if="product.quantity">В наличии</span>
+            <span data-ng-if="!product.quantity">{{product.stock_status}}</span>
+            <!--<p>product.quantity: {{product.quantity}}</p>-->
         </div>
 
         <div class="clearfix"></div>
@@ -29,7 +32,8 @@
             <div class="product-prices">
                 <div class="product-prices__price-block product-prices__price-block--old-price"
                      data-ng-class="{'product-prices__price-block--solely-price': !product.bestPrice}">
-                    <header class="product-prices__price-header"><span data-ng-if="product.bestPrice">Старая</span> цена</header>
+                    <header class="product-prices__price-header"><span data-ng-if="product.bestPrice">Старая</span> цена
+                    </header>
                     <h2 class="product-prices__price-value"
                         data-ng-class="{'product-prices__price-block--crossed-out': product.bestPrice}">
                         {{product.oldPrice}} РУБ.</h2>
@@ -137,7 +141,7 @@
 
 <!--<section class="impulse-products impulse-products&#45;&#45;novelties"-->
 
-         <!--data-products-carousel="new"-->
+<!--data-products-carousel="new"-->
 
-         <!--ng-controller="latestProductsCtrl">-->
+<!--ng-controller="latestProductsCtrl">-->
 <!--</section>-->

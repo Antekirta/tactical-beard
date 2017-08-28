@@ -55,9 +55,6 @@
                         function (response) {
                             let products = _.toArray(response.data.data);
 
-                            console.log('products-list page id: ', id);
-                            console.log('products-list page products: ', products);
-
                             let images = [];
 
                             products.forEach(function (item) {
@@ -107,6 +104,9 @@
                     productsProvider.getProductsBySearch(search).then(
                         function (response) {
                             let products = _.toArray(response.data.data);
+
+                            console.log('products-list page search: ', search);
+                            console.log('products-list page search response: ', response);
 
                             let images = [];
 
@@ -180,6 +180,7 @@
                 .then(
                     function () {
                         if ( $state.current.name === STATE_NAMES.SEARCH ) {
+                            console.log('products-list-page $stateParams.search: ', $stateParams.search);
                             promises.getProductsBySearch($stateParams.search);
                         } else {
                             promises.getProductsByCategoryId($stateParams.categoryId);
