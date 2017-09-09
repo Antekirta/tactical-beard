@@ -52,6 +52,10 @@
 
 		'GEO_NAMES': {
 			'SEARCH': 'http://api.geonames.org/searchJSON?'
+		},
+
+		CUSTOMERS: {
+			GET_CUSTOMER_BY_EMAIL: 'http://tacbeard.com/backend/api/rest_admin/customers/email'
 		}
 	});
 })();

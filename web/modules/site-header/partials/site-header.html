@@ -16,10 +16,12 @@
 		</div>
 	</div>
 
-	<div class="user-enter">
-		<a class="user-enter__link" href="#">Войти</a>
+	<div class="user-enter" data-ng-controller="authController as $authCtrl">
+		<a class="user-enter__link" href="#" data-ng-click="$authCtrl.openModal($event)">Войти</a>
 		<span class="user-enter__delimiter">|</span>
 		<a class="user-enter__link" href="#">Регистрация</a>
+
+		<auth-modal class="auth-modal" data-ng-show="$authCtrl.modalIsOpen"></auth-modal>
 	</div>
 
 	<div class="header-search">

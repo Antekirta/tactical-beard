@@ -54,7 +54,9 @@
 
         'enterPopup',
 
-        'privateOffice'
+        'privateOffice',
+
+        'auth'
     ]);
 
     beard.config([
