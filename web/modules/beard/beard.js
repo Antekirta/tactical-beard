@@ -88,9 +88,15 @@
         }]);
 
     beard.run([
+        '$rootScope',
+
         'basketProvider',
 
-        function (basketProvider) {
+        'LOCAL_STORAGE',
+
+        function ($rootScope, basketProvider, LOCAL_STORAGE) {
             setInterval(basketProvider.synchronizeBaskets, 10000);
+
+            $rootScope.currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER));
         }]);
 })();

@@ -5,6 +5,8 @@
         .constant('LOCAL_STORAGE', {
             BASKET: 'basket',
 
-            SESSION: 'session'
+            SESSION: 'session',
+
+            USER: 'user'
         });
 })();

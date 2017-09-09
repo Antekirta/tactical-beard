@@ -2,71 +2,80 @@
     'use strict';
 
     angular.module('auth')
-        .controller('authController', ['$rootScope', '$log', 'authProvider', 'session', function ($rootScope, $log, authProvider, session) {
-            const $authCtrl = this;
+        .controller('authController', [
+            '$rootScope',
+            '$log',
+            'authProvider',
+            'session',
+            'LOCAL_STORAGE',
 
-            $authCtrl.openModal = openModal;
-            $authCtrl.login = login;
-            $authCtrl.logout = logout;
+            function ($rootScope, $log, authProvider, session, LOCAL_STORAGE) {
+                const $authCtrl = this;
 
-            $authCtrl.modalIsOpen = true;
+                $authCtrl.openModal = openModal;
+                $authCtrl.login = login;
+                $authCtrl.logout = logout;
 
-            function openModal(event) {
-                event.preventDefault();
+                function openModal(event) {
+                    event.preventDefault();
 
-                $authCtrl.modalIsOpen = true;
-            }
+                    $authCtrl.modalIsOpen = true;
+                }
 
-            function closeModal() {
-                $authCtrl.modalIsOpen = false;
-            }
+                function closeModal() {
+                    $authCtrl.modalIsOpen = false;
+                }
 
-            function login(event) {
-                event.preventDefault();
+                function login(event) {
+                    event.preventDefault();
 
-                authProvider.getCustomerByEmail($authCtrl.userEmail)
-                    .then(function (response) {
-                        const customerData = response.data.data;
+                    authProvider.getUserByEmail($authCtrl.userEmail)
+                        .then(function (response) {
+                            const customerData = response.data.data;
 
-                        if ( customerData ) {
-                            if ( customerData.account_custom_field.password === $authCtrl.userPassword ) {
-                                customerData.account_custom_field.password = '';
+                            if ( customerData ) {
+                                if ( customerData.account_custom_field.password === $authCtrl.userPassword ) {
+                                    customerData.account_custom_field.password = '';
 
-                                closeModal();
+                                    closeModal();
 
-                                session.getCurrentSession()
-                                    .then(
-                                        function (session) {
-                                            $rootScope.currentUser = {
-                                                isLoggedIn: true,
+                                    session.getCurrentSession()
+                                        .then(
+                                            function (session) {
+                                                $rootScope.currentUser = {
+                                                    isLoggedIn: true,
 
-                                                session: session,
+                                                    session: session,
 
-                                                info: customerData
-                                            };
-                                        }
-                                    );
+                                                    info: customerData
+                                                };
 
-                                $log.log('customerData: ', customerData);
+                                                localStorage.setItem(LOCAL_STORAGE.USER, JSON.stringify($rootScope.currentUser));
+                                            }
+                                        );
+
+                                    $log.log('customerData: ', customerData);
+                                } else {
+                                    alert('Введен неправильный пароль!');
+                                }
                             } else {
-                                alert('Введен неправильный пароль!');
+                                alert('Пользователя с таким email не существует!');
                             }
-                        } else {
-                            alert('Пользователя с таким email не существует!');
-                        }
-                    }, function (error) {
-                        $log.error(error);
-                    });
-            }
+                        }, function (error) {
+                            $log.error(error);
+                        });
+                }
 
-            function logout() {
-                $rootScope.currentUser = {
-                    isLoggedIn: false,
+                function logout() {
+                    $rootScope.currentUser = {
+                        isLoggedIn: false,
 
-                    session: null,
+                        session: null,
 
-                    info: null
-                };
-            }
-        }]);
+                        info: null
+                    };
+
+                    localStorage.removeItem(LOCAL_STORAGE.USER)
+                }
+            }]);
 })();

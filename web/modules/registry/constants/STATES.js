@@ -33,10 +33,16 @@
 
 	registry.constant('STATES', [
 		{
-			name: 'home',
-			url: '/',
-			templateUrl: pathToPartial('main-page')
-		},
+            name: 'home',
+            url: '/',
+            templateUrl: pathToPartial('main-page')
+        },
+
+        {
+            name: 'register',
+            url: '/register',
+            templateUrl: 'modules/auth/partials/register.html'
+        },
 
 		{
 			name: 'categories',
