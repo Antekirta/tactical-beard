@@ -2,11 +2,12 @@
     'use strict';
 
     angular.module('auth')
-        .controller('authController', ['authProvider', function (authProvider) {
+        .controller('authController', ['$rootScope', '$log', 'authProvider', 'session', function ($rootScope, $log, authProvider, session) {
             const $authCtrl = this;
 
             $authCtrl.openModal = openModal;
             $authCtrl.login = login;
+            $authCtrl.logout = logout;
 
             $authCtrl.modalIsOpen = true;
 
@@ -16,18 +17,56 @@
                 $authCtrl.modalIsOpen = true;
             }
 
+            function closeModal() {
+                $authCtrl.modalIsOpen = false;
+            }
+
             function login(event) {
                 event.preventDefault();
 
                 authProvider.getCustomerByEmail($authCtrl.userEmail)
                     .then(function (response) {
-                        console.log('auth controller login response: ', response);
+                        const customerData = response.data.data;
+
+                        if ( customerData ) {
+                            if ( customerData.account_custom_field.password === $authCtrl.userPassword ) {
+                                customerData.account_custom_field.password = '';
+
+                                closeModal();
+
+                                session.getCurrentSession()
+                                    .then(
+                                        function (session) {
+                                            $rootScope.currentUser = {
+                                                isLoggedIn: true,
+
+                                                session: session,
+
+                                                info: customerData
+                                            };
+                                        }
+                                    );
+
+                                $log.log('customerData: ', customerData);
+                            } else {
+                                alert('Введен неправильный пароль!');
+                            }
+                        } else {
+                            alert('Пользователя с таким email не существует!');
+                        }
                     }, function (error) {
-
+                        $log.error(error);
                     });
+            }
 
-                console.log('$authCtrl.userEmail: ', $authCtrl.userEmail);
-                console.log('$authCtrl.userPassword: ', $authCtrl.userPassword);
+            function logout() {
+                $rootScope.currentUser = {
+                    isLoggedIn: false,
+
+                    session: null,
+
+                    info: null
+                };
             }
         }]);
 })();

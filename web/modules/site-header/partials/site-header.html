@@ -1,39 +1,46 @@
 <header class="site-title">
-	<header class="site-title__text">Магазин снаряжения для игры в страйкбол</header>
+    <header class="site-title__text">Магазин снаряжения для игры в страйкбол</header>
 </header>
 
 <div class="site-header__container-for-other">
-	<div class="basket">
-		<div class="basket__image">
-			<img data-img-svg src="img/icons/basket.svg" alt="Tactical beard">
+    <div class="basket">
+        <div class="basket__image">
+            <img data-img-svg src="img/icons/basket.svg" alt="Tactical beard">
+        </div>
+        <div class="basket__label">
+            <span class="basket__description">Ваша корзина:</span>
+
+            <a class="basket__label-link" href="/basket/">
+                <span class="basket__info">{{basketLength || 0}} товаров</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="user-enter" data-ng-controller="authController as $authCtrl">
+		<div class="user-enter__loggedin-wrapper" data-ng-show="currentUser.isLoggedIn">
+            <span class="user-enter__user-name" data-ng-bind="::currentUser.info.firstname"></span>
+            <span class="user-enter__logout" data-ng-click="$authCtrl.logout()">Выйти</span>
 		</div>
-		<div class="basket__label">
-			<span class="basket__description">Ваша корзина:</span>
 
-			<a class="basket__label-link" href="/basket/">
-				<span class="basket__info">{{basketLength || 0}} товаров</span>
-			</a>
-		</div>
-	</div>
+        <span data-ng-show="!currentUser.isLoggedIn">
+			<a class="user-enter__link" href="#" data-ng-click="$authCtrl.openModal($event)">Войти</a>
+            <span class="user-enter__delimiter">|</span>
+            <a class="user-enter__link" href="#">Регистрация</a>
+		</span>
 
-	<div class="user-enter" data-ng-controller="authController as $authCtrl">
-		<a class="user-enter__link" href="#" data-ng-click="$authCtrl.openModal($event)">Войти</a>
-		<span class="user-enter__delimiter">|</span>
-		<a class="user-enter__link" href="#">Регистрация</a>
+        <auth-modal class="auth-modal" data-ng-show="$authCtrl.modalIsOpen"></auth-modal>
+    </div>
 
-		<auth-modal class="auth-modal" data-ng-show="$authCtrl.modalIsOpen"></auth-modal>
-	</div>
+    <div class="header-search">
+        <input class="header-input-search"
 
-	<div class="header-search">
-		<input class="header-input-search"
+               type="search"
 
-			   type="search"
+               data-ng-model="mainSearch"
 
-			   data-ng-model="mainSearch"
+               data-ng-keypress="goToUIProductState({search: mainSearch})"
 
-			   data-ng-keypress="goToUIProductState({search: mainSearch})"
-
-			   placeholder="Поиск..."
-		>
-	</div>
+               placeholder="Поиск..."
+        >
+    </div>
 </div>
