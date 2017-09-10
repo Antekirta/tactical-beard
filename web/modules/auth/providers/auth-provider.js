@@ -6,9 +6,15 @@
             this.$get = [
                 '$http',
 
+                '$rootScope',
+
+                'session',
+
                 'REST_API',
 
-                function ($http, REST_API) {
+                'LOCAL_STORAGE',
+
+                function ($http, $rootScope, session, REST_API, LOCAL_STORAGE) {
                     const req = {
                         dataType: 'json',
 
@@ -72,10 +78,62 @@
                             });
                     }
 
+                    function login(login, password) {
+                        return getUserByEmail(login)
+                            .then(function (response) {
+                                const customerData = response.data.data;
+
+                                if ( customerData ) {
+                                    if ( customerData.account_custom_field.password === password ) {
+                                        customerData.account_custom_field.password = '';
+
+                                        return session.getCurrentSession()
+                                            .then(
+                                                function (session) {
+                                                    $rootScope.currentUser = {
+                                                        isLoggedIn: true,
+
+                                                        session: session,
+
+                                                        info: customerData
+                                                    };
+
+                                                    localStorage.setItem(LOCAL_STORAGE.USER, JSON.stringify($rootScope.currentUser));
+
+                                                    return 'Пользователь залогинен!';
+                                                }
+                                            );
+                                    } else {
+                                        alert('Введен неправильный пароль!');
+                                    }
+                                } else {
+                                    alert('Пользователя с таким email не существует!');
+                                }
+                            }, function (error) {
+                                $log.error(error);
+                            });
+                    }
+
+                    function logout() {
+                        $rootScope.currentUser = {
+                            isLoggedIn: false,
+
+                            session: null,
+
+                            info: null
+                        };
+
+                        localStorage.removeItem(LOCAL_STORAGE.USER)
+                    }
+
                     return {
                         getUserByEmail: getUserByEmail,
 
-                        createUser: createUser
+                        createUser: createUser,
+
+                        login: login,
+
+                        logout: logout
                     };
                 }
             ];
