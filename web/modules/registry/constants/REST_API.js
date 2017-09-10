@@ -55,6 +55,8 @@
 		},
 
 		CUSTOMERS: {
+			CUSTOMERS: 'http://tacbeard.com/backend/api/rest_admin/customers',
+
 			GET_CUSTOMER_BY_EMAIL: 'http://tacbeard.com/backend/api/rest_admin/customers/email'
 		}
 	});

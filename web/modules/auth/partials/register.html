@@ -1,4 +1,64 @@
 <main class="register-page" data-ng-controller="registerCotroller as $regCtrl">
+    <form class="register-page__form" data-ng-submit="$regCtrl.register()">
+        <div class="register-page__fieldset-wrapper">
+            <fieldset class="register-page__fieldset">
+                <h3 class="register-page__fieldset-header">Представьтесь, пожалуйста</h3>
+                <label class="register-page__label common-form__label">
+                    Имя: * <br>
+                    <input data-ng-model="$regCtrl.firstName" required type="text"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+                <label class="register-page__label common-form__label">
+                    Фамилия: *<br>
+                    <input data-ng-model="$regCtrl.lastName" required type="text"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+                <label class="register-page__label common-form__label">
+                    Отчество: <br>
+                    <input data-ng-model="$regCtrl.patronymic" type="text"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+            </fieldset>
 
+            <fieldset class="register-page__fieldset">
+                <h3 class="register-page__fieldset-header">Укажите данные для входа</h3>
+                <label class="register-page__label common-form__label">
+                    E-mail (логин для входа): *<br>
+                    <input data-ng-model="$regCtrl.email" required type="email"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+                <label class="register-page__label common-form__label">
+                    Пароль: *<br>
+                    <input data-ng-model="$regCtrl.password" required type="password"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+                <label class="register-page__label common-form__label">
+                    Подвердите пароль: *<br>
+                    <input data-ng-model="$regCtrl.passwordConfirm" required type="password"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+            </fieldset>
 
+            <fieldset class="register-page__fieldset">
+                <h3 class="register-page__fieldset-header">И данные для доставки</h3>
+                <label class="register-page__label common-form__label">
+                    Номер телефона: <br>
+                    <input data-ng-model="$regCtrl.tel" type="tel"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+                <label class="register-page__label common-form__label">
+                    Город: <br>
+                    <input data-ng-model="$regCtrl.city" type="text"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+                <label class="register-page__label common-form__label">
+                    Адрес: <br>
+                    <input data-ng-model="$regCtrl.address" type="text"
+                           class="register-page__input-text common-form__input common-form__input--text">
+                </label>
+            </fieldset>
+        </div>
+
+        <input type="submit" class="register-page__input-submit" value="Зарегистрироваться">
+    </form>
 </main>

@@ -1,0 +1,33 @@
+@import "../../beard/sass/beard"
+
+.register-page
+  &__form
+    max-width: 320px
+  &__fieldset-wrapper
+    display: flex
+    justify-content: space-around
+    align-items: flex-start
+    flex-wrap: wrap
+  &__fieldset
+    padding: 10px 20px
+    margin: 0 0 20px 0
+    outline: solid 1px $light-brown
+  &__fieldset-header
+    text-align: center
+    font-size: $font-size-p
+  &__label
+    display: block
+    font-size: $font-size-p - 2
+  &__input-text
+    width: 250px
+  &__input-submit
+    display: block
+    margin: auto
+    padding: 5px 20px
+    background-color: transparentize($green, .2)
+    outline: solid 2px $dark-brown
+    cursor: pointer
+    color: $white
+    @include fullTrans(.3s)
+    &:hover
+      background-color: $green
