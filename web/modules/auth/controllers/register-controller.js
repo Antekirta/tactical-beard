@@ -26,21 +26,21 @@
                     // };
 
                     const userData = {
-                        firstName: $regCtrl.firstName, //done
-                        lastName: $regCtrl.lastName, //done
-                        email: $regCtrl.email, //done
-                        tel: $regCtrl.tel, //done
-                        address: $regCtrl.address, //done
-                        city: $regCtrl.city, //done
+                        firstName: $regCtrl.firstName,
+                        lastName: $regCtrl.lastName,
+                        email: $regCtrl.email,
+                        tel: $regCtrl.tel,
+                        address: $regCtrl.address,
+                        city: $regCtrl.city,
                         countryId: '176',
                         zoneId: '67',
-                        password: $regCtrl.password //done
+                        password: $regCtrl.password
                     };
 
                     authProvider.createUser(userData)
                         .then(
-                            function (response) {
-                                $log.log('register-controller response: ', response);
+                            function () {
+                                authProvider.login(userData.email, userData.password);
                             }
                         );
                 }
