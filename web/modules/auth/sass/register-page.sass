@@ -2,7 +2,7 @@
 
 .register-page
   .register-page__form
-    max-width: 1200px
+    max-width: 800px
   .register-page__header
     font-family: $font-family-condensed-medium
     font-weight: 100
@@ -20,14 +20,17 @@
     margin: 10px 10px 0 0
   .register-page__input-text
     width: 250px
-  &__input-submit
+  .register-page__input-submit
     display: block
-    margin: auto
-    padding: 5px 20px
+    margin: 30px auto
+    transform: translateX(-19px)
+    padding: 15px 30px
     background-color: transparentize($green, .2)
-    outline: solid 2px $dark-brown
     cursor: pointer
     color: $white
+    font-family: $font-family-condensed-bold
+    font-size: $font-size-h4
     @include fullTrans(.3s)
     &:hover
       background-color: $green
+      color: $white
