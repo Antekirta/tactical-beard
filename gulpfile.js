@@ -34,7 +34,21 @@
 
         // VENDOR + '/font-awesome/css/font-awesome.min.css',
 
-        VENDOR + '/animate.css/animate.min.css'
+        VENDOR + '/animate.css/animate.min.css',
+
+        'node_modules/semantic-ui-form/form.min.css',
+
+        'web/semantic/UI-Icon-master/icon.min.css',
+
+        'web/semantic/UI-Input-master/input.min.css',
+
+        'web/semantic/UI-Divider-master/divider.min.css',
+
+        'web/semantic/UI-Button-master/button.min.css',
+
+        'web/semantic/UI-Header-master/header.min.css',
+
+        'web/semantic/UI-Segment-master/segment.min.css'
     ];
 
     const APP_JS_SRC = [
@@ -52,7 +66,9 @@
 
         VENDOR + '/lodash/lodash.js',
 
-        VENDOR + '/wow/dist/wow.min.js'
+        VENDOR + '/wow/dist/wow.min.js',
+
+        'node_modules/semantic-ui-form/form.min.js'
     ];
 
     function lazyRequireTask(taskName, path, options) {
