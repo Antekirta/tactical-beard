@@ -5,12 +5,19 @@
         .controller('registerCotroller', [
             '$rootScope',
             '$log',
+            '$state',
+            'COUNTRIES',
+            'STATE_NAMES',
             'authProvider',
+            'countriesFactory',
 
-            function ($rootScope, $log, authProvider) {
+
+            function ($rootScope, $log, $state, COUNTRIES, STATE_NAMES, authProvider, countriesFactory) {
                 const $regCtrl = this;
 
                 $regCtrl.register = register;
+
+                fillRegionsList();
 
                 function register() {
                     // const userData = {
@@ -32,7 +39,7 @@
                         tel: $regCtrl.tel,
                         address: $regCtrl.address,
                         city: $regCtrl.city,
-                        countryId: '176',
+                        countryId: '176', // Russia
                         zoneId: '67',
                         password: $regCtrl.password
                     };
@@ -41,10 +48,19 @@
                         .then(
                             function () {
                                 authProvider.login(userData.email, userData.password);
+
+                                $state.go(STATE_NAMES.HOME);
                             }
                         );
                 }
 
-                // register();
+                function fillRegionsList() {
+                    countriesFactory.getCountryById(COUNTRIES.RUSSIA.ID)
+                        .then(
+                            function (regions) {
+                                $regCtrl.regions = regions;
+                            }
+                        );
+                }
             }]);
 })();

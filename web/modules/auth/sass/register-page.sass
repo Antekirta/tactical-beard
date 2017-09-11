@@ -2,7 +2,8 @@
 
 .register-page
   .register-page__form
-    max-width: 800px
+    max-width: 850px
+    margin: 0 auto
   .register-page__header
     font-family: $font-family-condensed-medium
     font-weight: 100
@@ -16,8 +17,20 @@
   &__label
     display: block
     font-size: $font-size-p - 2
+  .register-page__dropdown
+    display: inline-block!important
+    width: 250px!important
+    height: 44px!important
+    cursor: pointer!important
+    i
+      &::before
+        top: 22px!important
+    .item, .text
+      font-size: $font-size-p - 2!important
   .register-page__input-item
     margin: 10px 10px 0 0
+    &--address
+      width: 250px
   .register-page__input-text
     width: 250px
   .register-page__input-submit

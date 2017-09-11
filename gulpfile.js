@@ -48,7 +48,13 @@
 
         'web/semantic/UI-Header-master/header.min.css',
 
-        'web/semantic/UI-Segment-master/segment.min.css'
+        'web/semantic/UI-Segment-master/segment.min.css',
+
+        'web/semantic/UI-Dropdown-master/dropdown.min.css',
+
+        'web/semantic/UI-Search-master/search.min.css',
+
+        'web/semantic/UI-Transition-master/transition.min.css'
     ];
 
     const APP_JS_SRC = [
@@ -68,7 +74,13 @@
 
         VENDOR + '/wow/dist/wow.min.js',
 
-        'node_modules/semantic-ui-form/form.min.js'
+        'node_modules/semantic-ui-form/form.min.js',
+
+        'web/semantic/UI-Dropdown-master/dropdown.min.js',
+
+        'web/semantic/UI-Search-master/search.min.js',
+
+        'web/semantic/UI-Transition-master/transition.min.js'
     ];
 
     function lazyRequireTask(taskName, path, options) {
