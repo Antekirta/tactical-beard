@@ -4,14 +4,58 @@
   position: relative
   @media all and (max-width: 1400px)
     padding: 0 100px
-  .make-order-page__textarea
-    display: block!important
-    height: 150px!important
-    margin: 0 auto!important
-    resize: none!important
-
-.make-order-page__page-title
-  margin-bottom: 30px
+  &__textarea
+    display: block !important
+    height: 150px !important
+    margin: 0 auto !important
+    resize: none !important
+  &__page-title
+    margin-bottom: 30px
+  &__form
+    max-width: 850px !important
+  .make-order-page__header
+    font-family: $font-family-condensed-medium
+    font-weight: 100
+  &__fieldset
+    padding: 10px 20px
+    margin: 0 0 20px 0
+    outline: solid 1px $light-brown
+  &__fieldset-header
+    text-align: center
+    font-size: $font-size-p
+  &__label
+    display: block
+    font-size: $font-size-p - 2
+  &__dropdown
+    display: inline-block !important
+    width: 250px !important
+    height: 44px !important
+    cursor: pointer !important
+    i
+      &::before
+        top: 22px !important
+    .item, .text
+      font-size: $font-size-p - 2 !important
+  &__input-item
+    margin: 10px 10px 0 0
+    &--address
+      width: 250px
+  &__input-text
+    width: 250px
+  &__input-submit
+    display: block
+    margin: 30px auto
+    transform: translateX(-19px)
+    padding: 15px 30px
+    background-color: transparentize($green, .2)
+    cursor: pointer
+    color: $white
+    font-family: $font-family-condensed-bold
+    font-size: $font-size-h4
+    @include fullTrans(.3s)
+    &:hover
+      background-color: $green
+      color: $white
 
 .sign-in-invite
   width: 350px
@@ -20,40 +64,35 @@
   background-color: $light-brown
   outline: solid 2px $dark-brown
   font-family: $font-family-condensed-medium
-
-.sign-in-invite__text
-  float: left
-  width: 220px
-
-.sign-in-invite__button
-  float: right
-  margin-top: 7px
-  padding: 5px 20px
-  background-color: transparentize($green, .2)
-  outline: solid 2px $dark-brown
-  cursor: pointer
-  color: $white
-  @include fullTrans(.3s)
-  &:hover
-    background-color: $green
+  &__text
+    float: left
+    width: 220px
+  &__button
+    float: right
+    margin-top: 7px
+    padding: 5px 20px
+    background-color: transparentize($green, .2)
+    outline: solid 2px $dark-brown
+    cursor: pointer
+    color: $white
+    @include fullTrans(.3s)
+    &:hover
+      background-color: $green
 
 .make-order-tabs
   width: 350px
   margin-top: 30px
   font-family: $font-family-condensed-medium
-
-.make-order-tabs__tab-header
-  padding: 5px 10px
-  background-color: $light-brown
-  outline: solid 2px $dark-brown
-  font-size: $font-size-h5
-  cursor: pointer
-
-.make-order-tabs__tab-body
-  padding: 20px 10px
-
-.make-order-tabs__subheader
-  font-family: $font-family-condensed-medium
+  &__tab-header
+    padding: 5px 10px
+    background-color: $light-brown
+    outline: solid 2px $dark-brown
+    font-size: $font-size-h5
+    cursor: pointer
+  &__tab-body
+    padding: 20px 10px
+  &__subheader
+    font-family: $font-family-condensed-medium
 
 .order-info
   position: absolute
@@ -66,36 +105,33 @@
   font-family: $font-family-condensed-medium
   @media all and (max-width: 1400px)
     left: 500px
-
-.order-info__header
-  display: inline-block
-  padding: 0
-  border-bottom: solid 2px $dark-brown
-  font-size: $font-size-h5
-
-.order-info__description
-  margin-top: 10px
-  p
+  &__header
     display: inline-block
-    width: 90%
-    text-wrap:
-    font-family: $font-family-condensed-medium
-
-.order-info__button
-  display: block
-  width: 200px
-  margin: 30px auto 10px auto
-  padding: 5px 20px
-  background-color: $green
-  outline: solid 2px $dark-brown
-  text-align: center
-  cursor: pointer
-  font-size: $font-size-h4
-  letter-spacing: .5px
-  color: $white
-  &--disabled
-    background-color: transparentize($green, .4)
-    cursor: not-allowed
+    padding: 0
+    border-bottom: solid 2px $dark-brown
+    font-size: $font-size-h5
+  &__description
+    margin-top: 10px
+    p
+      display: inline-block
+      width: 90%
+      text-wrap:
+      font-family: $font-family-condensed-medium
+  &__button
+    display: block
+    width: 200px
+    margin: 30px auto 10px auto
+    padding: 5px 20px
+    background-color: $green
+    outline: solid 2px $dark-brown
+    text-align: center
+    cursor: pointer
+    font-size: $font-size-h4
+    letter-spacing: .5px
+    color: $white
+    &--disabled
+      background-color: transparentize($green, .4)
+      cursor: not-allowed
 
 // forms
 

@@ -1,4 +1,4 @@
-<article class="make-order-page" data-ng-controller="makeOrderPageCtrl">
+<article class="make-order-page" data-ng-controller="makeOrderPageCtrl as $makeOrderCtrl">
     <div data-breadcrumbs class="breadcrumbs"></div>
 
     <header class="page-title make-order-page__page-title">
@@ -12,74 +12,74 @@
 
     <br><br>
 
-    <main class="register-page" data-ng-controller="registerCotroller as $regCtrl">
-        <form class="ui form segment register-page__form" data-ng-submit="$regCtrl.register()">
+    <main class="make-order-page__main" data-ng-controller="registerCotroller as $regCtrl">
+        <form class="ui form segment make-order-page__form" data-ng-submit="$regCtrl.register()">
             <div class="ui segment">
-                <h4 class="ui dividing header register-page__header">Представьтесь, пожалуйста:</h4>
+                <h4 class="ui dividing header make-order-page__header">Представьтесь, пожалуйста:</h4>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="text" data-ng-model="$regCtrl.firstName" required placeholder="Имя *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="user icon"></i>
                 </div>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="text" data-ng-model="$regCtrl.lastName" required placeholder="Фамилия *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="user icon"></i>
                 </div>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="text" data-ng-model="$regCtrl.patronymic" placeholder="Отчество *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="user icon"></i>
                 </div>
             </div>
 
             <div class="ui segment">
-                <h4 class="ui dividing header register-page__header">Укажите данные для входа...</h4>
+                <h4 class="ui dividing header make-order-page__header">Укажите данные для входа...</h4>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="email" data-ng-model="$regCtrl.email" required placeholder="Email *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="mail icon"></i>
                 </div>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="password" data-ng-model="$regCtrl.password" required placeholder="Пароль *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="protect icon"></i>
                 </div>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="password" data-ng-model="$regCtrl.passwordConfirm" required
                            placeholder="Подтвердите пароль *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="protect icon"></i>
                 </div>
             </div>
 
             <div class="ui segment">
-                <h4 class="ui dividing header register-page__header">И данные для доставки:</h4>
+                <h4 class="ui dividing header make-order-page__header">И данные для доставки:</h4>
 
-                <div class="ui small icon input register-page__input-item">
+                <div class="ui small icon input make-order-page__input-item">
                     <input type="tel" data-ng-model="$regCtrl.tel" required placeholder="+7 ___ ___ __ __ *"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="phone icon"></i>
                 </div>
 
 
                 <select data-ng-model="$regCtrl.city"
-                        class="ui search icon dropdown input small register-page__dropdown">
+                        class="ui search icon dropdown input small make-order-page__dropdown">
                     <option value="">Регион</option>
                     <option data-ng-repeat="region in $regCtrl.regions" value="{{region.zone_id}}"
                             data-ng-bind="region.name">Регион
                     </option>
                 </select>
 
-                <div class="ui small icon input register-page__input-item register-page__input-item--address">
+                <div class="ui small icon input make-order-page__input-item make-order-page__input-item--address">
                     <input type="text" data-ng-model="$regCtrl.address" required placeholder="Адрес"
-                           class="register-page__input-text">
+                           class="make-order-page__input-text">
                     <i class="browser icon"></i>
                 </div>
             </div>
@@ -247,3 +247,7 @@
         <!--</button>-->
     <!--</div>-->
 </article>
+
+<script>
+
+</script>
