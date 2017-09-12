@@ -5,12 +5,97 @@
         <h1 class="page-title__header">Оформление заказа</h1>
     </header>
 
-    <br>
-
     <div class="sign-in-invite">
         <div class="sign-in-invite__text">Войдите в личный кабинет для быстрого оформления заказа</div>
         <div class="sign-in-invite__button">Войти</div>
     </div>
+
+    <br><br>
+
+    <main class="register-page" data-ng-controller="registerCotroller as $regCtrl">
+        <form class="ui form segment register-page__form" data-ng-submit="$regCtrl.register()">
+            <div class="ui segment">
+                <h4 class="ui dividing header register-page__header">Представьтесь, пожалуйста:</h4>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="text" data-ng-model="$regCtrl.firstName" required placeholder="Имя *"
+                           class="register-page__input-text">
+                    <i class="user icon"></i>
+                </div>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="text" data-ng-model="$regCtrl.lastName" required placeholder="Фамилия *"
+                           class="register-page__input-text">
+                    <i class="user icon"></i>
+                </div>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="text" data-ng-model="$regCtrl.patronymic" placeholder="Отчество *"
+                           class="register-page__input-text">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+
+            <div class="ui segment">
+                <h4 class="ui dividing header register-page__header">Укажите данные для входа...</h4>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="email" data-ng-model="$regCtrl.email" required placeholder="Email *"
+                           class="register-page__input-text">
+                    <i class="mail icon"></i>
+                </div>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="password" data-ng-model="$regCtrl.password" required placeholder="Пароль *"
+                           class="register-page__input-text">
+                    <i class="protect icon"></i>
+                </div>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="password" data-ng-model="$regCtrl.passwordConfirm" required
+                           placeholder="Подтвердите пароль *"
+                           class="register-page__input-text">
+                    <i class="protect icon"></i>
+                </div>
+            </div>
+
+            <div class="ui segment">
+                <h4 class="ui dividing header register-page__header">И данные для доставки:</h4>
+
+                <div class="ui small icon input register-page__input-item">
+                    <input type="tel" data-ng-model="$regCtrl.tel" required placeholder="+7 ___ ___ __ __ *"
+                           class="register-page__input-text">
+                    <i class="phone icon"></i>
+                </div>
+
+
+                <select data-ng-model="$regCtrl.city"
+                        class="ui search icon dropdown input small register-page__dropdown">
+                    <option value="">Регион</option>
+                    <option data-ng-repeat="region in $regCtrl.regions" value="{{region.zone_id}}"
+                            data-ng-bind="region.name">Регион
+                    </option>
+                </select>
+
+                <div class="ui small icon input register-page__input-item register-page__input-item--address">
+                    <input type="text" data-ng-model="$regCtrl.address" required placeholder="Адрес"
+                           class="register-page__input-text">
+                    <i class="browser icon"></i>
+                </div>
+            </div>
+
+            <textarea class="make-order-page__textarea" placeholder="Комментарий к заказу"></textarea>
+
+            <button class="order-info__button"
+                    data-ng-click="finishOrder(makeOrder.$invalid)"
+                    data-ng-class="{'order-info__button--disabled': makeOrder.$invalid}">
+                Перейти к оплате
+            </button>
+        </form>
+    </main>
+
+    <br>
+
     <ng-form name="customerForm" class="common-form common-form__make-order-tabs">
         <div class="make-order-tabs">
             <div class="make-order-tabs__tab">
@@ -133,32 +218,32 @@
 
     <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
 
-    <div class="order-info">
-        <header class="order-info__header">Информация о заказе</header>
-        <div class="order-info__description">
-            <p data-ng-if="customerForm.customer.name">
-                Заказчик: {{customerForm.customer.name}}
-                <span data-ng-if="customerForm.customer.address"><br>
-                    Проживает по адресу: {{customerForm.customer.address.region}}
-                    <span data-ng-if="customerForm.customer.address.city">, г. </span>{{customerForm.customer.address.city}}
-                    <span data-ng-if="customerForm.customer.address.street">, </span>{{customerForm.customer.address.street}}
-                </span>
-            </p>
-            <p data-ng-if="customerForm.customer.email || customerForm.customer.tel">Контакты заказчика: <br>
-                <span data-ng-if="customerForm.customer.email">E-mail: {{customerForm.customer.email}}</span> <br>
-                <span data-ng-if="customerForm.customer.tel">Телефон: {{customerForm.customer.tel}}</span>
+    <!--<div class="order-info">-->
+        <!--<header class="order-info__header">Информация о заказе</header>-->
+        <!--<div class="order-info__description">-->
+            <!--<p data-ng-if="customerForm.customer.name">-->
+                <!--Заказчик: {{customerForm.customer.name}}-->
+                <!--<span data-ng-if="customerForm.customer.address"><br>-->
+                    <!--Проживает по адресу: {{customerForm.customer.address.region}}-->
+                    <!--<span data-ng-if="customerForm.customer.address.city">, г. </span>{{customerForm.customer.address.city}}-->
+                    <!--<span data-ng-if="customerForm.customer.address.street">, </span>{{customerForm.customer.address.street}}-->
+                <!--</span>-->
+            <!--</p>-->
+            <!--<p data-ng-if="customerForm.customer.email || customerForm.customer.tel">Контакты заказчика: <br>-->
+                <!--<span data-ng-if="customerForm.customer.email">E-mail: {{customerForm.customer.email}}</span> <br>-->
+                <!--<span data-ng-if="customerForm.customer.tel">Телефон: {{customerForm.customer.tel}}</span>-->
 
-            </p>
-            <p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>
-            <p data-ng-if="shippingForm.shippingMethod">Способ доставки:
-                {{shippingForm.shippingMethod}}</p>
-            <p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>
-        </div>
+            <!--</p>-->
+            <!--<p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>-->
+            <!--<p data-ng-if="shippingForm.shippingMethod">Способ доставки:-->
+                <!--{{shippingForm.shippingMethod}}</p>-->
+            <!--<p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>-->
+        <!--</div>-->
 
-        <button class="order-info__button"
-                data-ng-click="finishOrder(makeOrder.$invalid)"
-                data-ng-class="{'order-info__button--disabled': makeOrder.$invalid}">
-            Перейти к оплате
-        </button>
-    </div>
+        <!--<button class="order-info__button"-->
+                <!--data-ng-click="finishOrder(makeOrder.$invalid)"-->
+                <!--data-ng-class="{'order-info__button&#45;&#45;disabled': makeOrder.$invalid}">-->
+            <!--Перейти к оплате-->
+        <!--</button>-->
+    <!--</div>-->
 </article>
