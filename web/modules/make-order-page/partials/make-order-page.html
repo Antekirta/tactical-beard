@@ -12,25 +12,25 @@
 
     <br><br>
 
-    <main class="make-order-page__main" data-ng-controller="registerCotroller as $regCtrl">
-        <form class="ui form segment make-order-page__form" data-ng-submit="$regCtrl.register()">
+    <main class="make-order-page__main">
+        <form name="customerForm" class="ui form segment make-order-page__form">
             <div class="ui segment">
                 <h4 class="ui dividing header make-order-page__header">Представьтесь, пожалуйста:</h4>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="text" data-ng-model="$regCtrl.firstName" required placeholder="Имя *"
+                    <input type="text" data-ng-model="customerForm.customer.firstName" required placeholder="Имя *"
                            class="make-order-page__input-text">
                     <i class="user icon"></i>
                 </div>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="text" data-ng-model="$regCtrl.lastName" required placeholder="Фамилия *"
+                    <input type="text" data-ng-model="customerForm.customer.lastName" required placeholder="Фамилия *"
                            class="make-order-page__input-text">
                     <i class="user icon"></i>
                 </div>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="text" data-ng-model="$regCtrl.patronymic" placeholder="Отчество *"
+                    <input type="text" data-ng-model="customerForm.customer.patronymic" placeholder="Отчество *"
                            class="make-order-page__input-text">
                     <i class="user icon"></i>
                 </div>
@@ -40,19 +40,19 @@
                 <h4 class="ui dividing header make-order-page__header">Укажите данные для входа...</h4>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="email" data-ng-model="$regCtrl.email" required placeholder="Email *"
+                    <input type="email" data-ng-model="customerForm.customer.email" required placeholder="Email *"
                            class="make-order-page__input-text">
                     <i class="mail icon"></i>
                 </div>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="password" data-ng-model="$regCtrl.password" required placeholder="Пароль *"
+                    <input type="password" data-ng-model="customerForm.customer.password" required placeholder="Пароль *"
                            class="make-order-page__input-text">
                     <i class="protect icon"></i>
                 </div>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="password" data-ng-model="$regCtrl.passwordConfirm" required
+                    <input type="password" data-ng-model="customerForm.customer.passwordConfirm" required
                            placeholder="Подтвердите пароль *"
                            class="make-order-page__input-text">
                     <i class="protect icon"></i>
@@ -63,22 +63,22 @@
                 <h4 class="ui dividing header make-order-page__header">И данные для доставки:</h4>
 
                 <div class="ui small icon input make-order-page__input-item">
-                    <input type="tel" data-ng-model="$regCtrl.tel" required placeholder="+7 ___ ___ __ __ *"
+                    <input type="tel" data-ng-model="customerForm.customer.tel" required placeholder="+7 ___ ___ __ __ *"
                            class="make-order-page__input-text">
                     <i class="phone icon"></i>
                 </div>
 
 
-                <select data-ng-model="$regCtrl.city"
+                <select data-ng-model="customerForm.customer.address.city"
                         class="ui search icon dropdown input small make-order-page__dropdown">
                     <option value="">Регион</option>
-                    <option data-ng-repeat="region in $regCtrl.regions" value="{{region.zone_id}}"
+                    <option data-ng-repeat="region in $makeOrderCtrl.regions" value="{{region.zone_id}}"
                             data-ng-bind="region.name">Регион
                     </option>
                 </select>
 
                 <div class="ui small icon input make-order-page__input-item make-order-page__input-item--address">
-                    <input type="text" data-ng-model="$regCtrl.address" required placeholder="Адрес"
+                    <input type="text" data-ng-model="customerForm.customer.address.street" required placeholder="Адрес"
                            class="make-order-page__input-text">
                     <i class="browser icon"></i>
                 </div>
@@ -96,125 +96,7 @@
 
     <br>
 
-    <ng-form name="customerForm" class="common-form common-form__make-order-tabs">
-        <div class="make-order-tabs">
-            <div class="make-order-tabs__tab">
-                <div class="make-order-tabs__tab-header">Информация о покупателе</div>
-                <div class="make-order-tabs__tab-body">
-                    <label class="common-form__label">Ваши ФИО: *</label>
-                    <br>
-                    <input data-ng-model="customerForm.customer.name"
-                           data-ng-minlength="5"
-                           class="common-form__input common-form__input--text"
-                           type="text"
-                           required
-                           placeholder="Фамилия Имя Отчество">
-                    <br><br>
 
-                    <label class="common-form__label">E-mail: *</label>
-                    <br>
-                    <input data-ng-model="customerForm.customer.email"
-                           data-email-validation
-                           class="common-form__input common-form__input--email"
-                           type="text"
-                           required
-                           placeholder="E-mail">
-                    <br><br>
-
-                    <label data-ng-model="customerForm.customer.tel" class="common-form__label">Телефон: *</label>
-                    <br>
-                    <input data-ng-model="customerForm.customer.tel"
-                           data-phone-number-validation
-                           class="common-form__input common-form__input--tel"
-                           type="tel"
-                           required
-                           placeholder="+7 999 999-99-99">
-                    <br><br>
-
-                    <label class="common-form__label">Регион доставки:</label>
-                    <br>
-
-                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"
-                                     data-model="customerForm.customer.address.region"
-                                     required
-                                     data-items-list="regions"
-                                     data-placeholder="Регион РФ">Выберите из списка
-                    </dropdown-select>
-                    <br>
-                    <br>
-
-                    <label class="common-form__label">Населенный пункт:</label>
-                    <br>
-
-                    <input data-ng-model="customerForm.customer.address.city"
-                           data-ng-minlength="5"
-                           class="common-form__input"
-                           name=""
-                           placeholder="Населенный пункт">
-                    <br>
-                    <br>
-
-                    <label class="common-form__label">Адрес:</label>
-                    <br>
-                    <input data-ng-model="customerForm.customer.address.street"
-                           data-ng-minlength="5"
-                           class="common-form__input"
-                           name=""
-                           placeholder="Улица, дом, квартира">
-                    <br><br>
-
-                    <label class="common-form__label">Комментарий к заказу:</label>
-                    <br>
-                    <textarea data-ng-model="customerForm.comment"
-                              class="common-form__textarea"
-                              name=""
-                              placeholder="Что еще нам следует учесть?"></textarea>
-                </div>
-            </div>
-        </div>
-    </ng-form>
-
-    <ng-form name="shippingForm" class="common-form common-form__make-order-tabs" data-ng-show="customerForm.$valid">
-        <div class="make-order-tabs">
-            <div class="make-order-tabs__tab">
-                <div class="make-order-tabs__tab-header">Доставка</div>
-                <div class="make-order-tabs__tab-body">
-                    <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
-
-                    <span data-ng-repeat="method in shippingMethods">
-                        <input data-ng-model="shippingForm.shippingMethod"
-                               data-ng-click="setShippingMethod(method)"
-                               class="common-form__radio" type="radio"
-                               name="shippingmethod"
-                               required
-                               value="{{method.value}}"> {{method.name}}
-                        <br>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </ng-form>
-
-    <ng-form name="paymentForm" class="common-form common-form__make-order-tabs" data-ng-show="customerForm.$valid">
-        <div class="make-order-tabs">
-            <div class="make-order-tabs__tab">
-                <div class="make-order-tabs__tab-header">Оплата</div>
-                <div class="make-order-tabs__tab-body">
-                    <p class="make-order-tabs__subheader">Выберите способ оплаты</p>
-
-                    <span data-ng-repeat="method in paymentMethods">
-                        <input data-ng-model="customerForm.paymentMethod"
-                               data-ng-change="setPaymentMethod(method)"
-                               class="common-form__radio" type="radio"
-                               name="paymentMethod"
-                               required
-                               value="{{method.value}}"> {{method.name}}
-                        <br>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </ng-form>
 
     <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
 

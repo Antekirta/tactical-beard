@@ -3,7 +3,7 @@
 
 	const registry = angular.module('registry');
 
-    const site = 'http://tacbeard.com/backend';
+    const site = 'https://tacbeard.com/backend';
 
 	registry.constant('REST_API', {
 		'X_OC_RESTADMIN_ID': '4562314431343',
@@ -55,9 +55,9 @@
 		},
 
 		CUSTOMERS: {
-			CUSTOMERS: 'http://tacbeard.com/backend/api/rest_admin/customers',
+			CUSTOMERS: 'https://tacbeard.com/backend/api/rest_admin/customers',
 
-			GET_CUSTOMER_BY_EMAIL: 'http://tacbeard.com/backend/api/rest_admin/customers/email'
+			GET_CUSTOMER_BY_EMAIL: 'https://tacbeard.com/backend/api/rest_admin/customers/email'
 		}
 	});
 })();

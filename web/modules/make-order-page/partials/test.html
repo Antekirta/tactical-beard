@@ -1,0 +1,119 @@
+<ng-form name="customerForm" class="common-form common-form__make-order-tabs">
+        <div class="make-order-tabs">
+            <div class="make-order-tabs__tab">
+                <div class="make-order-tabs__tab-header">Информация о покупателе</div>
+                <div class="make-order-tabs__tab-body">
+                    <label class="common-form__label">Ваши ФИО: *</label>
+                    <br>
+                    <input data-ng-model="customerForm.customer.name"
+                           data-ng-minlength="5"
+                           class="common-form__input common-form__input--text"
+                           type="text"
+                           required
+                           placeholder="Фамилия Имя Отчество">
+                    <br><br>
+
+                    <label class="common-form__label">E-mail: *</label>
+                    <br>
+                    <input data-ng-model="customerForm.customer.email"
+                           data-email-validation
+                           class="common-form__input common-form__input--email"
+                           type="text"
+                           required
+                           placeholder="E-mail">
+                    <br><br>
+
+                    <label data-ng-model="customerForm.customer.tel" class="common-form__label">Телефон: *</label>
+                    <br>
+                    <input data-ng-model="customerForm.customer.tel"
+                           data-phone-number-validation
+                           class="common-form__input common-form__input--tel"
+                           type="tel"
+                           required
+                           placeholder="+7 999 999-99-99">
+                    <br><br>
+
+                    <label class="common-form__label">Регион доставки:</label>
+                    <br>
+
+                    <dropdown-select class="dropdown-select make-order-page__dropdown-select dropdown-select--address"
+                                     data-model="customerForm.customer.address.region"
+                                     required
+                                     data-items-list="regions"
+                                     data-placeholder="Регион РФ">Выберите из списка
+                    </dropdown-select>
+                    <br>
+                    <br>
+
+                    <label class="common-form__label">Населенный пункт:</label>
+                    <br>
+
+                    <input data-ng-model="customerForm.customer.address.city"
+                           data-ng-minlength="5"
+                           class="common-form__input"
+                           name=""
+                           placeholder="Населенный пункт">
+                    <br>
+                    <br>
+
+                    <label class="common-form__label">Адрес:</label>
+                    <br>
+                    <input data-ng-model="customerForm.customer.address.street"
+                           data-ng-minlength="5"
+                           class="common-form__input"
+                           name=""
+                           placeholder="Улица, дом, квартира">
+                    <br><br>
+
+                    <label class="common-form__label">Комментарий к заказу:</label>
+                    <br>
+                    <textarea data-ng-model="customerForm.comment"
+                              class="common-form__textarea"
+                              name=""
+                              placeholder="Что еще нам следует учесть?"></textarea>
+                </div>
+            </div>
+        </div>
+    </ng-form>
+
+    <ng-form name="shippingForm" class="common-form common-form__make-order-tabs" data-ng-show="customerForm.$valid">
+        <div class="make-order-tabs">
+            <div class="make-order-tabs__tab">
+                <div class="make-order-tabs__tab-header">Доставка</div>
+                <div class="make-order-tabs__tab-body">
+                    <p class="make-order-tabs__subheader">Каким образом вы хотели бы получить товар?</p>
+
+                    <span data-ng-repeat="method in shippingMethods">
+                        <input data-ng-model="shippingForm.shippingMethod"
+                               data-ng-click="setShippingMethod(method)"
+                               class="common-form__radio" type="radio"
+                               name="shippingmethod"
+                               required
+                               value="{{method.value}}"> {{method.name}}
+                        <br>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ng-form>
+
+    <ng-form name="paymentForm" class="common-form common-form__make-order-tabs" data-ng-show="customerForm.$valid">
+        <div class="make-order-tabs">
+            <div class="make-order-tabs__tab">
+                <div class="make-order-tabs__tab-header">Оплата</div>
+                <div class="make-order-tabs__tab-body">
+                    <p class="make-order-tabs__subheader">Выберите способ оплаты</p>
+
+                    <span data-ng-repeat="method in paymentMethods">
+                        <input data-ng-model="customerForm.paymentMethod"
+                               data-ng-change="setPaymentMethod(method)"
+                               class="common-form__radio" type="radio"
+                               name="paymentMethod"
+                               required
+                               value="{{method.value}}"> {{method.name}}
+                        <br>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ng-form>

@@ -12,7 +12,7 @@
 
 				buttonText: 'Записаться на игру',
 
-				link: 'http://tacbeard.com/arrange-game/'
+				link: 'https://tacbeard.com/arrange-game/'
 			},
 			{
 				header: 'Новое поступление',

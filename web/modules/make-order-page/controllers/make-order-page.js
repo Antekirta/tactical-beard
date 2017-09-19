@@ -67,7 +67,7 @@
                     }
                 }
             }
-            
+
             function fillPaymentMethodsList(paymentMethods) {
                 console.log('fillPaymentMethodsList paymentMethods: ', paymentMethods);
 
@@ -149,7 +149,7 @@
                         );
                 }
             }
-            
+
             function setShippingMethod(method) {
                 checkoutProvider.setShippingMethods(params.currentSession, method.value, method.name)
                     .then(
@@ -170,7 +170,7 @@
                         }
                     );
             }
-            
+
             function setPaymentMethod(method) {
                 checkoutProvider.setPaymentMethod(params.currentSession, method.value, method.name, true)
                     .then(
