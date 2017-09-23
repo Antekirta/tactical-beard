@@ -41,9 +41,9 @@
 
             $orderCtrl.sendOrder = function sendOrder(event) {
                 event.preventDefault();
-                
-                // createGuestUser();
-                //
+
+                createGuestUser($orderCtrl.order);
+
                 // setShippingAdress();
                 //
                 // setShippingMethod();
@@ -62,6 +62,8 @@
             setCurrentSession();
 
             putBasketInOrder();
+
+            fillRegionsList();
 
             /**
              * firstname
@@ -88,8 +90,6 @@
                 );
             }
 
-            // send order inner
-
             function putBasketInOrder() {
                 basketProvider.getProducts().then(
                     (response) => {
@@ -106,6 +106,41 @@
                         }
                     }
                 );
+            }
+
+            function fillRegionsList() {
+                countriesFactory.getCountryById(COUNTRIES.RUSSIA.ID)
+                    .then(
+                        function (countries) {
+                            $orderCtrl.regions = countries;
+                        }
+                    );
+            }
+
+            // send order inner
+
+            function createGuestUser(customer) {
+                const customerInfo = {
+                    'firstname': customer.firstname,
+                    'lastname': customer.lastname,
+                    'email': customer.email,
+                    'telephone': customer.telephone,
+                    'fax': customer.fax,
+                    'company': customer.company,
+                    'city': customer.city || 'Not specified',
+                    'address_1': customer.address_1 || 'Not specified',
+                    'address_2': '',
+                    'country_id': COUNTRIES.RUSSIA.ID,
+                    'postcode': '',
+                    'zone_id': customer.zone_id
+                };
+
+                console.log('customerInfo: ', customerInfo);
+
+                checkoutProvider.createGuest(params.currentSession, customerInfo)
+                    .then(() => {
+                        return checkoutProvider.setGuestShipping(params.currentSession, customerInfo);
+                    })
             }
         }]);
 })();

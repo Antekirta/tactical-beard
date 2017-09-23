@@ -24,11 +24,13 @@
 
         <br><br>
 
+        регион<select data-ng-model="$orderCtrl.order.zone_id" class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+            <option value="" selected="selected">Регион</option>
+            <option value="{{region.zone_id}}" data-ng-repeat="region in $orderCtrl.regions track by $index" data-ng-bind="region.name"></option>
+        </select>
         город<input type="text" name="city" required data-ng-model="$orderCtrl.order.city">
         адрес<input type="text" name="address_1" required data-ng-model="$orderCtrl.order.address_1">
-        страна<input type="text" name="country_id" required data-ng-model="$orderCtrl.order.country_id">
         почтовый индекс<input type="text" name="postcode" required data-ng-model="$orderCtrl.order.postcode">
-        регион<input type="text" name="zone_id" required data-ng-model="$orderCtrl.order.zone_id">
 
         <br><br>
 

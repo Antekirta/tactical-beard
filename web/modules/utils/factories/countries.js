@@ -32,8 +32,6 @@
                         return $http.get(url, req)
                             .then(
                                 function (response) {
-                                    console.log('getCountryById response: ', response);
-
                                     return response.data.data.zone;
                                 }
                             );

@@ -34,8 +34,6 @@
                     };
 
                     function getProducts() {
-                        console.log('basket.js getproducts');
-
                         return session.getCurrentSession()
                             .then(
                                 function (session) {
