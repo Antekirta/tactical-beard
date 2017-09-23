@@ -22,8 +22,7 @@
             const $orderCtrl = this;
 
             $orderCtrl.order = {
-                product_id: '',
-                quantity: 0,
+                basket: [],
                 firstname: '',
                 lastname: '',
                 email: '',
@@ -42,20 +41,18 @@
 
             $orderCtrl.sendOrder = function sendOrder(event) {
                 event.preventDefault();
-
-                putBasketInOrder();
-
-                createGuestUser();
-
-                setShippingAdress();
-
-                setShippingMethod();
-
-                setPaymentMethod();
-
-                confirmOrder();
-
-                sendLetterToCustomer();
+                
+                // createGuestUser();
+                //
+                // setShippingAdress();
+                //
+                // setShippingMethod();
+                //
+                // setPaymentMethod();
+                //
+                // confirmOrder();
+                //
+                // sendLetterToCustomer();
             };
 
             const params = {
@@ -63,6 +60,8 @@
             };
 
             setCurrentSession();
+
+            putBasketInOrder();
 
             /**
              * firstname
@@ -85,6 +84,26 @@
                 session.getCurrentSession().then(
                     function (session) {
                         params.currentSession = session;
+                    }
+                );
+            }
+
+            // send order inner
+
+            function putBasketInOrder() {
+                basketProvider.getProducts().then(
+                    (response) => {
+                        if ( !response.success ) {
+                            $log.error('putBasketInOrder got an error! maybe the basket is empty.');
+                        } else {
+                            $orderCtrl.order.basket = response.data.products
+                                .map((product) => {
+                                    return {
+                                        product_id: product.product_id,
+                                        quantity: product.quantity,
+                                    };
+                                });
+                        }
                     }
                 );
             }
