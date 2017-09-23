@@ -22,6 +22,8 @@
             const $orderCtrl = this;
 
             $orderCtrl.order = {
+                product_id: '',
+                quantity: 0,
                 firstname: '',
                 lastname: '',
                 email: '',
@@ -36,6 +38,24 @@
                 payment_method: '',
                 agree: '',
                 comment: ''
+            };
+
+            $orderCtrl.sendOrder = function sendOrder(event) {
+                event.preventDefault();
+
+                putBasketInOrder();
+
+                createGuestUser();
+
+                setShippingAdress();
+
+                setShippingMethod();
+
+                setPaymentMethod();
+
+                confirmOrder();
+
+                sendLetterToCustomer();
             };
 
             const params = {

@@ -12,37 +12,37 @@
 
     <br><br>
 
-    <form name="order" method="POST">
-        Имя<input type="text" name="firstname" data-ng-model="$orderCtrl.order.firstname">
-        Фамилия<input type="text" name="lastname" data-ng-model="$orderCtrl.order.lastname">
+    <form name="order">
+        Имя<input type="text" name="firstname" required data-ng-model="$orderCtrl.order.firstname">
+        Фамилия<input type="text" name="lastname" required data-ng-model="$orderCtrl.order.lastname">
 
         <br><br>
 
-        E-mail<input type="email" name="email" data-ng-model="$orderCtrl.order.email">
-        Телефон<input type="tel" name="telephone" data-ng-model="$orderCtrl.order.telephone">
-        Компания<input type="text" name="company" data-ng-model="$orderCtrl.order.company">
+        E-mail<input type="email" name="email" required data-ng-model="$orderCtrl.order.email">
+        Телефон<input type="tel" name="telephone" required data-ng-model="$orderCtrl.order.telephone">
+        Компания<input type="text" name="company" required data-ng-model="$orderCtrl.order.company">
 
         <br><br>
 
-        город<input type="text" name="city" data-ng-model="$orderCtrl.order.city">
-        адрес<input type="text" name="address_1" data-ng-model="$orderCtrl.order.address_1">
-        страна<input type="text" name="country_id" data-ng-model="$orderCtrl.order.country_id">
-        почтовый индекс<input type="text" name="postcode" data-ng-model="$orderCtrl.order.postcode">
-        регион<input type="text" name="zone_id" data-ng-model="$orderCtrl.order.zone_id">
+        город<input type="text" name="city" required data-ng-model="$orderCtrl.order.city">
+        адрес<input type="text" name="address_1" required data-ng-model="$orderCtrl.order.address_1">
+        страна<input type="text" name="country_id" required data-ng-model="$orderCtrl.order.country_id">
+        почтовый индекс<input type="text" name="postcode" required data-ng-model="$orderCtrl.order.postcode">
+        регион<input type="text" name="zone_id" required data-ng-model="$orderCtrl.order.zone_id">
 
         <br><br>
 
-        способ доставки<input type="text" name="shipping_method" data-ng-model="$orderCtrl.order.shipping_method">
-        способ оплаты<input type="text" name="payment_method" data-ng-model="$orderCtrl.order.payment_method">
-        согласие с условиями<input type="checkbox" name="agree" data-ng-model="$orderCtrl.order.agree">
+        способ доставки<input type="text" name="shipping_method" required data-ng-model="$orderCtrl.order.shipping_method">
+        способ оплаты<input type="text" name="payment_method" required data-ng-model="$orderCtrl.order.payment_method">
+        согласие с условиями<input type="checkbox" name="agree" required data-ng-model="$orderCtrl.order.agree">
 
         <br><br>
 
-        Комментарий к заказу<textarea name="comment" data-ng-model="$orderCtrl.order.comment"></textarea>
+        Комментарий к заказу<textarea name="comment" required data-ng-model="$orderCtrl.order.comment"></textarea>
 
         <br><br>
 
-        <input type="submit">
+        <input type="submit" data-ng-click="$orderCtrl.sendOrder($event)">
     </form>
 
     <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
