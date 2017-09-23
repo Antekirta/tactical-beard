@@ -1,4 +1,4 @@
-<article class="make-order-page" data-ng-controller="makeOrderPageCtrl as $makeOrderCtrl">
+<article class="make-order-page" data-ng-controller="makeOrderPageCtrl as $orderCtrl">
     <div data-breadcrumbs class="breadcrumbs"></div>
 
     <header class="page-title make-order-page__page-title">
@@ -12,91 +12,38 @@
 
     <br><br>
 
-    <main class="make-order-page__main">
-        <form name="customerForm" class="ui form segment make-order-page__form">
-            <div class="ui segment">
-                <h4 class="ui dividing header make-order-page__header">Представьтесь, пожалуйста:</h4>
+    <form name="order" method="POST">
+        Имя<input type="text" name="firstname" data-ng-model="$orderCtrl.order.firstname">
+        Фамилия<input type="text" name="lastname" data-ng-model="$orderCtrl.order.lastname">
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="text" data-ng-model="customerForm.customer.firstName" required placeholder="Имя *"
-                           class="make-order-page__input-text">
-                    <i class="user icon"></i>
-                </div>
+        <br><br>
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="text" data-ng-model="customerForm.customer.lastName" required placeholder="Фамилия *"
-                           class="make-order-page__input-text">
-                    <i class="user icon"></i>
-                </div>
+        E-mail<input type="email" name="email" data-ng-model="$orderCtrl.order.email">
+        Телефон<input type="tel" name="telephone" data-ng-model="$orderCtrl.order.telephone">
+        Компания<input type="text" name="company" data-ng-model="$orderCtrl.order.company">
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="text" data-ng-model="customerForm.customer.patronymic" placeholder="Отчество *"
-                           class="make-order-page__input-text">
-                    <i class="user icon"></i>
-                </div>
-            </div>
+        <br><br>
 
-            <div class="ui segment">
-                <h4 class="ui dividing header make-order-page__header">Укажите данные для входа...</h4>
+        город<input type="text" name="city" data-ng-model="$orderCtrl.order.city">
+        адрес<input type="text" name="address_1" data-ng-model="$orderCtrl.order.address_1">
+        страна<input type="text" name="country_id" data-ng-model="$orderCtrl.order.country_id">
+        почтовый индекс<input type="text" name="postcode" data-ng-model="$orderCtrl.order.postcode">
+        регион<input type="text" name="zone_id" data-ng-model="$orderCtrl.order.zone_id">
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="email" data-ng-model="customerForm.customer.email" required placeholder="Email *"
-                           class="make-order-page__input-text">
-                    <i class="mail icon"></i>
-                </div>
+        <br><br>
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="password" data-ng-model="customerForm.customer.password" required placeholder="Пароль *"
-                           class="make-order-page__input-text">
-                    <i class="protect icon"></i>
-                </div>
+        способ доставки<input type="text" name="shipping_method" data-ng-model="$orderCtrl.order.shipping_method">
+        способ оплаты<input type="text" name="payment_method" data-ng-model="$orderCtrl.order.payment_method">
+        согласие с условиями<input type="checkbox" name="agree" data-ng-model="$orderCtrl.order.agree">
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="password" data-ng-model="customerForm.customer.passwordConfirm" required
-                           placeholder="Подтвердите пароль *"
-                           class="make-order-page__input-text">
-                    <i class="protect icon"></i>
-                </div>
-            </div>
+        <br><br>
 
-            <div class="ui segment">
-                <h4 class="ui dividing header make-order-page__header">И данные для доставки:</h4>
+        Комментарий к заказу<textarea name="comment" data-ng-model="$orderCtrl.order.comment"></textarea>
 
-                <div class="ui small icon input make-order-page__input-item">
-                    <input type="tel" data-ng-model="customerForm.customer.tel" required placeholder="+7 ___ ___ __ __ *"
-                           class="make-order-page__input-text">
-                    <i class="phone icon"></i>
-                </div>
+        <br><br>
 
-
-                <select data-ng-model="customerForm.customer.address.city"
-                        class="ui search icon dropdown input small make-order-page__dropdown">
-                    <option value="">Регион</option>
-                    <option data-ng-repeat="region in $makeOrderCtrl.regions" value="{{region.zone_id}}"
-                            data-ng-bind="region.name">Регион
-                    </option>
-                </select>
-
-                <div class="ui small icon input make-order-page__input-item make-order-page__input-item--address">
-                    <input type="text" data-ng-model="customerForm.customer.address.street" required placeholder="Адрес"
-                           class="make-order-page__input-text">
-                    <i class="browser icon"></i>
-                </div>
-            </div>
-
-            <textarea class="make-order-page__textarea" placeholder="Комментарий к заказу"></textarea>
-
-            <button class="order-info__button"
-                    data-ng-click="finishOrder(makeOrder.$invalid)"
-                    data-ng-class="{'order-info__button--disabled': makeOrder.$invalid}">
-                Перейти к оплате
-            </button>
-        </form>
-    </main>
-
-    <br>
-
-
+        <input type="submit">
+    </form>
 
     <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
 
