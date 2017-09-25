@@ -79,7 +79,9 @@
     </form>
 
 
-    <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
+    <div data-ng-bind-html="$orderCtrl.confirmMessage"></div>
+
+    <button data-ng-click="$orderCtrl.finishProcess()">Завершить платеж</button>
 
     <!--<div class="order-info">-->
     <!--<header class="order-info__header">Информация о заказе</header>-->
@@ -112,5 +114,5 @@
 </article>
 
 <script>
-
+    document.title = 'Оформление заказа';
 </script>

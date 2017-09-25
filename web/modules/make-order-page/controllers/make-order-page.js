@@ -6,6 +6,8 @@
 
         '$log',
 
+        '$sce',
+
         'session',
 
         'countriesFactory',
@@ -18,7 +20,7 @@
 
         'COUNTRIES',
 
-        function ($scope, $log, session, countriesFactory, checkoutProvider, basketProvider, regionsProvider, COUNTRIES) {
+        function ($scope, $log, $sce, session, countriesFactory, checkoutProvider, basketProvider, regionsProvider, COUNTRIES) {
             const $orderCtrl = this;
 
             $orderCtrl.shippingMethods = [];
@@ -52,16 +54,6 @@
                 event.preventDefault();
 
                 createGuestUser($orderCtrl.customer);
-
-                // setShippingAdress();
-                //
-                // setShippingMethod();
-                //
-                // setPaymentMethod();
-                //
-                // confirmOrder();
-                //
-                // sendLetterToCustomer();
             };
 
             $orderCtrl.setShippingMethod = function (event, method) {
@@ -74,24 +66,34 @@
                             $log.log('Shipping method has been set to: ', $orderCtrl.delivery.shipping_method);
 
                             return checkoutProvider.getPaymentMethods(params.currentSession).then((response) => {
-                                console.log('getPaymentMethods response: ', response);
-
                                 fillPaymentMethodsList(response.data.payment_methods);
                             });
                         }
+
+                        $log.log('Shipping method has not been set. Info: ', response);
                     });
             };
 
             $orderCtrl.setPaymentMethod = function (event, method) {
                 event.preventDefault();
 
-                console.log('method: ', method);
-
                 return checkoutProvider
                     .setPaymentMethod(params.currentSession, method, '', $orderCtrl.agree)
                     .then((response) => {
-                        console.log('setPaymentMethod response: ', response);
+                        if ( response.data.success ) {
+                            $log.log('Payment method has been succesfully set', method);
+
+                            return checkoutProvider.confirm(params.currentSession).then((response) => {
+                                $orderCtrl.confirmMessage = $sce.trustAsHtml(response.data.payment);
+                            });
+                        }
                     });
+            };
+
+            $orderCtrl.finishProcess = function () {
+                return checkoutProvider.pay(params.currentSession).then((response) => {
+                    $log.log('finishProcess response: ', response);
+                });
             };
 
             const params = {
@@ -103,25 +105,6 @@
             putBasketInOrder();
 
             fillRegionsList();
-
-            // getShippingMethods();
-
-            /**
-             * firstname
-             * lastname
-             * email
-             * telephone
-             * company // ?
-             * city
-             * address_1
-             * country_id
-             * postcode
-             * zone_id
-             * shipping_method
-             * payment_method
-             * agree
-             * comment // ?
-             */
 
             function setCurrentSession() {
                 session.getCurrentSession().then(
@@ -171,8 +154,6 @@
             }
 
             function fillPaymentMethodsList(paymentMethods) {
-                console.log('fillPaymentMethodsList paymentMethods: ', paymentMethods);
-
                 $orderCtrl.paymentMethods = [];
 
                 for (let method in paymentMethods) {
@@ -184,8 +165,6 @@
                         });
                     }
                 }
-
-                console.log('$orderCtrl.paymentMethods: ', $orderCtrl.paymentMethods);
             }
 
             // send order inner

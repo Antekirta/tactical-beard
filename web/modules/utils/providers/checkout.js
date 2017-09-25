@@ -129,7 +129,7 @@
                             return $http(req)
                                 .then(
                                     function (response) {
-                                        console.log('pay response: ', response);
+                                        return response;
                                     }
                                 );
                         },
