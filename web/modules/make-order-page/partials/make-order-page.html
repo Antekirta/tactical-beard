@@ -38,10 +38,6 @@
 
         <br><br>
 
-        согласие с условиями<input type="checkbox" name="agree" required data-ng-model="$orderCtrl.customer.agree">
-
-        <br><br>
-
         Комментарий к заказу<textarea name="comment" required data-ng-model="$orderCtrl.order.comment"></textarea>
 
         <br><br>
@@ -67,11 +63,21 @@
     <h3>Оплата</h3>
 
     <form name="payment">
-        способ оплаты<input type="text" name="payment_method" required
-                            data-ng-model="$orderCtrl.delivery.payment_method">
+        согласие с условиями<input type="checkbox" name="agree" required data-ng-model="$orderCtrl.agree">
 
-        <input type="submit">
+        <br><br>
+
+        <select data-ng-model="$orderCtrl.delivery.payment_method"
+                class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+            <option value="" selected="selected">Способ оплаты</option>
+            <option value="{{paymentMethod.value}}"
+                    data-ng-repeat="paymentMethod in $orderCtrl.paymentMethods track by $index"
+                    data-ng-bind="paymentMethod.name"></option>
+        </select>
+
+        <input type="submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)" value="Перейти к оплате">
     </form>
+
 
     <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
 

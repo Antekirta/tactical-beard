@@ -44,7 +44,7 @@
                 shipping_method: ''
             };
 
-            $orderCtrl.delivery = {
+            $orderCtrl.payment = {
                 payment_method: ''
             };
 
@@ -67,12 +67,30 @@
             $orderCtrl.setShippingMethod = function (event, method) {
                 event.preventDefault();
 
-                console.log('method: ', method);
-
                 return checkoutProvider
                     .setShippingMethods(params.currentSession, method)
                     .then((response) => {
-                        console.log('setShippingMethod response: ', response);
+                        if ( response.data.success ) {
+                            $log.log('Shipping method has been set to: ', $orderCtrl.delivery.shipping_method);
+
+                            return checkoutProvider.getPaymentMethods(params.currentSession).then((response) => {
+                                console.log('getPaymentMethods response: ', response);
+
+                                fillPaymentMethodsList(response.data.payment_methods);
+                            });
+                        }
+                    });
+            };
+
+            $orderCtrl.setPaymentMethod = function (event, method) {
+                event.preventDefault();
+
+                console.log('method: ', method);
+
+                return checkoutProvider
+                    .setPaymentMethod(params.currentSession, method, '', $orderCtrl.agree)
+                    .then((response) => {
+                        console.log('setPaymentMethod response: ', response);
                     });
             };
 
@@ -150,8 +168,24 @@
                         });
                     }
                 }
+            }
 
-                console.log('$orderCtrl.shippingMethods: ', $orderCtrl.shippingMethods);
+            function fillPaymentMethodsList(paymentMethods) {
+                console.log('fillPaymentMethodsList paymentMethods: ', paymentMethods);
+
+                $orderCtrl.paymentMethods = [];
+
+                for (let method in paymentMethods) {
+                    if ( paymentMethods.hasOwnProperty(method) ) {
+                        $orderCtrl.paymentMethods.push({
+                            name: paymentMethods[method].title,
+
+                            value: paymentMethods[method].code
+                        });
+                    }
+                }
+
+                console.log('$orderCtrl.paymentMethods: ', $orderCtrl.paymentMethods);
             }
 
             // send order inner
