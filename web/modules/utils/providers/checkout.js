@@ -68,14 +68,9 @@
                                 shipping_method: method
                             };
 
-                            console.log('DATA: ', data);
-
                             return $http.post(REST_API.SET_SHIPPING_METHOD, data, req)
                                 .then(
                                     function (response) {
-                                        console.log('setShippingMethods req: ', req);
-                                        console.log('setShippingMethods response: ', response);
-
                                         return response;
                                     }
                                 );

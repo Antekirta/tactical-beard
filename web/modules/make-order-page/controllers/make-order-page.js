@@ -21,28 +21,37 @@
         function ($scope, $log, session, countriesFactory, checkoutProvider, basketProvider, regionsProvider, COUNTRIES) {
             const $orderCtrl = this;
 
-            $orderCtrl.order = {
+            $orderCtrl.shippingMethods = [];
+            $orderCtrl.paymentMethods = [];
+
+            $orderCtrl.customer = {
                 basket: [],
-                firstname: '',
-                lastname: '',
-                email: '',
-                telephone: '',
-                company: '',
-                city: '',
+                firstname: 'stub',
+                lastname: 'stub',
+                email: 'stub@stub.com',
+                telephone: '7777777777',
+                company: 'stub',
+                city: 'stub',
                 address_1: '',
-                country_id: '',
-                postcode: '',
-                zone_id: '',
-                shipping_method: '',
-                payment_method: '',
+                country_id: 176,
+                postcode: '4324',
+                zone_id: '67',
                 agree: '',
                 comment: ''
+            };
+
+            $orderCtrl.delivery = {
+                shipping_method: ''
+            };
+
+            $orderCtrl.delivery = {
+                payment_method: ''
             };
 
             $orderCtrl.sendOrder = function sendOrder(event) {
                 event.preventDefault();
 
-                createGuestUser($orderCtrl.order);
+                createGuestUser($orderCtrl.customer);
 
                 // setShippingAdress();
                 //
@@ -55,6 +64,18 @@
                 // sendLetterToCustomer();
             };
 
+            $orderCtrl.setShippingMethod = function (event, method) {
+                event.preventDefault();
+
+                console.log('method: ', method);
+
+                return checkoutProvider
+                    .setShippingMethods(params.currentSession, method)
+                    .then((response) => {
+                        console.log('setShippingMethod response: ', response);
+                    });
+            };
+
             const params = {
                 currentSession: ''
             };
@@ -64,6 +85,8 @@
             putBasketInOrder();
 
             fillRegionsList();
+
+            // getShippingMethods();
 
             /**
              * firstname
@@ -96,7 +119,7 @@
                         if ( !response.success ) {
                             $log.error('putBasketInOrder got an error! maybe the basket is empty.');
                         } else {
-                            $orderCtrl.order.basket = response.data.products
+                            $orderCtrl.customer.basket = response.data.products
                                 .map((product) => {
                                     return {
                                         product_id: product.product_id,
@@ -117,6 +140,20 @@
                     );
             }
 
+            function fillShippingTypesList(shippingMethods) {
+                for (let method in shippingMethods) {
+                    if ( shippingMethods.hasOwnProperty(method) ) {
+                        $orderCtrl.shippingMethods.push({
+                            name: shippingMethods[method].title,
+
+                            value: shippingMethods[method].quote[method] && shippingMethods[method].quote[method].code
+                        });
+                    }
+                }
+
+                console.log('$orderCtrl.shippingMethods: ', $orderCtrl.shippingMethods);
+            }
+
             // send order inner
 
             function createGuestUser(customer) {
@@ -135,11 +172,13 @@
                     'zone_id': customer.zone_id
                 };
 
-                console.log('customerInfo: ', customerInfo);
-
                 checkoutProvider.createGuest(params.currentSession, customerInfo)
                     .then(() => {
-                        return checkoutProvider.setGuestShipping(params.currentSession, customerInfo);
+                        return checkoutProvider.getShippingMethods(params.currentSession).then((response) => {
+                            if ( response.success ) {
+                                fillShippingTypesList(response.data.shipping_methods);
+                            }
+                        });
                     })
             }
         }]);

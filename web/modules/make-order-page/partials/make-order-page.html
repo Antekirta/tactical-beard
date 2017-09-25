@@ -12,31 +12,33 @@
 
     <br><br>
 
-    <form name="order">
-        Имя<input type="text" name="firstname" required data-ng-model="$orderCtrl.order.firstname">
-        Фамилия<input type="text" name="lastname" required data-ng-model="$orderCtrl.order.lastname">
+    <h3>Заказчик</h3>
+
+    <form name="customer">
+        Имя<input type="text" name="firstname" required data-ng-model="$orderCtrl.customer.firstname">
+        Фамилия<input type="text" name="lastname" required data-ng-model="$orderCtrl.customer.lastname">
 
         <br><br>
 
-        E-mail<input type="email" name="email" required data-ng-model="$orderCtrl.order.email">
-        Телефон<input type="tel" name="telephone" required data-ng-model="$orderCtrl.order.telephone">
-        Компания<input type="text" name="company" required data-ng-model="$orderCtrl.order.company">
+        E-mail<input type="email" name="email" required data-ng-model="$orderCtrl.customer.email">
+        Телефон<input type="tel" name="telephone" required data-ng-model="$orderCtrl.customer.telephone">
+        Компания<input type="text" name="company" required data-ng-model="$orderCtrl.customer.company">
 
         <br><br>
 
-        регион<select data-ng-model="$orderCtrl.order.zone_id" class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-            <option value="" selected="selected">Регион</option>
-            <option value="{{region.zone_id}}" data-ng-repeat="region in $orderCtrl.regions track by $index" data-ng-bind="region.name"></option>
-        </select>
-        город<input type="text" name="city" required data-ng-model="$orderCtrl.order.city">
-        адрес<input type="text" name="address_1" required data-ng-model="$orderCtrl.order.address_1">
-        почтовый индекс<input type="text" name="postcode" required data-ng-model="$orderCtrl.order.postcode">
+        регион<select data-ng-model="$orderCtrl.customer.zone_id"
+                      class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+        <option value="" selected="selected">Регион</option>
+        <option value="{{region.zone_id}}" data-ng-repeat="region in $orderCtrl.regions track by $index"
+                data-ng-bind="region.name"></option>
+    </select>
+        город<input type="text" name="city" required data-ng-model="$orderCtrl.customer.city">
+        адрес<input type="text" name="address_1" required data-ng-model="$orderCtrl.customer.address_1">
+        почтовый индекс<input type="text" name="postcode" required data-ng-model="$orderCtrl.customer.postcode">
 
         <br><br>
 
-        способ доставки<input type="text" name="shipping_method" required data-ng-model="$orderCtrl.order.shipping_method">
-        способ оплаты<input type="text" name="payment_method" required data-ng-model="$orderCtrl.order.payment_method">
-        согласие с условиями<input type="checkbox" name="agree" required data-ng-model="$orderCtrl.order.agree">
+        согласие с условиями<input type="checkbox" name="agree" required data-ng-model="$orderCtrl.customer.agree">
 
         <br><br>
 
@@ -47,35 +49,59 @@
         <input type="submit" data-ng-click="$orderCtrl.sendOrder($event)">
     </form>
 
+    <h3>Доставка</h3>
+
+    <form name="delivery">
+        способ доставки
+        <select data-ng-model="$orderCtrl.delivery.shipping_method"
+                class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+            <option value="" selected="selected">Способ доставки</option>
+            <option value="{{shippingMethod.value}}"
+                    data-ng-repeat="shippingMethod in $orderCtrl.shippingMethods track by $index"
+                    data-ng-bind="shippingMethod.name"></option>
+        </select>
+
+        <input type="submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)">
+    </form>
+
+    <h3>Оплата</h3>
+
+    <form name="payment">
+        способ оплаты<input type="text" name="payment_method" required
+                            data-ng-model="$orderCtrl.delivery.payment_method">
+
+        <input type="submit">
+    </form>
+
     <p data-ng-if="orderConfirmed">{{totalOrderInfo}}</p>
 
     <!--<div class="order-info">-->
-        <!--<header class="order-info__header">Информация о заказе</header>-->
-        <!--<div class="order-info__description">-->
-            <!--<p data-ng-if="customerForm.customer.name">-->
-                <!--Заказчик: {{customerForm.customer.name}}-->
-                <!--<span data-ng-if="customerForm.customer.address"><br>-->
-                    <!--Проживает по адресу: {{customerForm.customer.address.region}}-->
-                    <!--<span data-ng-if="customerForm.customer.address.city">, г. </span>{{customerForm.customer.address.city}}-->
-                    <!--<span data-ng-if="customerForm.customer.address.street">, </span>{{customerForm.customer.address.street}}-->
-                <!--</span>-->
-            <!--</p>-->
-            <!--<p data-ng-if="customerForm.customer.email || customerForm.customer.tel">Контакты заказчика: <br>-->
-                <!--<span data-ng-if="customerForm.customer.email">E-mail: {{customerForm.customer.email}}</span> <br>-->
-                <!--<span data-ng-if="customerForm.customer.tel">Телефон: {{customerForm.customer.tel}}</span>-->
+    <!--<header class="order-info__header">Информация о заказе</header>-->
+    <!--<div class="order-info__description">-->
+    <!--<p data-ng-if="customerForm.customer.name">-->
+    <!--Заказчик: {{customerForm.customer.name}}-->
+    <!--<span data-ng-if="customerForm.customer.address"><br>-->
+    <!--Проживает по адресу: {{customerForm.customer.address.region}}-->
+    <!--<span data-ng-if="customerForm.customer.address.city">, г. </span>{{customerForm.customer.address.city}}-->
+    <!--<span data-ng-if="customerForm.customer.address.street">, </span>{{customerForm.customer.address.street}}-->
+    <!--</span>-->
+    <!--</p>-->
+    <!--<p data-ng-if="customerForm.customer.email || customerForm.customer.tel">Контакты заказчика: <br>-->
+    <!--<span data-ng-if="customerForm.customer.email">E-mail: {{customerForm.customer.email}}</span> <br>-->
+    <!--<span data-ng-if="customerForm.customer.tel">Телефон: {{customerForm.customer.tel}}</span>-->
 
-            <!--</p>-->
-            <!--<p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>-->
-            <!--<p data-ng-if="shippingForm.shippingMethod">Способ доставки:-->
-                <!--{{shippingForm.shippingMethod}}</p>-->
-            <!--<p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>-->
-        <!--</div>-->
+    <!--</p>-->
+    <!--<p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>-->
+    <!--<p data-ng-if="shippingForm.shippingMethod">Способ доставки:-->
+    <!--{{shippingForm.shippingMethod}}</p>-->
+    <!--<p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>-->
+    <!--</div>-->
 
-        <!--<button class="order-info__button"-->
-                <!--data-ng-click="finishOrder(makeOrder.$invalid)"-->
-                <!--data-ng-class="{'order-info__button&#45;&#45;disabled': makeOrder.$invalid}">-->
-            <!--Перейти к оплате-->
-        <!--</button>-->
+    <!--<button class="order-info__button"-->
+    <!--data-ng-click="finishOrder(makeOrder.$invalid)"-->
+    <!--data-ng-class="{'order-info__button&#45;&#45;disabled': makeOrder.$invalid}">-->
+    <!--Перейти к оплате-->
+    <!--</button>-->
     <!--</div>-->
 </article>
 
