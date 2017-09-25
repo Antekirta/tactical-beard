@@ -90,7 +90,7 @@
                     });
             };
 
-            $orderCtrl.finishProcess = function () {
+            $orderCtrl.finishProcess = function () { 
                 return checkoutProvider.pay(params.currentSession).then((response) => {
                     $log.log('finishProcess response: ', response);
                 });
