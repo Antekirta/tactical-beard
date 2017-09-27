@@ -67,7 +67,7 @@
 
                             return checkoutProvider.getPaymentMethods(params.currentSession).then((response) => {
                                 fillPaymentMethodsList(response.data.payment_methods);
-              mak              });
+                            });
                         }
 
                         $log.log('Shipping method has not been set. Info: ', response);

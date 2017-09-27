@@ -56,7 +56,9 @@
 
         'web/semantic/UI-Transition-master/transition.min.css',
 
-        'web/semantic/UI-Form-master/form.min.css'
+        'web/semantic/UI-Form-master/form.min.css',
+
+        'web/semantic/UI-Checkbox-master/checkbox.min.css'
     ];
 
     const APP_JS_SRC = [
@@ -82,7 +84,9 @@
 
         'web/semantic/UI-Search-master/search.min.js',
 
-        'web/semantic/UI-Transition-master/transition.min.js'
+        'web/semantic/UI-Transition-master/transition.min.js',
+
+        'web/semantic/UI-Checkbox-master/checkbox.min.js'
     ];
 
     function lazyRequireTask(taskName, path, options) {

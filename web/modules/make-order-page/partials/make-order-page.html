@@ -49,7 +49,7 @@
 
         <br><br>
 
-        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.sendOrder($event)" value="Перейти к оформлению доставки">
+        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.sendOrder($event)" value="Перейти к выбору способа доставки">
     </form>
 
     <h3>Доставка</h3>
@@ -65,63 +65,42 @@
             </select>
         </div>
 
-        <input type="submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)">
+        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)" value="Перейти к выбору способа оплаты">
     </form>
 
     <h3>Оплата</h3>
 
     <form name="payment">
-        согласие с условиями<input type="checkbox" name="agree" required data-ng-model="$orderCtrl.agree">
+        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+            <select data-ng-model="$orderCtrl.delivery.payment_method"
+                    class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+                <option value="" selected="selected">Способ оплаты</option>
+                <option value="{{paymentMethod.value}}"
+                        data-ng-repeat="paymentMethod in $orderCtrl.paymentMethods track by $index"
+                        data-ng-bind="paymentMethod.name"></option>
+            </select>
+        </div>
+
+        <div class="ui checkbox" id="personal-agreement">
+            <input type="checkbox" name="agree" required data-ng-model="$orderCtrl.agree">
+            <label class="make-order-page__label make-order-page__label--checkbox">Принимаю <a href="#">оферту</a> и выражаю согласие на <a href="#">хранение и обработку личных данных</a></label>
+        </div>
 
         <br><br>
 
-        <select data-ng-model="$orderCtrl.delivery.payment_method"
-                class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-            <option value="" selected="selected">Способ оплаты</option>
-            <option value="{{paymentMethod.value}}"
-                    data-ng-repeat="paymentMethod in $orderCtrl.paymentMethods track by $index"
-                    data-ng-bind="paymentMethod.name"></option>
-        </select>
-
-        <input type="submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
+        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
                value="Перейти к оплате">
     </form>
 
-
     <div data-ng-bind-html="$orderCtrl.confirmMessage"></div>
 
-    <button data-ng-click="$orderCtrl.finishProcess()">Завершить платеж</button>
+    <!--<br><br>-->
 
-    <!--<div class="order-info">-->
-    <!--<header class="order-info__header">Информация о заказе</header>-->
-    <!--<div class="order-info__description">-->
-    <!--<p data-ng-if="customerForm.customer.name">-->
-    <!--Заказчик: {{customerForm.customer.name}}-->
-    <!--<span data-ng-if="customerForm.customer.address"><br>-->
-    <!--Проживает по адресу: {{customerForm.customer.address.region}}-->
-    <!--<span data-ng-if="customerForm.customer.address.city">, г. </span>{{customerForm.customer.address.city}}-->
-    <!--<span data-ng-if="customerForm.customer.address.street">, </span>{{customerForm.customer.address.street}}-->
-    <!--</span>-->
-    <!--</p>-->
-    <!--<p data-ng-if="customerForm.customer.email || customerForm.customer.tel">Контакты заказчика: <br>-->
-    <!--<span data-ng-if="customerForm.customer.email">E-mail: {{customerForm.customer.email}}</span> <br>-->
-    <!--<span data-ng-if="customerForm.customer.tel">Телефон: {{customerForm.customer.tel}}</span>-->
-
-    <!--</p>-->
-    <!--<p data-ng-if="makeOrder.paymentType">Способ оплаты: {{makeOrder.paymentType}}</p>-->
-    <!--<p data-ng-if="shippingForm.shippingMethod">Способ доставки:-->
-    <!--{{shippingForm.shippingMethod}}</p>-->
-    <!--<p data-ng-if="makeOrder.comment">Комментарий к заказу: {{makeOrder.comment}}</p>-->
-    <!--</div>-->
-
-    <!--<button class="order-info__button"-->
-    <!--data-ng-click="finishOrder(makeOrder.$invalid)"-->
-    <!--data-ng-class="{'order-info__button&#45;&#45;disabled': makeOrder.$invalid}">-->
-    <!--Перейти к оплате-->
-    <!--</button>-->
-    <!--</div>-->
+    <!--<button class="make-order-page__input-submit" data-ng-click="$orderCtrl.finishProcess()">Завершить платеж</button>-->
 </article>
 
 <script>
     document.title = 'Оформление заказа';
+
+    $('#personal-agreement').checkbox();
 </script>
