@@ -4,54 +4,42 @@
   position: relative
   @media all and (max-width: 1400px)
     padding: 0 100px
+  &__input-block.input
+    display: block
+    input, select
+      display: inline-block
+      width: 200px
+      margin: 0 15px 20px 0
+  &__input-block--long.input
+    input, select
+      width: 250px
+  &__textarea-block
+    width: 500px
   &__textarea
-    display: block !important
-    height: 150px !important
-    margin: 0 auto !important
-    resize: none !important
+    width: 515px
+    height: 100px
+    padding: .67857143em 1em
+    border: solid 1px rgba(34,36,38,.15)
+    border-radius: .28571429rem
+    resize: none
+    line-height: 1.21428571em
+    font-size: .78571429em
+    color: rgba(0,0,0,.87)
   &__page-title
     margin-bottom: 30px
-  &__form
-    max-width: 850px !important
   .make-order-page__header
     font-family: $font-family-condensed-medium
     font-weight: 100
-  &__fieldset
-    padding: 10px 20px
-    margin: 0 0 20px 0
-    outline: solid 1px $light-brown
-  &__fieldset-header
-    text-align: center
-    font-size: $font-size-p
-  &__label
-    display: block
-    font-size: $font-size-p - 2
-  &__dropdown
-    display: inline-block !important
-    width: 250px !important
-    height: 44px !important
-    cursor: pointer !important
-    i
-      &::before
-        top: 22px !important
-    .item, .text
-      font-size: $font-size-p - 2 !important
-  &__input-item
-    margin: 10px 10px 0 0
-    &--address
-      width: 250px
-  &__input-text
-    width: 250px
   &__input-submit
     display: block
-    margin: 30px auto
-    transform: translateX(-19px)
-    padding: 15px 30px
+    padding: 15px
+    border: none
+    outline: none
     background-color: transparentize($green, .2)
     cursor: pointer
     color: $white
     font-family: $font-family-condensed-bold
-    font-size: $font-size-h4
+    font-size: $font-size-h6
     @include fullTrans(.3s)
     &:hover
       background-color: $green

@@ -54,7 +54,9 @@
 
         'web/semantic/UI-Search-master/search.min.css',
 
-        'web/semantic/UI-Transition-master/transition.min.css'
+        'web/semantic/UI-Transition-master/transition.min.css',
+
+        'web/semantic/UI-Form-master/form.min.css'
     ];
 
     const APP_JS_SRC = [

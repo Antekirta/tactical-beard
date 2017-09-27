@@ -28,16 +28,16 @@
 
             $orderCtrl.customer = {
                 basket: [],
-                firstname: 'stub',
-                lastname: 'stub',
-                email: 'stub@stub.com',
-                telephone: '7777777777',
-                company: 'stub',
-                city: 'stub',
+                firstname: '',
+                lastname: '',
+                email: '',
+                telephone: '',
+                company: '',
+                city: '',
                 address_1: '',
-                country_id: 176,
-                postcode: '4324',
-                zone_id: '67',
+                country_id: '',
+                postcode: '',
+                zone_id: '',
                 agree: '',
                 comment: ''
             };
@@ -67,7 +67,7 @@
 
                             return checkoutProvider.getPaymentMethods(params.currentSession).then((response) => {
                                 fillPaymentMethodsList(response.data.payment_methods);
-                            });
+              mak              });
                         }
 
                         $log.log('Shipping method has not been set. Info: ', response);
@@ -90,7 +90,7 @@
                     });
             };
 
-            $orderCtrl.finishProcess = function () { 
+            $orderCtrl.finishProcess = function () {
                 return checkoutProvider.pay(params.currentSession).then((response) => {
                     $log.log('finishProcess response: ', response);
                 });

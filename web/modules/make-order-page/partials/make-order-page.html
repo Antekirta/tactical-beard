@@ -12,50 +12,58 @@
 
     <br><br>
 
-    <h3>Заказчик</h3>
+    <h3>Информация о покупателе</h3>
 
     <form name="customer">
-        Имя<input type="text" name="firstname" required data-ng-model="$orderCtrl.customer.firstname">
-        Фамилия<input type="text" name="lastname" required data-ng-model="$orderCtrl.customer.lastname">
+        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+            <input type="text" name="firstname" required data-ng-model="$orderCtrl.customer.firstname"
+                   placeholder="Введите имя">
+            <input type="text" name="lastname" required data-ng-model="$orderCtrl.customer.lastname"
+                   placeholder="Введите фамилию">
+        </div>
+
+        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+            <input type="email" name="email" required data-ng-model="$orderCtrl.customer.email"
+                   placeholder="Введите email">
+            <input type="tel" name="telephone" required data-ng-model="$orderCtrl.customer.telephone"
+                   placeholder="Введите номер телефона">
+        </div>
+
+        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+            <select data-ng-model="$orderCtrl.customer.zone_id"
+                    class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+                <option value="" selected="selected">Регион</option>
+                <option value="{{region.zone_id}}" data-ng-repeat="region in $orderCtrl.regions track by $index"
+                        data-ng-bind="region.name"></option>
+            </select>
+
+            <input type="text" name="city" required data-ng-model="$orderCtrl.customer.city" placeholder="Введите город">
+            <input type="text" name="address_1" required data-ng-model="$orderCtrl.customer.address_1" placeholder="Введите адрес">
+            <input type="text" name="postcode" required data-ng-model="$orderCtrl.customer.postcode" placeholder="Введите почтовый индекс">
+        </div>
+
+        <div class="field textarea make-order-page__textarea-block">
+            <label>Комментарий к заказу</label> <br>
+            <textarea name="comment" required data-ng-model="$orderCtrl.order.comment" class="make-order-page__textarea"></textarea>
+        </div>
 
         <br><br>
 
-        E-mail<input type="email" name="email" required data-ng-model="$orderCtrl.customer.email">
-        Телефон<input type="tel" name="telephone" required data-ng-model="$orderCtrl.customer.telephone">
-        Компания<input type="text" name="company" required data-ng-model="$orderCtrl.customer.company">
-
-        <br><br>
-
-        регион<select data-ng-model="$orderCtrl.customer.zone_id"
-                      class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-        <option value="" selected="selected">Регион</option>
-        <option value="{{region.zone_id}}" data-ng-repeat="region in $orderCtrl.regions track by $index"
-                data-ng-bind="region.name"></option>
-    </select>
-        город<input type="text" name="city" required data-ng-model="$orderCtrl.customer.city">
-        адрес<input type="text" name="address_1" required data-ng-model="$orderCtrl.customer.address_1">
-        почтовый индекс<input type="text" name="postcode" required data-ng-model="$orderCtrl.customer.postcode">
-
-        <br><br>
-
-        Комментарий к заказу<textarea name="comment" required data-ng-model="$orderCtrl.order.comment"></textarea>
-
-        <br><br>
-
-        <input type="submit" data-ng-click="$orderCtrl.sendOrder($event)">
+        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.sendOrder($event)" value="Перейти к оформлению доставки">
     </form>
 
     <h3>Доставка</h3>
 
     <form name="delivery">
-        способ доставки
-        <select data-ng-model="$orderCtrl.delivery.shipping_method"
-                class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-            <option value="" selected="selected">Способ доставки</option>
-            <option value="{{shippingMethod.value}}"
-                    data-ng-repeat="shippingMethod in $orderCtrl.shippingMethods track by $index"
-                    data-ng-bind="shippingMethod.name"></option>
-        </select>
+        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+            <select data-ng-model="$orderCtrl.delivery.shipping_method"
+                    class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+                <option value="" selected="selected">Способ доставки</option>
+                <option value="{{shippingMethod.value}}"
+                        data-ng-repeat="shippingMethod in $orderCtrl.shippingMethods track by $index"
+                        data-ng-bind="shippingMethod.name"></option>
+            </select>
+        </div>
 
         <input type="submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)">
     </form>
@@ -75,7 +83,8 @@
                     data-ng-bind="paymentMethod.name"></option>
         </select>
 
-        <input type="submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)" value="Перейти к оплате">
+        <input type="submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
+               value="Перейти к оплате">
     </form>
 
 
