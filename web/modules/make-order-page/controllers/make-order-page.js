@@ -65,6 +65,8 @@
                         if ( response.data.success ) {
                             $log.log('Shipping method has been set to: ', $orderCtrl.delivery.shipping_method);
 
+                            $orderCtrl.shippingMethodIsSet = true;
+
                             return checkoutProvider.getPaymentMethods(params.currentSession).then((response) => {
                                 fillPaymentMethodsList(response.data.payment_methods);
                             });
@@ -190,6 +192,8 @@
                         return checkoutProvider.getShippingMethods(params.currentSession).then((response) => {
                             if ( response.success ) {
                                 fillShippingTypesList(response.data.shipping_methods);
+
+                                $orderCtrl.userIsCreated = true;
                             }
                         });
                     })

@@ -52,45 +52,49 @@
         <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.sendOrder($event)" value="Перейти к выбору способа доставки">
     </form>
 
-    <h3>Доставка</h3>
+    <div data-ng-show="$orderCtrl.userIsCreated">
+        <h3>Доставка</h3>
 
-    <form name="delivery">
-        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
-            <select data-ng-model="$orderCtrl.delivery.shipping_method"
-                    class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-                <option value="" selected="selected">Способ доставки</option>
-                <option value="{{shippingMethod.value}}"
-                        data-ng-repeat="shippingMethod in $orderCtrl.shippingMethods track by $index"
-                        data-ng-bind="shippingMethod.name"></option>
-            </select>
-        </div>
+        <form name="delivery">
+            <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+                <select data-ng-model="$orderCtrl.delivery.shipping_method"
+                        class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+                    <option value="" selected="selected">Способ доставки</option>
+                    <option value="{{shippingMethod.value}}"
+                            data-ng-repeat="shippingMethod in $orderCtrl.shippingMethods track by $index"
+                            data-ng-bind="shippingMethod.name"></option>
+                </select>
+            </div>
 
-        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)" value="Перейти к выбору способа оплаты">
-    </form>
+            <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)" value="Перейти к выбору способа оплаты">
+        </form>
+    </div>
 
-    <h3>Оплата</h3>
+    <div data-ng-show="$orderCtrl.shippingMethodIsSet">
+        <h3>Оплата</h3>
 
-    <form name="payment">
-        <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
-            <select data-ng-model="$orderCtrl.delivery.payment_method"
-                    class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-                <option value="" selected="selected">Способ оплаты</option>
-                <option value="{{paymentMethod.value}}"
-                        data-ng-repeat="paymentMethod in $orderCtrl.paymentMethods track by $index"
-                        data-ng-bind="paymentMethod.name"></option>
-            </select>
-        </div>
+        <form name="payment">
+            <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
+                <select data-ng-model="$orderCtrl.delivery.payment_method"
+                        class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
+                    <option value="" selected="selected">Способ оплаты</option>
+                    <option value="{{paymentMethod.value}}"
+                            data-ng-repeat="paymentMethod in $orderCtrl.paymentMethods track by $index"
+                            data-ng-bind="paymentMethod.name"></option>
+                </select>
+            </div>
 
-        <div class="ui checkbox" id="personal-agreement">
-            <input type="checkbox" name="agree" required data-ng-model="$orderCtrl.agree">
-            <label class="make-order-page__label make-order-page__label--checkbox">Принимаю <a href="#">оферту</a> и выражаю согласие на <a href="#">хранение и обработку личных данных</a></label>
-        </div>
+            <div class="ui checkbox" id="personal-agreement">
+                <input type="checkbox" name="agree" required data-ng-model="$orderCtrl.agree">
+                <label class="make-order-page__label make-order-page__label--checkbox">Принимаю <a href="#">оферту</a> и выражаю согласие на <a href="#">хранение и обработку личных данных</a></label>
+            </div>
 
-        <br><br>
+            <br><br>
 
-        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
-               value="Перейти к оплате">
-    </form>
+            <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
+                   value="Перейти к оплате">
+        </form>
+    </div>
 
     <div data-ng-bind-html="$orderCtrl.confirmMessage"></div>
 
