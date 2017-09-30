@@ -31,7 +31,14 @@
 
                                         return response;
                                     }
-                                );
+                                )
+                                .then(() => {
+                                    return $http.post(REST_API.GUEST_SHIPPING, guest, req).then((response) => {
+                                        console.log('response: ', response); 
+
+                                        return response;
+                                    });
+                                });
                         },
 
                         setGuestShipping: function (session, guest) {

@@ -28,18 +28,18 @@
 
             $orderCtrl.customer = {
                 basket: [],
-                firstname: '',
-                lastname: '',
-                email: '',
-                telephone: '',
-                company: '',
-                city: '',
-                address_1: '',
+                firstname: 'fsdfsdf',
+                lastname: 'sdfsdf',
+                email: 'sdfds@fsdfsdf.ru',
+                telephone: '4234234234',
+                company: 'sdfsdfsdf',
+                city: 'kaliningrad',
+                address_1: 'Nevskogo    ',
                 country_id: '',
-                postcode: '',
+                postcode: '2360008',
                 zone_id: '',
-                agree: '',
-                comment: ''
+                agree: true,
+                comment: 'sdfsdfsdf'
             };
 
             $orderCtrl.delivery = {
