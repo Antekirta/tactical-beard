@@ -20,11 +20,15 @@
 
         'COUNTRIES',
 
-        function ($scope, $log, $sce, session, countriesFactory, checkoutProvider, basketProvider, regionsProvider, COUNTRIES) {
+        'PAYMENT_METHODS',
+
+        function ($scope, $log, $sce, session, countriesFactory, checkoutProvider, basketProvider, regionsProvider, COUNTRIES, PAYMENT_METHODS) {
             const $orderCtrl = this;
 
             $orderCtrl.shippingMethods = [];
+
             $orderCtrl.paymentMethods = [];
+            $orderCtrl.PAYMENT_METHODS = PAYMENT_METHODS;
 
             $orderCtrl.customer = {
                 basket: [],
@@ -84,6 +88,8 @@
                     .then((response) => {
                         if ( response.data.success ) {
                             $log.log('Payment method has been succesfully set', method);
+
+                            console.log('$orderCtrl.delivery.payment_method: ', $orderCtrl.delivery.payment_method);
 
                             return checkoutProvider.confirm(params.currentSession).then((response) => {
                                 $orderCtrl.confirmMessage = $sce.trustAsHtml(response.data.payment);

@@ -89,12 +89,17 @@
                 <label for="personal-agreement-checkbox" class="make-order-page__label make-order-page__label--checkbox">Принимаю <a href="/docs/public-offer.docx">оферту</a></label>
             </div>
 
+            <p data-ng-if="$orderCtrl.delivery.payment_method === $orderCtrl.PAYMENT_METHODS.BANK_TRANSFER">
+                Внимание, за безналичный перевод полагается комиссия в размере 2%.
+            </p>
+
             <br><br>
 
             <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
                    value="Перейти к оплате">
         </form>
     </div>
+
 
     <div data-ng-bind-html="$orderCtrl.confirmMessage"></div>
 
