@@ -168,6 +168,12 @@
             templateUrl: pathToInnerPage('arrange-game')
         },
 
+        {
+            name: 'juridical-info',
+            url: '/juridical-info/',
+            templateUrl: pathToInnerPage('juridical-info')
+        },
+
 		{
 			name: 'bookmarks-page',
 			url: '/bookmarks/',
