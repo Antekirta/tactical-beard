@@ -21,7 +21,7 @@
                     function (response) {
                         $log.log('basket page allProducts: ', response);
 
-                        if ( response.success ) {
+                        if (response.success) {
                             fillProductsKeysObject(response.data.products);
 
                             fillBasketProducts(response.data.products);
@@ -60,12 +60,14 @@
                 emptyCart: function () {
                     basketFactory.delete.allProducts()
                         .then(
-                            function (daleted) {
-                                console.log('basket page emptyCart daleted', daleted);
+                            function () {
+                                let really = confirm('Вы уверены?');
 
-                                $scope.basketProducts = [];
+                                if (really) {
+                                    $scope.basketProducts = [];
 
-                                $scope.helpers.updateTotal();
+                                    $scope.helpers.updateTotal();
+                                }
                             }
                         );
                 },

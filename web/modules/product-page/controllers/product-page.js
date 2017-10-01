@@ -3,26 +3,21 @@
 
     angular.module('productPage').controller('productPageCtrl', [
         '$scope',
-
         '$log',
-
         '$state',
-
         '$stateParams',
-
         '$sce',
-
         'session',
-
         'productsProvider',
-
         'basketFactory',
-
         'translitFactory',
-
         'STATE_NAMES',
 
         function ($scope, $log, $state, $stateParams, $sce, session, productsProvider, basketFactory, translitFactory, STATE_NAMES) {
+            $scope.$on('$routeChangeSuccess', function () {
+                console.log('CHIAUA!');
+            });
+
             $scope.product = {};
 
             $scope.productCount = 1;
