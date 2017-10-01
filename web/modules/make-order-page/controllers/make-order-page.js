@@ -80,7 +80,7 @@
                 event.preventDefault();
 
                 return checkoutProvider
-                    .setPaymentMethod(params.currentSession, method, '', $orderCtrl.agree)
+                    .setPaymentMethod(params.currentSession, method, '', $scope.payment.agree)
                     .then((response) => {
                         if ( response.data.success ) {
                             $log.log('Payment method has been succesfully set', method);
