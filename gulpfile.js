@@ -74,6 +74,8 @@
 
         VENDOR + '/angular-ui-router/release/angular-ui-router.min.js',
 
+        'node_modules/ng-page-title/dist/ng-page-title.js',
+
         VENDOR + '/lodash/lodash.js',
 
         VENDOR + '/wow/dist/wow.min.js',

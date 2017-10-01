@@ -4,6 +4,8 @@
     var beard = angular.module('beard', [
         'ui.router',
 
+        'ngPageTitle',
+
         'utils',
 
         'registry',
