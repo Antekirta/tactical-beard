@@ -1,33 +1,31 @@
 <ul class="main-slider__slides-container">
-	<li
-		ng-repeat="slide in slides"
+    <li data-ng-repeat="slide in slides" class="main-slider__slide">
+        <a target="_blank" href="{{slide.link}}" class="main-slider__main-link">
+            <div class="main-slider__slide-description">
+                <header class="main-slider__slide-header">{{slide.header}}</header>
 
-		class="main-slider__slide">
+                <div class="main-slider__slide-content">
+                    <div class="main-slider__slide-content-before">
+                        <img class="main-slider__logo" src="img/icons/logo-without-title.png">
+                    </div>
 
-		<div class="main-slider__slide-description">
-			<header class="main-slider__slide-header">{{slide.header}}</header>
+                    <div class="main-slider__slide-text">{{slide.content}} <p></p></div>
 
-			<div class="main-slider__slide-content">
-				<div class="main-slider__slide-content-before">
-					<img class="main-slider__logo" src="img/icons/logo-without-title.png">
-				</div>
-
-					<div class="main-slider__slide-text">{{slide.content}} <p></p></div>
-
-				<a target="_blank" href="{{slide.link}}" class="main-slider__read-more">{{slide.buttonText}} <span class="inline-right-arrow">&rarr;</span></a>
-			</div>
-		</div>
-
-	</li>
+                    <span class="main-slider__read-more">{{slide.buttonText}} <span
+                            class="inline-right-arrow">&rarr;</span></span>
+                </div>
+            </div>
+        </a>
+    </li>
 </ul>
 
 <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-			class="slider__carousel-arrow main-slider__slider__carousel-arrow slider__carousel-arrow--back"
-			ng-click="changeSlide('back')" >
+            class="slider__carousel-arrow main-slider__slider__carousel-arrow slider__carousel-arrow--back"
+            ng-click="changeSlide('back')">
 </ng-include>
 
 <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-			class="slider__carousel-arrow main-slider__slider__carousel-arrow slider__carousel-arrow--forward"
-			ng-click="changeSlide('forward')" >
+            class="slider__carousel-arrow main-slider__slider__carousel-arrow slider__carousel-arrow--forward"
+            ng-click="changeSlide('forward')">
 </ng-include>
 

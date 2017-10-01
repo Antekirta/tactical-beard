@@ -11,118 +11,119 @@
   height: 450px
   margin-top: 0
   overflow: hidden
-
-.main-slider__slides-container
-  position: relative
-  width: 100%
-  height: 100%
-
-.main-slider__slide
-  position: absolute
-  height: 100%
-  padding: 30px
-  box-sizing: border-box
-  background-size: cover
-  list-style-type: none
-  @include fullTrans(.5s)
-  &:first-child
-    background-image: url('../../../../../img/slider/slides/slide1.jpg')
-  &:nth-child(2)
-    background-image: url('../../../../../img/slider/slide2.jpg')
-
-.main-slider__slide-description
-  position: absolute
-  bottom: -5px
-  right: 180px
-  width: 530px
-  height: 200px
-  @media all and (max-width: 800px)
+  &__slides-container
+    position: relative
     width: 100%
-    left: 0
-    height: 300px
-
-.main-slider__slide-header
-  position: relative
-  display: inline-block
-  width: 360px
-  height: 61px
-  margin-left: 100px
-  padding: 10px 20px 10px 50px
-  background-color: $dark-brown
-  color: $white
-  font-family: $font-family-condensed-bold
-  font-size: $font-size-h3
-  text-transform: uppercase
-  @media all and (max-width: 800px)
-    margin-left: 0
-    font-size: $font-size-h4
-  @media all and (max-width: 500px)
-    margin-left: 0
-    font-size: $font-size-h5
-
-.main-slider__slide-content
-  position: relative
-  height: 1134px
-  padding: 20px
-  background-color: $light-brown
-  &:before
+    height: 100%
+  &__slide
+    position: absolute
+    height: 100%
+    padding: 30px
+    box-sizing: border-box
+    background-size: cover
+    list-style-type: none
+    @include fullTrans(.5s)
+    &:first-child
+      background-image: url('../../../../../img/slider/slides/slide1.jpg')
+    &:nth-child(2)
+      background-image: url('../../../../../img/slider/slide2.jpg')
+  &__main-link
     position: absolute
     display: block
-    content: ''
-    width: 0
-    height: 0
-    top: -63px
-    border-bottom: solid 63px #d19563
-    border-left: solid 36px transparent
-    border-right: solid 36px transparent
-    right: 35px
+    width: 100%
+    height: 100%
+    text-decoration: none
+    color: $dark-brown
+    &:hover
+      text-decoration: none
+      color: $dark-brown
+  &__slide-description
+    position: absolute
+    bottom: -5px
+    right: 180px
+    width: 530px
+    height: 250px
+    @media all and (max-width: 800px)
+      width: 100%
+      left: 0
+      height: 300px
+  &__slide-header
+    position: relative
+    display: inline-block
+    width: 360px
+    height: 61px
+    margin-left: 100px
+    padding: 10px 20px 10px 50px
+    background-color: $dark-brown
+    color: $white
+    font-family: $font-family-condensed-bold
+    font-size: $font-size-h3
+    text-transform: uppercase
+    @media all and (max-width: 800px)
+      margin-left: 0
+      font-size: $font-size-h4
+    @media all and (max-width: 500px)
+      margin-left: 0
+      font-size: $font-size-h5
+  &__slide-content
+    position: relative
+    height: 1134px
+    padding: 20px
+    background-color: $light-brown
+    &:before
+      position: absolute
+      display: block
+      content: ''
+      width: 0
+      height: 0
+      top: -63px
+      border-bottom: solid 63px #d19563
+      border-left: solid 36px transparent
+      border-right: solid 36px transparent
+      right: 35px
+      @media all and (max-width: 800px)
+        display: none
+  &__slide-content-before
+    position: absolute
+    top: -52px
+    right: 43px
     @media all and (max-width: 800px)
       display: none
-
-.main-slider__slide-content-before
-  position: absolute
-  top: -52px
-  right: 43px
-  @media all and (max-width: 800px)
-    display: none
-
-.main-slider__logo
-  width: 56px
-  height: 49px
-  @media all and (max-width: 800px)
-    display: none
-
-.main-slider__slide-text
-  line-height: 20px
-  font-family: $font-family-light
-  font-size: $font-size-p
-  @media all and (max-width: 800px)
-    line-height: $font-size-p
-    font-size: $font-size-p - 2
-
-.main-slider__read-more
-  position: absolute
-  right: 28px
-  width: 200px
-  height: 40px
-  box-sizing: border-box
-  background-color: $white
-  text-align: center
-  line-height: 33px
-  font-size: $font-size-h6
-  font-weight: $font-weight-bold
-  color: $light-brown
-  cursor: pointer
-  @include fullTrans(.2s)
-  &:hover
-    color: $brown
-  @media all and (max-width: 800px)
-    line-height: $font-size-p
-    position: relative
-    right: 0
-    left: 50px
-    top: 20px
-    padding: 10px
+  &__logo
+    width: 56px
+    height: 49px
+    @media all and (max-width: 800px)
+      display: none
+  &__slide-text
+    line-height: 20px
+    font-family: $font-family-light
+    font-size: $font-size-p
+    @media all and (max-width: 800px)
+      line-height: $font-size-p
+      font-size: $font-size-p - 2
+  &__read-more
+    position: absolute
+    right: 28px
+    width: 200px
+    height: 40px
+    box-sizing: border-box
+    background-color: $white
+    text-align: center
+    line-height: 33px
+    font-size: $font-size-h6
+    font-weight: $font-weight-bold
+    color: $light-brown
+    cursor: pointer
+    @include fullTrans(.2s)
+    &:hover
+      color: $brown
+    @media all and (max-width: 800px)
+      line-height: $font-size-p
+      position: relative
+      right: 0
+      left: 50px
+      top: 20px
+      padding: 10px
 
 $slide-arrow-offset: 85px
 
