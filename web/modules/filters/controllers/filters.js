@@ -1,90 +1,83 @@
 (function () {
     'use strict';
 
-    var filters = angular.module('filters');
+    angular.module('filters')
+        .controller('filtersCtrl', [
+            '$scope',
+            '$rootScope',
+            '$log',
+            '$timeout',
+            '$stateParams',
+            'productsProvider',
+            'manufacturersProvider',
+            'filtersFactory',
+            'categoriesDictionary',
+            'FILTERS',
 
-    filters.controller('filtersCtrl', [
-        '$scope',
-        '$rootScope',
-        '$log',
-        '$timeout',
-        '$stateParams',
-        'productsProvider',
-        'manufacturersProvider',
-        'filtersFactory',
-        'categoriesDictionary',
-        'FILTERS',
+            function ($scope, $rootScope, $log, $timeout, $stateParams, productsProvider, manufacturersProvider, filtersFactory, categoriesDictionary, FILTERS) {
+                $scope.filters = filtersFactory.getCurrentFilters();
 
-        function ($scope, $rootScope, $log, $timeout, $stateParams, productsProvider, manufacturersProvider, filtersFactory, categoriesDictionary, FILTERS) {
-            $scope.filters = filtersFactory.getCurrentFilters();
+                $scope.searchByName = '';
 
-            $scope.searchByName = '';
+                $scope.manufacturersList = [];
 
-            $scope.manufacturersList = [];
+                $scope.events = {
+                    filters: {
+                        searchByName: function () {
+                            $scope.filters = filtersFactory.setSearchByName($scope.filters.filters.searchByName.value);
+                        },
 
-            $scope.events = {
-                filters: {
-                    searchByName: function () {
-                        $scope.filters = filtersFactory.setSearchByName($scope.filters.filters.searchByName.value);
-                    },
+                        chooseManufacturer: function (event, selectedItem) {
+                            if (selectedItem === FILTERS.ALL_MANUFACTURERS) {
+                                $scope.filters = filtersFactory.setCurrentManufacturer(false);
+                            } else {
+                                $scope.filters = filtersFactory.setCurrentManufacturer(selectedItem);
+                            }
 
-                    chooseManufacturer: function (event, selectedItem) {
-                        if (selectedItem === FILTERS.ALL_MANUFACTURERS) {
-                            $scope.filters = filtersFactory.setCurrentManufacturer(false);
-                        } else {
-                            $scope.filters = filtersFactory.setCurrentManufacturer(selectedItem);
+                            return $scope.filters;
+                        },
+
+                        limitPrice: function () {
+                            $scope.filters = filtersFactory.setLimitPrice($rootScope.rootScope.products.minPrice, $rootScope.rootScope.products.maxPrice);
+                        },
+
+                        toggleDiscountFilter: function () {
+                            $scope.filters = filtersFactory.setDiscountFilter(!$scope.filters.filters.discounted.status);
+                        },
+
+                        toggleNoveltiesFilter: function () {
+                            $scope.filters = filtersFactory.setNoveltiesFilter(!$scope.filters.filters.novelties.status);
+                        },
+
+                        toggleInStockFilter: function () {
+                            $scope.filters = filtersFactory.setInStockFilter(!$scope.filters.filters.inStock.status);
                         }
-
-                        return $scope.filters;
                     },
 
-                    limitPrice: function () {
-                        $scope.filters = filtersFactory.setLimitPrice($rootScope.rootScope.products.minPrice, $rootScope.rootScope.products.maxPrice);
-                    },
-
-                    toggleDiscountFilter: function () {
-                        $scope.filters = filtersFactory.setDiscountFilter(!$scope.filters.filters.discounted.status);
-                    },
-
-                    toggleNoveltiesFilter: function () {
-                        $scope.filters = filtersFactory.setNoveltiesFilter(!$scope.filters.filters.novelties.status);
-                    },
-
-                    toggleInStockFilter: function () {
-                        $scope.filters = filtersFactory.setInStockFilter(!$scope.filters.filters.inStock.status);
+                    chooseOrder: function (orderName) {
+                        $scope.filters = filtersFactory.setCurrentOrder(orderName);
                     }
-                },
+                };
 
-                chooseOrder: function (orderName) {
-                    $scope.filters = filtersFactory.setCurrentOrder(orderName);
-                }
-            };
+                $scope.filters.filters.priceTo.value = 99999;
 
-            $scope.filters.filters.priceTo.value = 99999;
+                manufacturersProvider.getManufacturers()
+                    .then(
+                        function (response) {
+                            $scope.manufacturersList = response.data.data;
+                        },
 
-            // $rootScope.$on('$stateChangeSuccess', handlers.getPriceExtremums);
+                        function (error) {
+                            $log.error(error);
+                        }
+                    );
 
-            manufacturersProvider.getManufacturers()
-                .then(
-                    function (response) {
-                        var manufacturers = response.data.data;
+                $scope.$watch('filters.filters.searchByName.value', $scope.events.filters.searchByName);
+                $scope.$watch('rootScope.products.minPrice', $scope.events.filters.limitPrice);
+                $scope.$watch('rootScope.products.maxPrice', $scope.events.filters.limitPrice);
 
-                        manufacturers.unshift({name: FILTERS.ALL_MANUFACTURERS});
+                let dropdownSelectListener = $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
 
-                        $scope.manufacturersList = manufacturers;
-                    },
-
-                    function (error) {
-                        $log.error(error);
-                    }
-                );
-
-            $scope.$watch('filters.filters.searchByName.value', $scope.events.filters.searchByName);
-            $scope.$watch('rootScope.products.minPrice', $scope.events.filters.limitPrice);
-            $scope.$watch('rootScope.products.maxPrice', $scope.events.filters.limitPrice);
-
-            var dropdownSelectListener = $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
-
-            $scope.$on('$destroy', dropdownSelectListener);
-        }]);
+                $scope.$on('$destroy', dropdownSelectListener);
+            }]);
 })();

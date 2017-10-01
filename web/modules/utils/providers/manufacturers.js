@@ -12,7 +12,7 @@
 			'REST_API',
 
 			function($http, $q, REST_API) {
-				var req = {
+				const req = {
 					method: 'GET',
 
 					dataType: 'jsonp',
@@ -26,23 +26,10 @@
 					getManufacturers: function() {
 						req.url = REST_API.MANUFACTURERS;
 
-						return $http(req).then(
+						return $http.get(REST_API.MANUFACTURERS, req).then(
 							function(response) {
-								response = {
-									data: {
-										data: [
-                                            {
-                                                name: 'first manufacturer'
-                                            },
-                                            {
-                                                name: 'second manufacturer'
-                                            },
-                                            {
-                                                name: 'third manufacturer'
-                                            }
-                                        ]
-									}
-								};
+								console.log('getManufacturers response:', response);
+
 								return response;
 							},
 
