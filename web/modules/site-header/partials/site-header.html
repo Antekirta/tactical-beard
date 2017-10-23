@@ -16,20 +16,20 @@
         </div>
     </div>
 
-    <div class="user-enter" data-ng-controller="authController as $authCtrl">
-		<div class="user-enter__loggedin-wrapper" data-ng-show="currentUser.isLoggedIn">
-            <span class="user-enter__user-name" data-ng-bind="::currentUser.info.firstname"></span>
-            <span class="user-enter__logout" data-ng-click="$authCtrl.logout()">Выйти</span>
-		</div>
+    <!--<div class="user-enter" data-ng-controller="authController as $authCtrl">-->
+		<!--<div class="user-enter__loggedin-wrapper" data-ng-show="currentUser.isLoggedIn">-->
+            <!--<span class="user-enter__user-name" data-ng-bind="::currentUser.info.firstname"></span>-->
+            <!--<span class="user-enter__logout" data-ng-click="$authCtrl.logout()">Выйти</span>-->
+		<!--</div>-->
 
-        <span data-ng-show="!currentUser.isLoggedIn">
-			<a class="user-enter__link" href="#" data-ng-click="$authCtrl.openModal($event)">Войти</a>
-            <span class="user-enter__delimiter">|</span>
-            <a class="user-enter__link" href="#">Регистрация</a>
-		</span>
+        <!--<span data-ng-show="!currentUser.isLoggedIn">-->
+			<!--<a class="user-enter__link" href="#" data-ng-click="$authCtrl.openModal($event)">Войти</a>-->
+            <!--<span class="user-enter__delimiter">|</span>-->
+            <!--<a class="user-enter__link" href="#">Регистрация</a>-->
+		<!--</span>-->
 
-        <auth-modal class="auth-modal" data-ng-show="$authCtrl.modalIsOpen"></auth-modal>
-    </div>
+        <!--<auth-modal class="auth-modal" data-ng-show="$authCtrl.modalIsOpen"></auth-modal>-->
+    <!--</div>-->
 
     <div class="header-search">
         <input class="header-input-search"

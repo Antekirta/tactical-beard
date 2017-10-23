@@ -10,28 +10,23 @@
            placeholder="Название товара"
     />
 
-    <select data-ng-model="$orderCtrl.delivery.payment_method"
-            class="ui search icon dropdown input small dropdown-select filters__dropdown-select filters__dropdown-select--manufacturer">
-        <option value="" selected="selected">Производитель</option>
-        <option value="{{manufacturer.value}}"
-                data-ng-repeat="manufacturer in manufacturersList track by $index"
-                data-ng-bind="manufacturer.name"></option>
-    </select>
+    <!--<select data-ng-model="$orderCtrl.delivery.payment_method"-->
+            <!--class="ui search icon dropdown input small dropdown-select filters__dropdown-select filters__dropdown-select&#45;&#45;manufacturer">-->
+        <!--<option value="" selected="selected">Производитель</option>-->
+        <!--<option value="{{manufacturer.value}}"-->
+                <!--data-ng-repeat="manufacturer in manufacturersList track by $index"-->
+                <!--data-ng-bind="manufacturer.name"></option>-->
+    <!--</select>-->
 
     <!--<dropdown-select class="dropdown-select filters__dropdown-select filters__dropdown-select&#45;&#45;manufacturer"  data-items-list="manufacturersList" data-placeholder="Производитель">Производитель</dropdown-select>-->
 
     <span class="filters__group-wrapper">
         <label class="filters__label">Цена от</label>
         <input type="number"
-
                name="price-from"
-
                data-ng-model="rootScope.products.minPrice"
-
                class="filters-input filters-input__number filters-input__number--min"
-
                min="0"
-
                step="500"
         />
     </span>
