@@ -62,17 +62,17 @@
 
                         return $http(req).then(
                             function(response) {
-								var products = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.PRODUCTS, true)) || {};
+								// var products = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.PRODUCTS, true)) || {};
 
-								if ( products[id] ) {
-									return products[id];
-								} else {
-									products[id] = response;
+								// if ( products[id] ) {
+								// 	return products[id];
+								// } else {
+								// 	products[id] = response;
+                                //
+								// 	dataStorage.setData('products', JSON.stringify(products), true);
+								// }
 
-									dataStorage.setData('products', JSON.stringify(products), true);
-								}
-
-                                return products[id];
+                                return response;
                             },
 
                             function(error) {

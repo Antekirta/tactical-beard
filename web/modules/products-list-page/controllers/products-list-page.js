@@ -53,7 +53,11 @@
                 getProductsByCategoryId: function (id) {
                     productsProvider.getProductsByCategoryId(id).then(
                         function (response) {
+                            console.log('products-list-page.js response: ', response);
+
                             let products = _.toArray(response.data.data);
+
+                            console.log('products: ', products);
 
                             let images = [];
 
