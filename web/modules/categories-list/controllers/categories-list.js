@@ -3,22 +3,17 @@
 
     angular.module('categoriesList').controller('categoriesListCtrl', [
         '$scope',
-
         '$log',
-
+        '$sce',
         '$state',
-
         'categoriesProvider',
-
         'translitFactory',
-
         'STATE_NAMES',
 
-        function ($scope, $log, $state, categoriesProvider, translitFactory, STATE_NAMES) {
+        function ($scope, $log, $sce, $state, categoriesProvider, translitFactory, STATE_NAMES) {
             $scope.categories = [];
 
             $scope.goToUICategoryState = function (state, promo) {
-                // console.log('categories-list state: ', state.params.categoryId);
                 if ( promo ) {
                     $state.go(STATE_NAMES.PROMO);
                 } else {
@@ -48,21 +43,21 @@
 
             categoriesProvider.getCategories().then(
                 function (response) {
-                    let arr = _.toArray(response.data.data);
+                    let categories = _.toArray(response.data.data);
 
-                    arr = _.sortBy(arr, [function (obj) {
+                    categories = _.sortBy(categories, [function (obj) {
                         return parseInt(obj.sort_order);
                     }]);
 
-                    _.remove(arr, function (obj) {
+                    _.remove(categories, function (obj) {
                         return obj.meta_title === '';
                     });
 
-                    arr.forEach(function (category,) {
+                    categories.forEach(function (category,) {
                         category.image = '../img/categories/' + category.meta_alias + '.svg';
                     });
 
-                    $scope.categories = arr;
+                    $scope.categories = setCategoriesImages(categories);
                 },
 
                 function (error) {
@@ -70,5 +65,39 @@
                 }
             );
 
+            function setCategoriesImages(categories) {
+                console.log('categories: ', categories);
+
+                const map = {
+                    "АВТОМАТЫ": '../img/categories/auto.svg',
+                    "АККУМУЛЯТОРЫ\\ЗАРЯДНЫЕ УСТРОЙСТВА и АКСЕССУАРЫ": "../img/categories/accums.svg",
+                    "БРОНЕЖИЛЕТЫ и РАЗГРУЗКИ": "../img/categories/flac-ackets.svg",
+                    "ЗАПЧАСТИ ВНЕШНИЕ": "../img/categories/outside-spare-parts.svg",
+                    "ЗАПЧАСТИ ВНУТРЕННИЕ": '../img/categories/spare-parts.svg',
+                    "МАГАЗИНЫ и АКСЕССУАРЫ": '../img/categories/accessories.svg',
+                    "НОЖИ и МУЛЬТИТУЛЫ": '../img/categories/knifes.svg',
+                    "ОДЕЖДА и ОБУВЬ": '../img/categories/clothes.svg',
+                    "ОПТИЧЕСКИЕ и КОЛЛИМАТОРНЫЕ ПРИЦЕЛЫ, ЛЦУ, КРЕПЛЕНИЯ": '../img/categories/aims.svg',
+                    "ОЧКИ И МАСКИ": '../img/categories/glasses.svg',
+                    "ПЕРЧАТКИ\\НАКОЛЕННИКИ и НАЛОКОТНИКИ": '../img/categories/gloves.svg',
+                    "ПИСТОЛЕТЫ": '../img/categories/pistols.svg',
+                    "ПОДСУМКИ И КОБУРЫ": '../img/categories/holsters.svg',
+                    "ПУЛЕМЕТЫ\\СНАЙПЕРСКИЕ ВИНТОВКИ\\ГРАНАТОМЕТЫ\\ДРОБОВИКИ": '../img/categories/other-weapons.svg',
+                    "РАДИОСТАНЦИИ И ГАРНИТУРЫ, ФОНАРИ": '../img/categories/radios.svg',
+                    "РЕМНИ ОРУЖЕЙНЫЕ и ПОЯСНЫЕ": '../img/categories/belts.svg',
+                    "РЮКЗАКИ\\ЧЕХЛЫ\\ГИДРАТОРЫ": '../img/categories/backpacks.svg',
+                    "СУВЕНИРЫ И ПАТЧИ": '../img/categories/patches.svg',
+                    "ШАРЫ\\ГРАНАТЫ\\ГАЗ\\ТАГИ": '../img/categories/grenades.svg',
+                    "ШЛЕМЫ\\МАСКИ\\БАЛАКЛАВЫ\\ПЛАТКИ": '../img/categories/helmets.svg'
+                };
+
+                categories.forEach(function (category) {
+                    console.log('map[category[name]: ', map[category.name]);
+
+                    category.image = $sce.trustAsHtml(map[category.name]);
+                });
+
+                return categories;
+            }
         }]);
 })();
