@@ -1,5 +1,10 @@
 @import "../beard"
 
+input
+  &.disabled
+    background-color: transparentize($green, .4) !important
+    cursor: not-allowed!important
+
 .common-form__input
   @include placeholder($font-family-condensed-light, $font-size-p)
   &.ng-invalid.ng-dirty

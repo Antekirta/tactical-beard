@@ -32,18 +32,18 @@
 
             $orderCtrl.customer = {
                 basket: [],
-                firstname: 'fsdfsdf',
-                lastname: 'sdfsdf',
-                email: 'sdfds@fsdfsdf.ru',
-                telephone: '4234234234',
-                company: 'sdfsdfsdf',
-                city: 'kaliningrad',
-                address_1: 'Nevskogo    ',
+                firstname: '',
+                lastname: '',
+                email: '',
+                telephone: '',
+                company: '',
+                city: '',
+                address_1: '',
                 country_id: '',
-                postcode: '2360008',
+                postcode: '',
                 zone_id: '',
-                agree: true,
-                comment: 'sdfsdfsdf'
+                agree: false,
+                comment: ''
             };
 
             $orderCtrl.delivery = {
@@ -53,6 +53,8 @@
             $orderCtrl.payment = {
                 payment_method: ''
             };
+
+            $scope.finishButtonIsVisible = false;
 
             $orderCtrl.sendOrder = function sendOrder(event) {
                 event.preventDefault();
@@ -93,6 +95,8 @@
 
                             return checkoutProvider.confirm(params.currentSession).then((response) => {
                                 $orderCtrl.confirmMessage = $sce.trustAsHtml(response.data.payment);
+
+                                $scope.finishButtonIsVisible = true;
                             });
                         }
                     });

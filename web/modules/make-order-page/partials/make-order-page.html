@@ -1,5 +1,7 @@
-<article class="make-order-page" data-ng-controller="makeOrderPageCtrl as $orderCtrl">
-    <div data-breadcrumbs class="breadcrumbs"></div>
+<article class="make-order-page"
+         data-ng-controller="makeOrderPageCtrl as $orderCtrl">
+    <div data-breadcrumbs
+         class="breadcrumbs"></div>
 
     <header class="page-title make-order-page__page-title">
         <h1 class="page-title__header">Оформление заказа</h1>
@@ -16,40 +18,74 @@
 
     <form name="customer">
         <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
-            <input type="text" name="firstname" required data-ng-model="$orderCtrl.customer.firstname"
+            <input type="text"
+                   name="firstname"
+                   required
+                   data-ng-model="$orderCtrl.customer.firstname"
                    placeholder="Введите имя">
-            <input type="text" name="lastname" required data-ng-model="$orderCtrl.customer.lastname"
+            <input type="text"
+                   name="lastname"
+                   required
+                   data-ng-model="$orderCtrl.customer.lastname"
                    placeholder="Введите фамилию">
         </div>
 
         <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
-            <input type="email" name="email" required data-ng-model="$orderCtrl.customer.email"
+            <input type="email"
+                   name="email"
+                   required
+                   data-ng-model="$orderCtrl.customer.email"
                    placeholder="Введите email">
-            <input type="tel" name="telephone" required data-ng-model="$orderCtrl.customer.telephone"
+            <input type="tel"
+                   name="telephone"
+                   required
+                   data-ng-model="$orderCtrl.customer.telephone"
                    placeholder="Введите номер телефона">
         </div>
 
         <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
             <select data-ng-model="$orderCtrl.customer.zone_id"
                     class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-                <option value="" selected="selected">Регион</option>
-                <option value="{{region.zone_id}}" data-ng-repeat="region in $orderCtrl.regions track by $index"
+                <option value=""
+                        selected="selected">Регион
+                </option>
+                <option value="{{region.zone_id}}"
+                        data-ng-repeat="region in $orderCtrl.regions track by $index"
                         data-ng-bind="region.name"></option>
             </select>
 
-            <input type="text" name="city" required data-ng-model="$orderCtrl.customer.city" placeholder="Введите город">
-            <input type="text" name="address_1" required data-ng-model="$orderCtrl.customer.address_1" placeholder="Введите адрес">
-            <input type="text" name="postcode" required data-ng-model="$orderCtrl.customer.postcode" placeholder="Введите почтовый индекс">
+            <input type="text"
+                   name="city"
+                   required
+                   data-ng-model="$orderCtrl.customer.city"
+                   placeholder="Введите город">
+            <input type="text"
+                   name="address_1"
+                   required
+                   data-ng-model="$orderCtrl.customer.address_1"
+                   placeholder="Введите адрес">
+            <input type="text"
+                   name="postcode"
+                   required
+                   data-ng-model="$orderCtrl.customer.postcode"
+                   placeholder="Введите почтовый индекс">
         </div>
 
         <div class="field textarea make-order-page__textarea-block">
             <label>Комментарий к заказу</label> <br>
-            <textarea name="comment" required data-ng-model="$orderCtrl.order.comment" class="make-order-page__textarea"></textarea>
+            <textarea name="comment"
+                      required
+                      data-ng-model="$orderCtrl.order.comment"
+                      class="make-order-page__textarea"></textarea>
         </div>
 
         <br><br>
 
-        <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.sendOrder($event)" value="Перейти к выбору способа доставки">
+        <input type="submit"
+               class="make-order-page__input-submit"
+               data-ng-class="{'disabled': customer.firstname.$invalid || customer.lastname.$invalid || customer.email.$invalid || customer.telephone.$invalid || !$orderCtrl.customer.zone_id || customer.city.$invalid || customer.address_1.$invalid}"
+               data-ng-click="$orderCtrl.sendOrder($event)"
+               value="Перейти к выбору способа доставки">
     </form>
 
     <div data-ng-show="$orderCtrl.userIsCreated">
@@ -59,14 +95,20 @@
             <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
                 <select data-ng-model="$orderCtrl.delivery.shipping_method"
                         class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-                    <option value="" selected="selected">Способ доставки</option>
+                    <option value=""
+                            selected="selected">Способ доставки
+                    </option>
                     <option value="{{shippingMethod.value}}"
                             data-ng-repeat="shippingMethod in $orderCtrl.shippingMethods track by $index"
                             data-ng-bind="shippingMethod.name"></option>
                 </select>
             </div>
 
-            <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)" value="Перейти к выбору способа оплаты">
+            <input type="submit"
+                   class="make-order-page__input-submit"
+                   data-ng-class="{'disabled': !$orderCtrl.delivery.shipping_method}"
+                   data-ng-click="$orderCtrl.setShippingMethod($event, $orderCtrl.delivery.shipping_method)"
+                   value="Перейти к выбору способа оплаты">
         </form>
     </div>
 
@@ -77,39 +119,49 @@
             <div class="ui mini input make-order-page__input-block make-order-page__input-block--long">
                 <select data-ng-model="$orderCtrl.delivery.payment_method"
                         class="ui search icon dropdown input small make-order-page__dropdown ng-pristine ng-valid ng-empty ng-touched">
-                    <option value="" selected="selected">Способ оплаты</option>
+                    <option value=""
+                            selected="selected">Способ оплаты
+                    </option>
                     <option value="{{paymentMethod.value}}"
                             data-ng-repeat="paymentMethod in $orderCtrl.paymentMethods track by $index"
                             data-ng-bind="paymentMethod.name"></option>
                 </select>
             </div>
 
-            <div class="ui checkbox" id="personal-agreement">
-                <input id="personal-agreement-checkbox" type="checkbox" name="agree" required data-ng-model="$orderCtrl.agree">
-                <label for="personal-agreement-checkbox" class="make-order-page__label make-order-page__label--checkbox">Принимаю <a href="/docs/public-offer.docx">оферту</a></label>
+            <div class="ui checkbox"
+                 id="personal-agreement">
+                <input id="personal-agreement-checkbox"
+                       type="checkbox"
+                       name="agree"
+                       required
+                       data-ng-model="$orderCtrl.customer.agree">
+                <label for="personal-agreement-checkbox"
+                       class="make-order-page__label make-order-page__label--checkbox">Принимаю
+                    <a href="/docs/public-offer.docx">оферту</a></label>
             </div>
-
-            <!--<p data-ng-if="$orderCtrl.delivery.payment_method === $orderCtrl.PAYMENT_METHODS.BANK_TRANSFER">-->
-                <!--Внимание, за безналичный перевод полагается комиссия в размере 2%.-->
-            <!--</p>-->
 
             <br><br>
 
-            <input type="submit" class="make-order-page__input-submit" data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
+            <input type="submit"
+                   class="make-order-page__input-submit"
+                   data-ng-class="{'disabled': !$orderCtrl.customer.agree || !$orderCtrl.delivery.payment_method}"
+                   data-ng-click="$orderCtrl.setPaymentMethod($event, $orderCtrl.delivery.payment_method)"
                    value="Перейти к оплате">
         </form>
     </div>
 
-
     <div data-ng-bind-html="$orderCtrl.confirmMessage"></div>
 
-    <!--<br><br>-->
-
-    <button class="make-order-page__input-submit" data-ng-click="$orderCtrl.finishProcess()">Завершить платеж</button>
+    <br><br>
+    
+    <button class="make-order-page__input-submit"
+            data-ng-show="finishButtonIsVisible"
+            data-ng-click="$orderCtrl.finishProcess()">Завершить платеж
+    </button>
 </article>
 
 <script>
     document.title = 'Оформление заказа';
 
-    $('#personal-agreement').checkbox();
+//    $('#personal-agreement').checkbox();
 </script>
