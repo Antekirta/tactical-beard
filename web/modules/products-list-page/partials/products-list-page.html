@@ -2,13 +2,15 @@
 <section class="site-content-wrapper" ng-controller="categoriesSidebarCtrl">
 	<div class="products-list grid-row" data-ng-controller="productsListPageCtrl">
 		<ul class="products-list__list">
-			<li data-ng-repeat="product in products | filter: filters.filters.searchByName.value | byManufacturer | byPrice | discountedFilter | noveltiesFilter | inStockFilter | orderBy: helpers.getCurrentOrder() track by $index"
+			<li data-ng-repeat="product in products | filter: filters.filters.searchByName.value | byManufacturer | byPrice | discountedFilter | noveltiesFilter | inStockFilter | orderBy: [helpers.getCurrentOrder()] track by $index"
 
 				data-ng-include="'templates/product-item/product-item.html'"
 
 				data-ng-class="{'product-item--no-image': product.image === null,
 
-								'product-item--both-prices': product.discounts.length !== 0}"
+								'product-item--both-prices': product.discounts.length !== 0,
+
+								'product-item--out-of-stock': !product.quantity}"
 
 				class="product-item products-list__product-item" >
 			</li>
