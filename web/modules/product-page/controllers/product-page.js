@@ -89,7 +89,7 @@
                                     return basketFactory.put.product(product, session)
                                         .then(
                                             function (response) {
-                                                // functionality of success message is here
+                                                alert('Товар успешно добавлен в корзину!');
                                             }
                                         );
                                 }
