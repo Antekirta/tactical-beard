@@ -65,8 +65,6 @@
                     .then(
                         function (response) {
                             $scope.manufacturersList = response.data.data;
-
-                            console.log('$scope.manufacturersList: ', $scope.manufacturersList);
                         },
 
                         function (error) {
