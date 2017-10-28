@@ -27,7 +27,7 @@
                             $scope.filters = filtersFactory.setSearchByName($scope.filters.filters.searchByName.value);
                         },
 
-                        chooseManufacturer: function (event, selectedItem) {
+                        chooseManufacturer: function (selectedItem) {
                             if (selectedItem === FILTERS.ALL_MANUFACTURERS) {
                                 $scope.filters = filtersFactory.setCurrentManufacturer(false);
                             } else {
@@ -65,6 +65,8 @@
                     .then(
                         function (response) {
                             $scope.manufacturersList = response.data.data;
+
+                            console.log('$scope.manufacturersList: ', $scope.manufacturersList);
                         },
 
                         function (error) {
@@ -76,8 +78,9 @@
                 $scope.$watch('rootScope.products.minPrice', $scope.events.filters.limitPrice);
                 $scope.$watch('rootScope.products.maxPrice', $scope.events.filters.limitPrice);
 
-                let dropdownSelectListener = $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
+                // let dropdownSelectListener = $scope.$on('dropdownSelectItemSelected', $scope.events.filters.chooseManufacturer);
+                $scope.$watch('chosenManufacturer', $scope.events.filters.chooseManufacturer);
 
-                $scope.$on('$destroy', dropdownSelectListener);
+                // $scope.$on('$destroy', dropdownSelectListener);
             }]);
 })();
