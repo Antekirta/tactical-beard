@@ -6,7 +6,7 @@
         <div class="product-title__in-stock"
              data-ng-class="{'product-title__in-stock--in-stock': product.quantity > 0}">
             <span data-ng-if="!!product.quantity">В наличии</span>
-            <span data-ng-if="!product.quantity">{{product.stock_status}}</span>
+            <span data-ng-if="!product.quantity">{{product.stock_status || 'Нет в наличии'}}</span>
         </div>
 
         <div class="clearfix"></div>
