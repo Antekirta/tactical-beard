@@ -2,9 +2,11 @@
 <section class="site-content-wrapper" ng-controller="categoriesSidebarCtrl">
 	<div class="products-list grid-row" data-ng-controller="productsListPageCtrl">
 		<ul class="products-list__list">
-			<li data-ng-repeat="product in products | filter: filters.filters.searchByName.value | byManufacturer | byPrice | discountedFilter | noveltiesFilter | inStockFilter | orderBy: [helpers.getCurrentOrder()] track by $index"
+			<li data-ng-repeat="product in products | filter: filters.filters.searchByName.value | byManufacturer | byPrice | discountedFilter | noveltiesFilter | inStockFilter | orderBy: ['-inStock', helpers.getCurrentOrder()] track by $index"
 
 				data-ng-include="'templates/product-item/product-item.html'"
+
+				data-quantity="{{product.quantity}}"
 
 				data-ng-class="{'product-item--no-image': product.image === null,
 

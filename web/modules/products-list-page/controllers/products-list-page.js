@@ -64,6 +64,8 @@
                             products.forEach(function (item) {
                                 item.price = +item.price;
 
+                                item.inStock = !!item.quantity;
+
                                 images.push({id: item.id, image: item.original_image});
 
                                 item.image = '';
