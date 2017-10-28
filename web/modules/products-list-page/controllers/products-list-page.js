@@ -59,6 +59,21 @@
 
                             console.log('products: ', products);
 
+                            console.log('_.first(products)["0"].category["0"]["0"].meta_title: ', _.first(products).category[0][0]);
+
+                            setTitle();
+
+                            /**
+                             * Set page title
+                             */
+                            function setTitle() {
+                                const firstProduct = _.first(products).category[0][0];
+
+                                console.log('firstProduct: ', firstProduct);
+
+                                document.title = firstProduct.meta_title || firstProduct.name;
+                            }
+
                             let images = [];
 
                             products.forEach(function (item) {
