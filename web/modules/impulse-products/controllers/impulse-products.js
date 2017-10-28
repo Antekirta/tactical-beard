@@ -42,8 +42,6 @@
 						item.price = +item.price;
 					});
 
-
-
 					$scope.products = products;
 				},
 

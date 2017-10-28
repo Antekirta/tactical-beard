@@ -66,8 +66,6 @@
             );
 
             function setCategoriesImages(categories) {
-                console.log('categories: ', categories);
-
                 const map = {
                     "АВТОМАТЫ": '../img/categories/auto.svg',
                     "АККУМУЛЯТОРЫ\\ЗАРЯДНЫЕ УСТРОЙСТВА и АКСЕССУАРЫ": "../img/categories/accums.svg",
@@ -92,8 +90,6 @@
                 };
 
                 categories.forEach(function (category) {
-                    console.log('map[category[name]: ', map[category.name]);
-
                     category.image = $sce.trustAsHtml(map[category.name]);
                 });
 

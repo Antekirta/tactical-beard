@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('impulseProducts')
-        .controller('promoProductsCtrl', [
+        .controller('recommendedProductsCtrl', [
             '$scope',
             '$log',
             '$state',
@@ -24,25 +24,17 @@
                     });
                 };
 
-                $scope.products = [];
-
                 $locale.NUMBER_FORMATS.GROUP_SEP = ' ';
 
-                productsProvider.getProductsByTag('promo').then(
-                    function (response) {
-                        let products = _.toArray(response.data.data);
+                $scope.products = [];
 
-                        products.forEach(function (item) {
-                            item.price = +item.price;
+                $scope.$on('PRODUCT_DOWNLOADED', function (event, productRelateds) {
+                    productRelateds.forEach(function (id) {
+                        productsProvider.getProductById(id).then(function (response) {
+                            $scope.products.push(response.data.data);
                         });
-
-                        $scope.products = products;
-                    },
-
-                    function (error) {
-                        $log.error(error);
-                    }
-                );
+                    });
+                });
             }
         ]);
 })();

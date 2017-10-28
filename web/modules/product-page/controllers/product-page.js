@@ -168,6 +168,8 @@
                 function (response) {
                     $scope.product = response.data.data;
 
+                    console.log('$scope.product: ', $scope.product  );
+
                     productHandlers.createArtDescription($scope.product.product_description[0].description);
 
                     productHandlers.createTechDescription($scope.product.product_attributes.attributes);
@@ -175,6 +177,8 @@
                     productHandlers.createPrices($scope.product.discounts, $scope.product.price);
 
                     productHandlers.createBreadcrumbs();
+
+                    $scope.$broadcast('PRODUCT_DOWNLOADED', $scope.product.product_relateds)
                 },
 
                 function (error) {
