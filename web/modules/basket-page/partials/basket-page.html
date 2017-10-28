@@ -3,7 +3,7 @@
         <h1 class="page-title__header">Корзина</h1>
     </header>
 
-    <p data-ng-if="!total">Корзина пуста!</p>
+    <p data-ng-if="!basketProducts.length">Корзина пуста!</p>
 
     <table class="basket-table" data-ng-if="basketProducts.length">
         <thead>
@@ -51,7 +51,7 @@
          data-ng-if="basketProducts.length"
          data-ng-click="helpers.makeOrder()">Перейти к оформлению</div>
 
-    <div class="empty-basket">
+    <div class="empty-basket" data-ng-if="basketProducts.length">
         <button data-ng-click="helpers.emptyCart()" class="ui labeled icon button mini red empty-basket__button">
             <i class="trash icon"></i>
             Очистить корзину
