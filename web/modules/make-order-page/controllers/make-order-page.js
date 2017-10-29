@@ -8,6 +8,8 @@
 
         '$sce',
 
+        '$location',
+
         'session',
 
         'countriesFactory',
@@ -16,13 +18,15 @@
 
         'basketProvider',
 
+        'basketFactory',
+
         'regionsProvider',
 
         'COUNTRIES',
 
         'PAYMENT_METHODS',
 
-        function ($scope, $log, $sce, session, countriesFactory, checkoutProvider, basketProvider, regionsProvider, COUNTRIES, PAYMENT_METHODS) {
+        function ($scope, $log, $sce, $location, session, countriesFactory, checkoutProvider, basketProvider, basketFactory, regionsProvider, COUNTRIES, PAYMENT_METHODS) {
             const $orderCtrl = this;
 
             $orderCtrl.shippingMethods = [];
@@ -91,8 +95,6 @@
                         if ( response.data.success ) {
                             $log.log('Payment method has been succesfully set', method);
 
-                            console.log('$orderCtrl.delivery.payment_method: ', $orderCtrl.delivery.payment_method);
-
                             return checkoutProvider.confirm(params.currentSession).then((response) => {
                                 $orderCtrl.confirmMessage = $sce.trustAsHtml(response.data.payment);
 
@@ -107,6 +109,19 @@
                     $log.log('finishProcess response: ', response);
 
                     alert('Заказ успешно оформлен! Проверьте почту. В ближайшее время с вами свяжется наш менеджер. Спасибо за покупку!');
+
+                    basketFactory.delete.allProducts()
+                        .then(
+                            function () {
+                                $log.log('Empty basket!');
+
+                                $location.path('/');
+                            }
+                        );
+
+                    basketProvider.emptyCart.then(function () {
+                        log.log('basketProvider Empty basket!');
+                    });
                 });
             };
 
