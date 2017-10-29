@@ -25,6 +25,10 @@
                             fillProductsKeysObject(response.data.products);
 
                             fillBasketProducts(response.data.products);
+                        } else {
+                            $scope.basketProducts = [];
+
+                            $scope.helpers.updateTotal();
                         }
                     },
 

@@ -105,6 +105,8 @@
             $orderCtrl.finishProcess = function () {
                 return checkoutProvider.pay(params.currentSession).then((response) => {
                     $log.log('finishProcess response: ', response);
+
+                    alert('Заказ успешно оформлен! Проверьте почту. В ближайшее время с вами свяжется наш менеджер. Спасибо за покупку!');
                 });
             };
 
