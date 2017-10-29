@@ -1,27 +1,30 @@
-<ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-            class="products-carousel__carousel-arrow products-carousel__carousel-arrow--back" >
-</ng-include>
+<div data-ng-show="products.length">
+        <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
+                class="products-carousel__carousel-arrow products-carousel__carousel-arrow--back">
+    </ng-include>
 
-<header class="common-section-header">
-    <h2 class="common-section-header__h2">{{productsCarousel.title}}</h2>
-    <a href="/categories/promo/" class="common-section-header__link">{{productsCarousel.link}} >></a>
-</header>
+    <header class="common-section-header">
+        <h2 class="common-section-header__h2">{{productsCarousel.title}}</h2>
+        <a href="/categories/promo/"
+           class="common-section-header__link">{{productsCarousel.link}} >></a>
+    </header>
 
-<div class="products-carousel__list-container">
-    <ul class="products-carousel__list">
-        <li data-ng-repeat="product in products track by product.id"
+    <div class="products-carousel__list-container">
+        <ul class="products-carousel__list">
+            <li data-ng-repeat="product in products track by product.id"
 
-            data-ng-include="'templates/product-item/product-item.html'"
+                data-ng-include="'templates/product-item/product-item.html'"
 
-            data-ng-class="{'product-item--no-image': product.image === null,
+                data-ng-class="{'product-item--no-image': product.image === null,
 
 								'product-item--both-prices': product.discounts.length !== 0}"
 
-            class="product-item products-list__product-item" >
-        </li>
-    </ul>
-</div>
+                class="product-item products-list__product-item">
+            </li>
+        </ul>
+    </div>
 
-<ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
-            class="products-carousel__carousel-arrow products-carousel__carousel-arrow--forward" >
-</ng-include>
+    <ng-include data-src="'templates/carousel-arrow/carousel-arrow.html'"
+                class="products-carousel__carousel-arrow products-carousel__carousel-arrow--forward">
+    </ng-include>
+</div>
