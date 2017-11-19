@@ -53,8 +53,6 @@
                 getProductsByCategoryId: function (id) {
                     productsProvider.getProductsByCategoryId(id).then(
                         function (response) {
-                            console.log('products-list-page.js response: ', response);
-
                             let products = _.toArray(response.data.data);
 
                             setTitle();
@@ -168,8 +166,6 @@
                 getPromoProducts: function () {
                     productsProvider.getProductsByTag('promo').then(
                         function (response) {
-                            console.log('prodicts-list page response: ', response);
-
                             let products = _.toArray(response.data.data);
 
                             let images = [];
@@ -195,8 +191,6 @@
                             let productToSetImage = {};
 
                             $scope.products = products;
-
-                            console.log('$scope.products: ', $scope.products);
 
                             const stopInterval = $interval(function () {
                                 productToSetImage = _.find($scope.products, function (product) {
@@ -245,7 +239,6 @@
                 )
                 .then(
                     function () {
-                        console.log('state.current.name: ', $state.current.name);
                         if ( $state.current.name === STATE_NAMES.SEARCH ) {
                             promises.getProductsBySearch($stateParams.search);
                         } else if ( $state.current.name === STATE_NAMES.PROMO ) {

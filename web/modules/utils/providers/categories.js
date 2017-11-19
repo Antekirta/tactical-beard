@@ -33,6 +33,8 @@
                         // if categories are already stored in data storage, then return it from there
 
                         // if ( !_.isEmpty(categories) ) {
+                        //     console.log('categories are not empty: ', categories);
+                        //
                         //     let deferred = $q.defer();
                         //
                         //     deferred.resolve(categories);
