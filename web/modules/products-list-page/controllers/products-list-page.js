@@ -214,6 +214,16 @@
                 }
             };
 
+            $scope.getProductLink = function (state) {
+                const categoryNameForUrl = translitFactory.rusTolat(state.categoryName[_.keys(state.categoryName)[0]][0].name);
+
+                const productName = translitFactory.rusTolat(state.productName);
+
+                const productId = state.productId;
+
+                return '/categories/' + categoryNameForUrl + '/' + productName + '/?productId=' + productId;
+            };
+
             $scope.goToUIProductState = function (state) {
                 $state.go(STATE_NAMES.PRODUCT, {
                     productId: state.productId,

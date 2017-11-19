@@ -1,5 +1,6 @@
-<a href="#" class="product-item__figure"
-        data-ng-click="goToUIProductState({productId: product.id, productName: product.product_description[0].name, categoryName: product.category})">
+<a data-ng-href="{{getProductLink({productId: product.id, productName: product.product_description[0].name, categoryName: product.category})}}"
+   class="product-item__figure"
+>
     <ng-include data-src="'templates/image-preloader/image-preloader.html'"></ng-include>
     <img data-load-image src="{{product.original_image}}" alt="{{product.product_description[0].name}}"
          class="product-item__image">
@@ -7,8 +8,9 @@
 </a>
 
 <div class="product-item__image-header">
-    <a href="#" class="product-item__link"
-       data-ng-click="goToUIProductState({productId: product.id, productName: product.product_description[0].name, categoryName: product.category})">
+    <a data-ng-href="{{getProductLink({productId: product.id, productName: product.product_description[0].name, categoryName: product.category})}}"
+       class="product-item__link"
+       >
         {{product.product_description[0].name}}
     </a>
 </div>
