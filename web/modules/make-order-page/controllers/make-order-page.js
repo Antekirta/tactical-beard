@@ -34,7 +34,7 @@
             $orderCtrl.paymentMethods = [];
             $orderCtrl.PAYMENT_METHODS = PAYMENT_METHODS;
 
-            $orderCtrl.customer = {
+            $orderCtrl.customer = getUserDataFromLocalstorage() || {
                 basket: [],
                 firstname: '',
                 lastname: '',
@@ -214,6 +214,8 @@
                     'zone_id': customer.zone_id
                 };
 
+                saveUserDataInLocalstorage(customerInfo);
+
                 checkoutProvider.createGuest(params.currentSession, customerInfo)
                     .then(() => {
                         return checkoutProvider.getShippingMethods(params.currentSession).then((response) => {
@@ -224,6 +226,14 @@
                             }
                         });
                     })
+            }
+            
+            function saveUserDataInLocalstorage(data) {
+                localStorage.setItem('customerInfo', JSON.stringify(data));
+            }
+
+            function getUserDataFromLocalstorage() {
+                return JSON.parse(localStorage.getItem('customerInfo'));
             }
         }]);
 })();
