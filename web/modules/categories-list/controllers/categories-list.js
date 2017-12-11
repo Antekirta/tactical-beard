@@ -50,9 +50,10 @@
                     }]);
 
                     _.remove(categories, function (obj) {
+                        // Sorry for that, I have no time:(
                         return obj.meta_title === '' || obj.category_id === '155';
                     });
-                    
+
                     categories.forEach(function (category,) {
                         category.image = '../img/categories/' + category.meta_alias + '.svg';
                     });
