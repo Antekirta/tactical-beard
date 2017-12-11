@@ -28,7 +28,7 @@
 
 				return {
 					getCategories: function() {
-						let categories = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.CATEGORIES, true)) || {};
+						// let categories = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.CATEGORIES, true)) || {};
 
                         // if categories are already stored in data storage, then return it from there
 
@@ -46,7 +46,7 @@
 
 						return $http(req).then(
 							function(response) {
-                                categories = response;
+                                let categories = response;
 
                                 dataStorage.setData(DATA_STORAGE.STORAGES.CATEGORIES, JSON.stringify(categories), true);
 

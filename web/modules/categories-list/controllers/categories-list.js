@@ -50,9 +50,9 @@
                     }]);
 
                     _.remove(categories, function (obj) {
-                        return obj.meta_title === '';
+                        return obj.meta_title === '' || obj.category_id === '155';
                     });
-
+                    
                     categories.forEach(function (category,) {
                         category.image = '../img/categories/' + category.meta_alias + '.svg';
                     });
