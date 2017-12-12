@@ -50,8 +50,7 @@
                     }]);
 
                     _.remove(categories, function (obj) {
-                        // Sorry for that, I have no time:(
-                        return obj.meta_title === '' || obj.category_id === '155';
+                        return obj.meta_title === '';
                     });
 
                     categories.forEach(function (category,) {
@@ -74,7 +73,7 @@
                     "ЗАПЧАСТИ ВНЕШНИЕ": "../img/categories/outside-spare-parts.svg",
                     "ЗАПЧАСТИ ВНУТРЕННИЕ": '../img/categories/spare-parts.svg',
                     "МАГАЗИНЫ и АКСЕССУАРЫ": '../img/categories/accessories.svg',
-                    "НОЖИ и МУЛЬТИТУЛЫ": '../img/categories/knifes.svg',
+                    "ТРЕНИРОВОЧНЫЕ НОЖИ и МУЛЬТИТУЛЫ": '../img/categories/knifes.svg',
                     "ОДЕЖДА и ОБУВЬ": '../img/categories/clothes.svg',
                     "ОПТИЧЕСКИЕ и КОЛЛИМАТОРНЫЕ ПРИЦЕЛЫ, ЛЦУ, КРЕПЛЕНИЯ": '../img/categories/aims.svg',
                     "ОЧКИ И МАСКИ": '../img/categories/glasses.svg',

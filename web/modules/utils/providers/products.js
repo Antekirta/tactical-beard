@@ -34,6 +34,10 @@
 
 						return $http(req).then(
 							function(response) {
+                                response.data.data = response.data.data.filter(function (item) {
+                                    return !item.status;
+                                });
+
 								return response;
 							},
 
@@ -62,6 +66,10 @@
 
                         return $http(req).then(
                             function(response) {
+                                response.data.data = response.data.data.filter(function (item) {
+                                    return parseInt(item.status);
+                                });
+
 								// var products = JSON.parse(dataStorage.getData(DATA_STORAGE.STORAGES.PRODUCTS, true)) || {};
 
 								// if ( products[id] ) {
@@ -86,6 +94,10 @@
 
                         return $http(req).then(
                             function(response) {
+                                response.data.data = response.data.data.filter(function (item) {
+                                    return !item.status;
+                                });
+
                                 return response;
                             },
 
@@ -100,6 +112,10 @@
 
                         return $http(req).then(
                             function(response) {
+                                response.data.data = response.data.data.filter(function (item) {
+                                    return !item.status;
+                                });
+
                                 return response;
                             },
 
@@ -114,6 +130,10 @@
 
                         return $http(req).then(
                             function(response) {
+                                response.data.data = response.data.data.filter(function (item) {
+                                    return !item.status;
+                                });
+                                
                                 return response;
                             },
 
