@@ -3,7 +3,7 @@
 
 	var categoriesSidebar = angular.module('categoriesSidebar');
 
-	categoriesSidebar.directive('categoriesSidebar', ['EVENTS', function(EVENTS) {
+	categoriesSidebar.directive('categoriesSidebar', ['$rootScope', 'EVENTS', function($rootScope, EVENTS) {
 		return {
 			restrict: 'A',
 
@@ -12,7 +12,15 @@
 			templateUrl: 'modules/categories-sidebar/partials/categories-sidebar.html',
 
 			link: function(scope, element, attrs) {
-				
+				const $toggle = element.find('.categories-sidebar__toggle');
+
+                $toggle.on(EVENTS.ELEMENT.CLICK, function () {
+					element.toggleClass('categories-sidebar--opened');
+                });
+
+                $rootScope.$on('$stateChangeStart', function () {
+                    element.removeClass('categories-sidebar--opened');
+                });
 			}
 		};
 	}]);

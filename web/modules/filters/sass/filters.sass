@@ -14,16 +14,10 @@
   letter-spacing: .3px
   color: $dark-brown
   @include bottom-line()
-  @media all and (max-width: 1400px)
-    top: 120px
-    left: 300px
-    width: 100%
-  @media all and (max-width: 1000px)
-    top: 120px
-    left: 300px
-    width: 100%
-  @media all and (max-width: 500px)
+  @media all and (max-width: 1024px)
+    width: 100vw
     left: 0
+    top: 100px
 
 $input-margin-right: 10px
 
@@ -67,7 +61,7 @@ $input-margin-right: 10px
 
 .filters__input--search-by-name
   @media all and (max-width: 1000px)
-    display: block
+    //display: block
     margin-bottom: 10px
 
 // type="number"
@@ -111,5 +105,5 @@ input.filters-input__checkbox
 
 .filters__dropdown-select--manufacturer
   @media all and (max-width: 1000px)
-    display: block
+    //display: block
     margin-bottom: 10px

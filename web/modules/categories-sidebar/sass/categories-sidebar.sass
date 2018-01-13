@@ -11,11 +11,24 @@
   padding: 20px 30px
   background-color: $middle-brown
   transform: translate(100px, 119px)
+  transition: .3s
   @media all and (max-width: 1400px)
     transform: translate(0, 119px)
-  @media all and (max-width: 500px)
+  @media all and (max-width: 1024px)
     width: 100vw
+    height: 100px
+    overflow: hidden
+    margin-top: 151px
     text-align: center
+  &--opened
+    height: auto
+
+.categories-sidebar__toggle
+  display: none
+  margin-bottom: 16px
+  color: $white
+  @media all and (max-width: 1024px)
+    display: inline-block
 
 .categories-sidebar__heading
   color: $white
