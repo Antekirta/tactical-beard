@@ -5,6 +5,7 @@
         .controller('promoProductsCtrl', [
             '$scope',
             '$log',
+            '$rootScope',
             '$state',
             '$stateParams',
             '$locale',
@@ -14,7 +15,7 @@
             'translitFactory',
             'STATE_NAMES',
 
-            function ($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, STATE_NAMES) {
+            function ($scope, $log,  $rootScope, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, STATE_NAMES) {
                 $scope.goToUIProductState = function (state) {
                     $state.go(STATE_NAMES.PRODUCT, {
                         productId: state.productId,
@@ -35,6 +36,10 @@
                         products.forEach(function (item) {
                             item.price = +item.price;
                         });
+
+                        if (products.length) {
+                            $rootScope.isPromoProducts = true;
+                        }
 
                         $scope.products = products;
                     },

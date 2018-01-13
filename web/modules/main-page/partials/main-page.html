@@ -31,6 +31,8 @@
 
 <section class="products-carousel"
 
+		 data-ng-if="isPromoProducts"
+
          data-products-carousel="promo"
 
          ng-controller="promoProductsCtrl">
@@ -39,6 +41,8 @@
 <div class="container streak"></div>
 
 <section class="products-carousel products-carousel--novelties"
+
+		 data-ng-if="isNewProducts"
 
 		 data-products-carousel="new"
 

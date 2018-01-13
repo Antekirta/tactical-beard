@@ -5,6 +5,7 @@
 
     impulseProducts.controller('latestProductsCtrl', [
         '$scope',
+        '$rootScope',
         '$log',
         '$state',
         '$stateParams',
@@ -17,7 +18,7 @@
         'STATE_NAMES',
         'DATE',
 
-        function($scope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, dateFactory, STATE_NAMES, DATE) {
+        function($scope, $rootScope, $log, $state, $stateParams, $locale, productsProvider, filtersFactory, statesFactory, translitFactory, dateFactory, STATE_NAMES, DATE) {
             $scope.goToUIProductState = function (state) {
                 $state.go(STATE_NAMES.PRODUCT, {
                     productId: state.productId,
@@ -40,6 +41,10 @@
                     products.forEach(function (item, index, arr) {
                         item.price = +item.price;
                     });
+
+                    if (products.length) {
+                        $rootScope.isNewProducts = true;
+                    }
 
                     $scope.products = products;
                 },
