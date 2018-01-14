@@ -3,6 +3,7 @@
 
     angular.module('basketPage').controller('basketPageCtrl', [
         '$scope',
+        '$rootScope',
         '$log',
         '$state',
         'STATE_NAMES',
@@ -10,7 +11,9 @@
         'productsProvider',
         'basketFactory',
 
-        function ($scope, $log, $state, STATE_NAMES, LOCAL_STORAGE, productsProvider, basketFactory) {
+        function ($scope, $rootScope,  $log, $state, STATE_NAMES, LOCAL_STORAGE, productsProvider, basketFactory) {
+            $rootScope.isBasketPage = true;
+
             let basket = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BASKET)) || [];
 
             // contains pairs id: key, where id is product_id and key is key of product in cart
@@ -106,6 +109,8 @@
                     basketFactory.put.bunchOfProducts($scope.basketProducts)
                         .then(
                             function (response) {
+                                $rootScope.isBasketPage = false;
+
                                 $state.go(STATE_NAMES.MAKE_ORDER);
                             }
                         );
