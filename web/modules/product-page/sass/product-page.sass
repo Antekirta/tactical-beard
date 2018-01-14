@@ -9,6 +9,9 @@ $product-title--inner-elements__padding: 0 30px
   min-height: 500px
   float: right
   margin-right: 150px
+  @media (max-width: 1024px)
+    float: none
+    width: 100vw
 
 .product-title
   position: relative
@@ -37,6 +40,8 @@ $product-title--inner-elements__padding: 0 30px
   padding: $product-title--inner-elements__padding
   font-size: $font-size-h4
   color: $white
+  @media (max-width: 768px)
+    position: relative
   &--in-stock
     background-color: $green
 
@@ -44,8 +49,11 @@ $product-title--inner-elements__padding: 0 30px
   display: flex
   align-items: flex-start
   justify-content: space-between
+  flex-wrap: wrap
   width: 100%
   margin-top: 25px
+  @media (max-width: 768px)
+    justify-content: center
 
 // gallery
 
@@ -130,6 +138,9 @@ $product-gallery__height: 500px
   float: left
   width: 139px
   @include userSelect(none)
+  @media (max-width: 380px)
+    float: none
+    margin: 0 auto 15px auto
 
 .product-count__value
   display: inline-block
@@ -172,6 +183,9 @@ $product-add-to-basket__height: 50px
   background-color: $green
   text-align: center
   cursor: pointer
+  @media (max-width: 380px)
+    float: none
+    margin: 0 auto
   &:hover
     background-color: transparentize($green, 0.1)
 
@@ -211,6 +225,11 @@ $product-add-to-basket__height: 50px
 
 .product-description__text-area
   margin-top: 20px
+  @media (max-width: 480px)
+    width: 100vw
+    padding: 0 15px 
+    margin: 20px auto
+    text-align: center
   p
     text-align: left
     line-height: $font-size-h5 + 2
