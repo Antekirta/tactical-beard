@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var categoriesSidebar = angular.module('categoriesSidebar');
+	const categoriesSidebar = angular.module('categoriesSidebar');
 
 	categoriesSidebar.directive('categoriesSidebar', ['$rootScope', 'EVENTS', function($rootScope, EVENTS) {
 		return {

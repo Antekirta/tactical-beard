@@ -25,11 +25,18 @@ $input-margin-right: 10px
 
 .filters__filters-checkbox-block
   margin-left: $input-margin-right * 6
+  @media all and (max-width: 1024px)
+    margin-left: 0
+
+.filters__group-delimiter
+  display: none
+  @media all and (max-width: 1024px)
+    display: inline
 
 .filters__group-wrapper
   @media all and (max-width: 1000px)
-    display: block
-    //margin-bottom: 10px
+    //display: block
+    margin-bottom: 10px
 
 // labels
 
