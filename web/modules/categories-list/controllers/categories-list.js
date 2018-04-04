@@ -73,7 +73,7 @@
                     "ЗАПЧАСТИ ВНЕШНИЕ": "../img/categories/outside-spare-parts.svg",
                     "ЗАПЧАСТИ ВНУТРЕННИЕ": '../img/categories/spare-parts.svg',
                     "МАГАЗИНЫ и АКСЕССУАРЫ": '../img/categories/accessories.svg',
-                    "ТРЕНИРОВОЧНЫЕ НОЖИ и МУЛЬТИТУЛЫ": '../img/categories/knifes.svg',
+                    "НОЖИ и МУЛЬТИТУЛЫ": '../img/categories/knifes.svg',
                     "ОДЕЖДА и ОБУВЬ": '../img/categories/clothes.svg',
                     "ОПТИЧЕСКИЕ и КОЛЛИМАТОРНЫЕ ПРИЦЕЛЫ, ЛЦУ, КРЕПЛЕНИЯ": '../img/categories/aims.svg',
                     "ОЧКИ И МАСКИ": '../img/categories/glasses.svg',
