@@ -91,13 +91,13 @@
 
                     getProductsBySearch: function (search) {
                         req.url = REST_API.SEARCH_PRODUCTS_BY_NAME + search;
+                        req.transformResponse = [];
+                        // req.url = 'https://tacbeard.com/backend/index.php?route=rest/product_admin/products&search=CM515 от CYMA';
 
                         return $http(req).then(
                             function(response) {
-                                response.data.data = response.data.data.filter(function (item) {
-                                    return !item.status;
-                                });
-
+                                response.data = JSON.parse(response.data);
+                                
                                 return response;
                             },
 

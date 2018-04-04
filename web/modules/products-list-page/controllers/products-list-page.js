@@ -114,8 +114,10 @@
                 },
 
                 getProductsBySearch: function (search) {
+                    console.log('products-list-page.js search: ', search);
                     productsProvider.getProductsBySearch(search).then(
                         function (response) {
+                            console.log('search response: ', response);
                             let products = _.toArray(response.data.data);
 
                             let images = [];
@@ -249,6 +251,7 @@
                 )
                 .then(
                     function () {
+                        console.log('products-list-page.js: inside of categoriesDictionary', );
                         if ( $state.current.name === STATE_NAMES.SEARCH ) {
                             promises.getProductsBySearch($stateParams.search);
                         } else if ( $state.current.name === STATE_NAMES.PROMO ) {
